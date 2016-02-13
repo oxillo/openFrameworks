@@ -32,7 +32,18 @@ PLATFORM_RUN_COMMAND =
 MSYS2_ROOT = /mingw32
 PLATFORM_CFLAGS += -std=gnu++14 -DUNICODE -D_UNICODE 
 #PLATFORM_CFLAGS += -IC:/msys64/mingw32/include/gstreamer-1.0 -DOF_VIDEO_PLAYER_GSTREAMER 
+
+PLATFORM_LDFLAGS += -static
+PLATFORM_LDFLAGS += -static-libgcc -static-libstdc++
+PLATFORM_LDFLAGS += -lboost_filesystem-mt -lboost_system-mt 
+PLATFORM_LDFLAGS += -lcairo -lpixman-1 -lfontconfig -liconv
+PLATFORM_LDFLAGS += -lfreetype -lharfbuzz -lbz2 -lglib-2.0 -lintl -liconv
+PLATFORM_LDFLAGS += -lglew32
+PLATFORM_LDFLAGS += -lstdc++
 PLATFORM_LDFLAGS += -lpthread
+PLATFORM_LDFLAGS += -Wl,-Bdynamic
+#PLATFORM_LDFLAGS += -Bstatic
+# -lfoo -Bdynamic -lbar
 #ifeq ($(PLATFORM_ARCH),x86_64)
 CC = $(MSYS2_ROOT)/bin/gcc
 CXX = $(MSYS2_ROOT)/bin/g++
@@ -65,6 +76,7 @@ PLATFORM_RUN_COMMAND = cd bin;./$(BIN_NAME)
 ##########################################################################################
 
 PLATFORM_DEFINES = POCO_STATIC
+PLATFORM_DEFINES += FREEIMAGE_LIB
 
 ##########################################################################################
 # PLATFORM REQUIRED ADDON
@@ -209,13 +221,26 @@ PLATFORM_HEADER_SEARCH_PATHS =
 # Note: Be sure to leave a leading space when using a += operator to add items to the list
 ##########################################################################################
 
-PLATFORM_LIBRARIES += PocoNetSSL PocoNet PocoCrypto PocoUtil PocoXML PocoFoundation PocoZip PocoJSON PocoData PocoDataSQLite
+#PLATFORM_LIBRARIES += PocoNetSSL PocoNet PocoCrypto PocoUtil PocoXML PocoFoundation PocoZip PocoJSON PocoData PocoDataSQLite
 PLATFORM_LIBRARIES += ksuser opengl32 gdi32 msimg32 glu32 dsound winmm strmiids #dxguid  
 PLATFORM_LIBRARIES += uuid ole32 oleaut32 setupapi wsock32 ws2_32 Iphlpapi Comdlg32
-PLATFORM_LIBRARIES += freeimage boost_filesystem-mt boost_system-mt freetype cairo
+PLATFORM_LIBRARIES += freetype cairo
+#PLATFORM_LIBRARIES += freeimage boost_filesystem-mt boost_system-mt freetype cairo
 #PLATFORM_LIBRARIES += gstapp-1.0 gstvideo-1.0 gstbase-1.0 gstreamer-1.0 gobject-2.0 glib-2.0 intl
 
 #static libraries (fully qualified paths)
+PLATFORM_STATIC_LIBRARIES += $(OF_LIBS_PATH)/poco/lib/$(ABI_LIB_SUBPATH)/libPocoNetSSL.a
+PLATFORM_STATIC_LIBRARIES += $(OF_LIBS_PATH)/poco/lib/$(ABI_LIB_SUBPATH)/libPocoNet.a
+PLATFORM_STATIC_LIBRARIES += $(OF_LIBS_PATH)/poco/lib/$(ABI_LIB_SUBPATH)/libPocoCrypto.a
+PLATFORM_STATIC_LIBRARIES += $(OF_LIBS_PATH)/poco/lib/$(ABI_LIB_SUBPATH)/libPocoUtil.a
+PLATFORM_STATIC_LIBRARIES += $(OF_LIBS_PATH)/poco/lib/$(ABI_LIB_SUBPATH)/libPocoXML.a
+PLATFORM_STATIC_LIBRARIES += $(OF_LIBS_PATH)/poco/lib/$(ABI_LIB_SUBPATH)/libPocoFoundation.a
+PLATFORM_STATIC_LIBRARIES += $(OF_LIBS_PATH)/poco/lib/$(ABI_LIB_SUBPATH)/libPocoZip.a
+PLATFORM_STATIC_LIBRARIES += $(OF_LIBS_PATH)/poco/lib/$(ABI_LIB_SUBPATH)/libPocoJSON.a
+PLATFORM_STATIC_LIBRARIES += $(OF_LIBS_PATH)/poco/lib/$(ABI_LIB_SUBPATH)/libPocoMongoDB.a
+PLATFORM_STATIC_LIBRARIES += $(OF_LIBS_PATH)/poco/lib/$(ABI_LIB_SUBPATH)/libPocoData.a
+PLATFORM_STATIC_LIBRARIES += $(OF_LIBS_PATH)/poco/lib/$(ABI_LIB_SUBPATH)/libPocoDataSQLite.a
+PLATFORM_STATIC_LIBRARIES += $(OF_LIBS_PATH)/FreeImage/lib/$(ABI_LIB_SUBPATH)/libFreeImage.a
 #PLATFORM_STATIC_LIBRARIES += somestaticlib
 
 PLATFORM_PKG_CONFIG_LIBRARIES =
