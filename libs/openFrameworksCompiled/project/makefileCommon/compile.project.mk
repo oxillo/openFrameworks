@@ -122,6 +122,10 @@ endif
 .PHONY: all Debug Release after clean CleanDebug CleanRelease help force
 
 
+PROJECT_ADDONS_DLLS=$(MSYS2_ROOT)/bin/libstdc++-6.dll
+#PROJECT_ADDONS_DLLS += $(MSYS2_ROOT)/bin/libopencv_core310.dll 
+#PROJECT_ADDONS_DLLS += $(MSYS2_ROOT)/bin/libopencv_imgproc310.dll 
+#PROJECT_ADDONS_DLLS += $(MSYS2_ROOT)/bin/libopencv_objdetect310.dll
 Release:
 	@echo Compiling OF library for Release
 	@$(MAKE) -C $(OF_ROOT)/libs/openFrameworksCompiled/project/ Release PLATFORM_OS=$(PLATFORM_OS) ABIS_TO_COMPILE_RELEASE="$(ABIS_TO_COMPILE_RELEASE)"
@@ -136,6 +140,10 @@ endif
 ifneq ($(strip $(PROJECT_ADDONS_DATA)),)
 	@$(MAKE) copyaddonsdata PROJECT_ADDONS_DATA=$(PROJECT_ADDONS_DATA)
 endif
+ifneq ($(strip $(PROJECT_ADDONS_DLLS)),)
+	@$(MAKE) copyaddonsdlls PROJECT_ADDONS_DLLS=$(PROJECT_ADDONS_DLLS)
+endif
+
 	@$(MAKE) afterplatform BIN_NAME=$(BIN_NAME) ABIS_TO_COMPILE="$(ABIS_TO_COMPILE_RELEASE)" RUN_TARGET=$(RUN_TARGET) TARGET=$(TARGET)
 
 
@@ -424,6 +432,12 @@ after: $(TARGET_NAME)
 copyaddonsdata:
 	@mkdir -p bin/data
 	@cp -rf $(PROJECT_ADDONS_DATA) bin/data/
+	
+copyaddonsdlls:
+	cp -rf $(PROJECT_ADDONS_DLLS) bin/
+	cp -rf $(MSYS2_ROOT)/bin/libopencv_core310.dll bin/
+	cp -rf $(MSYS2_ROOT)/bin/libopencv_imgproc310.dll bin/
+	cp -rf $(MSYS2_ROOT)/bin/libopencv_objdetect310.dll bin/
 
 help:
 	@echo

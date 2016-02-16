@@ -89,6 +89,11 @@ msys2:
 	ADDON_LIBS_EXCLUDE = libs/opencv/%
     ADDON_INCLUDES_EXCLUDE = libs/opencv
     ADDON_INCLUDES_EXCLUDE += libs/opencv/%
+	ADDON_DLLS = 
+	ADDON_DLLS += $(MSYS2_ROOT)/bin/libopencv_core310.dll
+	ADDON_DLLS += $(MSYS2_ROOT)/bin/libopencv_imgproc310.dll
+	ADDON_DLLS += $(MSYS2_ROOT)/bin/libopencv_objdetect310.dll
+	
 
 android/armeabi:	
 	ADDON_LIBS =
