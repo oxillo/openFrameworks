@@ -33,17 +33,7 @@ MSYS2_ROOT = /mingw32
 PLATFORM_CFLAGS += -std=gnu++14 -DUNICODE -D_UNICODE 
 #PLATFORM_CFLAGS += -IC:/msys64/mingw32/include/gstreamer-1.0 -DOF_VIDEO_PLAYER_GSTREAMER 
 
-PLATFORM_LDFLAGS += -static
-PLATFORM_LDFLAGS += -static-libgcc -static-libstdc++
-PLATFORM_LDFLAGS += -lboost_filesystem-mt -lboost_system-mt 
-PLATFORM_LDFLAGS += -lcairo -lpixman-1 -lfontconfig -liconv
-PLATFORM_LDFLAGS += -lfreetype -lharfbuzz -lbz2 -lglib-2.0 -lintl -liconv
-PLATFORM_LDFLAGS += -lglew32
-PLATFORM_LDFLAGS += -lstdc++
-PLATFORM_LDFLAGS += -lpthread
-PLATFORM_LDFLAGS += -Wl,-Bdynamic
-#PLATFORM_LDFLAGS += -Bstatic
-# -lfoo -Bdynamic -lbar
+PLATFORM_LDFLAGS += -L$(MSYS_ROOT)/lib -L$(OF_LIBS_PATH)/poco/lib/$(ABI_LIB_SUBPATH) -lpthread --static
 #ifeq ($(PLATFORM_ARCH),x86_64)
 CC = $(MSYS2_ROOT)/bin/gcc
 CXX = $(MSYS2_ROOT)/bin/g++
@@ -176,6 +166,7 @@ PLATFORM_CORE_EXCLUSIONS += $(OF_LIBS_PATH)/openFrameworks/video/ofGstUtils.cpp
 PLATFORM_CORE_EXCLUSIONS += $(OF_LIBS_PATH)/openFrameworks/video/ofGstVideoGrabber.cpp
 PLATFORM_CORE_EXCLUSIONS += $(OF_LIBS_PATH)/openFrameworks/video/ofGstVideoPlayer.cpp
 PLATFORM_CORE_EXCLUSIONS += $(OF_LIBS_PATH)/openFrameworks/app/ofAppEGLWindow.cpp
+#PLATFORM_CORE_EXCLUSIONS += $(OF_LIBS_PATH)/openFrameworks/sound/ofFmodSoundPlayer.cpp
 
 # third party
 
@@ -222,9 +213,10 @@ PLATFORM_HEADER_SEARCH_PATHS =
 ##########################################################################################
 
 #PLATFORM_LIBRARIES += PocoNetSSL PocoNet PocoCrypto PocoUtil PocoXML PocoFoundation PocoZip PocoJSON PocoData PocoDataSQLite
-PLATFORM_LIBRARIES += ksuser opengl32 gdi32 msimg32 glu32 dsound winmm strmiids #dxguid  
-PLATFORM_LIBRARIES += uuid ole32 oleaut32 setupapi wsock32 ws2_32 Iphlpapi Comdlg32
-PLATFORM_LIBRARIES += freetype cairo
+#PLATFORM_LIBRARIES += boost_filesystem-mt boost_system-mt cairo pixman-1 fontconfig freetype harfbuzz bz2 glib-2.0 intl iconv
+#PLATFORM_LIBRARIES += ksuser opengl32 gdi32 msimg32 glu32 dsound winmm strmiids #dxguid  
+#PLATFORM_LIBRARIES += uuid ole32 oleaut32 setupapi wsock32 ws2_32 Iphlpapi Comdlg32
+
 #PLATFORM_LIBRARIES += freeimage boost_filesystem-mt boost_system-mt freetype cairo
 #PLATFORM_LIBRARIES += gstapp-1.0 gstvideo-1.0 gstbase-1.0 gstreamer-1.0 gobject-2.0 glib-2.0 intl
 
@@ -241,6 +233,13 @@ PLATFORM_STATIC_LIBRARIES += $(OF_LIBS_PATH)/poco/lib/$(ABI_LIB_SUBPATH)/libPoco
 PLATFORM_STATIC_LIBRARIES += $(OF_LIBS_PATH)/poco/lib/$(ABI_LIB_SUBPATH)/libPocoData.a
 PLATFORM_STATIC_LIBRARIES += $(OF_LIBS_PATH)/poco/lib/$(ABI_LIB_SUBPATH)/libPocoDataSQLite.a
 PLATFORM_STATIC_LIBRARIES += $(OF_LIBS_PATH)/FreeImage/lib/$(ABI_LIB_SUBPATH)/libFreeImage.a
+PLATFORM_STATIC_LIBRARIES += -lboost_filesystem-mt -lboost_system-mt -lcairo -lpixman-1 -lfontconfig -lfreetype -lharfbuzz -lbz2 -lglib-2.0 -lintl -liconv
+PLATFORM_STATIC_LIBRARIES += -lglew32
+PLATFORM_STATIC_LIBRARIES += -lssl -lcrypto
+PLATFORM_STATIC_LIBRARIES += -lksuser -lopengl32 -lgdi32 -lmsimg32 -lglu32 -ldsound -lwinmm -lstrmiids
+PLATFORM_STATIC_LIBRARIES += -luuid -lole32 -loleaut32 -lsetupapi -lwsock32 -lws2_32 -lIphlpapi -lComdlg32
+PLATFORM_STATIC_LIBRARIES += -Wl,-Bdynamic
+
 #PLATFORM_STATIC_LIBRARIES += somestaticlib
 
 PLATFORM_PKG_CONFIG_LIBRARIES =
@@ -248,6 +247,8 @@ PLATFORM_PKG_CONFIG_LIBRARIES += cairo
 PLATFORM_PKG_CONFIG_LIBRARIES += zlib
 PLATFORM_PKG_CONFIG_LIBRARIES += openssl
 PLATFORM_PKG_CONFIG_LIBRARIES += glew
+#PLATFORM_PKG_CONFIG_LIBRARIES += openal sndfile libmpg123 
+#PLATFORM_PKG_CONFIG_LIBRARIES += flac speex vorbis ogg 
 #PLATFORM_PKG_CONFIG_LIBRARIES += gstreamer-1.0
 
 # shared libraries 
