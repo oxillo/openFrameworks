@@ -7,7 +7,7 @@ SCRIPTPATH=`pwd`
 popd > /dev/null
 
 BUILD="install"
-JOBS=1
+PARALLEL_MAKE=${NUMBER_OF_PROCESSORS}
 while getopts tj: opt ; do
 	case "$opt" in
 		t)  # testing, only build Debug
@@ -33,7 +33,7 @@ if [ -v CI ]; then
 	exit $exit_code
 fi
  
-make -j$JOBS Debug
+make -j${PARALLEL_MAKE} Debug
 exit_code=$?
 if [ $exit_code != 0 ]; then
   echo "there has been a problem compiling Debug OF library"
@@ -42,7 +42,7 @@ if [ $exit_code != 0 ]; then
 fi
 
 if [ "$BUILD" == "install" ]; then
-    make -j$JOBS Release
+    make -j${PARALLEL_MAKE} Release
     exit_code=$?
     if [ $exit_code != 0 ]; then
       echo "there has been a problem compiling Release OF library"
