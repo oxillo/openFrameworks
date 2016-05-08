@@ -33,6 +33,7 @@ if [ -v CI ]; then
 	exit $exit_code
 fi
  
+
 make -j${PARALLEL_MAKE} Debug
 exit_code=$?
 if [ $exit_code != 0 ]; then
