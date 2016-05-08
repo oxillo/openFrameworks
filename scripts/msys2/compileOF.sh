@@ -28,6 +28,9 @@ cd ${SCRIPTPATH}/../../libs/openFrameworksCompiled/project
 
 if [ -v CI ]; then
 	echo "Building in CI mode"
+	if [ "$MSYSTEM" == "MINGW64" ] ; then 
+		PKG_CONFIG_PATH=/mingw64/lib/pkgconfig:/mingw64/share/pkgconfig
+	fi
 	make  Debug
 	exit_code=$?
 	exit $exit_code
