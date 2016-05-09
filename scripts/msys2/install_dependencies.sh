@@ -44,6 +44,16 @@ else
 fi
 
 arch=i686
+OS=${OS:0:7}
+echo "DetectedOS $OS"
+if [ "$OS" == "MINGW64" ]; then
+	arch=x86_64
+elif [ "$OS" == "MINGW32" ]; then
+	arch=i686
+else
+	echo "$OS is not supported."
+	exit 1
+fi
 if [ "x$CI" == "x" ]; then 
   echo "Running without CI"
 	pacman -Sy
