@@ -14,6 +14,9 @@ for group in *; do
 				make Debug
 				cd bin
 				binname=$(basename ${test})
+				if [ "${MSYSTEM:0:7}" == "MINGW64" ] ; then 
+					binname=${binname}_x64
+				fi
                 #gdb -batch -ex "run" -ex "bt" -ex "q \$_exitcode" ./${binname}_debug
 				./${binname}_debug.exe
 				errorcode=$?
