@@ -47,6 +47,7 @@ endif
 FIND ?= /usr/bin/find
 PLATFORM_AR = $(MSYS2_ROOT)/bin/ar
 PLATFORM_LD = $(MSYS2_ROOT)/bin/ld
+PLATFORM_RESOURCE_COMPILER = $(MSYSTEM_PREFIX)/bin/windres
 PLATFORM_PKG_CONFIG = $(MSYS2_ROOT)/bin/pkg-config
 #endif
 #endif
