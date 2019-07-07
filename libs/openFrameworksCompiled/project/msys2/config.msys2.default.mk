@@ -25,12 +25,8 @@
 #   core source code.
 ##########################################################################################
 
-PLATFORM_PROJECT_DEBUG_BIN_NAME=$(APPNAME)_debug
-PLATFORM_PROJECT_RELEASE_BIN_NAME=$(APPNAME)
-PLATFORM_RUN_COMMAND =
-#ifneq (,$(findstring MINMGW64_NT,$(PLATFORM_OS)))
-MSYS2_ROOT = /mingw32
-PLATFORM_CFLAGS += -std=gnu++14 -DUNICODE -D_UNICODE
+MINGW_PREFIX ?= /mingw32
+PLATFORM_CFLAGS += -std=c++17 -DUNICODE -D_UNICODE
 #PLATFORM_CFLAGS += -IC:/msys64/mingw32/include/gstreamer-1.0 -DOF_VIDEO_PLAYER_GSTREAMER
 PLATFORM_LDFLAGS += -lpthread
 ifndef DEBUG
