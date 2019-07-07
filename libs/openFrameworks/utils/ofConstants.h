@@ -444,39 +444,19 @@ std::unique_ptr<T> make_unique(Args&&... args) {
 // Remove from here once everything is using std::filesystem::path
 #if OF_USING_STD_FS
 #	if __cplusplus < 201703L
-
+#		include <experimental/filesystem>
 		namespace std {
-			namespace experimental{
-				namespace filesystem {
-					namespace v1 {
-						namespace __cxx11 {
-							class path;
-						}
-					}
-
-					using v1::__cxx11::path;
-				}
-			}
 			namespace filesystem = experimental::filesystem;
 		}
 #	else
-
-	namespace std {
-		namespace filesystem {
-			class path;
-		}
-	}
+#		include <filesystem>
 #	endif
 #else
 #	if !_MSC_VER
 #		define BOOST_NO_CXX11_SCOPED_ENUMS
 #		define BOOST_NO_SCOPED_ENUMS
 #	endif
-	namespace boost {
-		namespace filesystem {
-			class path;
-		}
-	}
+#	include <boost/filesystem.hpp>
 	namespace std {
 		namespace filesystem = boost::filesystem;
 	}
