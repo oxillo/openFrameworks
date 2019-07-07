@@ -7,8 +7,16 @@
 
 
 extern "C" {
-#include "fmod.h"
-#include "fmod_errors.h"
+#if defined(__MINGW32__)
+	#define __CYGWIN32__ 1
+	#include "fmod.h"
+	#include "fmod_errors.h"
+	#undef __CYGWIN32__
+#else
+	#include "fmod.h"
+	#include "fmod_errors.h"
+#endif
+
 }
 
 //		TO DO :
