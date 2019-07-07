@@ -7,7 +7,7 @@
 #include <condition_variable>
 #include <mutex>
 
-using namespace std;
+
 
 #ifdef TARGET_WIN32
 #include <winuser.h>
@@ -105,9 +105,9 @@ gboolean init_gtk(gpointer userdata){
 
 struct FileDialogData{
 	GtkFileChooserAction action;
-	string windowTitle;
-	string defaultName;
-	string results;
+	std::string windowTitle;
+	std::string defaultName;
+	std::string results;
 	bool done;
 	std::condition_variable condition;
 	std::mutex mutex;
@@ -157,8 +157,8 @@ gboolean file_dialog_gtk(gpointer userdata){
 }
 
 struct TextDialogData{
-	string text;
-	string question;
+	std::string text;
+	std::string question;
 	bool done;
 	std::condition_variable condition;
 	std::mutex mutex;
@@ -214,7 +214,7 @@ static void initGTK(){
 
 }
 
-static string gtkFileDialog(GtkFileChooserAction action,string windowTitle,string defaultName=""){
+static std::string gtkFileDialog(GtkFileChooserAction action,std::string windowTitle,std::string defaultName=""){
 	initGTK();
 	FileDialogData dialogData;
 	dialogData.action = action;
@@ -262,18 +262,18 @@ ofFileDialogResult::ofFileDialogResult(){
 }
 
 //------------------------------------------------------------------------------
-string ofFileDialogResult::getName(){
+std::string ofFileDialogResult::getName(){
 	return fileName;
 }
 
 //------------------------------------------------------------------------------
-string ofFileDialogResult::getPath(){
+std::string ofFileDialogResult::getPath(){
 	return filePath;
 }
 
 
 //------------------------------------------------------------------------------
-void ofSystemAlertDialog(string errorMessage){
+void ofSystemAlertDialog(std::string errorMessage){
 	#ifdef TARGET_WIN32
 		// we need to convert error message to a wide char message.
 		// first, figure out the length and allocate a wchar_t at that length + 1 (the +1 is for a terminating character)
@@ -317,7 +317,7 @@ void ofSystemAlertDialog(string errorMessage){
 	#endif
 
 	#ifdef TARGET_EMSCRIPTEN
-		emscripten_run_script((string("alert(")+errorMessage+");").c_str());
+		emscripten_run_script((std::string("alert(")+errorMessage+");").c_str());
 	#endif
 }
 
@@ -330,7 +330,7 @@ static int CALLBACK loadDialogBrowseCallback(
   LPARAM lParam,
   LPARAM lpData
 ){
-    string defaultPath = *(string*)lpData;
+    std::string defaultPath = *(std::string*)lpData;
     if(defaultPath!="" && uMsg==BFFM_INITIALIZED){
 		wchar_t         wideCharacterBuffer[MAX_PATH];
 		wcscpy(wideCharacterBuffer, convertNarrowToWide(ofToDataPath(defaultPath)).c_str());
@@ -344,7 +344,7 @@ static int CALLBACK loadDialogBrowseCallback(
 //---------------------------------------------------------------------
 
 // OS specific results here.  "" = cancel or something bad like can't load, can't save, etc...
-ofFileDialogResult ofSystemLoadDialog(string windowTitle, bool bFolderSelection, string defaultPath){
+ofFileDialogResult ofSystemLoadDialog(std::string windowTitle, bool bFolderSelection, std::string defaultPath){
 
 	ofFileDialogResult results;
 
@@ -378,7 +378,7 @@ ofFileDialogResult ofSystemLoadDialog(string windowTitle, bool bFolderSelection,
 
 		if(buttonClicked == NSFileHandlingPanelOKButton) {
 			NSURL * selectedFileURL = [[loadDialog URLs] objectAtIndex:0];
-			results.filePath = string([[selectedFileURL path] UTF8String]);
+			results.filePath = std::string([[selectedFileURL path] UTF8String]);
 		}
 	}
 #endif
@@ -390,7 +390,7 @@ ofFileDialogResult ofSystemLoadDialog(string windowTitle, bool bFolderSelection,
 	//------------------------------------------------------------------------------   windoze
 	//----------------------------------------------------------------------------------------
 #ifdef TARGET_WIN32
-	wstring windowTitleW;
+	std::wstring windowTitleW;
 	windowTitleW.assign(windowTitle.begin(), windowTitle.end());
 
 	if (bFolderSelection == false){
@@ -508,7 +508,7 @@ ofFileDialogResult ofSystemLoadDialog(string windowTitle, bool bFolderSelection,
 
 
 
-ofFileDialogResult ofSystemSaveDialog(string defaultName, string messageName){
+ofFileDialogResult ofSystemSaveDialog(std::string defaultName, std::string messageName){
 
 	ofFileDialogResult results;
 
@@ -527,7 +527,7 @@ ofFileDialogResult ofSystemSaveDialog(string defaultName, string messageName){
 		[context makeCurrentContext];
 
 		if(buttonClicked == NSFileHandlingPanelOKButton){
-			results.filePath = string([[[saveDialog URL] path] UTF8String]);
+			results.filePath = std::string([[[saveDialog URL] path] UTF8String]);
 		}
 	}
 #endif
@@ -604,7 +604,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 #endif
 
 
-string ofSystemTextBoxDialog(string question, string text){
+std::string ofSystemTextBoxDialog(std::string question, std::string text){
 #if defined( TARGET_LINUX ) && defined (OF_USING_GTK)
 	auto locale = std::locale();
 	initGTK();
@@ -779,7 +779,7 @@ string ofSystemTextBoxDialog(string question, string text){
 #endif
 
 #ifdef TARGET_EMSCRIPTEN
-     text = emscripten_run_script_string((string("prompt('") + question + "','')").c_str());
+     text = emscripten_run_script_string((std::string("prompt('") + question + "','')").c_str());
 #endif
 	return text;
 }
