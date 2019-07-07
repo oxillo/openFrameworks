@@ -384,6 +384,15 @@ typedef TESSindex ofIndexType;
 #if __cplusplus>=201103 || _MSC_VER >= 1700
 #define HAS_CPP11 1
 #endif
+#if __cplusplus>=201402L
+#define HAS_CPP14 1
+#endif
+#if __cplusplus>=201703L
+#define HAS_CPP17 1
+#endif
+#if __cplusplus>201703L
+#define HAS_CPP2a 1
+#endif
 
 //------------------------------------------------ thread local storage
 // clang has a bug where it won't support tls on some versions even
