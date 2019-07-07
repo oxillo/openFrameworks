@@ -38,16 +38,16 @@ ifndef DEBUG
 endif
 #ifeq ($(PLATFORM_ARCH),x86_64)
 ifdef USE_CCACHE
-	CC = ccache $(MSYS2_ROOT)/bin/gcc
-	CXX = ccache $(MSYS2_ROOT)/bin/g++
+	CC = ccache $(MINGW_PREFIX)/bin/gcc
+	CXX = ccache $(MINGW_PREFIX)/bin/g++
 else
-	CC = $(MSYS2_ROOT)/bin/gcc
-	CXX = $(MSYS2_ROOT)/bin/g++
+	CC = $(MINGW_PREFIX)/bin/gcc
+	CXX = $(MINGW_PREFIX)/bin/g++
 endif
 FIND ?= /usr/bin/find
-PLATFORM_AR = $(MSYS2_ROOT)/bin/ar
-PLATFORM_LD = $(MSYS2_ROOT)/bin/ld
-PLATFORM_PKG_CONFIG = $(MSYS2_ROOT)/bin/pkg-config
+PLATFORM_AR = $(MINGW_PREFIX)/bin/ar
+PLATFORM_LD = $(MINGW_PREFIX)/bin/ld
+PLATFORM_PKG_CONFIG = $(MINGW_PREFIX)/bin/pkg-config
 #endif
 #endif
 
