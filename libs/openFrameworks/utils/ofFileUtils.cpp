@@ -633,7 +633,6 @@ string ofFile::getAbsolutePath() const {
 
 //------------------------------------------------------------------------------------------------------------
 bool ofFile::canRead() const {
-	auto perm = std::filesystem::status(myFile).permissions();
 #ifdef TARGET_WIN32
 	DWORD attr = GetFileAttributes(myFile.native().c_str());
 	if (attr == INVALID_FILE_ATTRIBUTES)
@@ -642,6 +641,7 @@ bool ofFile::canRead() const {
 	}
 	return true;
 #else
+	auto perm = std::filesystem::status(myFile).permissions();
 	struct stat info;
 	stat(path().c_str(), &info);  // Error check omitted
 #if OF_USING_STD_FS
@@ -666,7 +666,6 @@ bool ofFile::canRead() const {
 
 //------------------------------------------------------------------------------------------------------------
 bool ofFile::canWrite() const {
-	auto perm = std::filesystem::status(myFile).permissions();
 #ifdef TARGET_WIN32
 	DWORD attr = GetFileAttributes(myFile.native().c_str());
 	if (attr == INVALID_FILE_ATTRIBUTES){
@@ -675,6 +674,7 @@ bool ofFile::canWrite() const {
 		return (attr & FILE_ATTRIBUTE_READONLY) == 0;
 	}
 #else
+	auto perm = std::filesystem::status(myFile).permissions();
 	struct stat info;
 	stat(path().c_str(), &info);  // Error check omitted
 #if OF_USING_STD_FS
@@ -699,10 +699,10 @@ bool ofFile::canWrite() const {
 
 //------------------------------------------------------------------------------------------------------------
 bool ofFile::canExecute() const {
-	auto perm = std::filesystem::status(myFile).permissions();
 #ifdef TARGET_WIN32
 	return getExtension() == "exe";
 #else
+	auto perm = std::filesystem::status(myFile).permissions();
 	struct stat info;
 	stat(path().c_str(), &info);  // Error check omitted
 #if OF_USING_STD_FS
@@ -766,9 +766,9 @@ bool ofFile::isHidden() const {
 void ofFile::setWriteable(bool flag){
 	try{
 		if(flag){
-			std::filesystem::permissions(myFile,std::filesystem::perms::owner_write | std::filesystem::perms::add_perms);
+			std::filesystem::permissions(myFile,std::filesystem::perms::owner_write, std::filesystem::perm_options::add);
 		}else{
-			std::filesystem::permissions(myFile,std::filesystem::perms::owner_write | std::filesystem::perms::remove_perms);
+			std::filesystem::permissions(myFile,std::filesystem::perms::owner_write, std::filesystem::perm_options::remove);
 		}
 	}catch(std::exception & e){
 		ofLogError() << "Couldn't set write permission on " << myFile << ": " << e.what();
@@ -785,9 +785,9 @@ void ofFile::setReadOnly(bool flag){
 void ofFile::setReadable(bool flag){
 	try{
 		if(flag){
-			std::filesystem::permissions(myFile,std::filesystem::perms::owner_read | std::filesystem::perms::add_perms);
+			std::filesystem::permissions(myFile,std::filesystem::perms::owner_read, std::filesystem::perm_options::add);
 		}else{
-			std::filesystem::permissions(myFile,std::filesystem::perms::owner_read | std::filesystem::perms::remove_perms);
+			std::filesystem::permissions(myFile,std::filesystem::perms::owner_read, std::filesystem::perm_options::remove);
 		}
 	}catch(std::exception & e){
 		ofLogError() << "Couldn't set read permission on " << myFile << ": " << e.what();
@@ -799,15 +799,15 @@ void ofFile::setExecutable(bool flag){
 	try{
 #if OF_USING_STD_FS
 		if(flag){
-			std::filesystem::permissions(myFile, std::filesystem::perms::owner_exec | std::filesystem::perms::add_perms);
+			std::filesystem::permissions(myFile, std::filesystem::perms::owner_exec, std::filesystem::perm_options::add);
 		} else{
-			std::filesystem::permissions(myFile, std::filesystem::perms::owner_exec | std::filesystem::perms::remove_perms);
+			std::filesystem::permissions(myFile, std::filesystem::perms::owner_exec, std::filesystem::perm_options::remove);
 		}
 #else
 		if(flag){
-			std::filesystem::permissions(myFile, std::filesystem::perms::owner_exe | std::filesystem::perms::add_perms);
+			std::filesystem::permissions(myFile, std::filesystem::perms::owner_exe, std::filesystem::perm_options::add);
 		} else{
-			std::filesystem::permissions(myFile, std::filesystem::perms::owner_exe | std::filesystem::perms::remove_perms);
+			std::filesystem::permissions(myFile, std::filesystem::perms::owner_exe, std::filesystem::perm_options::remove);
 		}
 #endif
 	}catch(std::exception & e){
