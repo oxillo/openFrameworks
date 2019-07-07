@@ -28,11 +28,10 @@
 MINGW_PREFIX ?= /mingw32
 PLATFORM_CFLAGS += -std=c++17 -DUNICODE -D_UNICODE
 #PLATFORM_CFLAGS += -IC:/msys64/mingw32/include/gstreamer-1.0 -DOF_VIDEO_PLAYER_GSTREAMER
-PLATFORM_LDFLAGS += -lpthread
+PLATFORM_LDFLAGS += -lpthread -lstdc++fs
 ifndef DEBUG
 	PLATFORM_LDFLAGS += -mwindows
 endif
-#ifeq ($(PLATFORM_ARCH),x86_64)
 ifdef USE_CCACHE
 	CC = ccache $(MINGW_PREFIX)/bin/gcc
 	CXX = ccache $(MINGW_PREFIX)/bin/g++
@@ -44,8 +43,6 @@ FIND ?= /usr/bin/find
 PLATFORM_AR = $(MINGW_PREFIX)/bin/ar
 PLATFORM_LD = $(MINGW_PREFIX)/bin/ld
 PLATFORM_PKG_CONFIG = $(MINGW_PREFIX)/bin/pkg-config
-#endif
-#endif
 
 
 PLATFORM_PROJECT_DEBUG_BIN_NAME=$(APPNAME)_debug.exe
@@ -74,8 +71,13 @@ endif
 # Note: Be sure to leave a leading space when using a += operator to add items to the list
 ##########################################################################################
 
+PLATFORM_DEFINES = OF_USING_STD_FS
 ifeq ($(OF_USE_POCO),1)
-	PLATFORM_DEFINES = POCO_STATIC
+	PLATFORM_DEFINES += POCO_STATIC
+endif
+
+ifeq ($(MSYSTEM),MINGW64)
+	PLATFORM_DEFINES += OF_SOUND_PLAYER_OPENAL
 endif
 
 ##########################################################################################
