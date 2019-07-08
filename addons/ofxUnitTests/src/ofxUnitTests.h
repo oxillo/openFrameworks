@@ -253,8 +253,14 @@ private:
         const std::string APPVEYOR_API_URL = "APPVEYOR_API_URL";
         if(ofGetEnv(APPVEYOR_API_URL)!=""){
             //ofSystem("appveyor AddTest -Name " + projectName.string() + " -Framework ofxUnitTests -FileName " + exeName.string() + " -Outcome " + (passed?"Passed":"Failed") + " -Duration " + ofToString(now-then));
+#ifdef OF_USING_STD_FS
+			//on MSYS2, std::filesystem::canonical throw an error on "exedir/..", stem() returns nothing...
+            auto projectDir = std::filesystem::path(ofFilePath::getCurrentExeDir()).parent_path();
+			auto projectName = projectDir.parent_path().filename();
+#else
             auto projectDir = std::filesystem::canonical(std::filesystem::path(ofFilePath::getCurrentExeDir()) / "..");
-            auto projectName = projectDir.stem();
+			auto projectName = projectDir.stem();
+#endif
             auto exeName = std::filesystem::path(ofFilePath::getCurrentExePath()).filename();
             auto stdOut = logger->getStdOut();
             ofStringReplace(stdOut, "\\", "\\\\");
