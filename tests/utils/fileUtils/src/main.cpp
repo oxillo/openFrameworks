@@ -42,8 +42,13 @@ class ofApp: public ofxUnitTestsApp{
 				ofFile fw("noread",ofFile::WriteOnly);
 				fw << "testing";
 			}
+#if OF_USING_STD_FS
+			std::error_code error;
+			std::filesystem::permissions(ofToDataPath("noread"), std::filesystem::perms::none, error);
+#else
 			boost::system::error_code error;
 			boost::filesystem::permissions(ofToDataPath("noread"), boost::filesystem::no_perms, error);
+#endif
 			ofxTest(!error, "error setting no read permissions, " + error.message());
 			if(!ofxTest(!ofFile("noread").canRead(),"!ofFile::canRead")){
 				ofFile fr("noread");
