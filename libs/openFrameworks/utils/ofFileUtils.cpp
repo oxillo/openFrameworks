@@ -1581,7 +1581,7 @@ string ofFilePath::addLeadingSlash(const std::filesystem::path& _path){
 	auto sep = std::filesystem::path("/").make_preferred();
 	if(!path.empty()){
 		if(ofToString(path[0]) != sep.string()){
-			path = (sep / path).string();
+			path = sep.string()+path;
 		}
 	}
 	return path;
@@ -1593,7 +1593,7 @@ string ofFilePath::addTrailingSlash(const std::filesystem::path& _path){
 	auto sep = std::filesystem::path("/").make_preferred();
 	if(!path.empty()){
 		if(ofToString(path.back()) != sep.string()){
-			path = (path / sep).string();
+			path += sep.string();
 		}
 	}
 	return path;
