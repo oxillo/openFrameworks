@@ -7,7 +7,100 @@ using namespace std;
 std::filesystem::path initial_cwd;
 
 class ofApp: public ofxUnitTestsApp{
+
+	bool test_ofToDataPath(){
+		bool pass = true;
+		
+		std::string sep = std::filesystem::path("/").make_preferred().string();
+		std::string data("data");
+		if(ofGetTargetPlatform()==OF_TARGET_OSX){
+			data = "../../../data";
+		}
+
+		ofLogNotice() << "ofToDataPath relative with : ";
+		pass &= ofxTestEq(ofToDataPath("",false),data+sep,"empty path");
+		pass &= ofxTestEq(ofToDataPath(".",false),data+sep,"dot path (\".\")");
+		// Space only path or space surrounded path are allowed
+		pass &= ofxTestEq(ofToDataPath("    ",false),data+sep+"    ","space made path(\"    \")");
+		pass &= ofxTestEq(ofToDataPath("  dummy ",false),data+sep+"  dummy ","space surrounded path(\"  dummy \")");
+		// Not sure about what should happen if the user inputs tab in the path..
+		//pass &= ofxTestEq(ofToDataPath("	",false),data+sep,"tab made path(\"	\")");
+		pass &= ofxTestEq(ofToDataPath(" .  ",false),data+sep+" .  ","dot with surrounding space path");
+		pass &= ofxTestEq(ofToDataPath("/",false),data+sep,"slash ending empty path(\"/\")");
+		pass &= ofxTestEq(ofToDataPath("./",false),data+sep,"slash ending dot path(\"./\")");
+		pass &= ofxTestEq(ofToDataPath("\\",false),data+sep,"antislash ending empty path(\"\\\")");
+		pass &= ofxTestEq(ofToDataPath(".\\",false),data+sep,"antislash ending dot path(\".\\\")");
+		pass &= ofxTestEq(ofToDataPath("..",false),"","\"..\" path");
+		pass &= ofxTestEq(ofToDataPath("../",false),"","\"../\" path");
+		pass &= ofxTestEq(ofToDataPath("upper",false),data+sep+"upper","ofToDataPath relative");
+		pass &= ofxTestEq(ofToDataPath("upper/",false),data+sep+"upper"+sep,"ofToDataPath relative");
+		pass &= ofxTestEq(ofToDataPath("upper/..",false),data+sep,"ofToDataPath relative");
+		pass &= ofxTestEq(ofToDataPath("upper/../",false),data+sep,"ofToDataPath relative");
+		pass &= ofxTestEq(ofToDataPath("../lower",false),data+sep,"ofToDataPath relative");
+		pass &= ofxTestEq(ofToDataPath("../lower/",false),data+sep,"ofToDataPath relative");
+		
+		pass &= ofxTestEq(ofToDataPath("../lower/../data/./dir2",false),data+sep+"dir2","ofToDataPath relative");
+
+		//========================================================================
+		ofLogNotice() << "";
+		ofLogNotice() << "tests #4299";
+		ofxTestEq(std::filesystem::path(ofFilePath::getCurrentWorkingDirectory()), initial_cwd, "ofFilePath::getCurrentWorkingDirectory()");
+		if(ofGetTargetPlatform()==OF_TARGET_OSX){
+			ofxTestEq(ofToDataPath("",false),"../../../data/","ofToDataPath relative");
+		}else if(ofGetTargetPlatform()==OF_TARGET_WINVS || ofGetTargetPlatform()==OF_TARGET_MINGW){
+			ofxTestEq(ofToDataPath("",false),"data\\","ofToDataPath relative");
+		}else{
+			ofxTestEq(ofToDataPath("",false),"data/","ofToDataPath relative");
+		}
+
+
+		//========================================================================
+		ofLogNotice() << "";
+		ofLogNotice() << "tests #4462";
+		if(ofGetTargetPlatform()==OF_TARGET_WINVS || ofGetTargetPlatform()==OF_TARGET_MINGW){
+			ofxTestEq(ofToDataPath("movies\\",true).back(), '\\', "absolute ofToDataPath with \\ should end in \\");
+			ofxTestEq(ofToDataPath("movies",true).back(), 's', "absolute ofToDataPath without \\ should not end in \\");
+			ofDirectory("movies").create();
+			ofxTestEq(ofToDataPath("movies\\",true).back(), '\\', "absolute ofToDataPath with \\ should end in \\");
+			ofxTestEq(ofToDataPath("movies",true).back(), 's', "absolute ofToDataPath without \\ should not end in \\");
+		}else{
+			ofxTestEq(ofToDataPath("movies/",true).back(), '/', "absolute ofToDataPath with / should end in /");
+			ofxTestEq(ofToDataPath("movies",true).back(), 's', "absolute ofToDataPath without / should not end in /");
+			ofDirectory("movies").create();
+			ofxTestEq(ofToDataPath("movies/",true).back(), '/', "absolute ofToDataPath with / should end in /");
+			ofxTestEq(ofToDataPath("movies",true).back(), 's', "absolute ofToDataPath without / should not end in /");
+		}
+
+
+		//========================================================================
+		ofLogNotice() << "";
+		ofLogNotice() << "tests #4598";
+		ofxTestEq(ofToDataPath("").back(), std::filesystem::path::preferred_separator, "ofToDataPath with empty string shouldn't crash");
+
+
+		//========================================================================
+		ofLogNotice() << "";
+		ofLogNotice() << "tests #4563";
+#ifdef TARGET_LINUX 
+		ofxTestEq(ofToDataPath("a.txt"), "data/a.txt","#4563 test1");
+		ofxTestEq(ofToDataPath("data.txt"), "data/data.txt", "#4563 test2");
+		ofxTestEq(ofToDataPath(""), "data/", "#4563 test3");
+#elif defined(TARGET_OSX)
+		ofxTestEq(ofToDataPath("a.txt"), "../../../data/a.txt","#4563 test1");
+		ofxTestEq(ofToDataPath("data.txt"), "../../../data/data.txt", "#4563 test2");
+		ofxTestEq(ofToDataPath(""), "../../../data/", "#4563 test3");
+#elif defined(TARGET_WIN32)
+		ofxTestEq(ofToDataPath("a.txt"), "data\\a.txt","#4563 test1");
+		ofxTestEq(ofToDataPath("data.txt"), "data\\data.txt", "#4563 test2");
+		ofxTestEq(ofToDataPath(""), "data\\", "#4563 test3");
+#endif
+		return pass;
+	}
+
 	void run(){
+		// Abort the remaining tests if ofToDataPath tests fail
+		// We might do some unwanted things on the file system...
+		if( !test_ofToDataPath() ) return;
 		ofDirectory dir(".");
         dir.create(true);
         dir.exists();
@@ -201,55 +294,6 @@ class ofApp: public ofxUnitTestsApp{
         ofxTest(ofDirectory::createDirectory(ofToDataPath("d5/d2",true),false,true),"ofDirectory::create recursive");
         ofxTest(ofDirectory::createDirectory(ofToDataPath("d5/d3"),false,true),"ofDirectory::create recursive");
 
-
-        //========================================================================
-        ofLogNotice() << "";
-        ofLogNotice() << "tests #4299";
-        ofxTestEq(std::filesystem::path(ofFilePath::getCurrentWorkingDirectory()), initial_cwd, "ofFilePath::getCurrentWorkingDirectory()");
-		if(ofGetTargetPlatform()==OF_TARGET_OSX){
-			ofxTestEq(ofToDataPath("",false),"../../../data/","ofToDataPath relative");
-		}else if(ofGetTargetPlatform()==OF_TARGET_WINVS || ofGetTargetPlatform()==OF_TARGET_MINGW){
-			ofxTestEq(ofToDataPath("",false),"data\\","ofToDataPath relative");
-		}else{
-			ofxTestEq(ofToDataPath("",false),"data/","ofToDataPath relative");
-		}
-
-
-        //========================================================================
-        ofLogNotice() << "";
-        ofLogNotice() << "tests #4462";
-		if(ofGetTargetPlatform()==OF_TARGET_WINVS || ofGetTargetPlatform()==OF_TARGET_MINGW){
-			ofxTestEq(ofToDataPath("movies\\",true).back(), '\\', "absolute ofToDataPath with \\ should end in \\");
-			ofxTestEq(ofToDataPath("movies",true).back(), 's', "absolute ofToDataPath without \\ should not end in \\");
-			ofDirectory("movies").create();
-			ofxTestEq(ofToDataPath("movies\\",true).back(), '\\', "absolute ofToDataPath with \\ should end in \\");
-			ofxTestEq(ofToDataPath("movies",true).back(), 's', "absolute ofToDataPath without \\ should not end in \\");
-		}else{
-			ofxTestEq(ofToDataPath("movies/",true).back(), '/', "absolute ofToDataPath with / should end in /");
-			ofxTestEq(ofToDataPath("movies",true).back(), 's', "absolute ofToDataPath without / should not end in /");
-			ofDirectory("movies").create();
-			ofxTestEq(ofToDataPath("movies/",true).back(), '/', "absolute ofToDataPath with / should end in /");
-			ofxTestEq(ofToDataPath("movies",true).back(), 's', "absolute ofToDataPath without / should not end in /");
-		}
-
-
-        //========================================================================
-        ofLogNotice() << "";
-        ofLogNotice() << "tests #4598";
-		ofxTestEq(ofToDataPath("").back(), std::filesystem::path::preferred_separator, "ofToDataPath with empty string shouldn't crash");
-
-        //========================================================================
-        ofLogNotice() << "";
-        ofLogNotice() << "tests #4563";
-#ifdef TARGET_LINUX 
-        ofxTestEq(ofToDataPath("a.txt"), "data/a.txt","#4563 test1");
-        ofxTestEq(ofToDataPath("data.txt"), "data/data.txt", "#4563 test2");
-        ofxTestEq(ofToDataPath(""), "data/", "#4563 test3");
-#elif defined(TARGET_OSX)
-        ofxTestEq(ofToDataPath("a.txt"), "../../../data/a.txt","#4563 test1");
-        ofxTestEq(ofToDataPath("data.txt"), "../../../data/data.txt", "#4563 test2");
-        ofxTestEq(ofToDataPath(""), "../../../data/", "#4563 test3");
-#endif
 
 
         //========================================================================
