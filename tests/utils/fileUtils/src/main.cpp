@@ -7,9 +7,6 @@ using namespace std;
 std::filesystem::path initial_cwd;
 
 class ofApp: public ofxUnitTestsApp{
-<<<<<<< HEAD
-	void run(){
-=======
 
 	bool test_ofToDataPath(){
 		bool pass = true;
@@ -104,22 +101,15 @@ class ofApp: public ofxUnitTestsApp{
 		// Abort the remaining tests if ofToDataPath tests fail
 		// We might do some unwanted things on the file system...
 		if( !test_ofToDataPath() ) return;
->>>>>>> a6f33bb97... add more ofToDatapath tests
 		ofDirectory dir(".");
-		ofDirectory dir0("");
-		ofDirectory dir2("..");
-		ofDirectory dir3("./");
-		ofDirectory dir4("test/./subtest");
-		return;
-		dir.create(true);
+        dir.create(true);
         dir.exists();
 		for(auto f: dir){
 			f.setWriteable(true);
-			ofLogError(__FILE__) <<__LINE__ << f.path();
 			if(f.isDirectory()){
-				//ofDirectory(f.path()).remove(true);
+				ofDirectory(f.path()).remove(true);
 			}else{
-				//f.remove();
+				f.remove();
 			}
 		}
 		ofxTest(ofDirectory(".").getFiles().empty(),"removing old tests files","other tests will fail too");
@@ -181,7 +171,7 @@ class ofApp: public ofxUnitTestsApp{
 		ofxTest(ofFile("test2.txt").isFile(),"ofFile::moveTo creates");
 		ofxTest(!ofFile("test3.txt").exists(),"ofFile::moveTo removes");
 
-		//ofxTest(ofFile("test2.txt").remove(),"ofFile::remove");
+		ofxTest(ofFile("test2.txt").remove(),"ofFile::remove");
 		ofxTest(!ofFile("test2.txt").exists(),"ofFile::remove !exists");
 
 		ofxTestEq(ofFile("test.txt").getSize(),uint64_t(0),"ofFile::getSize");
@@ -249,7 +239,7 @@ class ofApp: public ofxUnitTestsApp{
 		ofxTest(ofFile("d4/f1").isFile(),"ofDirectory::renameTo f1 exists");
 		ofxTest(ofFile("d4/d3/f2").isFile(),"ofDirectory::renameTo f2 exists");
 
-		//ofxTest(ofDirectory("d4").remove(true),"ofDirectory::remove recursive");
+		ofxTest(ofDirectory("d4").remove(true),"ofDirectory::remove recursive");
 		ofxTest(!ofDirectory("d4").exists(),"!ofDirectory::exists after remove");
 
 
@@ -304,55 +294,6 @@ class ofApp: public ofxUnitTestsApp{
         ofxTest(ofDirectory::createDirectory(ofToDataPath("d5/d2",true),false,true),"ofDirectory::create recursive");
         ofxTest(ofDirectory::createDirectory(ofToDataPath("d5/d3"),false,true),"ofDirectory::create recursive");
 
-
-        //========================================================================
-        ofLogNotice() << "";
-        ofLogNotice() << "tests #4299";
-        ofxTestEq(std::filesystem::path(ofFilePath::getCurrentWorkingDirectory()), initial_cwd, "ofFilePath::getCurrentWorkingDirectory()");
-		if(ofGetTargetPlatform()==OF_TARGET_OSX){
-			ofxTestEq(ofToDataPath("",false),"../../../data/","ofToDataPath relative");
-		}else if(ofGetTargetPlatform()==OF_TARGET_WINVS || ofGetTargetPlatform()==OF_TARGET_MINGW){
-			ofxTestEq(ofToDataPath("",false),"data\\","ofToDataPath relative");
-		}else{
-			ofxTestEq(ofToDataPath("",false),"data/","ofToDataPath relative");
-		}
-
-
-        //========================================================================
-        ofLogNotice() << "";
-        ofLogNotice() << "tests #4462";
-		if(ofGetTargetPlatform()==OF_TARGET_WINVS || ofGetTargetPlatform()==OF_TARGET_MINGW){
-			ofxTestEq(ofToDataPath("movies\\",true).back(), '\\', "absolute ofToDataPath with \\ should end in \\");
-			ofxTestEq(ofToDataPath("movies",true).back(), 's', "absolute ofToDataPath without \\ should not end in \\");
-			ofDirectory("movies").create();
-			ofxTestEq(ofToDataPath("movies\\",true).back(), '\\', "absolute ofToDataPath with \\ should end in \\");
-			ofxTestEq(ofToDataPath("movies",true).back(), 's', "absolute ofToDataPath without \\ should not end in \\");
-		}else{
-			ofxTestEq(ofToDataPath("movies/",true).back(), '/', "absolute ofToDataPath with / should end in /");
-			ofxTestEq(ofToDataPath("movies",true).back(), 's', "absolute ofToDataPath without / should not end in /");
-			ofDirectory("movies").create();
-			ofxTestEq(ofToDataPath("movies/",true).back(), '/', "absolute ofToDataPath with / should end in /");
-			ofxTestEq(ofToDataPath("movies",true).back(), 's', "absolute ofToDataPath without / should not end in /");
-		}
-
-
-        //========================================================================
-        ofLogNotice() << "";
-        ofLogNotice() << "tests #4598";
-		ofxTestEq(ofToDataPath("").back(), std::filesystem::path::preferred_separator, "ofToDataPath with empty string shouldn't crash");
-
-        //========================================================================
-        ofLogNotice() << "";
-        ofLogNotice() << "tests #4563";
-#ifdef TARGET_LINUX 
-        ofxTestEq(ofToDataPath("a.txt"), "data/a.txt","#4563 test1");
-        ofxTestEq(ofToDataPath("data.txt"), "data/data.txt", "#4563 test2");
-        ofxTestEq(ofToDataPath(""), "data/", "#4563 test3");
-#elif defined(TARGET_OSX)
-        ofxTestEq(ofToDataPath("a.txt"), "../../../data/a.txt","#4563 test1");
-        ofxTestEq(ofToDataPath("data.txt"), "../../../data/data.txt", "#4563 test2");
-        ofxTestEq(ofToDataPath(""), "../../../data/", "#4563 test3");
-#endif
 
 
         //========================================================================
