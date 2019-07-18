@@ -47,6 +47,7 @@ endif
 FIND ?= /usr/bin/find
 PLATFORM_AR = $(MSYS2_ROOT)/bin/ar
 PLATFORM_LD = $(MSYS2_ROOT)/bin/ld
+PLATFORM_RESOURCE_COMPILER = $(MSYSTEM_PREFIX)/bin/windres
 PLATFORM_PKG_CONFIG = $(MSYS2_ROOT)/bin/pkg-config
 #endif
 #endif
@@ -287,6 +288,13 @@ PLATFORM_LIBRARY_SEARCH_PATHS =
 #    Don't want to use a default compiler?
 ################################################################################
 #PLATFORM_CC=
+
+################################################################################
+# PLATFORM ICON
+#    If not set by the project by PROJECT_(RELEASE|DEBUG)_ICON, use OF defaults
+################################################################################
+PLATFORM_RELEASE_ICON = $(OF_PLATFORM_MAKEFILES)/icon.ico
+PLATFORM_DEBUG_ICON = $(OF_PLATFORM_MAKEFILES)/icon-debug.ico
 
 copy_dlls:
 	@echo "     copying dlls to bin"
