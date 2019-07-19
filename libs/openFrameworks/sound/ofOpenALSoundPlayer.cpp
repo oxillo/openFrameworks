@@ -177,14 +177,20 @@ void ofOpenALSoundPlayer::createWindow(int size){
 
 //---------------------------------------
 void ofOpenALSoundPlayer::close(){
-	if(alDevice){
-		alcCloseDevice(alDevice);
-		alDevice = nullptr;
-		alcDestroyContext(alContext);
-		alContext = 0;
+	// Destroy the OpenAL context (if any) before closing the device
+	if( alDevice ){
+		if( alContext ){
 #ifdef OF_USING_MPG123
-		mpg123_exit();
+			mpg123_exit();
 #endif
+			alcMakeContextCurrent(nullptr);
+			alcDestroyContext(alContext);
+			alContext = nullptr;
+		}
+		if( alcCloseDevice( alDevice )==ALC_FALSE ){
+			ofLogNotice("ofOpenALSoundPlayer") << "initialize(): error closing OpenAL device.";
+		}
+		alDevice = nullptr;
 	}
 }
 
