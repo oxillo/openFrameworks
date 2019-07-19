@@ -64,7 +64,8 @@ if [ -z ${confirm+x} ]; then
 		${MINGW_PACKAGE_PREFIX}-curl \
 		${MINGW_PACKAGE_PREFIX}-libxml2\
 		${MINGW_PACKAGE_PREFIX}-openal\
-		${MINGW_PACKAGE_PREFIX}-libsndfile
+		${MINGW_PACKAGE_PREFIX}-libsndfile\
+		${MINGW_PACKAGE_PREFIX}-mpg123
 else
 	pacman -Su $confirm --needed ${MINGW_PACKAGE_PREFIX}-harfbuzz
 	pacman -Su $confirm --needed ca-certificates
@@ -95,6 +96,7 @@ else
 	pacman -Su $confirm --needed ${MINGW_PACKAGE_PREFIX}-libxml2
 	pacman -Su $confirm --needed ${MINGW_PACKAGE_PREFIX}-openal
 	pacman -Su $confirm --needed ${MINGW_PACKAGE_PREFIX}-libsndfile
+	pacman -Su $confirm --needed ${MINGW_PACKAGE_PREFIX}-mpg123
 fi
 
 
