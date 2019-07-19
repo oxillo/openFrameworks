@@ -142,6 +142,9 @@ ofOpenALSoundPlayer::~ofOpenALSoundPlayer(){
 	unload();
 	kiss_fftr_free(fftCfg);
 	players().erase(this);
+	if( players().empty() ){
+		close();
+	}
 }
 
 //---------------------------------------
