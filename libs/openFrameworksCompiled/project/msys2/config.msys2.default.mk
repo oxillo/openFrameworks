@@ -78,8 +78,20 @@ endif
 # Note: Be sure to leave a leading space when using a += operator to add items to the list
 ##########################################################################################
 
+# Enable the following line to use FMOD sound player instead of OpenAL
+#USE_FMOD = 1
+ifdef USE_FMOD
+    PLATFORM_DEFINES += OF_SOUND_PLAYER_FMOD
+else
+#    $(info MSYS2 is now using OpenAL as the default sound player. Please define USE_FMOD to revert to FMOD sound player.)
+    PLATFORM_DEFINES += OF_SOUND_PLAYER_OPENAL
+    PLATFORM_DEFINES += OF_USING_MPG123
+endif
+
+
+
 ifeq ($(OF_USE_POCO),1)
-	PLATFORM_DEFINES = POCO_STATIC
+    PLATFORM_DEFINES += POCO_STATIC
 endif
 
 ##########################################################################################
@@ -190,6 +202,9 @@ PLATFORM_CORE_EXCLUSIONS += $(OF_LIBS_PATH)/openssl/%
 PLATFORM_CORE_EXCLUSIONS += $(OF_LIBS_PATH)/boost/%
 PLATFORM_CORE_EXCLUSIONS += $(OF_LIBS_PATH)/glfw/%
 PLATFORM_CORE_EXCLUSIONS += $(OF_LIBS_PATH)/curl/%
+ifndef USE_FMOD
+	PLATFORM_CORE_EXCLUSIONS += $(OF_LIBS_PATH)/fmod/%
+endif
 
 
 ##########################################################################################
@@ -238,6 +253,11 @@ PLATFORM_PKG_CONFIG_LIBRARIES += glew
 PLATFORM_PKG_CONFIG_LIBRARIES += glfw3
 #PLATFORM_PKG_CONFIG_LIBRARIES += gstreamer-1.0
 PLATFORM_PKG_CONFIG_LIBRARIES += libcurl
+ifndef USE_FMOD
+    PLATFORM_PKG_CONFIG_LIBRARIES += openal
+    PLATFORM_PKG_CONFIG_LIBRARIES += sndfile
+    PLATFORM_PKG_CONFIG_LIBRARIES += libmpg123
+endif
 
 # shared libraries
 PLATFORM_SHARED_LIBRARIES =
