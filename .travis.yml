@@ -15,14 +15,14 @@ matrix:
     sudo: required
     env: TARGET="linux64"
     cache: ccache
-    addons:
-      apt:
-        sources:
-          - ubuntu-toolchain-r-test
-        packages:
-          - gcc-4.9
-          - g++-4.9
-          - gdb
+#    addons:
+#      apt:
+#        sources:
+#          - ubuntu-toolchain-r-test
+#        packages:
+#          - gcc-4.9
+#          - g++-4.9
+#          - gdb
 
   # - os: linux
   #   dist: trusty
