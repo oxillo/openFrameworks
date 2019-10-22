@@ -11,7 +11,7 @@ matrix:
   # relative order of sudo and env is important so that addons: is recognized
 
   - os: linux
-    dist: trusty
+    dist: bionic
     sudo: required
     env: TARGET="linux64"
     cache: ccache
@@ -44,14 +44,14 @@ matrix:
 
   - os: linux
     sudo: required
-    dist: trusty
+    dist: bionic
     env: TARGET="linuxarmv6l"
     cache: ccache
 
 
   - os: linux
     sudo: required
-    dist: trusty
+    dist: bionic
     env: TARGET="linuxarmv7l"
     cache:
       directories:
@@ -63,7 +63,7 @@ matrix:
 
   - os: linux
     sudo: required
-    dist: trusty
+    dist: bionic
     env: TARGET="emscripten"
     services:
       - docker
