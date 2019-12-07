@@ -98,6 +98,8 @@ PLATFORM_REQUIRED_ADDONS =
 
 # Warning Flags (http://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html)
 PLATFORM_CFLAGS += -Wall
+# silence glm 9.9.6 class-memaccess warning (https://github.com/g-truc/glm/issues/854)
+PLATFORM_CFLAGS += -Wno-class-memaccess
 
 # Code Generation Option Flags (http://gcc.gnu.org/onlinedocs/gcc/Code-Gen-Options.html)
 PLATFORM_CFLAGS += -fexceptions
