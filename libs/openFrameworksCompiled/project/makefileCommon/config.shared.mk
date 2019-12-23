@@ -68,63 +68,6 @@ else
 	endif
 endif
 
-# #####################  SETTINGS  #############################################
-# determine the value to use for various variables for trying to use the value
-# defined for the project. If not present, try to use the value for the platform
-# then use the default value
-# for this we use the macro 'select_setting' that returns the first non empty
-# variable The syntax should be :
-#      VAR = $(call select_settings, $(PROJECT_VAR), $(PLATFORM_VAR), $(DEFAULT_VAR))
-################################################################################
-# macro definition
-select_setting = $(strip $(if $(strip $(1)) ,$(1),$(if $(strip $(2)),$(2),$(3))) )
-
-
-# CXX : C++ Compiler settings (includes -std=... )
-DEFAULT_CXX := $(CXX)
-export OF_CXX ?= $(call select_setting, $(PROJECT_CXX), $(PLATFORM_CXX), $(DEFAULT_CXX))
-
-# CXX_STD : C++ standard setting
-ifeq (clang,$(findstring clang,$(notdir $(OF_CXX))))
-	# clang setting
-	DEFAULT_CXX_STD=-std=c++1
-else ifeq (g++,$(findstring g++,$(notdir $(OF_CXX))))
-	# gcc settings depends on the version
-	# < 4.7.x  c++0x
-	# >= 4.7.x c++11
-	# >= 4.9.x c++14
-	GCC_MAJOR_EQ_4 := $(shell expr `$(OF_CXX) -dumpversion | cut -f1 -d.` \= 4)
-	GCC_MAJOR_GT_4 := $(shell expr `$(OF_CXX) -dumpversion | cut -f1 -d.` \> 4)
-	GCC_MINOR_LTEQ_7 := $(shell expr `$(OF_CXX) -dumpversion | cut -f2 -d.` \<= 7)
-	GCC_MINOR_GTEQ_9 := $(shell expr `$(OF_CXX) -dumpversion | cut -f2 -d.` \>= 9)
-
-	ifeq ("$(GCC_MAJOR_GT_4)","1")
-		DEFAULT_CXX_STD=-std=c++14
-	else ifeq ("$(GCC_MAJOR_EQ_4)","1")
-		ifeq ("$(GCC_MINOR_GTEQ_9)","1")
-			DEFAULT_CXX_STD=-std=c++14
-		else ifeq ("$(GCC_MINOR_LTEQ_7)","1")
-			DEFAULT_CXX_STD=-std=c++0x
-		else
-			DEFAULT_CXX_STD=-std=c++11
-		endif
-	else
-		DEFAULT_CXX_STD=-std=c++0x
-	endif
-else
-	#other compiler
-	DEFAULT_CXX_STD=-std=c++11
-endif
-CXX_STD = $(call select_setting, $(PROJECT_CXX_STD), $(PLATFORM_CXX_STD), $(DEFAULT_CXX_STD))
-
-CXX = $(OF_CXX) $(CXX_STD)
-
-# CC : C Compiler settings
-DEFAULT_CC := $(CC)
-export OF_CC ?= $(call select_setting, $(PROJECT_CC), $(PLATFORM_CC), $(DEFAULT_CC))
-CC = $(OF_CC)
-
-$(info Settings : CXX = $(CXX) - CC = $(CC))
 
 
 ifdef MAKEFILE_DEBUG
@@ -294,7 +237,82 @@ else
 	ABI_LIB_SUBPATH=$(PLATFORM_LIB_SUBPATH)
 endif
 
+
+############# PROJECT/PLATFORM/DEFAULT CUSTOMIZATION SETTINGS ##################
+# Determine the value to use for various variables for trying to use the value
+# defined for the project. If not present, try to use the value for the platform
+# then use the default value
+# for this we use the macro 'selectFirstDefined' that returns the first non empty
+# variable The syntax should be :
+#      VAR = $(call selectFirstDefined, $(PROJECT_VAR), $(PLATFORM_VAR), $(DEFAULT_VAR))
+################################################################################
+
+# selectFirstDefined macro : use the first argument defined (up to 3 argmacro definition
+selectFirstDefined = $(strip $(if $(strip $(1)) ,$(1),$(if $(strip $(2)),$(2),$(3))) )
+
+
+# CXX : C++ Compiler settings
+DEFAULT_CXX := $(CXX)
+export OF_CXX ?= $(call firstDefined, $(PROJECT_CXX), $(PLATFORM_CXX), $(DEFAULT_CXX))
+
+# CXX_STD : C++ standard setting
+ifeq (clang,$(findstring clang,$(notdir $(OF_CXX))))
+	# clang setting
+	DEFAULT_CXX_STD=-std=c++1
+else ifeq (g++,$(findstring g++,$(notdir $(OF_CXX))))
+	# gcc settings depends on the version
+	# < 4.7.x  c++0x
+	# >= 4.7.x c++11
+	# >= 4.9.x c++14
+	GCC_MAJOR_EQ_4 := $(shell expr `$(OF_CXX) -dumpversion | cut -f1 -d.` \= 4)
+	GCC_MAJOR_GT_4 := $(shell expr `$(OF_CXX) -dumpversion | cut -f1 -d.` \> 4)
+	GCC_MINOR_LTEQ_7 := $(shell expr `$(OF_CXX) -dumpversion | cut -f2 -d.` \<= 7)
+	GCC_MINOR_GTEQ_9 := $(shell expr `$(OF_CXX) -dumpversion | cut -f2 -d.` \>= 9)
+
+	ifeq ("$(GCC_MAJOR_GT_4)","1")
+		DEFAULT_CXX_STD=-std=c++14
+	else ifeq ("$(GCC_MAJOR_EQ_4)","1")
+		ifeq ("$(GCC_MINOR_GTEQ_9)","1")
+			DEFAULT_CXX_STD=-std=c++14
+		else ifeq ("$(GCC_MINOR_LTEQ_7)","1")
+			DEFAULT_CXX_STD=-std=c++0x
+		else
+			DEFAULT_CXX_STD=-std=c++11
+		endif
+	else
+		DEFAULT_CXX_STD=-std=c++0x
+	endif
+else
+	#other compiler
+	DEFAULT_CXX_STD=-std=c++11
+endif
+CXX_STD = $(call selectFirstDefined, $(PROJECT_CXX_STD), $(PLATFORM_CXX_STD), $(DEFAULT_CXX_STD))
+
+#Rewrite the CXX command to include the C++ standard (g++ becomes g++ -std=c++11)
+CXX = $(OF_CXX) $(CXX_STD)
+
+
+# CC : C Compiler settings
+DEFAULT_CC := $(CC)
+export OF_CC ?= $(call selectFirstDefined, $(PROJECT_CC), $(PLATFORM_CC), $(DEFAULT_CC))
+
+# CC_STD : C standard setting
+DEFAULT_CC_STD = -std=c11
+CC_STD = $(call selectFirstDefined, $(PROJECT_CC_STD), $(PLATFORM_CC_STD), $(DEFAULT_CC_STD))
+
+#Rewrite the CC command to include the C standard (gcc becomes gcc -std=c11)
+CC = $(OF_CC)
+
 PLATFORM_PKG_CONFIG ?= pkg-config
+
+ifdef MAKEFILE_DEBUG
+    $(info ============== project/platform customization ====================)
+    $(info CC=$(CC))
+    $(info CXX=$(CXX))
+endif
+
+
+
 
 
 ################################ FLAGS #########################################
