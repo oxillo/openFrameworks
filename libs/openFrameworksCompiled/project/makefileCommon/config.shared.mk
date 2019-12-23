@@ -306,17 +306,20 @@ CC_STD = $(call selectFirstDefined, $(PROJECT_CC_STD), $(PLATFORM_CC_STD), $(DEF
 CC = $(OF_CC)
 
 # AR : archiver settings
-##########################
+########################
 AR = $(call selectFirstDefined, $(PROJECT_AR), $(PLATFORM_AR), ar)
 ARFLAGS = $(call selectFirstDefined, , $(PLATFORM_ARFLAGS), -cr)
 
-PLATFORM_PKG_CONFIG ?= pkg-config
+# PKG_CONFIG : pkg-config
+#########################
+PKG_CONFIG = $(call selectFirstDefined, , $(PLATFORM_PKG_CONFIG), pkg-config)
 
 ifdef MAKEFILE_DEBUG
     $(info ============== project/platform customization ====================)
     $(info CC=$(CC))
     $(info CXX=$(CXX))
-	$(info AR=$(AR))
+    $(info AR=$(AR))
+    $(info PKG_CONFIG=$(PKG_CONFIG))
 endif
 
 
@@ -378,21 +381,21 @@ ifdef MAKEFILE_DEBUG
     $(info checking pkg-config libraries: $(CORE_PKG_CONFIG_LIBRARIES))
     $(info with PKG_CONFIG_LIBDIR=$(PKG_CONFIG_LIBDIR))
 endif
-FAILED_PKG=$(shell export PKG_CONFIG_LIBDIR=$(PKG_CONFIG_LIBDIR); for pkg in $(CORE_PKG_CONFIG_LIBRARIES); do $(PLATFORM_PKG_CONFIG) $$pkg --cflags > /dev/null; if [ $$? -ne 0 ]; then echo $$pkg; return; fi; done; echo 0)
+FAILED_PKG=$(shell export PKG_CONFIG_LIBDIR=$(PKG_CONFIG_LIBDIR); for pkg in $(CORE_PKG_CONFIG_LIBRARIES); do $(PKG_CONFIG) $$pkg --cflags > /dev/null; if [ $$? -ne 0 ]; then echo $$pkg; return; fi; done; echo 0)
 else
 ifdef MAKEFILE_DEBUG
     $(info checking pkg-config libraries: $(CORE_PKG_CONFIG_LIBRARIES))
     $(info with PKG_CONFIG_LIBDIR=$(PKG_CONFIG_LIBDIR))
 endif
-FAILED_PKG=$(shell for pkg in $(CORE_PKG_CONFIG_LIBRARIES); do $(PLATFORM_PKG_CONFIG) $$pkg --cflags > /dev/null; if [ $$? -ne 0 ]; then echo $$pkg; return; fi; done; echo 0)
+FAILED_PKG=$(shell for pkg in $(CORE_PKG_CONFIG_LIBRARIES); do $(PKG_CONFIG) $$pkg --cflags > /dev/null; if [ $$? -ne 0 ]; then echo $$pkg; return; fi; done; echo 0)
 endif
 	ifneq ($(FAILED_PKG),0)
 $(error couldn't find $(FAILED_PKG) pkg-config package or it's dependencies, did you run the latest install_dependencies.sh?)
 	endif
 	ifeq ($(CROSS_COMPILING),1)
-		OF_CORE_INCLUDES_CFLAGS += $(patsubst -I$(SYSROOT)$(SYSROOT)%,-I$(SYSROOT)% ,$(patsubst -I%,-I$(SYSROOT)% ,$(shell export PKG_CONFIG_LIBDIR=$(PKG_CONFIG_LIBDIR);$(PLATFORM_PKG_CONFIG) "$(CORE_PKG_CONFIG_LIBRARIES)" --cflags)))
+		OF_CORE_INCLUDES_CFLAGS += $(patsubst -I$(SYSROOT)$(SYSROOT)%,-I$(SYSROOT)% ,$(patsubst -I%,-I$(SYSROOT)% ,$(shell export PKG_CONFIG_LIBDIR=$(PKG_CONFIG_LIBDIR);$(PKG_CONFIG) "$(CORE_PKG_CONFIG_LIBRARIES)" --cflags)))
 	else
-		OF_CORE_INCLUDES_CFLAGS += $(shell $(PLATFORM_PKG_CONFIG) "$(CORE_PKG_CONFIG_LIBRARIES)" --cflags)
+		OF_CORE_INCLUDES_CFLAGS += $(shell $(PKG_CONFIG) "$(CORE_PKG_CONFIG_LIBRARIES)" --cflags)
 	endif
 endif
 
