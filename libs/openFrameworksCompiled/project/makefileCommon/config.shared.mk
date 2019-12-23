@@ -252,6 +252,7 @@ selectFirstDefined = $(strip $(if $(strip $(1)) ,$(1),$(if $(strip $(2)),$(2),$(
 
 
 # CXX : C++ Compiler settings
+#############################
 DEFAULT_CXX := $(CXX)
 export OF_CXX ?= $(call selectFirstDefined, $(PROJECT_CXX), $(PLATFORM_CXX), $(DEFAULT_CXX))
 
@@ -293,6 +294,7 @@ CXX = $(OF_CXX) $(CXX_STD)
 
 
 # CC : C Compiler settings
+##########################
 DEFAULT_CC := $(CC)
 export OF_CC ?= $(call selectFirstDefined, $(PROJECT_CC), $(PLATFORM_CC), $(DEFAULT_CC))
 
@@ -303,12 +305,18 @@ CC_STD = $(call selectFirstDefined, $(PROJECT_CC_STD), $(PLATFORM_CC_STD), $(DEF
 #Rewrite the CC command to include the C standard (gcc becomes gcc -std=c11)
 CC = $(OF_CC)
 
+# AR : archiver settings
+##########################
+AR = $(call selectFirstDefined, $(PROJECT_AR), $(PLATFORM_AR), ar)
+ARFLAGS = $(call selectFirstDefined, , $(PLATFORM_ARFLAGS), -cr)
+
 PLATFORM_PKG_CONFIG ?= pkg-config
 
 ifdef MAKEFILE_DEBUG
     $(info ============== project/platform customization ====================)
     $(info CC=$(CC))
     $(info CXX=$(CXX))
+	$(info AR=$(AR))
 endif
 
 

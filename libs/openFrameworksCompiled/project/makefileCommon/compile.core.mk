@@ -1,26 +1,5 @@
 .DEFAULT_GOAL=all
 
-################################################################################
-ifdef MAKEFILE_DEBUG
-    $(info ===================compile.core.make================================)
-endif
-
-
-
-
-ifdef PROJECT_AR
-	AR ?= $(PROJECT_AR)
-endif
-
-ifdef PLATFORM_AR
-	AR ?= $(PLATFORM_AR)
-endif
-
-ifdef PLATFORM_ARFLAGS
-	ARFLAGS = $(PLATFORM_ARFLAGS)
-else
-	ARFLAGS = -cr
-endif
 
 ################################################################################
 # CFLAGS
