@@ -253,7 +253,7 @@ selectFirstDefined = $(strip $(if $(strip $(1)) ,$(1),$(if $(strip $(2)),$(2),$(
 
 # CXX : C++ Compiler settings
 DEFAULT_CXX := $(CXX)
-export OF_CXX ?= $(call firstDefined, $(PROJECT_CXX), $(PLATFORM_CXX), $(DEFAULT_CXX))
+export OF_CXX ?= $(call selectFirstDefined, $(PROJECT_CXX), $(PLATFORM_CXX), $(DEFAULT_CXX))
 
 # CXX_STD : C++ standard setting
 ifeq (clang,$(findstring clang,$(notdir $(OF_CXX))))
