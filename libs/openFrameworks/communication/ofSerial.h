@@ -2,6 +2,7 @@
 
 #include <climits>
 #include "utils/ofConstants.h"
+#include <vector>
 
 class ofBuffer;
 

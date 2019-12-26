@@ -2,6 +2,8 @@
 
 #include "utils/ofConstants.h"
 #include <functional>
+#include <vector>
+
 
 class ofSoundBuffer;
 

@@ -4,6 +4,7 @@
 #include "graphics/ofGraphicsBaseTypes.h"
 #include "types/ofRectangle.h"
 #include "glm/fwd.hpp"
+#include <vector>
 //#include "ofUtils.h"
 
 class ofVec3f;

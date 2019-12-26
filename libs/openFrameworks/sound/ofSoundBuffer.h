@@ -9,6 +9,8 @@
 #define OFSOUNDBUFFER_H_
 
 #include "utils/ofConstants.h"
+#include <string>
+#include <vector>
 
 
 /*! 

@@ -10,6 +10,10 @@
 #include "utils/ofConstants.h"
 #include "graphics/ofGraphicsConstants.h"
 
+#include <string>
+#include <memory>
+#include <vector>
+
 class ofShader;
 class ofGLProgrammableRenderer;
 class ofBaseGLRenderer;

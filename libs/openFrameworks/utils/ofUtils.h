@@ -5,6 +5,7 @@
 #include <bitset> // For ofToBinary.
 #include <chrono>
 #include <iomanip>  //for setprecision
+#include <vector>
 #include <algorithm>
 #include <sstream>
 

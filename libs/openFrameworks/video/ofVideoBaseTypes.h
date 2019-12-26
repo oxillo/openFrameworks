@@ -1,6 +1,7 @@
 #pragma once
 #include "graphics/ofGraphicsBaseTypes.h"
 #include "gl/ofGLBaseTypes.h"
+#include <memory>
 
 enum ofPixelFormat: short;
 

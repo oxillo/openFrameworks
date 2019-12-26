@@ -7,6 +7,7 @@
 
 #include "utils/ofConstants.h"
 #include <glm/mat3x3.hpp>
+#include <iostream>
 
 
 /// \brief A 3x3 Matrix

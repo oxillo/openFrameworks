@@ -8,6 +8,7 @@ class ofVec4f;
 #include "glm/vec2.hpp"
 #include "glm/fwd.hpp"
 #include <cmath>
+#include <iostream>
 
 /// \brief
 /// ofVec2f is a class for storing a two dimensional vector. 

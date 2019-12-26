@@ -5,6 +5,7 @@ class ofVec3f;
 
 #include "utils/ofConstants.h"
 #include <cmath>
+#include <iostream>
 #include "glm/vec4.hpp"
 #include "glm/fwd.hpp"
 

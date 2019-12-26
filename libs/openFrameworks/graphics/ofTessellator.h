@@ -3,6 +3,8 @@
 #include "utils/ofConstants.h"
 #include "graphics/ofGraphicsBaseTypes.h"
 
+#include <vector>
+
 
 typedef struct TESStesselator TESStesselator;
 typedef struct TESSalloc TESSalloc;

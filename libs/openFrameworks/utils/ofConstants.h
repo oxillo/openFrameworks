@@ -267,17 +267,6 @@ typedef TESSindex ofIndexType;
 #define OF_EXIT_APP(val)		std::exit(val);
 
 
-// core: ---------------------------
-#include <cstdio>
-#include <cstdlib>
-#include <string>
-#include <cstring>
-#include <iostream>
-#include <vector>
-#include <memory>
-#include <functional>
-
-
 //------------------------------------------------ capture
 // check if any video capture system is already defined from the compiler
 #if !defined(OF_VIDEO_CAPTURE_GSTREAMER) && !defined(OF_VIDEO_CAPTURE_QUICKTIME) && !defined(OF_VIDEO_CAPTURE_DIRECTSHOW) && !defined(OF_VIDEO_CAPTURE_ANDROID) && !defined(OF_VIDEO_CAPTURE_IOS)

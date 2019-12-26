@@ -1,6 +1,7 @@
 #pragma once
 #include "utils/ofConstants.h"
 #include "glm/vec2.hpp"
+#include <string>
 
 
 /// \brief Used to represent the available windowing modes for the application.

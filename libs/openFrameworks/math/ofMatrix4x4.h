@@ -15,6 +15,7 @@
 #include "math/ofQuaternion.h"
 #include <cmath>
 #include "glm/mat4x4.hpp"
+#include <iostream>
 #include "math/ofMathConstants.h"
 
 class ofVec3f;

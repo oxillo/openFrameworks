@@ -1,7 +1,8 @@
 #pragma once
 
 #include "utils/ofConstants.h"
-#include "glm/fwd.hpp"
+#include "math/ofVectorMath.h"
+#include <string>
 
 /// \brief Draws x,y,z axes representing the current reference frame.
 ///

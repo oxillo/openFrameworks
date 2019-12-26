@@ -2,6 +2,7 @@
 
 #include "utils/ofConstants.h"
 #include "app/ofWindowSettings.h"
+#include <memory>
 
 class ofBaseApp;
 class ofBaseRenderer;

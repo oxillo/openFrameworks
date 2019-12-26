@@ -6,6 +6,7 @@
 #include "utils/ofConstants.h"
 #include "glm/fwd.hpp"
 #include <deque>
+#include <vector>
 
 #include "math/ofVec2f.h"
 #include "math/ofVec3f.h"

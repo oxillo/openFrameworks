@@ -1,6 +1,8 @@
 #pragma once
 
 #include "utils/ofConstants.h"
+#include <vector>
+#include <memory>
 
 template<typename T>
 class ofPixels_;

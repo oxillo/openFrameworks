@@ -5,6 +5,7 @@
 #include "sound/ofSoundBaseTypes.h"
 #include <climits>
 #include <functional>
+#include <memory>
 
 
 class ofSoundStreamSettings;

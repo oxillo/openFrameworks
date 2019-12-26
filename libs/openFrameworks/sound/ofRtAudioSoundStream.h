@@ -4,6 +4,7 @@
 
 #include "sound/ofSoundBaseTypes.h"
 #include "sound/ofSoundBuffer.h"
+#include <memory>
 
 typedef unsigned int RtAudioStreamStatus;
 class RtAudio;

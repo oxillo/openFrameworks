@@ -4,6 +4,8 @@
 #include "glm/mat4x4.hpp"
 #include "graphics/ofGraphicsBaseTypes.h"
 
+#include <memory>
+
 class ofRectangle;
 
 template<typename T>
