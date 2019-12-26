@@ -1,7 +1,7 @@
 #pragma once
 
-#include "ofConstants.h"
-#include "ofFileUtils.h"
+#include "utils/ofConstants.h"
+#include "utils/ofFileUtils.h"
 #include <sstream>
 
 /// \file

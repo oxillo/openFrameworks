@@ -1,8 +1,8 @@
 #pragma once
 
-#include "ofConstants.h"
-#include "ofVideoBaseTypes.h"
-#include "ofPixels.h"
+#include "utils/ofConstants.h"
+#include "video/ofVideoBaseTypes.h"
+#include "graphics/ofPixels.h"
 
 #if !defined(TARGET_LINUX) && (!defined(MAC_OS_X_VERSION_10_12) || MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_12)
 

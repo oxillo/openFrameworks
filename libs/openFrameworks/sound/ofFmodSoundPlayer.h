@@ -1,10 +1,10 @@
 #pragma once
 
-#include "ofConstants.h"
+#include "utils/ofConstants.h"
 
 #ifdef OF_SOUND_PLAYER_FMOD
 
-#include "ofSoundBaseTypes.h"
+#include "sound/ofSoundBaseTypes.h"
 
 
 extern "C" {

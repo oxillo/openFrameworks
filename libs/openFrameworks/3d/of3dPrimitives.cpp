@@ -6,12 +6,12 @@
 //
 //
 
-#include "of3dPrimitives.h"
-#include "ofGraphics.h"
-#include "ofRectangle.h"
-#include "ofVboMesh.h"
-#include "ofTexture.h"
-#include "of3dUtils.h"
+#include "3d/of3dPrimitives.h"
+#include "graphics/ofGraphics.h"
+#include "types/ofRectangle.h"
+#include "gl/ofVboMesh.h"
+#include "gl/ofTexture.h"
+#include "3d/of3dUtils.h"
 
 using namespace std;
 

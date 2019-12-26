@@ -1,8 +1,8 @@
 #pragma once
 
-#include "ofGraphicsBaseTypes.h"
-#include "of3dGraphics.h"
-#include "ofPath.h"
+#include "graphics/ofGraphicsBaseTypes.h"
+#include "graphics/of3dGraphics.h"
+#include "graphics/ofPath.h"
 
 class ofRendererCollection: public ofBaseRenderer{
 public:

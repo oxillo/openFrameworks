@@ -3,114 +3,114 @@
 
 //--------------------------
 // utils
-#include "ofConstants.h"
-#include "ofFileUtils.h"
-#include "ofLog.h"
-#include "ofSystemUtils.h"
+#include "utils/ofConstants.h"
+#include "utils/ofFileUtils.h"
+#include "utils/ofLog.h"
+#include "utils/ofSystemUtils.h"
 
-#include "ofURLFileLoader.h"
+#include "utils/ofURLFileLoader.h"
 
-#include "ofUtils.h"
+#include "utils/ofUtils.h"
 
 #if !defined(TARGET_EMSCRIPTEN)
-#include "ofThread.h"
-#include "ofThreadChannel.h"
+#include "utils/ofThread.h"
+#include "utils/ofThreadChannel.h"
 #endif
 
-#include "ofFpsCounter.h"
-#include "ofJson.h"
-#include "ofXml.h"
+#include "utils/ofFpsCounter.h"
+#include "utils/ofJson.h"
+#include "utils/ofXml.h"
 
 //--------------------------
 // types
-#include "ofGraphicsBaseTypes.h"
-#include "ofTypes.h"
-#include "ofColor.h"
-#include "ofPoint.h"
-#include "ofRectangle.h"
-#include "ofParameter.h"
-#include "ofParameterGroup.h"
+#include "graphics/ofGraphicsBaseTypes.h"
+#include "types/ofTypes.h"
+#include "types/ofColor.h"
+#include "types/ofPoint.h"
+#include "types/ofRectangle.h"
+#include "types/ofParameter.h"
+#include "types/ofParameterGroup.h"
 
 //--------------------------
 // math
-#include "ofMath.h"
-#include "ofVectorMath.h"
+#include "math/ofMath.h"
+#include "math/ofVectorMath.h"
 
 //--------------------------
 // communication
 #if !defined( TARGET_OF_IOS ) & !defined(TARGET_ANDROID) & !defined(TARGET_EMSCRIPTEN)
-	#include "ofSerial.h"
-	#include "ofArduino.h"
+	#include "communication/ofSerial.h"
+	#include "communication/ofArduino.h"
 #endif
 
 //--------------------------
 // gl
-#include "ofFbo.h"
-#include "ofGLRenderer.h"
-#include "ofGLUtils.h"
-#include "ofLight.h"
-#include "ofMaterial.h"
-#include "ofShader.h"
-#include "ofTexture.h"
-#include "ofVbo.h"
-#include "ofVboMesh.h"
-// #include "ofGLProgrammableRenderer.h"
+#include "gl/ofFbo.h"
+#include "gl/ofGLRenderer.h"
+#include "gl/ofGLUtils.h"
+#include "gl/ofLight.h"
+#include "gl/ofMaterial.h"
+#include "gl/ofShader.h"
+#include "gl/ofTexture.h"
+#include "gl/ofVbo.h"
+#include "gl/ofVboMesh.h"
+// #include "gl/ofGLProgrammableRenderer.h"
 // #ifndef TARGET_PROGRAMMABLE_GL
-// 	#include "ofGLRenderer.h"
+// 	#include "gl/ofGLRenderer.h"
 // #endif
 
 //--------------------------
 // graphics
 #if !defined( TARGET_OF_IOS ) & !defined(TARGET_ANDROID) & !defined(TARGET_EMSCRIPTEN)
-	#include "ofCairoRenderer.h"
+	#include "graphics/ofCairoRenderer.h"
 #endif
-#include "ofGraphics.h"
-#include "ofImage.h"
-#include "ofPath.h"
-#include "ofPixels.h"
-#include "ofPolyline.h"
-#include "ofRendererCollection.h"
-#include "ofTessellator.h"
-#include "ofTrueTypeFont.h"
+#include "graphics/ofGraphics.h"
+#include "graphics/ofImage.h"
+#include "graphics/ofPath.h"
+#include "graphics/ofPixels.h"
+#include "graphics/ofPolyline.h"
+#include "graphics/ofRendererCollection.h"
+#include "graphics/ofTessellator.h"
+#include "graphics/ofTrueTypeFont.h"
 
 //--------------------------
 // app
-#include "ofBaseApp.h"
-#include "ofAppRunner.h"
-#include "ofAppBaseWindow.h"
-#include "ofWindowSettings.h"
-#include "ofMainLoop.h"
+#include "app/ofBaseApp.h"
+#include "app/ofAppRunner.h"
+#include "app/ofAppBaseWindow.h"
+#include "app/ofWindowSettings.h"
+#include "app/ofMainLoop.h"
 #if !defined( TARGET_OF_IOS ) & !defined(TARGET_ANDROID) & !defined(TARGET_EMSCRIPTEN) & !defined(TARGET_RASPBERRY_PI_LEGACY)
-	#include "ofAppGLFWWindow.h"
+	#include "app/ofAppGLFWWindow.h"
 	#if !defined( TARGET_LINUX_ARM )
-		#include "ofAppGlutWindow.h"
+		#include "app/ofAppGlutWindow.h"
 	#endif
 #endif
 
 //--------------------------
 // audio
 #ifndef TARGET_NO_SOUND
-	#include "ofSoundStream.h"
-	#include "ofSoundPlayer.h"
-	#include "ofSoundBuffer.h"
+	#include "sound/ofSoundStream.h"
+	#include "sound/ofSoundPlayer.h"
+	#include "sound/ofSoundBuffer.h"
 #endif
 
 //--------------------------
 // video
-#include "ofVideoGrabber.h"
-#include "ofVideoPlayer.h"
+#include "video/ofVideoGrabber.h"
+#include "video/ofVideoPlayer.h"
 
 //--------------------------
 // events
-#include "ofEvents.h"
+#include "events/ofEvents.h"
 
 //--------------------------
 // 3d
-#include "of3dUtils.h"
-#include "ofCamera.h"
-#include "ofEasyCam.h"
-#include "ofMesh.h"
-#include "ofNode.h"
+#include "3d/of3dUtils.h"
+#include "3d/ofCamera.h"
+#include "3d/ofEasyCam.h"
+#include "3d/ofMesh.h"
+#include "3d/ofNode.h"
 
 //--------------------------
 using namespace std;

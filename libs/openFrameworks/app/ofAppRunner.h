@@ -1,9 +1,9 @@
 #pragma once
 
-#include "ofConstants.h"
-#include "ofWindowSettings.h"
-#include "ofMainLoop.h"
-#include "ofRectangle.h"
+#include "utils/ofConstants.h"
+#include "app/ofWindowSettings.h"
+#include "app/ofMainLoop.h"
+#include "types/ofRectangle.h"
 
 class ofAppBaseWindow;
 class ofAppBaseGLWindow;

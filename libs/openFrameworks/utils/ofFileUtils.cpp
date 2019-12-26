@@ -1,11 +1,11 @@
-#include "ofFileUtils.h"
+#include "utils/ofFileUtils.h"
 #ifndef TARGET_WIN32
 	#include <pwd.h>
 	#include <sys/stat.h>
 #endif
 
-#include "ofUtils.h"
-#include "ofLog.h"
+#include "utils/ofUtils.h"
+#include "utils/ofLog.h"
 
 
 #ifdef TARGET_OSX

@@ -1,13 +1,13 @@
-#include "ofUtils.h"
-#include "ofGLUtils.h"
-#include "ofGLProgrammableRenderer.h"
-#include "of3dGraphics.h"
-#include "ofSoundBuffer.h"
-#include "ofMesh.h"
-#include "ofVideoPlayer.h"
-#include "ofSoundBaseTypes.h"
-#include "ofVideoBaseTypes.h"
-#include "ofGraphicsBaseTypes.h"
+#include "utils/ofUtils.h"
+#include "gl/ofGLUtils.h"
+#include "gl/ofGLProgrammableRenderer.h"
+#include "graphics/of3dGraphics.h"
+#include "sound/ofSoundBuffer.h"
+#include "3d/ofMesh.h"
+#include "video/ofVideoPlayer.h"
+#include "sound/ofSoundBaseTypes.h"
+#include "video/ofVideoBaseTypes.h"
+#include "graphics/ofGraphicsBaseTypes.h"
 
 using namespace std;
 

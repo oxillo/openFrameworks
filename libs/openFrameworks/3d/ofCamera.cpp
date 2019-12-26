@@ -1,12 +1,12 @@
-#include "ofCamera.h"
-#include "ofLog.h"
-#include "ofRectangle.h"
-#include "ofGraphics.h"
-#include "ofAppRunner.h"
-#include "ofGraphicsBaseTypes.h"
+#include "3d/ofCamera.h"
+#include "utils/ofLog.h"
+#include "types/ofRectangle.h"
+#include "graphics/ofGraphics.h"
+#include "app/ofAppRunner.h"
+#include "graphics/ofGraphicsBaseTypes.h"
 #include "glm/gtx/transform.hpp"
 #include "glm/gtc/quaternion.hpp"
-#include "of3dGraphics.h"
+#include "graphics/of3dGraphics.h"
 
 using namespace std;
 

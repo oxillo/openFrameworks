@@ -8,8 +8,8 @@
 #ifndef OFSOUNDUTILS_H_
 #define OFSOUNDUTILS_H_
 
-#include "ofMath.h"
-#include "ofSoundBuffer.h"
+#include "math/ofMath.h"
+#include "sound/ofSoundBuffer.h"
 
 inline void ofStereoVolumes(float volume, float pan, float & left, float & right){
 	pan = ofClamp(pan, -1, 1);

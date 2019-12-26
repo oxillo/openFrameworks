@@ -44,10 +44,10 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#include "ofArduino.h"
-#include "ofUtils.h"
-#include "ofMath.h"
-#include "ofLog.h"
+#include "communication/ofArduino.h"
+#include "utils/ofUtils.h"
+#include "math/ofMath.h"
+#include "utils/ofLog.h"
 
 using namespace std;
 

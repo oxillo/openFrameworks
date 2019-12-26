@@ -1,15 +1,15 @@
-#include "ofURLFileLoader.h"
-#include "ofAppRunner.h"
-#include "ofUtils.h"
+#include "utils/ofURLFileLoader.h"
+#include "app/ofAppRunner.h"
+#include "utils/ofUtils.h"
 
-#include "ofConstants.h"
+#include "utils/ofConstants.h"
 
 using namespace std;
 
 #if !defined(TARGET_IMPLEMENTS_URL_LOADER)
 	#include <curl/curl.h>
-	#include "ofThreadChannel.h"
-	#include "ofThread.h"
+	#include "utils/ofThreadChannel.h"
+	#include "utils/ofThread.h"
 	static bool curlInited = false;
 #endif
 

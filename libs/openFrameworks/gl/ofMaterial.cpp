@@ -1,7 +1,7 @@
-#include "ofMaterial.h"
-#include "ofConstants.h"
-#include "ofLight.h"
-#include "ofGLProgrammableRenderer.h"
+#include "gl/ofMaterial.h"
+#include "utils/ofConstants.h"
+#include "gl/ofLight.h"
+#include "gl/ofGLProgrammableRenderer.h"
 
 using namespace std;
 

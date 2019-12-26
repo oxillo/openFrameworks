@@ -1,8 +1,8 @@
 #pragma once
 
-#include "ofCamera.h"
-#include "ofEvents.h"
-#include "ofRectangle.h"
+#include "3d/ofCamera.h"
+#include "events/ofEvents.h"
+#include "types/ofRectangle.h"
 #include "glm/gtc/quaternion.hpp"
 
 /// \brief A super simple camera for interacting with objects in 3D space.

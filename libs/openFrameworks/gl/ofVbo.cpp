@@ -5,12 +5,12 @@
 // setVertexData with float* should know about ofVec3f vs ofVec2f?
 
 
-#include "ofUtils.h"
-#include "ofVbo.h"
-#include "ofShader.h"
-#include "ofGLUtils.h"
-#include "ofMesh.h"
-#include "ofGLBaseTypes.h"
+#include "utils/ofUtils.h"
+#include "gl/ofVbo.h"
+#include "gl/ofShader.h"
+#include "gl/ofGLUtils.h"
+#include "3d/ofMesh.h"
+#include "gl/ofGLBaseTypes.h"
 
 #ifdef TARGET_ANDROID
 #include "ofAppAndroidWindow.h"

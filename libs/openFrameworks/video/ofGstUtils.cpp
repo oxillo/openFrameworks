@@ -1,4 +1,4 @@
-#include "ofGstUtils.h"
+#include "video/ofGstUtils.h"
 #ifndef TARGET_ANDROID
 #include <gst/app/gstappsink.h>
 #include <gst/video/video.h>
@@ -15,7 +15,7 @@
 #include <glib-object.h>
 #include <glib.h>
 #include <algorithm>
-#include "ofVideoPlayer.h"
+#include "video/ofVideoPlayer.h"
 
 #ifdef OF_USE_GST_GL
 #ifndef TARGET_OPENGLES

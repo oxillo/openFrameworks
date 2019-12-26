@@ -1,8 +1,8 @@
 #pragma once
 
-#include "ofConstants.h"
+#include "utils/ofConstants.h"
 #include "glm/mat4x4.hpp"
-#include "ofGraphicsBaseTypes.h"
+#include "graphics/ofGraphicsBaseTypes.h"
 
 class ofRectangle;
 

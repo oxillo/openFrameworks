@@ -5,13 +5,13 @@
  *      Author: arturo
  */
 
-#include "ofConstants.h"
-#include "ofMatrixStack.h"
-#include "ofAppBaseWindow.h"
+#include "utils/ofConstants.h"
+#include "utils/ofMatrixStack.h"
+#include "app/ofAppBaseWindow.h"
 #include "glm/mat4x4.hpp"
 #include "glm/gtx/transform.hpp"
-#include "ofGraphicsBaseTypes.h"
-#include "ofLog.h"
+#include "graphics/ofGraphicsBaseTypes.h"
+#include "utils/ofLog.h"
 
 using namespace std;
 

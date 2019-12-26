@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "ofConstants.h"
+#include "utils/ofConstants.h"
 #include <limits>
 #include "glm/common.hpp"
 

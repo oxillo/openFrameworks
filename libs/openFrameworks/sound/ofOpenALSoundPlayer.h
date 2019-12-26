@@ -1,10 +1,10 @@
 #pragma once
 
-#include "ofConstants.h"
+#include "utils/ofConstants.h"
 
 #ifdef OF_SOUND_PLAYER_OPENAL
-#include "ofSoundBaseTypes.h"
-#include "ofThread.h"
+#include "sound/ofSoundBaseTypes.h"
+#include "utils/ofThread.h"
 
 
 

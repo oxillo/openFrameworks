@@ -1,9 +1,9 @@
 
-#include "ofNode.h"
-#include "ofMath.h"
-#include "ofLog.h"
-#include "of3dGraphics.h"
-#include "ofGraphicsBaseTypes.h"
+#include "3d/ofNode.h"
+#include "math/ofMath.h"
+#include "utils/ofLog.h"
+#include "graphics/of3dGraphics.h"
+#include "graphics/ofGraphicsBaseTypes.h"
 
 //----------------------------------------
 ofNode::ofNode()

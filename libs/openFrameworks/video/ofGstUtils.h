@@ -1,11 +1,11 @@
 #pragma once
 
-#include "ofConstants.h"
+#include "utils/ofConstants.h"
 #ifndef TARGET_ANDROID
-#include "ofPixels.h"
-#include "ofEvents.h"
-#include "ofThread.h"
-#include "ofVideoBaseTypes.h"
+#include "graphics/ofPixels.h"
+#include "events/ofEvents.h"
+#include "utils/ofThread.h"
+#include "video/ofVideoBaseTypes.h"
 #define GST_DISABLE_DEPRECATED
 #include <gst/gst.h>
 #include <gst/gstpad.h>

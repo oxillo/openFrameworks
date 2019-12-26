@@ -1,8 +1,8 @@
 
-#include "ofQTKitGrabber.h"
-#include "ofLog.h"
-#include "ofVideoBaseTypes.h"
-#include "ofSystemUtils.h"
+#include "video/ofQTKitGrabber.h"
+#include "utils/ofLog.h"
+#include "video/ofVideoBaseTypes.h"
+#include "utils/ofSystemUtils.h"
 
 #ifdef OF_VIDEO_CAPTURE_QTKIT
 

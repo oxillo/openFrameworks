@@ -1,31 +1,31 @@
 #pragma once
 
-#include "ofConstants.h"
-#include "ofTexture.h"
-#include "ofVideoBaseTypes.h"
+#include "utils/ofConstants.h"
+#include "gl/ofTexture.h"
+#include "video/ofVideoBaseTypes.h"
 
 #ifdef OF_VIDEO_PLAYER_GSTREAMER
-	#include "ofGstVideoPlayer.h"
+	#include "video/ofGstVideoPlayer.h"
 	#define OF_VID_PLAYER_TYPE ofGstVideoPlayer
 #endif
 
 #ifdef OF_VIDEO_PLAYER_QUICKTIME
-	#include "ofQuickTimePlayer.h"
+	#include "video/ofQuickTimePlayer.h"
 	#define OF_VID_PLAYER_TYPE ofQuickTimePlayer
 #endif
 
 #ifdef OF_VIDEO_PLAYER_QTKIT
-	#include "ofQTKitPlayer.h"
+	#include "video/ofQTKitPlayer.h"
 	#define OF_VID_PLAYER_TYPE ofQTKitPlayer
 #endif
 
 #ifdef OF_VIDEO_PLAYER_AVFOUNDATION
-    #include "ofAVFoundationPlayer.h"
+    #include "video/ofAVFoundationPlayer.h"
     #define OF_VID_PLAYER_TYPE ofAVFoundationPlayer
 #endif
 
 #ifdef OF_VIDEO_PLAYER_DIRECTSHOW
-    #include "ofDirectShowPlayer.h"
+    #include "video/ofDirectShowPlayer.h"
     #define OF_VID_PLAYER_TYPE ofDirectShowPlayer
 #endif
 

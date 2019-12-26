@@ -1,10 +1,10 @@
-#include "ofQtUtils.h"
+#include "video/ofQtUtils.h"
 
 #if defined (TARGET_WIN32) || (defined TARGET_OSX && !defined(MAC_OS_X_VERSION_10_7))
 #if !defined(MAC_OS_X_VERSION_10_12) || MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_12
 
-#include "ofUtils.h"
-#include "ofGraphics.h"
+#include "utils/ofUtils.h"
+#include "graphics/ofGraphics.h"
 static bool bQuicktimeInitialized = false;
 
 //----------------------------------------

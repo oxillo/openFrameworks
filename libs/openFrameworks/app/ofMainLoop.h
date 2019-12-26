@@ -1,7 +1,7 @@
 #pragma once
 
-#include "ofConstants.h"
-#include "ofEvents.h"
+#include "utils/ofConstants.h"
+#include "events/ofEvents.h"
 #include <map>
 
 class ofBaseApp;

@@ -2,11 +2,11 @@
 
 #ifdef OF_SOUND_PLAYER_OPENAL
 
-#include "ofConstants.h"
+#include "utils/ofConstants.h"
 #include "glm/gtc/constants.hpp"
 #include "glm/common.hpp"
-#include "ofLog.h"
-#include "ofEvents.h"
+#include "utils/ofLog.h"
+#include "events/ofEvents.h"
 #include <sndfile.h>
 
 #if defined (TARGET_OF_IOS) || defined (TARGET_OSX)

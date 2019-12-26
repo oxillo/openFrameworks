@@ -1,7 +1,7 @@
 #pragma once
-#include "ofColor.h"
-#include "ofShader.h"
-#include "ofConstants.h"
+#include "types/ofColor.h"
+#include "gl/ofShader.h"
+#include "utils/ofConstants.h"
 #include "glm/fwd.hpp"
 
 // Material concept: "Anything graphical applied to the polygons"

@@ -1,4 +1,4 @@
-#include "ofPath.h"
+#include "graphics/ofPath.h"
 
 using namespace std;
 

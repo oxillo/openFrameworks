@@ -1,8 +1,8 @@
-#include "ofAppNoWindow.h"
-#include "ofBaseApp.h"
-#include "ofGraphics.h"
-#include "ofPath.h"
-#include "of3dGraphics.h"
+#include "app/ofAppNoWindow.h"
+#include "app/ofBaseApp.h"
+#include "graphics/ofGraphics.h"
+#include "graphics/ofPath.h"
+#include "graphics/of3dGraphics.h"
 #include <memory>
 
 

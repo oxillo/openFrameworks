@@ -1,7 +1,7 @@
-#include "ofTessellator.h"
+#include "graphics/ofTessellator.h"
 #include "tesselator.h"
-#include "ofPolyline.h"
-#include "ofMesh.h"
+#include "graphics/ofPolyline.h"
+#include "3d/ofMesh.h"
 
 using namespace std;
 

@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "ofConstants.h"
+#include "utils/ofConstants.h"
 //#include "glm/glm.hpp"
 
 //#include "glm/detail/setup.hpp"

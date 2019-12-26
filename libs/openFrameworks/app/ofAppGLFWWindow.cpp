@@ -1,20 +1,19 @@
-#include "ofAppGLFWWindow.h"
-#include "ofEvents.h"
+#include "app/ofAppGLFWWindow.h"
+#include "events/ofEvents.h"
 
-#include "ofBaseApp.h"
-#include "ofGLRenderer.h"
-#include "ofGLProgrammableRenderer.h"
-#include "ofAppRunner.h"
-#include "ofFileUtils.h"
-#include "ofEvents.h"
-#include "ofPixels.h"
+#include "app/ofBaseApp.h"
+#include "gl/ofGLRenderer.h"
+#include "gl/ofGLProgrammableRenderer.h"
+#include "app/ofAppRunner.h"
+#include "utils/ofFileUtils.h"
+#include "graphics/ofPixels.h"
 
 #define GLFW_INCLUDE_NONE
 #include "GLFW/glfw3.h"
 
 #ifdef TARGET_LINUX
-    #include "ofIcon.h"
-    #include "ofImage.h"
+    #include "graphics/ofIcon.h"
+    #include "graphics/ofImage.h"
     #define GLFW_EXPOSE_NATIVE_X11
     #ifndef TARGET_OPENGLES
         #define GLFW_EXPOSE_NATIVE_GLX

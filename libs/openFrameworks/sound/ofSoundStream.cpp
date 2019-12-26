@@ -1,13 +1,13 @@
-#include "ofSoundStream.h"
-#include "ofAppRunner.h"
-#include "ofLog.h"
+#include "sound/ofSoundStream.h"
+#include "app/ofAppRunner.h"
+#include "utils/ofLog.h"
 
 #if defined(OF_SOUND_PLAYER_FMOD)
-#include "ofSoundPlayer.h"
+#include "sound/ofSoundPlayer.h"
 #endif
 
 #ifdef OF_SOUNDSTREAM_RTAUDIO
-#include "ofRtAudioSoundStream.h"
+#include "sound/ofRtAudioSoundStream.h"
 #define OF_SOUND_STREAM_TYPE ofRtAudioSoundStream
 #elif defined(OF_SOUNDSTREAM_ANDROID)
 #include "ofxAndroidSoundStream.h"

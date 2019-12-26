@@ -1,5 +1,5 @@
-#include "ofSoundPlayer.h"
-#include "ofLog.h"
+#include "sound/ofSoundPlayer.h"
+#include "utils/ofLog.h"
 #include "glm/common.hpp"
 
 using namespace std;

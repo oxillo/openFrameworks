@@ -1,13 +1,13 @@
-#include "ofMath.h"
-#include "ofUtils.h"
+#include "math/ofMath.h"
+#include "utils/ofUtils.h"
 #include "float.h"
 
 #ifndef TARGET_WIN32
 	#include <sys/time.h>
 #endif
 
-#include "ofNoise.h"
-#include "ofPolyline.h"
+#include "utils/ofNoise.h"
+#include "graphics/ofPolyline.h"
 
 using namespace std;
 

@@ -1,4 +1,4 @@
-#include "ofMatrix3x3.h"
+#include "math/ofMatrix3x3.h"
 #include <iomanip>
 
 using namespace std;

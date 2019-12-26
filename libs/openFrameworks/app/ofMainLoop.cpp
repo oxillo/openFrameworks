@@ -5,16 +5,16 @@
  *      Author: arturo
  */
 
-#include <ofMainLoop.h>
-#include "ofWindowSettings.h"
-#include "ofConstants.h"
-#include "ofAppBaseWindow.h"
-#include "ofBaseApp.h"
+#include "app/ofMainLoop.h"
+#include "app/ofWindowSettings.h"
+#include "utils/ofConstants.h"
+#include "app/ofAppBaseWindow.h"
+#include "app/ofBaseApp.h"
 
 //========================================================================
 // default windowing
 #ifdef TARGET_NODISPLAY
-	#include "ofAppNoWindow.h"
+	#include "app/ofAppNoWindow.h"
 #elif defined(TARGET_OF_IOS)
 	#include "ofAppiOSWindow.h"
 #elif defined(TARGET_ANDROID)
@@ -22,13 +22,13 @@
 	#include "ofxAndroidUtils.h"
 	#include "ofxAndroidApp.h"
 #elif defined(TARGET_RASPBERRY_PI) && defined(TARGET_GLFW_WINDOW)
-	#include "ofAppGLFWWindow.h"
+	#include "app/ofAppGLFWWindow.h"
 #elif defined(TARGET_RASPBERRY_PI)
-	#include "ofAppEGLWindow.h"
+	#include "app/ofAppEGLWindow.h"
 #elif defined(TARGET_EMSCRIPTEN)
 	#include "ofxAppEmscriptenWindow.h"
 #else
-	#include "ofAppGLFWWindow.h"
+	#include "app/ofAppGLFWWindow.h"
 #endif
 
 using namespace std;

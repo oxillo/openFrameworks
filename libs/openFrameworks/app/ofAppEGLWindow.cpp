@@ -1,12 +1,12 @@
-#include "ofAppEGLWindow.h"
+#include "app/ofAppEGLWindow.h"
 
-#include "ofGraphics.h" // used in runAppViaInfiniteLoop()
-#include "ofAppRunner.h"
-#include "ofUtils.h"
-#include "ofFileUtils.h"
-#include "ofGLProgrammableRenderer.h"
-#include "ofGLRenderer.h"
-#include "ofVectorMath.h"
+#include "graphics/ofGraphics.h" // used in runAppViaInfiniteLoop()
+#include "app/ofAppRunner.h"
+#include "utils/ofUtils.h"
+#include "utils/ofFileUtils.h"
+#include "gl/ofGLProgrammableRenderer.h"
+#include "gl/ofGLRenderer.h"
+#include "math/ofVectorMath.h"
 #include <assert.h>
 // x11
 #include <X11/Xutil.h>

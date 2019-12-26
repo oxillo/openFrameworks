@@ -1,7 +1,7 @@
-#include "ofRectangle.h"
-#include "ofMath.h"
-#include "ofLog.h"
-#include "ofVectorMath.h"
+#include "types/ofRectangle.h"
+#include "math/ofMath.h"
+#include "utils/ofLog.h"
+#include "math/ofVectorMath.h"
 
 using namespace std;
 

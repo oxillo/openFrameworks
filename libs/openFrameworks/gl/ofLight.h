@@ -12,8 +12,8 @@
 
 #pragma once
 
-#include "ofNode.h"
-#include "ofColor.h"
+#include "3d/ofNode.h"
+#include "types/ofColor.h"
 
 class ofBaseGLRenderer;
 

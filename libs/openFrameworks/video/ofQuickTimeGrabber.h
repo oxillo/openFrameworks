@@ -1,13 +1,13 @@
 #pragma once
 
-#include "ofConstants.h"
+#include "utils/ofConstants.h"
 
 #if !defined(TARGET_LINUX) && !defined(MAC_OS_X_VERSION_10_7) && (!defined(MAC_OS_X_VERSION_10_12) || MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_12)
 
-	#include "ofQtUtils.h"
-	#include "ofTexture.h"
-	#include "ofBaseTypes.h"
-	#include "ofPixels.h"
+	#include "video/ofQtUtils.h"
+	#include "gl/ofTexture.h"
+	#include "types/ofBaseTypes.h"
+	#include "graphics/ofPixels.h"
 
 // todo:
 // 		QT - callback, via SGSetDataProc - couldn't get this to work yet

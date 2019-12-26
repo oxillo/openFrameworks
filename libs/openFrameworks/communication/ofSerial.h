@@ -1,7 +1,7 @@
 #pragma once
 
 #include <climits>
-#include "ofConstants.h"
+#include "utils/ofConstants.h"
 
 class ofBuffer;
 

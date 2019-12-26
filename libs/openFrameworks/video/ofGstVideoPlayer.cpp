@@ -5,12 +5,12 @@
  *      Author: arturo
  */
 
-#include "ofGstVideoPlayer.h"
+#include "video/ofGstVideoPlayer.h"
 #include <gst/gst.h>
 #include <gst/video/video.h>
 #include <gst/app/gstappsink.h>
-#include "ofConstants.h"
-#include "ofGstUtils.h"
+#include "utils/ofConstants.h"
+#include "video/ofGstUtils.h"
 
 using namespace std;
 

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "ofMesh.h"
-#include "ofNode.h"
+#include "3d/ofMesh.h"
+#include "3d/ofNode.h"
 #include <map>
 
 class ofTexture;

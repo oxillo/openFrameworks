@@ -1,9 +1,9 @@
 #pragma once
 
-#include "ofConstants.h"
-#include "ofEventUtils.h"
-#include "ofTimer.h"
-#include "ofFpsCounter.h"
+#include "utils/ofConstants.h"
+#include "events/ofEventUtils.h"
+#include "utils/ofTimer.h"
+#include "utils/ofFpsCounter.h"
 #include <set>
 #include "glm/vec2.hpp"
 

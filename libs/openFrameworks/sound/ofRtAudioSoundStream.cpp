@@ -1,8 +1,8 @@
-#include "ofRtAudioSoundStream.h"
-#include "ofMath.h"
-#include "ofUtils.h"
-#include "ofAppRunner.h"
-#include "ofLog.h"
+#include "sound/ofRtAudioSoundStream.h"
+#include "math/ofMath.h"
+#include "utils/ofUtils.h"
+#include "app/ofAppRunner.h"
+#include "utils/ofLog.h"
 #include "RtAudio.h"
 
 using namespace std;

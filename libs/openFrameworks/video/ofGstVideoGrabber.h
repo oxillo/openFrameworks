@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ofGstUtils.h"
+#include "video/ofGstUtils.h"
 
 
 struct ofGstFramerate{

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ofGstUtils.h"
+#include "video/ofGstUtils.h"
 
 
 class ofGstVideoPlayer: public ofBaseVideoPlayer, public ofGstAppSink{

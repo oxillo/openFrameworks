@@ -1,8 +1,8 @@
-#include "ofBufferObject.h"
-#include "ofConstants.h"
-#include "ofAppRunner.h"
-#include "ofPixels.h"
-#include "ofGLUtils.h"
+#include "gl/ofBufferObject.h"
+#include "utils/ofConstants.h"
+#include "app/ofAppRunner.h"
+#include "graphics/ofPixels.h"
+#include "gl/ofGLUtils.h"
 
 using namespace std;
 

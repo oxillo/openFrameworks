@@ -1,0 +1,23 @@
+Hi,
+
+We are trying to clean out the many issues that we have.
+Many versions of OF have been released since this was issued.
+
+Can you help us by checking if this issue is still present in the latest version ?
+
+In case of inactivity, we'll close this issue by end of january, 2020.
+
+Thanks
+
+=================================================
+
+Hi,
+
+We are trying to clean out the many issues that we have.
+Many versions of OF have been released since this was issued.
+
+Can you help us by checking if this feature is still requested for a next OF version ?
+
+In case of inactivity, we'll close this issue by end of january, 2020.
+
+Thanks

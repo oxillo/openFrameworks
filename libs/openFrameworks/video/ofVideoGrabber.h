@@ -1,38 +1,38 @@
 #pragma once
 
-#include "ofConstants.h"
-#include "ofTexture.h"
-#include "ofVideoBaseTypes.h"
-#include "ofPixels.h"
+#include "utils/ofConstants.h"
+#include "gl/ofTexture.h"
+#include "video/ofVideoBaseTypes.h"
+#include "graphics/ofPixels.h"
 
 
 #ifdef OF_VIDEO_CAPTURE_IOS
-	#include "ofxiOSVideoGrabber.h"
+	#include "video/ofxiOSVideoGrabber.h"
 	#define OF_VID_GRABBER_TYPE ofxiOSVideoGrabber
 #endif
 
 #ifdef OF_VIDEO_CAPTURE_QUICKTIME
-	#include "ofQuickTimeGrabber.h"
+	#include "video/ofQuickTimeGrabber.h"
 	#define OF_VID_GRABBER_TYPE ofQuickTimeGrabber
 #endif
 
 #ifdef OF_VIDEO_CAPTURE_QTKIT
-	#include "ofQTKitGrabber.h"
+	#include "video/ofQTKitGrabber.h"
 	#define OF_VID_GRABBER_TYPE ofQTKitGrabber
 #endif
 
 #ifdef OF_VIDEO_CAPTURE_AVF
-	#include "ofAVFoundationGrabber.h"
+	#include "video/ofAVFoundationGrabber.h"
 	#define OF_VID_GRABBER_TYPE ofAVFoundationGrabber
 #endif
 
 #ifdef OF_VIDEO_CAPTURE_DIRECTSHOW
-	#include "ofDirectShowGrabber.h"
+	#include "video/ofDirectShowGrabber.h"
 	#define OF_VID_GRABBER_TYPE ofDirectShowGrabber
 #endif
 
 #ifdef OF_VIDEO_CAPTURE_GSTREAMER
-	#include "ofGstVideoGrabber.h"
+	#include "video/ofGstVideoGrabber.h"
 	#define OF_VID_GRABBER_TYPE ofGstVideoGrabber
 #endif
 

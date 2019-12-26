@@ -6,13 +6,13 @@
 #if !defined(MAC_OS_X_VERSION_10_12) || MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_12
 #ifdef OF_VIDEO_PLAYER_QTKIT
 
-#include "ofConstants.h"
-#include "ofVideoBaseTypes.h"
-#include "ofPixels.h"
-#include "ofTexture.h"
+#include "utils/ofConstants.h"
+#include "video/ofVideoBaseTypes.h"
+#include "graphics/ofPixels.h"
+#include "gl/ofTexture.h"
 
 #ifdef __OBJC__
- #import "ofQTKitMovieRenderer.h"
+ #import "video/ofQTKitMovieRenderer.h"
 #endif
 
 // ofQTKitDecodeMode allows for highly efficient decoding of video

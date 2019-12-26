@@ -1,5 +1,5 @@
-#include "ofBaseApp.h"
-#include "ofEvents.h"
+#include "app/ofBaseApp.h"
+#include "events/ofEvents.h"
 
 ofBaseApp::ofBaseApp() {
 	mouseX = mouseY = 0;

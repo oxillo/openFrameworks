@@ -1,7 +1,7 @@
 #pragma once
 
 #include "json.hpp"
-#include "ofParameter.h"
+#include "types/ofParameter.h"
 
 // for convenience
 using ofJson = nlohmann::json;

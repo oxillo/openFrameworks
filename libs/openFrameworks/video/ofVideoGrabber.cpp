@@ -1,9 +1,9 @@
-#include "ofVideoGrabber.h"
-#include "ofUtils.h"
-#include "ofVideoBaseTypes.h"
-#include "ofConstants.h"
-#include "ofGLUtils.h"
-#include "ofAppRunner.h"
+#include "video/ofVideoGrabber.h"
+#include "utils/ofUtils.h"
+#include "video/ofVideoBaseTypes.h"
+#include "utils/ofConstants.h"
+#include "gl/ofGLUtils.h"
+#include "app/ofAppRunner.h"
 
 using namespace std;
 

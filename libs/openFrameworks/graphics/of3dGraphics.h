@@ -9,8 +9,8 @@
 #pragma once
 
 
-#include "ofConstants.h"
-#include "of3dPrimitives.h"
+#include "utils/ofConstants.h"
+#include "3d/of3dPrimitives.h"
 
 
 /// \section Planes

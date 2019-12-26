@@ -1,7 +1,7 @@
 #pragma once
 
-#include "ofConstants.h"
-#include "ofGraphicsBaseTypes.h"
+#include "utils/ofConstants.h"
+#include "graphics/ofGraphicsBaseTypes.h"
 
 
 typedef struct TESStesselator TESStesselator;

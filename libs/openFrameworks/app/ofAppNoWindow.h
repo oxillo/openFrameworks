@@ -1,7 +1,7 @@
 #pragma once
 
-#include "ofConstants.h"
-#include "ofAppBaseWindow.h"
+#include "utils/ofConstants.h"
+#include "app/ofAppBaseWindow.h"
 
 class ofBaseApp;
 class ofCoreEvents;

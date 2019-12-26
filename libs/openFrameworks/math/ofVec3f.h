@@ -1,9 +1,9 @@
 #pragma once
 
-#include "ofConstants.h"
-#include "ofVec2f.h"
-#include "ofVec4f.h"
-#include "ofMathConstants.h"
+#include "utils/ofConstants.h"
+#include "math/ofVec2f.h"
+#include "math/ofVec4f.h"
+#include "math/ofMathConstants.h"
 #include "glm/vec3.hpp"
 
 #include <cmath>

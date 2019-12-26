@@ -2,8 +2,8 @@
 
 
 
-#include "ofMatrix4x4.h"
-#include "ofConstants.h"
+#include "math/ofMatrix4x4.h"
+#include "utils/ofConstants.h"
 
 #include <limits>
 #include <stdlib.h>

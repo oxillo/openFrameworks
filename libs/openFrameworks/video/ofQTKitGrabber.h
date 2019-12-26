@@ -2,10 +2,10 @@
 // openFrameworks is released under the MIT License. See libs/_Licence.txt
 #pragma once
 
-#include "ofConstants.h"
-#include "ofEvents.h"
-#include "ofVideoBaseTypes.h"
-#include "ofPixels.h"
+#include "utils/ofConstants.h"
+#include "events/ofEvents.h"
+#include "video/ofVideoBaseTypes.h"
+#include "graphics/ofPixels.h"
 
 #ifdef OF_VIDEO_CAPTURE_QTKIT
 

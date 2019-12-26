@@ -1,6 +1,6 @@
-#include "ofLog.h"
-#include "ofConstants.h"
-#include <ofUtils.h>
+#include "utils/ofLog.h"
+#include "utils/ofConstants.h"
+#include "utils/ofUtils.h"
 #include <map>
 #include <cstdarg>
 #ifdef TARGET_ANDROID

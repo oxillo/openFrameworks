@@ -1,8 +1,8 @@
 #pragma once
 
-#include "ofConstants.h"
-#include "ofGraphicsBaseTypes.h"
-#include "ofRectangle.h"
+#include "utils/ofConstants.h"
+#include "graphics/ofGraphicsBaseTypes.h"
+#include "types/ofRectangle.h"
 #include "glm/fwd.hpp"
 //#include "ofUtils.h"
 

@@ -3,8 +3,8 @@
 class ofVec3f;
 class ofVec4f;
 
-#include "ofConstants.h"
-#include "ofMathConstants.h"
+#include "utils/ofConstants.h"
+#include "math/ofMathConstants.h"
 #include "glm/vec2.hpp"
 #include "glm/fwd.hpp"
 #include <cmath>

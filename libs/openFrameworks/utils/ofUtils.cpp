@@ -1,13 +1,13 @@
-#include "ofUtils.h"
-#include "ofImage.h"
-#include "ofFileUtils.h"
-#include "ofLog.h"
-#include "ofAppBaseWindow.h"
-#include "ofMainLoop.h"
-#include "ofAppRunner.h"
-#include "ofEvents.h"
-#include "ofGLUtils.h"
-#include "ofMath.h"
+#include "utils/ofUtils.h"
+#include "graphics/ofImage.h"
+#include "utils/ofFileUtils.h"
+#include "utils/ofLog.h"
+#include "app/ofAppBaseWindow.h"
+#include "app/ofMainLoop.h"
+#include "app/ofAppRunner.h"
+#include "events/ofEvents.h"
+#include "gl/ofGLUtils.h"
+#include "math/ofMath.h"
 
 #include <chrono>
 #include <numeric>

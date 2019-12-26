@@ -1,7 +1,7 @@
-#include "ofEvents.h"
-#include "ofAppRunner.h"
-#include "ofAppBaseWindow.h"
-#include "ofLog.h"
+#include "events/ofEvents.h"
+#include "app/ofAppRunner.h"
+#include "app/ofAppBaseWindow.h"
+#include "utils/ofLog.h"
 
 using namespace std;
 
@@ -280,7 +280,7 @@ bool ofCoreEvents::notifySetup(){
 	return ofNotifyEvent( setup, voidEventArgs );
 }
 
-#include "ofGraphics.h"
+#include "graphics/ofGraphics.h"
 //------------------------------------------
 bool ofCoreEvents::notifyUpdate(){
 	return ofNotifyEvent( update, voidEventArgs );

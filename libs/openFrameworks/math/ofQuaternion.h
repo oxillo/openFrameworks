@@ -9,9 +9,9 @@
  */
 
 #pragma once
-#include "ofConstants.h"
-#include "ofVec3f.h"
-#include "ofVec4f.h"
+#include "utils/ofConstants.h"
+#include "math/ofVec3f.h"
+#include "math/ofVec4f.h"
 #include <cmath>
 
 #if (_MSC_VER)       
