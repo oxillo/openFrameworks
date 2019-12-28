@@ -517,7 +517,7 @@ unsigned int ofxAssimpModelLoader::getAnimationCount(){
 }
 
 ofxAssimpAnimation & ofxAssimpModelLoader::getAnimation(int animationIndex) {
-    animationIndex = ofClamp(animationIndex, 0, animations.size()-1);
+    animationIndex = ofClamp<int>(animationIndex, 0, animations.size()-1);
     return animations[animationIndex];
 }
 
@@ -562,7 +562,7 @@ void ofxAssimpModelLoader::setAnimation(int animationIndex) {
     if(!hasAnimations()) {
         return;
     }
-    currentAnimation = ofClamp(animationIndex, 0, getAnimationCount() - 1);
+    currentAnimation = ofClamp<int>(animationIndex, 0, getAnimationCount() - 1);
 }
 
 // DEPRECATED.
@@ -570,7 +570,7 @@ void ofxAssimpModelLoader::setNormalizedTime(float time) {
     if(!hasAnimations()) {
         return;
 	}
-	currentAnimation = ofClamp(currentAnimation, 0, getAnimationCount() - 1);
+	currentAnimation = ofClamp<int>(currentAnimation, 0, getAnimationCount() - 1);
     ofxAssimpAnimation & animation = animations[currentAnimation];
 	float realT = ofMap(time, 0.0, 1.0, 0.0, animation.getDurationInSeconds(), false);
 	animation.setPosition(realT);
@@ -582,7 +582,7 @@ void ofxAssimpModelLoader::setTime(float time) {
     if(!hasAnimations()) {
         return;
 	}
-	currentAnimation = ofClamp(currentAnimation, 0, getAnimationCount() - 1);
+	currentAnimation = ofClamp<int>(currentAnimation, 0, getAnimationCount() - 1);
     ofxAssimpAnimation & animation = animations[currentAnimation];
     animation.setPosition(time);
     update();
@@ -593,7 +593,7 @@ float ofxAssimpModelLoader::getDuration(int animationIndex) {
     if(!hasAnimations()) {
         return 0;
     }
-    animationIndex = ofClamp(animationIndex, 0, getAnimationCount() - 1);
+    animationIndex = ofClamp<int>(animationIndex, 0, getAnimationCount() - 1);
     float duration = animations[animationIndex].getDurationInSeconds();
     return duration;
 }
@@ -608,7 +608,7 @@ unsigned int ofxAssimpModelLoader::getMeshCount() {
 }
 
 ofxAssimpMeshHelper & ofxAssimpModelLoader::getMeshHelper(int meshIndex) {
-    meshIndex = ofClamp(meshIndex, 0, modelMeshes.size()-1);
+    meshIndex = ofClamp<int>(meshIndex, 0, modelMeshes.size()-1);
     return modelMeshes[meshIndex];
 }
 

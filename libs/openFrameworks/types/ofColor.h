@@ -5,6 +5,7 @@
 #include <limits>
 #include <iostream>
 #include <typeinfo>
+#include "math/ofMath.h"
 
 /// \class ofColor_
 ///
@@ -662,7 +663,7 @@ void ofColor_<PixelType>::copyFrom(const ofColor_<SrcType> & mom){
 	if(typeid(SrcType) == typeid(float) || typeid(SrcType) == typeid(double)) {
 		// coming from float we need a special case to clamp the values
 		for(int i = 0; i < 4; i++){
-			v[i] = glm::clamp(float(mom[i]), 0.f, 1.f) * factor;
+			v[i] = ofClamp(float(mom[i]), 0.f, 1.f) * factor;
 		}
 	} else{
 		// everything else is a straight scaling

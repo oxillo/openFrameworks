@@ -1,6 +1,6 @@
 #include "sound/ofSoundPlayer.h"
 #include "utils/ofLog.h"
-#include "glm/common.hpp"
+#include "math/ofMath.h" // for ofClamp
 
 using namespace std;
 
@@ -124,7 +124,7 @@ void ofSoundPlayer::setVolume(float vol){
 //--------------------------------------------------------------------
 void ofSoundPlayer::setPan(float pan){
 	if( player ){
-		player->setPan(glm::clamp(pan,-1.0f,1.0f));
+		player->setPan(ofClamp(pan,-1.0f,1.0f));
 	}
 }
 

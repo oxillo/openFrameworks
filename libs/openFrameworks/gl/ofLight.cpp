@@ -10,6 +10,7 @@
 
 #include "gl/ofLight.h"
 #include "utils/ofConstants.h"
+#include "math/ofMath.h"
 #include "3d/of3dUtils.h"
 #include "gl/ofGLBaseTypes.h"
 #include "gl/ofGLUtils.h"
@@ -196,7 +197,7 @@ bool ofLight::getIsSpotlight() const{
 
 //----------------------------------------
 void ofLight::setSpotlightCutOff( float spotCutOff ) {
-    data->spotCutOff = CLAMP(spotCutOff, 0, 90);
+    data->spotCutOff = ofClamp(spotCutOff, 0.f, 90.f);
 	if ( auto r = data->rendererP.lock() ){
 		r->setLightSpotlightCutOff( data->glIndex, spotCutOff );
 	}
@@ -212,7 +213,7 @@ float ofLight::getSpotlightCutOff() const{
 
 //----------------------------------------
 void ofLight::setSpotConcentration( float exponent ) {
-    data->exponent = CLAMP(exponent, 0, 128);
+    data->exponent = ofClamp(exponent, 0.f, 128.f);
 	if ( auto r = data->rendererP.lock() ){
 		r->setLightSpotConcentration( data->glIndex, exponent );
 	}

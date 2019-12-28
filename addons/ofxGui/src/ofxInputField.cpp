@@ -239,8 +239,8 @@ void ofxInputField<Type>::calculateSelectionArea(int selectIdx1, int selectIdx2)
 	auto last = std::max(selectStartPos, selectEndPos);
 	auto substrLength = ofUTF8Length(visibleInput);
 	float preSelectWidth = 0;
-	auto substrFirst = ofClamp(first-visibleInputStart, 0, substrLength);
-	auto substrLast = ofClamp(last-visibleInputStart, 0, substrLength);
+	auto substrFirst = ofClamp<int>(first-visibleInputStart, 0, substrLength);
+	auto substrLast = ofClamp<int>(last-visibleInputStart, 0, substrLength);
 	if(first > visibleInputStart){
 		std::string preSelectStr = ofUTF8Substring(visibleInput, 0, substrFirst);
 		preSelectWidth = getTextBoundingBox(preSelectStr,0,0).width;
@@ -402,7 +402,7 @@ bool ofxInputField<Type>::mouseDragged(ofMouseEventArgs & mouse){
 			cursorX = mouse.x - (b.x + textPadding);
 		}
 		auto cursorPos = round(visibleInputStart + ofMap(cursorX, 0, inputWidth, 0, ofUTF8Length(visibleInput)));
-		cursorPos = ofClamp(cursorPos, 0, ofUTF8Length(input));
+		cursorPos = ofClamp<int>(cursorPos, 0, ofUTF8Length(input));
 		calculateSelectionArea(mousePressedPos, cursorPos);
 		setNeedsRedraw();
 	}
@@ -428,7 +428,7 @@ bool ofxInputField<Type>::mouseScrolled(ofMouseEventArgs & mouse){
 			if(mouse.scrollY>0 || mouse.scrollY<0){
 				double range = getRange(value.getMin(), value.getMax(), b.width);
 				Type newValue = value + ofMap(mouse.scrollY,-1,1,-range, range);
-				newValue = ofClamp(newValue,value.getMin(),value.getMax());
+				newValue = ofClamp<float>(newValue,value.getMin(),value.getMax());
 				value = newValue;
 			}
 		}

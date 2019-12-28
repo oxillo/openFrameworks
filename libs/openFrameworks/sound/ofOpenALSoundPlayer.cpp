@@ -4,7 +4,7 @@
 
 #include "utils/ofConstants.h"
 #include "glm/gtc/constants.hpp"
-#include "glm/common.hpp"
+#include "math/ofMath.h" //for ofClamp
 #include "utils/ofLog.h"
 #include "events/ofEvents.h"
 #include <sndfile.h>
@@ -827,7 +827,7 @@ int ofOpenALSoundPlayer::getPositionMS() const{
 //------------------------------------------------------------
 void ofOpenALSoundPlayer::setPan(float p){
 	if(sources.empty()) return;
-	p = glm::clamp(p, -1.f, 1.f);
+	p = ofClamp(p, -1.f, 1.f);
 	pan = p;
 	if(channels==1){
 		float pos[3] = {p,0,0};

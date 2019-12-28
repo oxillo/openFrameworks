@@ -630,7 +630,7 @@ bool ofxKinect::setCameraTiltAngle(float angleInDegrees) {
 		return false;
 	}
 
-	targetTiltAngleDeg = ofClamp(angleInDegrees, -30, 30);
+	targetTiltAngleDeg = ofClamp(angleInDegrees, -30.f, 30.f);
 	bTiltNeedsApplying = true;
 
 	return true;

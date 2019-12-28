@@ -202,7 +202,7 @@ void ofxOpenALSoundPlayer::setPan(float _pan) {
 	if(iAmAnMp3)
 		cerr<<"error, cannot set pan on mp3s in openAL"<<endl;
 	else {
-		float locX = ofClamp(_pan, -1, 1);
+		float locX = ofClamp(_pan, -1.f, 1.f);
 		setLocation(locX, location.y, location.z);
 	}
 	pan = _pan;
@@ -564,7 +564,7 @@ void ofxOpenALSoundPlayer::setLocation(float x, float y, float z) {
 	else
 	{
 		location = {x,y,z};
-		pan = ofClamp(x,-1,1); // assuming x clamp pan to -1..1
+		pan = ofClamp(x,-1.f,1.f); // assuming x clamp pan to -1..1
 		SoundEngine_SetEffectLocation(myPrimedId, x, y, z);
 	}
 }

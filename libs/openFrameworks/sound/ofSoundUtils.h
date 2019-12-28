@@ -12,7 +12,7 @@
 #include "sound/ofSoundBuffer.h"
 
 inline void ofStereoVolumes(float volume, float pan, float & left, float & right){
-	pan = ofClamp(pan, -1, 1);
+	pan = ofClamp(pan, -1.f, 1.f);
 	// calculates left/right volumes from pan-value (constant panning law)
 	// see: Curtis Roads: Computer Music Tutorial p 460
 	// thanks to jasch

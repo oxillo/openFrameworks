@@ -182,8 +182,13 @@ bool ofxSlider<Type>::mouseScrolled(ofMouseEventArgs & args){
 				if(args.scrollY>0 || args.scrollY<0){
 					double range = getRange(value.getMin(),value.getMax(),b.width);
 					Type newValue = value + ofMap(args.scrollY,-1,1,-range, range);
-					newValue = ofClamp(newValue,value.getMin(),value.getMax());
-					value = newValue;
+					if( newValue < value.getMin() ){
+						value = value.getMin();
+					}else if( newValue > value.getMax() ){
+						value = value.getMax();
+					}else{
+						value = newValue;
+					} 
 				}
 				return true;
 			}else{

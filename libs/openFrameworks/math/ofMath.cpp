@@ -73,7 +73,7 @@ float ofRandomuf() {
 
 //--------------------------------------------------
 float ofNormalize(float value, float min, float max){
-	return ofClamp( (value - min) / (max - min), 0, 1);
+	return ofClamp( (value - min) / (max - min), 0.f, 1.f);
 }
 
 //check for division by zero???
@@ -120,9 +120,17 @@ float ofDistSquared(float x1, float y1, float z1, float x2, float y2, float z2) 
 }
 
 //--------------------------------------------------
-float ofClamp(float value, float min, float max) {
+template<typename Type>
+typename std::enable_if<std::is_arithmetic<Type>::value, Type>::type ofClamp(Type value, Type min, Type max){
 	return value < min ? min : value > max ? max : value;
 }
+template float ofClamp<float>(float value, float min, float max);
+template double ofClamp<double>(double value, double min, double max);
+template unsigned char ofClamp<unsigned char>(unsigned char value, unsigned char min, unsigned char max);
+template unsigned short ofClamp<unsigned short>(unsigned short value, unsigned short min, unsigned short max);
+template int ofClamp<int>(int value, int min, int max);
+template std::size_t ofClamp<std::size_t>(std::size_t value, std::size_t min, std::size_t max);
+
 
 //--------------------------------------------------
 int ofSign(float n) {

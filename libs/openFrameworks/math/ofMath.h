@@ -153,7 +153,7 @@ float ofMap(float value, float inputMin, float inputMax, float outputMin, float 
 /// 
 /// Restricts a value to be within a specified range defined by values min and
 /// max. If the value is min <= value <= max, returns value.  If the value is
-/// greater than max, return max; if the value is less than min, return min.
+/// greater than max, return max; if the value is less than min, retuarn min.
 /// Otherwise, return the value unchanged.
 /// 
 /// ~~~~{.cpp}
@@ -168,7 +168,15 @@ float ofMap(float value, float inputMin, float inputMax, float outputMin, float 
 /// \param min The lower bound of the range.
 /// \param max The upper bound of the range.
 /// \returns a floating point number in the range [min, max].
-float ofClamp(float value, float min, float max);
+template<typename Type>
+typename std::enable_if<std::is_arithmetic<Type>::value, Type>::type ofClamp(Type value, Type min, Type max);
+
+extern template float ofClamp<float>(float value, float min, float max);
+extern template double ofClamp<double>(double value, double min, double max);
+extern template unsigned char ofClamp<unsigned char>(unsigned char value, unsigned char min, unsigned char max);
+extern template unsigned short ofClamp<unsigned short>(unsigned short value, unsigned short min, unsigned short max);
+extern template int ofClamp<int>(int value, int min, int max);
+extern template std::size_t ofClamp<std::size_t>(std::size_t value, std::size_t min, std::size_t max);
 
 /// \brief Determine if a number is inside of a giv(float)(en range.
 /// \param t The value to test.

@@ -324,7 +324,7 @@ int ofFmodSoundPlayer::getPositionMS() const{
 //------------------------------------------------------------
 void ofFmodSoundPlayer::setPan(float p){
 	pan = p;
-	p = ofClamp(p, -1, 1);
+	p = ofClamp(p, -1.f, 1.f);
 	if (isPlaying()){
 		FMOD_Channel_SetPan(channel,p);
 	}

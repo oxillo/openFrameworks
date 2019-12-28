@@ -1706,7 +1706,7 @@ void ofAppEGLWindow::processInput(int fd, const char * node){
 						mouseEvent.x = amount * (float)currentWindowRect.width / (float)mouseAbsXMax;
 					}
 
-					mouseEvent.x = ofClamp(mouseEvent.x, 0, currentWindowRect.width);
+					mouseEvent.x = ofClamp<float>(mouseEvent.x, 0, currentWindowRect.width);
 					axisValuePending = true;
 					break;
 				case 1:
@@ -1716,7 +1716,7 @@ void ofAppEGLWindow::processInput(int fd, const char * node){
 						mouseEvent.y = amount * (float)currentWindowRect.height / (float)mouseAbsYMax;
 					}
 
-					mouseEvent.y = ofClamp(mouseEvent.y, 0, currentWindowRect.height);
+					mouseEvent.y = ofClamp<float>(mouseEvent.y, 0, currentWindowRect.height);
 					axisValuePending = true;
 					break;
 				default:
@@ -1885,7 +1885,7 @@ bool ofAppEGLWindow::createRPiNativeWindow(const ofRectangle& requestedWindowRec
 
 	memset(&dispman_alpha, 0x0, sizeof(VC_DISPMANX_ALPHA_T)); // zero dispman_alpha
 	dispman_alpha.flags = DISPMANX_FLAGS_ALPHA_FIXED_ALL_PIXELS;
-	dispman_alpha.opacity = ofClamp(settings.eglWindowOpacity,0,255);
+	dispman_alpha.opacity = ofClamp<int>(settings.eglWindowOpacity,0,255);
 	dispman_alpha.mask = 0;
 
 	memset(&dispman_clamp, 0x0, sizeof(DISPMANX_CLAMP_T));
