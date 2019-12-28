@@ -8,9 +8,9 @@
 #if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
 
 #include "ofxiOSExtras.h"
-#include "ofAppRunner.h"
-#include "ofLog.h"
-#include "ofPixels.h"
+#include "app/ofAppRunner.h"
+#include "utils/ofLog.h"
+#include "graphics/ofPixels.h"
 
 #define IS_IOS_7_OR_LATER    ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
 #define IS_IOS_6_OR_LATER    ([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0)

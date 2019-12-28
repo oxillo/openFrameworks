@@ -31,9 +31,9 @@
 
 #pragma once
 #include <TargetConditionals.h>
-#include "ofAppBaseWindow.h"
+#include "app/ofAppBaseWindow.h"
 #include "ofxiOSConstants.h"
-#include "ofEvents.h"
+#include "events/ofEvents.h"
 
 class ofiOSWindowSettings: public ofGLESWindowSettings{
 public:

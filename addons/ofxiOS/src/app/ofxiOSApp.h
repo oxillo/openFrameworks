@@ -9,9 +9,9 @@
 
 #pragma once
 
-#include "ofBaseApp.h"
+#include "app/ofBaseApp.h"
 #include "ofxiOSAlerts.h"
-#include "ofEvents.h"
+#include "events/ofEvents.h"
 
 class ofxiOSApp : public ofBaseApp, public ofxiOSAlertsListener {
 	

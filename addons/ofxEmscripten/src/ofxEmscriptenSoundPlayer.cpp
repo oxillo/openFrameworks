@@ -7,7 +7,7 @@
 
 #include "ofxEmscriptenSoundPlayer.h"
 #include "html5audio.h"
-#include "ofUtils.h"
+#include "utils/ofUtils.h"
 
 using namespace std;
 

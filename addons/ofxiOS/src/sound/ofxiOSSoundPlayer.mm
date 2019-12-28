@@ -5,8 +5,8 @@
 //
 
 #include "ofxiOSSoundPlayer.h"
-#include "ofUtils.h"
-#include "ofLog.h"
+#include "utils/ofUtils.h"
+#include "utils/ofLog.h"
 #import "AVSoundPlayer.h"
 
 using namespace std;

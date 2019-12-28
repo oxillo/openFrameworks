@@ -1,6 +1,7 @@
 #pragma once
 
 #include "utils/ofConstants.h"
+#include <string>
 #include <functional>
 #include <vector>
 

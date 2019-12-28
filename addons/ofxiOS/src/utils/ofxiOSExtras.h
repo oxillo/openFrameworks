@@ -40,7 +40,8 @@
 #include <TargetConditionals.h>
 
 #include "ofxiOSConstants.h"
-#include "ofConstants.h"
+#include "utils/ofConstants.h"
+#include <string>
 
 enum ofOrientation: short;
 

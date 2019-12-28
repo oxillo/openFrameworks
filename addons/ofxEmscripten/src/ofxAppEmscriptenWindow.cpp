@@ -6,9 +6,9 @@
  */
 
 #include "ofxAppEmscriptenWindow.h"
-#include "ofLog.h"
-#include "ofEvents.h"
-#include "ofGLProgrammableRenderer.h"
+#include "utils/ofLog.h"
+#include "events/ofEvents.h"
+#include "gl/ofGLProgrammableRenderer.h"
 
 using namespace std;
 

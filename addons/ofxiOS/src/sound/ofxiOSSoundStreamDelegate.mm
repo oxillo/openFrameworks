@@ -5,8 +5,8 @@
 //
 
 #include "ofxiOSSoundStreamDelegate.h"
-#include "ofLog.h"
-#include "ofSoundBuffer.h"
+#include "utils/ofLog.h"
+#include "sound/ofSoundBuffer.h"
 
 @interface ofxiOSSoundStreamDelegate() {
 	std::function<void(ofSoundBuffer &)> inCallback;

@@ -3,6 +3,7 @@
 #ifndef TARGET_NO_THREADS
 
 #include <atomic>
+#include <string>
 #include <thread>
 #include <mutex>
 #include <condition_variable>

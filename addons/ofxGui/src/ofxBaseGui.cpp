@@ -1,8 +1,8 @@
 #include "ofxBaseGui.h"
-#include "ofImage.h"
-#include "ofBitmapFont.h"
-#include "ofXml.h"
-#include "ofJson.h"
+#include "graphics/ofImage.h"
+#include "graphics/ofBitmapFont.h"
+#include "utils/ofXml.h"
+#include "utils/ofJson.h"
 using namespace std;
 
 

@@ -1,5 +1,5 @@
 #include "ofxSlider.h"
-#include "ofGraphics.h"
+#include "graphics/ofGraphics.h"
 using namespace std;
 
 namespace{

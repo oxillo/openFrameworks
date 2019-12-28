@@ -1,8 +1,8 @@
 #pragma once
 
-#include "ofConstants.h"
-#include "ofParameter.h"
-#include "ofParameterGroup.h"
+#include "utils/ofConstants.h"
+#include "types/ofParameter.h"
+#include "types/ofParameterGroup.h"
 
 #include <numeric>
 

@@ -8,7 +8,7 @@
 #include <jni.h>
 #include "ofxAccelerometer.h"
 #include "ofxAndroidUtils.h"
-#include "ofLog.h"
+#include "utils/ofLog.h"
 
 extern "C"{
 void

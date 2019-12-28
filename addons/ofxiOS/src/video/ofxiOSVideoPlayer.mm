@@ -2,8 +2,8 @@
 #include "ofxiOSExtras.h"
 #include "ofxiOSEAGLView.h"
 #import "AVFoundationVideoPlayer.h"
-#include "ofGLUtils.h"
-#include "ofMath.h"
+#include "gl/ofGLUtils.h"
+#include "math/ofMath.h"
 
 using namespace std;
 

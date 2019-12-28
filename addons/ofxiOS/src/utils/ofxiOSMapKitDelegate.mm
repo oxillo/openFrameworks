@@ -34,7 +34,7 @@
 
 #include "ofxiOSMapKitDelegate.h"
 #include "ofxiOSMapKit.h"
-#include "ofLog.h"
+#include "utils/ofLog.h"
 
 @implementation ofxiOSMapKitDelegate
 

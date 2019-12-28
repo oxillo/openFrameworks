@@ -7,8 +7,8 @@
 #include "UdpSocket.h"
 
 #include "ofxOscBundle.h"
-#include "ofParameter.h"
-#include "ofParameterGroup.h"
+#include "types/ofParameter.h"
+#include "types/ofParameterGroup.h"
 
 /// \struct ofxOscSenderSettings
 /// \brief OSC message sender settings

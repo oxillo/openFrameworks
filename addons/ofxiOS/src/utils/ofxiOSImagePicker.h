@@ -12,7 +12,7 @@
 #if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
 
 #import <UIKit/UIKit.h>
-#include "ofPixels.h"
+#include "graphics/ofPixels.h"
 
 #define OFX_IMG_PICKER_UP 1
 #define OFX_IMG_PICKER_DOWN 2

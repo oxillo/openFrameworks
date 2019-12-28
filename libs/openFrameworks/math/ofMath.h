@@ -2,6 +2,7 @@
 
 #include "utils/ofConstants.h"
 #include <cmath>
+#include <type_traits>
 #include <glm/gtc/constants.hpp>
 #include <glm/fwd.hpp>
 

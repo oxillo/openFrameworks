@@ -4,7 +4,7 @@
 #include "utils/ofConstants.h"
 #include <limits>
 #include <iostream>
-#include "glm/common.hpp"
+#include <typeinfo>
 
 /// \class ofColor_
 ///

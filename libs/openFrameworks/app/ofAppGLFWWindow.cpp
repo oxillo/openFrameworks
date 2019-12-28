@@ -12,7 +12,7 @@
 #include "GLFW/glfw3.h"
 
 #ifdef TARGET_LINUX
-    #include "graphics/ofIcon.h"
+    #include "app/ofIcon.h"
     #include "graphics/ofImage.h"
     #define GLFW_EXPOSE_NATIVE_X11
     #ifndef TARGET_OPENGLES

@@ -7,7 +7,7 @@
 
 #include "ofxAndroidVibrator.h"
 #include "ofxAndroidUtils.h"
-#include "ofLog.h"
+#include "utils/ofLog.h"
 #include <jni.h>
 
 using namespace std;

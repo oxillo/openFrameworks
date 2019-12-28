@@ -2,8 +2,8 @@
 // copyright (c) Damian Stewart 2007-2009
 #pragma once
 
-#include "ofConstants.h"
-#include "ofFileUtils.h"
+#include "utils/ofConstants.h"
+#include "utils/ofFileUtils.h"
 
 /// OSC argument type enum values
 ///

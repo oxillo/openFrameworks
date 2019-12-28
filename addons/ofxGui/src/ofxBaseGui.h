@@ -1,9 +1,9 @@
 #pragma once
 
-#include "ofConstants.h"
-#include "ofParameter.h"
-#include "ofTrueTypeFont.h"
-#include "ofBitmapFont.h"
+#include "utils/ofConstants.h"
+#include "types/ofParameter.h"
+#include "graphics/ofTrueTypeFont.h"
+#include "graphics/ofBitmapFont.h"
 
 class ofxBaseGui {
 	public:

@@ -1,10 +1,10 @@
 #pragma once
 
-#include "ofConstants.h"
+#include "utils/ofConstants.h"
 #include "ofxTCPManager.h"
 #include "ofxTCPSettings.h"
-#include "ofFileUtils.h"
-#include "ofTypes.h"
+#include "utils/ofFileUtils.h"
+#include "types/ofTypes.h"
 
 #define TCP_MAX_MSG_SIZE 512
 //#define STR_END_MSG "[/TCP]"

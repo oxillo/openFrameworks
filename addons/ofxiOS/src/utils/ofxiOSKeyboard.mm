@@ -10,8 +10,8 @@
 #include "ofxiOSKeyboard.h"
 #include "ofxiOSExtras.h"
 #include "ofAppiOSWindow.h"
-#include "ofAppRunner.h"
-#include "ofLog.h"
+#include "app/ofAppRunner.h"
+#include "utils/ofLog.h"
 
 using namespace std;
 

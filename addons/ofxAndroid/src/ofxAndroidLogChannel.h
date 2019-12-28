@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include "ofLog.h"
+#include "utils/ofLog.h"
 
 class ofxAndroidLogChannel: public ofBaseLoggerChannel{
 public:

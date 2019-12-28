@@ -7,7 +7,7 @@
 //
 
 #include "ofxColorPicker.h"
-#include "ofGraphics.h"
+#include "graphics/ofGraphics.h"
 
 
 namespace {
@@ -201,8 +201,8 @@ ofMesh ofxColorPicker_<ColorType>::getColorPoint(){
 	colorPoint.x += x;
 	colorPoint.y += y;
 
-	colorPoint.x = ofClamp( colorPoint.x, x, x + w );
-	colorPoint.y = ofClamp( colorPoint.y, y, y + h );
+	colorPoint.x = ofClamp<float>( colorPoint.x, x, x + w );
+	colorPoint.y = ofClamp<float>( colorPoint.y, y, y + h );
 
 	ofPolyline circle;
 	circle.arc(glm::vec3(0), 1, 1, 0, 360, true, 20);

@@ -7,8 +7,8 @@
 
 #include "ofxEmscriptenSoundStream.h"
 #include "html5audio.h"
-#include "ofBaseApp.h"
-#include "ofLog.h"
+#include "app/ofBaseApp.h"
+#include "utils/ofLog.h"
 
 using namespace std;
 

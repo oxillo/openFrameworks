@@ -8,7 +8,7 @@
 #pragma once
 
 #include <cerrno>
-#include "ofConstants.h"
+#include "utils/ofConstants.h"
 
 
 #ifdef TARGET_WIN32

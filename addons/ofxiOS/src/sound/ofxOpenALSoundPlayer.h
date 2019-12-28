@@ -38,8 +38,8 @@
 
 
 #include "SoundEngine.h"
-#include "ofSoundBaseTypes.h"
-#include "ofTypes.h"
+#include "sound/ofSoundBaseTypes.h"
+#include "types/ofTypes.h"
 #include "glm/vec3.hpp"
 
 //globals

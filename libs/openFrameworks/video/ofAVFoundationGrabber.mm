@@ -5,7 +5,7 @@
 #include "ofAVFoundationGrabber.h"
 #include "math/ofVec2f.h"
 #include "types/ofRectangle.h"
-#include "utils/ofGLUtils.h"
+#include "gl/ofGLUtils.h"
 
 #ifdef OF_VIDEO_CAPTURE_AVF
 

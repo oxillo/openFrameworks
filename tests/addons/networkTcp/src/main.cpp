@@ -1,5 +1,5 @@
 #include "ofMain.h"
-#include "ofAppNoWindow.h"
+#include "app/ofAppNoWindow.h"
 #include "ofxUnitTests.h"
 #include "ofxNetwork.h"
 

@@ -7,8 +7,8 @@
 
 #pragma once
 
-#include "ofConstants.h"
-#include "ofTexture.h"
+#include "utils/ofConstants.h"
+#include "gl/ofTexture.h"
 
 class ofxAssimpTexture {
 

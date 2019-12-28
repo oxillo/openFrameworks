@@ -1,7 +1,7 @@
 #pragma once
 
-#include "ofConstants.h"
-#include "ofThread.h"
+#include "utils/ofConstants.h"
+#include "utils/ofThread.h"
 #include "ofxTCPManager.h"
 #include "ofxTCPSettings.h"
 #include <map>

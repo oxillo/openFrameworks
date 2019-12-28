@@ -9,16 +9,16 @@
 
 #include <jni.h>
 #include <queue>
-#include "ofGraphics.h"
-#include "ofAppRunner.h"
-#include "ofUtils.h"
+#include "graphics/ofGraphics.h"
+#include "app/ofAppRunner.h"
+#include "utils/ofUtils.h"
 #include "ofxAndroidApp.h"
 #include "ofxAndroidUtils.h"
 #include "ofxAccelerometer.h"
 #include <android/log.h>
-#include "ofFileUtils.h"
-#include "ofGLProgrammableRenderer.h"
-#include "ofGLRenderer.h"
+#include "utils/ofFileUtils.h"
+#include "gl/ofGLProgrammableRenderer.h"
+#include "gl/ofGLRenderer.h"
 using namespace std;
 
 static bool stopped=true;

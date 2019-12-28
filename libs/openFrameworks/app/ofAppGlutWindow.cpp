@@ -21,7 +21,7 @@
 #endif
 #ifdef TARGET_LINUX
 	#include <GL/glut.h>
-	#include "graphics/ofIcon.h"
+	#include "app/ofIcon.h"
 	#include "graphics/ofImage.h"
 	#include <X11/Xatom.h>
 	#include <GL/freeglut_ext.h>

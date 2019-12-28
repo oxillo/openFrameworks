@@ -6,7 +6,7 @@
 //
 
 #include "ofxAssimpTexture.h"
-#include "ofConstants.h"
+#include "utils/ofConstants.h"
 
 using namespace std;
 

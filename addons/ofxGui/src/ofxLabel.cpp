@@ -1,5 +1,5 @@
 #include "ofxLabel.h"
-#include "ofGraphics.h"
+#include "graphics/ofGraphics.h"
 using namespace std;
 
 ofxLabel::ofxLabel(ofParameter<string> _label, float width, float height){

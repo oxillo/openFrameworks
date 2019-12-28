@@ -1,6 +1,6 @@
 #include "ofxNetworkUtils.h"
-#include "ofLog.h"
-#include "ofUtils.h"
+#include "utils/ofLog.h"
+#include "utils/ofUtils.h"
 
 
 

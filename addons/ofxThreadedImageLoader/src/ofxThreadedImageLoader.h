@@ -1,10 +1,10 @@
 #pragma once
 
-#include "ofThread.h"
-#include "ofImage.h"
-#include "ofURLFileLoader.h"
-#include "ofTypes.h" 
-#include "ofThreadChannel.h"
+#include "utils/ofThread.h"
+#include "graphics/ofImage.h"
+#include "utils/ofURLFileLoader.h"
+#include "types/ofTypes.h" 
+#include "utils/ofThreadChannel.h"
 
 
 using namespace std;

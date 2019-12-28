@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string>
+
 /// Socket constants.
 #define NO_TIMEOUT            	0xFFFF
 #define OF_UDP_DEFAULT_TIMEOUT	NO_TIMEOUT

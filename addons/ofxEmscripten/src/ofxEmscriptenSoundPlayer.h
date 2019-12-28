@@ -1,7 +1,7 @@
 #pragma once
 
-#include "ofSoundBaseTypes.h"
-#include "ofConstants.h"
+#include "sound/ofSoundBaseTypes.h"
+#include "utils/ofConstants.h"
 
 class ofxEmscriptenSoundPlayer: public ofBaseSoundPlayer {
 public:

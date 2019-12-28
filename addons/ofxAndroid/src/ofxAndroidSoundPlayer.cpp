@@ -1,7 +1,7 @@
 #include "ofxAndroidSoundPlayer.h"
 #include "ofxAndroidUtils.h"
-#include "ofUtils.h"
-#include "ofLog.h"
+#include "utils/ofUtils.h"
+#include "utils/ofLog.h"
 
 //------------------------------------------------------------
 ofxAndroidSoundPlayer::ofxAndroidSoundPlayer(){

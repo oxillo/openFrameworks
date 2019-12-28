@@ -78,7 +78,7 @@ static void restoreAppWindowFocus(){
 
 #if defined( TARGET_LINUX ) && defined (OF_USING_GTK)
 #include <gtk/gtk.h>
-#include "ofGstUtils.h"
+#include "video/ofGstUtils.h"
 #include <thread>
 #include <X11/Xlib.h>
 

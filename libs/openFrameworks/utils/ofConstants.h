@@ -1,5 +1,6 @@
 #pragma once
 #include <stdint.h>
+#include <memory>
 
 //-------------------------------
 #define OF_VERSION_MAJOR 0

@@ -6,7 +6,7 @@
  */
 
 #include "ofxEmscriptenURLFileLoader.h"
-#include "ofLog.h"
+#include "utils/ofLog.h"
 #include <emscripten/emscripten.h>
 
 using namespace std;

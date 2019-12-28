@@ -17,8 +17,8 @@
 #include "ofxAssimpMeshHelper.h"
 #include "ofxAssimpAnimation.h"
 #include "ofxAssimpTexture.h"
-#include "ofMesh.h"
-#include "ofPoint.h"
+#include "3d/ofMesh.h"
+#include "types/ofPoint.h"
 
 struct aiScene;
 struct aiNode;

@@ -6,11 +6,11 @@
  */
 #pragma once
 
-#include "ofConstants.h"
-#include "ofLog.h"
-#include "ofBaseApp.h"
-#include "ofAppRunner.h"
-#include "ofURLFileLoader.h"
+#include "utils/ofConstants.h"
+#include "utils/ofLog.h"
+#include "app/ofBaseApp.h"
+#include "app/ofAppRunner.h"
+#include "utils/ofURLFileLoader.h"
 #include <string>
 #include <cstdarg>
 

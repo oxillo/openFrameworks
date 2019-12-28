@@ -4,6 +4,7 @@
 #include "app/ofWindowSettings.h"
 #include "app/ofMainLoop.h"
 #include "types/ofRectangle.h"
+#include <memory>
 
 class ofAppBaseWindow;
 class ofAppBaseGLWindow;

@@ -1,5 +1,5 @@
 #include "ofxSvg.h"
-#include "ofConstants.h"
+#include "utils/ofConstants.h"
 
 using namespace std;
 

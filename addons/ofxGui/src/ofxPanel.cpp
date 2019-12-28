@@ -6,8 +6,8 @@
  */
 
 #include "ofxPanel.h"
-#include "ofGraphics.h"
-#include "ofImage.h"
+#include "graphics/ofGraphics.h"
+#include "graphics/ofImage.h"
 using namespace std;
 
 ofxPanel::ofxPanel()

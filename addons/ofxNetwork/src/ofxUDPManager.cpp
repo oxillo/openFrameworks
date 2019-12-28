@@ -3,8 +3,8 @@
 #include "ofxUDPManager.h"
 #include "ofxNetworkUtils.h"
 #include "ofxNetwork.h"
-#include "ofLog.h"
-#include "ofUtils.h"
+#include "utils/ofLog.h"
+#include "utils/ofUtils.h"
 
 using namespace std;
 
@@ -222,7 +222,7 @@ bool ofxUDPManager::Connect(const char *pHost, unsigned short usPort)
 
 	if (m_hSocket == INVALID_SOCKET) return(false);
 
-#include "ofUtils.h"
+#include "utils/ofUtils.h"
 	if ((he	= gethostbyname(pHost))	== NULL)
 		return(false);
 

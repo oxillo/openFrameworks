@@ -42,9 +42,9 @@ SetTimeoutAccept()
 SetTimeoutReceive()
 
 ****************************************************************/
-#include "ofConstants.h"
-#include <string.h>
-#include <wchar.h>
+#include "utils/ofConstants.h"
+#include <string>
+#include <cwchar>
 #include <stdio.h>
 
 #ifndef TARGET_WIN32
@@ -64,6 +64,7 @@ SetTimeoutReceive()
 	#include <sys/socket.h>
 	#include <sys/time.h>
 	#include <sys/ioctl.h>
+	//#include <cstdlib>
 
 #ifndef TARGET_ANDROID
 	#include <sys/signal.h>

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ofParameter.h"
+#include "types/ofParameter.h"
 #include "ofxBaseGui.h"
 
 class ofxToggle : public ofxBaseGui{

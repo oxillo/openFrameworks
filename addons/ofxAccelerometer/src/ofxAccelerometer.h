@@ -31,9 +31,9 @@
 
 #pragma once
 
-#include "ofTypes.h"
-#include "ofPoint.h"
-#include "ofEvents.h"
+#include "types/ofTypes.h"
+#include "types/ofPoint.h"
+#include "events/ofEvents.h"
 
 typedef void (*ofxAccelCB)(ofPoint&);			// typedef for accelerometer callback
 

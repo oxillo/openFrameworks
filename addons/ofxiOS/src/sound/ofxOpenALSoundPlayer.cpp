@@ -23,9 +23,10 @@
  ************************************************************************/ 
 
 #import "ofxOpenALSoundPlayer.h"
-#include "ofUtils.h"
-#include "ofFileUtils.h"
-#include "ofMath.h"
+#include "utils/ofUtils.h"
+#include "utils/ofFileUtils.h"
+#include "math/ofMath.h"
+#include <iostream>
 
 using namespace std;
 

@@ -5,7 +5,7 @@
 
 #pragma once
 
-#include "ofVideoBaseTypes.h"
+#include "video/ofVideoBaseTypes.h"
 
 #include <assimp/cimport.h>
 #include <assimp/scene.h>

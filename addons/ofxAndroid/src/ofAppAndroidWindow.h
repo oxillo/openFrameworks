@@ -7,10 +7,10 @@
 
 #pragma once
 
-#include "ofAppBaseWindow.h"
-#include "ofEvents.h"
-#include "ofConstants.h"
-#include "ofTypes.h"
+#include "app/ofAppBaseWindow.h"
+#include "events/ofEvents.h"
+#include "utils/ofConstants.h"
+#include "types/ofTypes.h"
 
 class ofxAndroidWindowSettings : public ofGLESWindowSettings
 {

@@ -8,7 +8,7 @@
 #pragma once
 
 #include <jni.h>
-#include "ofConstants.h"
+#include "utils/ofConstants.h"
 
 class ofxAndroidVibrator {
 public:

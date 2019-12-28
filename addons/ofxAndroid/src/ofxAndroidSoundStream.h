@@ -2,11 +2,11 @@
 
 #include <jni.h>
 
-#include "ofConstants.h"
-#include "ofSoundBaseTypes.h"
+#include "utils/ofConstants.h"
+#include "sound/ofSoundBaseTypes.h"
 #include "ofxAndroidCircBuffer.h"
-#include "ofSoundBuffer.h"
-#include "ofEvents.h"
+#include "sound/ofSoundBuffer.h"
+#include "events/ofEvents.h"
 
 class ofxAndroidSoundStream : public ofBaseSoundStream{
 	public:

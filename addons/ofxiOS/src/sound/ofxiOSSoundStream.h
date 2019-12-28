@@ -6,8 +6,8 @@
 
 #pragma once
 
-#include "ofSoundBaseTypes.h"
-#include "ofSoundStream.h"
+#include "sound/ofSoundBaseTypes.h"
+#include "sound/ofSoundStream.h"
 
 class ofxiOSSoundStream : public ofBaseSoundStream {
 
