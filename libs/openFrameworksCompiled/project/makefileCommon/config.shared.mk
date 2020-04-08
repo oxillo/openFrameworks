@@ -5,6 +5,16 @@
 # core and projects. It's included from both the core makefile and the projects
 # makefile
 
+# #####################  UTILITY FUNCTIONS# ###################################
+# Define functions to convert spaces to '+', '\ ' and back. Include a function
+# to quote a path if necessary
+################################################################################
+# space substitution for pathnames
+unspace-func = $(shell echo $1 | tr ' ' '+')
+esc-space-func =$(subst +,\ ,$1)
+revspace-func = $(shell echo $1 | tr '+' ' ')
+quote-path-func = $(if $(findstring +,$1),"$(call revspace-func,$1)",$1)
+
 
 # #####################  PLATFORM DETECTION ###################################
 # determine the platform's architecture, os and form the platform-specific libarary subpath
