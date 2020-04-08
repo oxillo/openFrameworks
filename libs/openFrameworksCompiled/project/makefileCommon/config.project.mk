@@ -6,9 +6,6 @@ ifndef OF_ROOT
 	OF_ROOT= $(realpath ../../..)
 endif
 
-ifndef PROJECT_ROOT
-	PROJECT_ROOT= $(realpath .)
-endif
 
 
 # define the OF_SHARED_MAKEFILES location

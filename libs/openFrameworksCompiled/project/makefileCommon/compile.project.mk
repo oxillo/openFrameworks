@@ -3,6 +3,21 @@
 # define the OF_SHARED_MAKEFILES location
 OF_SHARED_MAKEFILES_PATH=$(OF_ROOT)/libs/openFrameworksCompiled/project/makefileCommon
 
+
+ifndef PROJECT_ROOT
+	PROJECT_ROOT= $(realpath .)
+endif
+
+PROJECT_ROOT_:=$(PROJECT_ROOT)
+PROJECT_ROOT:=$(call unspace-func,$(PROJECT_ROOT))
+PROJECT_ROOT__:=$(subst +,\ ,$(PROJECT_ROOT))
+$(info PRJ $(PROJECT_ROOT))
+$(info PRJ_ $(PROJECT_ROOT_))
+$(info PRJ__ $(PROJECT_ROOT__))
+
+
+
+
 # if APPNAME is not defined, set it to the project dir name
 ifndef APPNAME
 	APPNAME = $(shell basename `pwd`)
