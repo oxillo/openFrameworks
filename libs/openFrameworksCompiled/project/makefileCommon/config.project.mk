@@ -301,8 +301,9 @@ OF_PROJECT_SOURCE_FILES =$(foreach d, $(OF_PROJECT_SOURCE_PATHS), $(call find_sr
 # PROJECT HEADER INCLUDES (-I ...)
 ################################################################################
 
-OF_PROJECT_INCLUDES_CFLAGS := $(addprefix -I,$(filter-out $(PROJECT_INCLUDE_EXCLUSIONS),$(OF_PROJECT_SOURCE_PATHS)))
-OF_ADDON_INCLUDES_CFLAGS += $(addprefix -I,$(filter-out $(PROJECT_INCLUDE_EXCLUSIONS),$(PROJECT_ADDONS_INCLUDES)))
+include-cflags-func = $(foreach d,$1,$(addprefix -I,$(call quote-path-func,$(d))))
+OF_PROJECT_INCLUDES_CFLAGS := $(call include-cflags-func,$(filter-out $(PROJECT_INCLUDE_EXCLUSIONS),$(PROJECT_ADDONS_INCLUDES)))
+OF_ADDON_INCLUDES_CFLAGS += $(call include-cflags-func,$(filter-out $(PROJECT_INCLUDE_EXCLUSIONS),$(PROJECT_ADDONS_INCLUDES)))
 
 ifdef MAKEFILE_DEBUG
     $(info ---OF_PROJECT_INCLUDES_CFLAGS---)
