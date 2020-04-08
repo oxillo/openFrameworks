@@ -20,8 +20,11 @@ $(info PRJ__ $(PROJECT_ROOT__))
 
 # if APPNAME is not defined, set it to the project dir name
 ifndef APPNAME
-	APPNAME = $(shell basename `pwd`)
+	APPNAME = "$(shell basename "`pwd`")"
 endif
+#replace spaces by underscore in APPNAME to have 'no space targets'
+s_ = $(shell echo $1 | tr ' ' '_')
+APPNAME:=$(call s_,$(APPNAME))
 
 include $(OF_SHARED_MAKEFILES_PATH)/config.shared.mk
 
