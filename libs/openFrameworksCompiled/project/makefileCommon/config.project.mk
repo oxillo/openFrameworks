@@ -135,7 +135,7 @@ B_PROCESS_ADDONS =
 ifdef PLATFORM_REQUIRED_ADDONS
 	B_PROCESS_ADDONS = yes
 endif
-ifeq ($(findstring addons.make,$(wildcard $(PROJECT_ROOT)/*.make)),addons.make)
+ifeq ($(findstring addons.make,$(wildcard $(PROJECT_ROOT__)/*.make)),addons.make)
 	B_PROCESS_ADDONS = yes
 endif
 
@@ -153,7 +153,7 @@ ifdef B_PROCESS_ADDONS
 	# (to escape # in make, you must use \#)
 	# sed '/^$/d' removes all empty lines
 	# (to escape $ in make, you must use $$)
-	REQUESTED_PROJECT_ADDONS := $(shell cat $(PROJECT_ROOT)/addons.make 2> /dev/null | sed 's/[ ]*\#.*//g' | sed '/^$$/d')
+	REQUESTED_PROJECT_ADDONS := $(shell cat $(call quote-path-func,$(PROJECT_ROOT)/addons.make) 2> /dev/null | sed 's/[ ]*\#.*//g' | sed '/^$$/d')
 
 	# deal with platform specfic addons
 	# remove any platform specific addons that were already added to the addons.make file
