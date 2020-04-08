@@ -2,6 +2,7 @@
 
 # define the OF_SHARED_MAKEFILES location
 OF_SHARED_MAKEFILES_PATH=$(OF_ROOT)/libs/openFrameworksCompiled/project/makefileCommon
+include $(OF_SHARED_MAKEFILES_PATH)/config.shared.mk
 
 
 ifndef PROJECT_ROOT
@@ -25,8 +26,6 @@ endif
 #replace spaces by underscore in APPNAME to have 'no space targets'
 s_ = $(shell echo $1 | tr ' ' '_')
 APPNAME:=$(call s_,$(APPNAME))
-
-include $(OF_SHARED_MAKEFILES_PATH)/config.shared.mk
 
 # Name TARGET
 ifeq ($(findstring Debug,$(MAKECMDGOALS)),Debug)
