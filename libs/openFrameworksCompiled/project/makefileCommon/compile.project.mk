@@ -12,9 +12,6 @@ endif
 PROJECT_ROOT_:=$(PROJECT_ROOT)
 PROJECT_ROOT:=$(call unspace-func,$(PROJECT_ROOT))
 PROJECT_ROOT__:=$(subst +,\ ,$(PROJECT_ROOT))
-$(info PRJ $(PROJECT_ROOT))
-$(info PRJ_ $(PROJECT_ROOT_))
-$(info PRJ__ $(PROJECT_ROOT__))
 
 
 
