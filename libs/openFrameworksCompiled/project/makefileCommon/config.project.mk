@@ -270,15 +270,15 @@ OF_PROJECT_EXCLUSIONS += $(PROJECT_ROOT)/build/%
 
 # create a list of all dirs in the project root that might be valid project
 # source directories
-ALL_OF_PROJECT_SOURCE_PATHS = $(shell $(FIND) $(PROJECT_ROOT)/src \
+ALL_OF_PROJECT_SOURCE_PATHS = $(shell $(FIND) $(call quote-path-func,$(PROJECT_ROOT)/src) \
 															-type d \
 															-not -path "./bin/*" \
 															-not -path "./obj/*" \
 															-not -path "./*.xcodeproj/*" \
-															-not -path "*/\.*")
+															-not -path "*/\.*" | tr ' ' '+')
 ifneq ($(PROJECT_EXTERNAL_SOURCE_PATHS),)
-	ALL_OF_PROJECT_SOURCE_PATHS += $(PROJECT_EXTERNAL_SOURCE_PATHS)
-	ALL_OF_PROJECT_SOURCE_PATHS += $(shell $(FIND) $(PROJECT_EXTERNAL_SOURCE_PATHS) -mindepth 1 -type d | grep -v "/\.[^\.]")
+	ALL_OF_PROJECT_SOURCE_PATHS += $(call unspace-func,$(PROJECT_EXTERNAL_SOURCE_PATHS))
+	ALL_OF_PROJECT_SOURCE_PATHS += $(shell $(FIND) $(call quote-path-func,$(PROJECT_EXTERNAL_SOURCE_PATHS)) -mindepth 1 -type d | grep -v "/\.[^\.]" | tr ' ' '+')
 endif
 
 # be included as locations for header searches via
@@ -294,7 +294,8 @@ endif
 
 # find all sources inside the project's source directory (recursively)
 # grep -v "/\.[^\.]" will exclude all .hidden folders and files
-OF_PROJECT_SOURCE_FILES = $(shell $(FIND) $(OF_PROJECT_SOURCE_PATHS) -maxdepth 1 -name "*.mm" -or -name "*.m" -or -name "*.cpp" -or -name "*.c" -or -name "*.cc" -or -name "*.cxx" -or -name "*.S" | grep -v "/\.[^\.]")
+find_src_files = $(shell $(FIND) $(call quote-path-func,$1) -maxdepth 1 -name "*.mm" -or -name "*.m" -or -name "*.cpp" -or -name "*.c" -or -name "*.cc" -or -name "*.cxx" -or -name "*.S" | grep -v "/\.[^\.]" | tr ' ' '+')
+OF_PROJECT_SOURCE_FILES =$(foreach d, $(OF_PROJECT_SOURCE_PATHS), $(call find_src_files,$(d)) )
 
 ################################################################################
 # PROJECT HEADER INCLUDES (-I ...)
