@@ -31,6 +31,9 @@ esp-addprefix = $(call c2esp,$(addprefix $(call esp2c,$1),$(call esp2c,$2)))
 # apply patsubst command on an escaped space list
 esp-patsubst = $(call c2esp,$(patsubst $(call esp2c,$1),$(call esp2c,$2),$(call esp2c,$3)))
 
+# get @D from escaped $@ as @D do not return an escaped parent directory 
+esp-@D = $(dir $(call sp2esp,$@))
+
 revspace-func = $(shell echo $1 | tr '+' ' ')
 quote-path-func = $(if $(findstring +,$1),"$(call revspace-func,$1)",$1)
 
