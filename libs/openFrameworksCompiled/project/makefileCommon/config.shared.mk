@@ -22,6 +22,9 @@ esp2c = $(subst \ ,+,$1)
 # display values of an escaped space list
 esp-foreach-info=$(foreach v,$(call esp2c,$1),$(info $(call c2esp,$(v))))
 
+# apply filter command on an escaped space list
+esp-filter = $(call c2esp,$(filter $(call esp2c,$1),$(call esp2c,$2)))
+
 # apply filter-out command on an escaped space list
 esp-filter-out = $(call c2esp,$(filter-out $(call esp2c,$1),$(call esp2c,$2)))
 
