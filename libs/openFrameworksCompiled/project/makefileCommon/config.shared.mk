@@ -34,6 +34,12 @@ esp-addsuffix = $(call c2esp,$(addsuffix $(call esp2c,$1),$(call esp2c,$2)))
 # apply patsubst command on an escaped space list
 esp-patsubst = $(call c2esp,$(patsubst $(call esp2c,$1),$(call esp2c,$2),$(call esp2c,$3)))
 
+# apply firstword command on an escaped space list
+esp-firstword = $(call c2esp,$(firstword $(call esp2c,$1)))
+
+# from an escaped space list of files/directories, return a list of files that exist
+esp-exist = $(foreach f,$(call esp2c,$1), $(if $(wildcard $(call c2esp,$f)),$(call c2esp,$f)))
+
 # get @D from escaped $@ as @D do not return an escaped parent directory 
 esp-@D = $(dir $(call sp2esp,$@))
 
