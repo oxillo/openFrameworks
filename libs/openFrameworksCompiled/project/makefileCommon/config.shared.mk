@@ -48,7 +48,13 @@ quote-path-func = $(if $(findstring +,$1),"$(call revspace-func,$1)",$1)
 
 
 SHELL ?= /bin/sh
-OF_ROOT ?=  $(realpath ../../..)
+ifndef OF_ROOT
+	OF_ROOT =  $(realpath ../../..)
+endif
+
+# escape spaces in OF_ROOT 
+OF_ROOT:=$(call sp2esp,$(OF_ROOT))
+
 PLATFORM_VARIANT ?= default
 
 # ifeq ($(CC),$(EMSCRIPTEN)/emcc)
