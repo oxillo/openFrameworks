@@ -41,7 +41,7 @@ esp-firstword = $(call c2esp,$(firstword $(call esp2c,$1)))
 esp-realpath = $(shell realpath $1 | sed 's/ /\\ /g')
 
 # from an escaped space list of files/directories, return a list of files that exist
-esp-exist = $(foreach f,$(call esp2c,$1), $(if $(wildcard $(call c2esp,$f)),$(call c2esp,$f)))
+esp-exist = $(foreach f,$(call esp2c,$1),$(if $(wildcard $(call c2esp,$f)),$(call c2esp,$f)))
 
 # get @D from escaped $@ as @D do not return an escaped parent directory 
 esp-@D = $(dir $(call sp2esp,$@))
