@@ -22,25 +22,25 @@ ALL_OF_CORE_LIBS_PLATFORM_LIB_PATHS = $(OF_LIBS_PATH)/*/lib/$(ABI_LIB_SUBPATH)
 
 # create a list of all core platform libraries
 # grep -v "/\.[^\.]" will exclude all .hidden folders and files
-ALL_OF_CORE_LIBS_PATHS = $(shell $(FIND) $(ALL_OF_CORE_LIBS_PLATFORM_LIB_PATHS) -type d -not -path "*/openFrameworksCompiled/*" 2> /dev/null | grep -v "/\.[^\.]" )
+ALL_OF_CORE_LIBS_PATHS = $(shell $(FIND) $(ALL_OF_CORE_LIBS_PLATFORM_LIB_PATHS) -type d -not -path "*/openFrameworksCompiled/*" 2> /dev/null | grep -v "/\.[^\.]" | sed 's/ /\\ /g')
 
 # create a list of all core lib directories that have libsorder.make
 # grep -v "/\.[^\.]" will exclude all .hidden folders and files
-ALL_OF_CORE_LIBSORDER_MAKE_FILES = $(shell $(FIND) $(ALL_OF_CORE_LIBS_PLATFORM_LIB_PATHS) -name libsorder.make -not -path "*/openFrameworksCompiled/*" 2> /dev/null | grep -v "/\.[^\.]" )
+ALL_OF_CORE_LIBSORDER_MAKE_FILES = $(shell $(FIND) $(ALL_OF_CORE_LIBS_PLATFORM_LIB_PATHS) -name libsorder.make -not -path "*/openFrameworksCompiled/*" 2> /dev/null | grep -v "/\.[^\.]" | sed 's/ /\\ /g')
 
 # create a list of all of the core libs that require ordering
 OF_CORE_LIBS_THAT_NEED_ORDER = $(subst /lib/$(ABI_LIB_SUBPATH)/libsorder.make,,$(ALL_OF_CORE_LIBSORDER_MAKE_FILES))
 
 # create a list of all of the platform libs that DO NOT require ordering
 # by removing those that do from the list of all platform libraries
-OF_CORE_LIBS_THAT_DONT_NEED_ORDER = $(filter-out $(OF_CORE_LIBS_THAT_NEED_ORDER),$(subst /lib/$(ABI_LIB_SUBPATH),,$(ALL_OF_CORE_LIBS_PATHS)))
+OF_CORE_LIBS_THAT_DONT_NEED_ORDER = $(call esp-filter-out,$(OF_CORE_LIBS_THAT_NEED_ORDER),$(subst /lib/$(ABI_LIB_SUBPATH),,$(ALL_OF_CORE_LIBS_PATHS)))
 
 # create a list of all static libs in the core lib dir, using only
 # the static libs that don't need order
 # 2> /dev/null consumes file not found errors from find searches
 # grep -v "/\.[^\.]" will exclude all .hidden folders and files
 # TODO: create a varaible for core specific static lib suffix
-OF_CORE_LIBS_PLATFORM_LIBS_STATICS = $(shell $(FIND) $(addsuffix /lib/$(ABI_LIB_SUBPATH),$(OF_CORE_LIBS_THAT_DONT_NEED_ORDER)) -name *.a -o -name *.bc 2> /dev/null | grep -v "/\.[^\.]" )
+OF_CORE_LIBS_PLATFORM_LIBS_STATICS = $(shell $(FIND) $(call esp-addsuffix,/lib/$(ABI_LIB_SUBPATH),$(OF_CORE_LIBS_THAT_DONT_NEED_ORDER)) -name *.a -o -name *.bc 2> /dev/null | grep -v "/\.[^\.]" | sed 's/ /\\ /g')
 # create a list of all static lib files for the libs that need order
 # NOTE. this is the most unintuitive line of make script magic in here
 # How does it work?
@@ -59,19 +59,19 @@ OF_CORE_LIBS_PLATFORM_LIBS_STATICS += $(foreach v,$(ALL_OF_CORE_LIBSORDER_MAKE_F
 
 # grep -v "/\.[^\.]" will exclude all .hidden folders and files
 ifeq ($(PLATFORM_OS),Linux)
-	ALL_OF_CORE_THIRDPARTY_SHARED_LIBS := $(shell $(FIND) $(OF_LIBS_PATH)/*/lib/$(ABI_LIB_SUBPATH)/*.so -not -path "*/openFrameworksCompiled/*" 2> /dev/null | grep -v "/\.[^\.]")
+	ALL_OF_CORE_THIRDPARTY_SHARED_LIBS := $(shell $(FIND) $(OF_LIBS_PATH)/*/lib/$(ABI_LIB_SUBPATH)/*.so -not -path "*/openFrameworksCompiled/*" 2> /dev/null | grep -v "/\.[^\.]" | sed 's/ /\\ /g')
 else
 	ifeq ($(PLATFORM_OS),Darwin)
-		ALL_OF_CORE_THIRDPARTY_SHARED_LIBS := $(shell $(FIND) $(OF_LIBS_PATH)/*/lib/$(ABI_LIB_SUBPATH)/*.dylib -not -path "*/openFrameworksCompiled/*" 2> /dev/null | grep -v "/\.[^\.]")
+		ALL_OF_CORE_THIRDPARTY_SHARED_LIBS := $(shell $(FIND) $(OF_LIBS_PATH)/*/lib/$(ABI_LIB_SUBPATH)/*.dylib -not -path "*/openFrameworksCompiled/*" 2> /dev/null | grep -v "/\.[^\.]" | sed 's/ /\\ /g')
 	endif
 endif
 
 # add in any libraries that were explicitly listed in the platform config files.
-OF_CORE_THIRDPARTY_STATIC_LIBS := $(filter-out $(CORE_EXCLUSIONS),$(OF_CORE_LIBS_PLATFORM_LIBS_STATICS))
+OF_CORE_THIRDPARTY_STATIC_LIBS := $(call esp-filter-out,$(CORE_EXCLUSIONS),$(OF_CORE_LIBS_PLATFORM_LIBS_STATICS))
 OF_CORE_THIRDPARTY_STATIC_LIBS += $(PLATFORM_STATIC_LIBRARIES)
 
 #TODO what to do with shared libs?
-OF_CORE_THIRDPARTY_SHARED_LIBS := $(filter-out $(CORE_EXCLUSIONS),$(ALL_OF_CORE_THIRDPARTY_SHARED_LIBS))
+OF_CORE_THIRDPARTY_SHARED_LIBS := $(call esp-filter-out,$(CORE_EXCLUSIONS),$(ALL_OF_CORE_THIRDPARTY_SHARED_LIBS))
 
 
 ################################################################################
@@ -275,14 +275,14 @@ ALL_OF_PROJECT_SOURCE_PATHS = $(shell $(FIND) $(PROJECT_ROOT)/src \
 															-not -path "./bin/*" \
 															-not -path "./obj/*" \
 															-not -path "./*.xcodeproj/*" \
-															-not -path "*/\.*" | tr ' ' '+')
+															-not -path "*/\.*" | sed 's/ /\\ /g')
 ifneq ($(PROJECT_EXTERNAL_SOURCE_PATHS),)
-	ALL_OF_PROJECT_SOURCE_PATHS += $(call unspace-func,$(PROJECT_EXTERNAL_SOURCE_PATHS))
-	ALL_OF_PROJECT_SOURCE_PATHS += $(shell $(FIND) $(call quote-path-func,$(PROJECT_EXTERNAL_SOURCE_PATHS)) -mindepth 1 -type d | grep -v "/\.[^\.]" | tr ' ' '+')
+	ALL_OF_PROJECT_SOURCE_PATHS += $(call sp2esp,$(PROJECT_EXTERNAL_SOURCE_PATHS))
+	ALL_OF_PROJECT_SOURCE_PATHS += $(shell $(FIND) $(PROJECT_EXTERNAL_SOURCE_PATHS) -mindepth 1 -type d | grep -v "/\.[^\.]" | sed 's/ /\\ /g')
 endif
 
 # be included as locations for header searches via
-OF_PROJECT_SOURCE_PATHS = $(filter-out $(OF_PROJECT_EXCLUSIONS),$(ALL_OF_PROJECT_SOURCE_PATHS))
+OF_PROJECT_SOURCE_PATHS = $(call esp-filter-out,$(OF_PROJECT_EXCLUSIONS),$(ALL_OF_PROJECT_SOURCE_PATHS))
 
 ifdef MAKEFILE_DEBUG
     $(info ---OF_PROJECT_SOURCE_PATHS---)
@@ -294,16 +294,14 @@ endif
 
 # find all sources inside the project's source directory (recursively)
 # grep -v "/\.[^\.]" will exclude all .hidden folders and files
-find_src_files = $(shell $(FIND) $(call quote-path-func,$1) -maxdepth 1 -name "*.mm" -or -name "*.m" -or -name "*.cpp" -or -name "*.c" -or -name "*.cc" -or -name "*.cxx" -or -name "*.S" | grep -v "/\.[^\.]" | tr ' ' '+')
-OF_PROJECT_SOURCE_FILES =$(foreach d, $(OF_PROJECT_SOURCE_PATHS), $(call find_src_files,$(d)) )
+OF_PROJECT_SOURCE_FILES =$(shell $(FIND) $(OF_PROJECT_SOURCE_PATHS) -maxdepth 1 -name "*.mm" -or -name "*.m" -or -name "*.cpp" -or -name "*.c" -or -name "*.cc" -or -name "*.cxx" -or -name "*.S" | grep -v "/\.[^\.]" | sed 's/ /\\ /g')
 
 ################################################################################
 # PROJECT HEADER INCLUDES (-I ...)
 ################################################################################
 
-include-cflags-func = $(foreach d,$1,$(addprefix -I,$(call quote-path-func,$(d))))
-OF_PROJECT_INCLUDES_CFLAGS := $(call include-cflags-func,$(filter-out $(PROJECT_INCLUDE_EXCLUSIONS),$(PROJECT_ADDONS_INCLUDES)))
-OF_ADDON_INCLUDES_CFLAGS += $(call include-cflags-func,$(filter-out $(PROJECT_INCLUDE_EXCLUSIONS),$(PROJECT_ADDONS_INCLUDES)))
+OF_PROJECT_INCLUDES_CFLAGS := $(call esp-addprefix,-I,$(call esp-filter-out,$(PROJECT_INCLUDE_EXCLUSIONS),$(OF_PROJECT_SOURCE_PATHS)))
+OF_ADDON_INCLUDES_CFLAGS += $(call esp-addprefix,-I,$(call esp-filter-out,$(PROJECT_INCLUDE_EXCLUSIONS),$(PROJECT_ADDONS_INCLUDES)))
 
 ifdef MAKEFILE_DEBUG
     $(info ---OF_PROJECT_INCLUDES_CFLAGS---)
@@ -535,7 +533,7 @@ endif
 
 
 OF_PROJECT_OBJ_FILES = $(patsubst %.c,%.o,$(patsubst %.cpp,%.o,$(patsubst %.cxx,%.o,$(patsubst %.cc,%.o,$(patsubst %.S,%.o,$(patsubst %.mm,%.o,$(patsubst %.m,%.o,$(OF_PROJECT_SOURCE_FILES))))))))
-OBJS_WITH_PREFIX = $(addprefix $(OF_PROJECT_OBJ_OUTPUT_PATH),$(OF_PROJECT_OBJ_FILES))
+OBJS_WITH_PREFIX = $(call esp-addprefix,$(OF_PROJECT_OBJ_OUTPUT_PATH),$(OF_PROJECT_OBJ_FILES))
 OBJS_WITHOUT_EXTERNAL = $(subst $(strip $(PROJECT_EXTERNAL_SOURCE_PATHS)),,$(OBJS_WITH_PREFIX))
 OF_PROJECT_OBJS = $(subst $(PROJECT_ROOT)/,,$(OBJS_WITHOUT_EXTERNAL))
 OF_PROJECT_DEPS = $(patsubst %.o,%.d,$(OF_PROJECT_OBJS))
