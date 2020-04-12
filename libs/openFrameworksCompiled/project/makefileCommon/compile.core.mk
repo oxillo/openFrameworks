@@ -185,10 +185,10 @@ ifdef MAKEFILE_DEBUG
     $(info OF_CORE_OBJ_OUTPUT_PATH=$(OF_CORE_OBJ_OUTPUT_PATH))
 
     $(info ---OF_CORE_DEPENDENCY_FILES---)
-    $(foreach v, $(OF_CORE_DEPENDENCY_FILES),$(info $(v)))
+    $(call esp-foreach-info,$(OF_CORE_DEPENDENCY_FILES))
 
     $(info ---OF_CORE_OBJ_FILES---)
-    $(foreach v, $(OF_CORE_OBJ_FILES),$(info $(v)))
+    $(call esp-foreach-info,$(OF_CORE_OBJ_FILES))
 endif
 
 

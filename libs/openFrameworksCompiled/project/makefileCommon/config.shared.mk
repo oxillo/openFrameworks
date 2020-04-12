@@ -12,6 +12,22 @@
 # space substitution for pathnames
 unspace-func = $(shell echo $1 | tr ' ' '+')
 esc-space-func =$(subst +,\ ,$1)
+
+# convert spaces ' ' to its escaped equivalent '\ '
+sp2esp = $(shell echo $1 | sed 's/ /\\ /g')
+# convert space replacement character to escaped space '\ '
+c2esp = $(subst +,\ ,$1)
+esp2c = $(subst \ ,+,$1)
+
+# display values of an escaped space list
+esp-foreach-info=$(foreach v,$(call esp2c,$1),$(info $(call c2esp,$(v))))
+
+# apply filter-out command on an escaped space list
+esp-filter-out = $(call c2esp,$(filter-out $(call esp2c,$1),$(call esp2c,$2)))
+
+# apply addprefix command on an escaped space list
+esp-addprefix = $(call c2esp,$(addprefix $(call esp2c,$1),$(call esp2c,$2)))
+
 revspace-func = $(shell echo $1 | tr '+' ' ')
 quote-path-func = $(if $(findstring +,$1),"$(call revspace-func,$1)",$1)
 
@@ -361,20 +377,20 @@ OF_CORE_HEADER_FILES=$(filter-out $(CORE_EXCLUSIONS),$(shell $(FIND) $(OF_CORE_S
 ifdef MAKEFILE_DEBUG
     $(info ========================= config.mk flags ========================)
     $(info ---OF_CORE_DEFINES_CFLAGS---)
-    $(foreach v, $(OF_CORE_DEFINES_CFLAGS),$(info $(v)))
+    $(call esp-foreach-info,$(OF_CORE_DEFINES_CFLAGS))
 
     $(info ---OF_CORE_INCLUDES_CFLAGS---)
-    $(foreach v, $(OF_CORE_INCLUDES_CFLAGS),$(info $(v)))
+    $(call esp-foreach-info,$(OF_CORE_INCLUDES_CFLAGS))
 
     $(info ---OF_CORE_FRAMEWORKS_CFLAGS---)
-    $(foreach v, $(OF_CORE_FRAMEWORKS_CFLAGS),$(info $(v)))
+    $(call esp-foreach-info,$(OF_CORE_FRAMEWORKS_CFLAGS))
 
     $(info ---OF_CORE_SOURCE_FILES---)
-    $(foreach v, $(OF_CORE_SOURCE_FILES),$(info $(v)))
+    $(call esp-foreach-info,$(OF_CORE_SOURCE_FILES))
 
     $(info ---OF_CORE_HEADER_FILES---)
-    $(foreach v, $(OF_CORE_HEADER_FILES),$(info $(v)))
+    $(call esp-foreach-info,$(OF_CORE_HEADER_FILES))
 
     $(info ---PLATFORM_CORE_EXCLUSIONS---)
-    $(foreach v, $(PLATFORM_CORE_EXCLUSIONS),$(info $(v)))
+    $(call esp-foreach-info,$(PLATFORM_CORE_EXCLUSIONS))
 endif

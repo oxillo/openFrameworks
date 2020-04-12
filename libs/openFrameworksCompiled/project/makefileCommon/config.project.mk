@@ -91,10 +91,10 @@ OF_CORE_LIBRARY_LDFLAGS += $(addprefix -L,$(PLATFORM_LIBRARY_SEARCH_PATHS))
 ifdef MAKEFILE_DEBUG
     $(info =============================configure.core.flags.make========================)
     $(info ---OF_CORE_LIBS_LDFLAGS---)
-    $(foreach v, $(OF_CORE_LIBS_LDFLAGS),$(info $(v)))
+    $(call esp-foreach-info,$(OF_CORE_LIBS_LDFLAGS))
 
     $(info ---OF_CORE_LIBS---)
-    $(foreach v, $(OF_CORE_LIBS),$(info $(v)))
+    $(call esp-foreach-info,$(OF_CORE_LIBS))
 endif
 
 ################################# ADDONS ######################################
@@ -286,10 +286,10 @@ OF_PROJECT_SOURCE_PATHS = $(filter-out $(OF_PROJECT_EXCLUSIONS),$(ALL_OF_PROJECT
 
 ifdef MAKEFILE_DEBUG
     $(info ---OF_PROJECT_SOURCE_PATHS---)
-    $(foreach v, $(OF_PROJECT_SOURCE_PATHS),$(info $(v)))
+    $(call esp-foreach-info,$(OF_PROJECT_SOURCE_PATHS))
 
     $(info ---OF_PROJECT_EXCLUSIONS---)
-    $(foreach v, $(OF_PROJECT_EXCLUSIONS),$(info $(v)))
+    $(call esp-foreach-info,$(OF_PROJECT_EXCLUSIONS))
 endif
 
 # find all sources inside the project's source directory (recursively)
@@ -307,7 +307,7 @@ OF_ADDON_INCLUDES_CFLAGS += $(call include-cflags-func,$(filter-out $(PROJECT_IN
 
 ifdef MAKEFILE_DEBUG
     $(info ---OF_PROJECT_INCLUDES_CFLAGS---)
-    $(foreach v, $(OF_PROJECT_INCLUDES_CFLAGS),$(info $(v)))
+    $(call esp-foreach-info,$(OF_PROJECT_INCLUDES_CFLAGS))
 endif
 
 ################################################################################
@@ -526,11 +526,11 @@ endif
 
 ifdef MAKEFILE_DEBUG
     $(info ---OF_PROJECT_SOURCE_FILES---)
-    $(foreach v, $(OF_PROJECT_SOURCE_FILES),$(info $(v)))
+    $(call esp-foreach-info,$(OF_PROJECT_SOURCE_FILES))
 endif
 ifdef MAKEFILE_DEBUG
     $(info ---OF_PROJECT_DEPENDENCY_FILES---)
-    $(foreach v, $(OF_PROJECT_DEPENDENCY_FILES),$(info $(v)))
+    $(call esp-foreach-info,$(OF_PROJECT_DEPENDENCY_FILES))
 endif
 
 
@@ -553,5 +553,5 @@ OF_PROJECT_DEPENDENCY_FILES = $(OF_PROJECT_DEPS) $(OF_PROJECT_ADDONS_DEPS)
 
 ifdef MAKEFILE_DEBUG
     $(info ---OF_PROJECT_DEPENDENCY_FILES---)
-    $(foreach v, $(OF_PROJECT_DEPENDENCY_FILES),$(info $(v)))
+    $(call esp-foreach-info,$(OF_PROJECT_DEPENDENCY_FILES))
 endif
