@@ -277,11 +277,11 @@ PLATFORM_PKG_CONFIG ?= pkg-config
 # define the location of the core path
 #TODO: make sure all of the right checks are here.
 ifndef PLATFORM_CORE_EXCLUSIONS
-	$(error PLATFORM_CORE_EXCLUSIONS not defined)
+    $(error PLATFORM_CORE_EXCLUSIONS not defined)
 endif
 
 ifndef OF_LIBS_OPENFRAMEWORKS_PATH
-	$(error OF_LIBS_OPENFRAMEWORKS_PATH not defined)
+    $(error OF_LIBS_OPENFRAMEWORKS_PATH not defined)
 endif
 
 ################################################################################
