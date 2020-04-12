@@ -28,6 +28,9 @@ esp-filter-out = $(call c2esp,$(filter-out $(call esp2c,$1),$(call esp2c,$2)))
 # apply addprefix command on an escaped space list
 esp-addprefix = $(call c2esp,$(addprefix $(call esp2c,$1),$(call esp2c,$2)))
 
+# apply addsuffix command on an escaped space list
+esp-addsuffix = $(call c2esp,$(addsuffix $(call esp2c,$1),$(call esp2c,$2)))
+
 # apply patsubst command on an escaped space list
 esp-patsubst = $(call c2esp,$(patsubst $(call esp2c,$1),$(call esp2c,$2),$(call esp2c,$3)))
 
