@@ -135,7 +135,7 @@ B_PROCESS_ADDONS =
 ifdef PLATFORM_REQUIRED_ADDONS
 	B_PROCESS_ADDONS = yes
 endif
-ifeq ($(findstring addons.make,$(wildcard $(PROJECT_ROOT__)/*.make)),addons.make)
+ifeq ($(findstring addons.make,$(wildcard $(PROJECT_ROOT)/*.make)),addons.make)
 	B_PROCESS_ADDONS = yes
 endif
 
@@ -270,7 +270,7 @@ OF_PROJECT_EXCLUSIONS += $(PROJECT_ROOT)/build/%
 
 # create a list of all dirs in the project root that might be valid project
 # source directories
-ALL_OF_PROJECT_SOURCE_PATHS = $(shell $(FIND) $(call quote-path-func,$(PROJECT_ROOT)/src) \
+ALL_OF_PROJECT_SOURCE_PATHS = $(shell $(FIND) $(PROJECT_ROOT)/src \
 															-type d \
 															-not -path "./bin/*" \
 															-not -path "./obj/*" \

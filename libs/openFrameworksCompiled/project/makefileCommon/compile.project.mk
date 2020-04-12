@@ -9,9 +9,8 @@ ifndef PROJECT_ROOT
 	PROJECT_ROOT= $(realpath .)
 endif
 
-PROJECT_ROOT_:=$(PROJECT_ROOT)
-PROJECT_ROOT:=$(call unspace-func,$(PROJECT_ROOT))
-PROJECT_ROOT__:=$(subst +,\ ,$(PROJECT_ROOT))
+# escape spaces in PROJECT_ROOT 
+PROJECT_ROOT:=$(call sp2esp,$(PROJECT_ROOT))
 
 
 
@@ -225,37 +224,37 @@ $(OF_ADDONS_PATH)/$(OF_PROJECT_OBJ_OUTPUT_PATH).compiler_flags: force
 
 # Rules to compile the project sources
 #$(OBJS): $(SOURCES)
-$(OF_PROJECT_OBJ_OUTPUT_PATH)%.o: $(PROJECT_ROOT__)/%.cpp $(OF_PROJECT_OBJ_OUTPUT_PATH).compiler_flags
+$(OF_PROJECT_OBJ_OUTPUT_PATH)%.o: $(PROJECT_ROOT)/%.cpp $(OF_PROJECT_OBJ_OUTPUT_PATH).compiler_flags
 	@echo "Compiling" $<
 	@mkdir -p $(@D)
 	$(CXX) -c $(OPTIMIZATION_CFLAGS) $(CFLAGS) $(CXXFLAGS) $(PROJECT_INCLUDE_CFLAGS) -MMD -MP -MF $(OF_PROJECT_OBJ_OUTPUT_PATH)$*.d -MT $(OF_PROJECT_OBJ_OUTPUT_PATH)$*.o -o $@ -c "$<"
 
-$(OF_PROJECT_OBJ_OUTPUT_PATH)%.o: $(PROJECT_ROOT__)/%.cxx $(OF_PROJECT_OBJ_OUTPUT_PATH).compiler_flags
+$(OF_PROJECT_OBJ_OUTPUT_PATH)%.o: $(PROJECT_ROOT)/%.cxx $(OF_PROJECT_OBJ_OUTPUT_PATH).compiler_flags
 	@echo "Compiling" $<
 	@mkdir -p $(@D)
 	$(CXX) -c $(OPTIMIZATION_CFLAGS) $(CFLAGS) $(CXXFLAGS) $(PROJECT_INCLUDE_CFLAGS) -MMD -MP -MF $(OF_PROJECT_OBJ_OUTPUT_PATH)$*.d -MT $(OF_PROJECT_OBJ_OUTPUT_PATH)$*.o -o $@ -c "$<"
 
-$(OF_PROJECT_OBJ_OUTPUT_PATH)%.o: $(PROJECT_ROOT__)/%.cc $(OF_PROJECT_OBJ_OUTPUT_PATH).compiler_flags
+$(OF_PROJECT_OBJ_OUTPUT_PATH)%.o: $(PROJECT_ROOT)/%.cc $(OF_PROJECT_OBJ_OUTPUT_PATH).compiler_flags
 	@echo "Compiling" $<
 	@mkdir -p $(@D)
 	$(CXX) -c $(OPTIMIZATION_CFLAGS) $(CFLAGS) $(CXXFLAGS) $(PROJECT_INCLUDE_CFLAGS) -MMD -MP -MF $(OF_PROJECT_OBJ_OUTPUT_PATH)$*.d -MT $(OF_PROJECT_OBJ_OUTPUT_PATH)$*.o -o $@ -c "$<"
 
-$(OF_PROJECT_OBJ_OUTPUT_PATH)%.o: $(PROJECT_ROOT__)/%.m $(OF_PROJECT_OBJ_OUTPUT_PATH).compiler_flags
+$(OF_PROJECT_OBJ_OUTPUT_PATH)%.o: $(PROJECT_ROOT)/%.m $(OF_PROJECT_OBJ_OUTPUT_PATH).compiler_flags
 	@echo "Compiling" $<
 	@mkdir -p $(@D)
 	$(CXX) -c $(OPTIMIZATION_CFLAGS) $(CFLAGS) $(CXXFLAGS) $(PROJECT_INCLUDE_CFLAGS) -MMD -MP -MF $(OF_PROJECT_OBJ_OUTPUT_PATH)$*.d -MT $(OF_PROJECT_OBJ_OUTPUT_PATH)$*.o -o $@ -c "$<"
 
-$(OF_PROJECT_OBJ_OUTPUT_PATH)%.o: $(PROJECT_ROOT__)/%.mm $(OF_PROJECT_OBJ_OUTPUT_PATH).compiler_flags
+$(OF_PROJECT_OBJ_OUTPUT_PATH)%.o: $(PROJECT_ROOT)/%.mm $(OF_PROJECT_OBJ_OUTPUT_PATH).compiler_flags
 	@echo "Compiling" $<
 	@mkdir -p $(@D)
 	$(CXX) -c $(OPTIMIZATION_CFLAGS) $(CFLAGS) $(CXXFLAGS) $(PROJECT_INCLUDE_CFLAGS) -MMD -MP -MF $(OF_PROJECT_OBJ_OUTPUT_PATH)$*.d -MT $(OF_PROJECT_OBJ_OUTPUT_PATH)$*.o -o $@ -c "$<"
 
-$(OF_PROJECT_OBJ_OUTPUT_PATH)%.o: $(PROJECT_ROOT__)/%.c $(OF_PROJECT_OBJ_OUTPUT_PATH).compiler_flags
+$(OF_PROJECT_OBJ_OUTPUT_PATH)%.o: $(PROJECT_ROOT)/%.c $(OF_PROJECT_OBJ_OUTPUT_PATH).compiler_flags
 	@echo "Compiling" $<
 	@mkdir -p $(@D)
 	$(CC) -c $(OPTIMIZATION_CFLAGS) $(CFLAGS) $(PROJECT_INCLUDE_CFLAGS) -MMD -MP -MF $(OF_PROJECT_OBJ_OUTPUT_PATH)$*.d -MT $(OF_PROJECT_OBJ_OUTPUT_PATH)$*.o -o $@ -c "$<"
 
-$(OF_PROJECT_OBJ_OUTPUT_PATH)%.o: $(PROJECT_ROOT__)/%.S $(OF_PROJECT_OBJ_OUTPUT_PATH).compiler_flags
+$(OF_PROJECT_OBJ_OUTPUT_PATH)%.o: $(PROJECT_ROOT)/%.S $(OF_PROJECT_OBJ_OUTPUT_PATH).compiler_flags
 	@echo "Compiling" $<
 	@mkdir -p $(@D)
 	$(CC) -c $(OPTIMIZATION_CFLAGS) $(CFLAGS)  $(PROJECT_INCLUDE_CFLAGS) -MMD -MP -MF $(OF_PROJECT_OBJ_OUTPUT_PATH)$*.d -MT $(OF_PROJECT_OBJ_OUTPUT_PATH)$*.o -o $@ -c "$<"
