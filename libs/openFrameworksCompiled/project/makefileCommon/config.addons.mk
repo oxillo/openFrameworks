@@ -5,16 +5,16 @@
 
 # parses addons includes, in PARSED_ADDON_INCLUDES receives full PATHS to addons
 define parse_addons_includes
-	$(eval ADDONS_INCLUDES_FILTER = $(addprefix $1/, $(ADDON_INCLUDES_EXCLUDE))) \
-	$(eval PARSED_ADDONS_SOURCE_PATHS = $(addsuffix /src, $1)) \
+	$(eval ADDONS_INCLUDES_FILTER = $(call esp-addprefix,$1/, $(ADDON_INCLUDES_EXCLUDE))) \
+	$(eval PARSED_ADDONS_SOURCE_PATHS = $(call esp-addsuffix,/src, $1)) \
 	$(eval PARSED_ADDONS_SOURCE_INCLUDES = $(shell $(FIND) $(PARSED_ADDONS_SOURCE_PATHS) -type d 2> /dev/null | grep -v "/\.[^\.]" | sed 's/ /\\ /g')) \
-	$(eval PARSED_ADDONS_FILTERED_INCLUDE_PATHS = $(filter-out $(ADDONS_INCLUDES_FILTER),$(PARSED_ADDONS_SOURCE_INCLUDES))) \
-	$(eval PARSED_ADDONS_LIBS_SOURCE_PATHS = $(addsuffix /libs, $1)) \
+	$(eval PARSED_ADDONS_FILTERED_INCLUDE_PATHS = $(call esp-filter-out,$(ADDONS_INCLUDES_FILTER),$(PARSED_ADDONS_SOURCE_INCLUDES))) \
+	$(eval PARSED_ADDONS_LIBS_SOURCE_PATHS = $(call esp-addsuffix,/libs, $1)) \
 	$(eval PARSED_ADDONS_LIBS_SOURCE_INCLUDES = $(shell $(FIND) $(PARSED_ADDONS_LIBS_SOURCE_PATHS) -type d 2> /dev/null | grep -v "/\.[^\.]" | sed 's/ /\\ /g')) \
-	$(eval PARSED_ADDONS_FILTERED_LIBS_SOURCE_INCLUDE_PATHS = $(filter-out $(ADDONS_INCLUDES_FILTER),$(PARSED_ADDONS_LIBS_SOURCE_INCLUDES))) \
-	$(eval PARSED_ADDONS_LIBS_INCLUDES_PATHS = $(addsuffix /libs/*/include, $1)) \
+	$(eval PARSED_ADDONS_FILTERED_LIBS_SOURCE_INCLUDE_PATHS = $(call esp-filter-out,$(ADDONS_INCLUDES_FILTER),$(PARSED_ADDONS_LIBS_SOURCE_INCLUDES))) \
+	$(eval PARSED_ADDONS_LIBS_INCLUDES_PATHS = $(call esp-addsuffix,/libs/*/include, $1)) \
 	$(eval PARSED_ADDONS_LIBS_INCLUDES = $(shell $(FIND) $(PARSED_ADDONS_LIBS_INCLUDES_PATHS) -type d 2> /dev/null | grep -v "/\.[^\.]" | sed 's/ /\\ /g')) \
-	$(eval PARSED_ADDONS_FILTERED_LIBS_INCLUDE_PATHS = $(filter-out $(ADDONS_INCLUDES_FILTER),$(PARSED_ADDONS_LIBS_INCLUDES))) \
+	$(eval PARSED_ADDONS_FILTERED_LIBS_INCLUDE_PATHS = $(call esp-filter-out,$(ADDONS_INCLUDES_FILTER),$(PARSED_ADDONS_LIBS_INCLUDES))) \
 	$(eval PARSED_ADDONS_INCLUDES = $(PARSED_ADDONS_FILTERED_INCLUDE_PATHS)) \
 	$(eval PARSED_ADDONS_INCLUDES += $(PARSED_ADDONS_FILTERED_LIBS_SOURCE_INCLUDE_PATHS)) \
 	$(eval PARSED_ADDONS_INCLUDES += $(PARSED_ADDONS_FILTERED_LIBS_INCLUDE_PATHS))
@@ -22,20 +22,20 @@ endef
 
 # parses addons sources, in PARSED_ADDON_SOURCES receives full PATHS to addons
 define parse_addons_sources
-	$(eval ADDONS_SOURCES_FILTER = $(addprefix $1/, $(ADDON_SOURCES_EXCLUDE))) \
-	$(eval PARSED_ADDONS_SOURCE_PATHS = $(addsuffix /src, $1)) \
+	$(eval ADDONS_SOURCES_FILTER = $(call esp-addprefix,$1/, $(ADDON_SOURCES_EXCLUDE))) \
+	$(eval PARSED_ADDONS_SOURCE_PATHS = $(call esp-addsuffix,/src, $1)) \
 	$(eval PARSED_ADDONS_OFX_SOURCES = $(shell $(FIND) $(PARSED_ADDONS_SOURCE_PATHS) -type f \( -name "*.cpp" -or -name "*.c" -or -name "*.cc" -or -name "*.cxx" \) 2> /dev/null | grep -v "/\.[^\.]" | sed 's/ /\\ /g') ) \
-	$(eval PARSED_ADDONS_FILTERED_SOURCE_PATHS = $(filter-out $(ADDONS_SOURCES_FILTER),$(PARSED_ADDONS_OFX_SOURCES))) \
-	$(eval PARSED_ADDONS_LIBS_SOURCE_PATHS = $(addsuffix /libs, $1)) \
+	$(eval PARSED_ADDONS_FILTERED_SOURCE_PATHS = $(call esp-filter-out,$(ADDONS_SOURCES_FILTER),$(PARSED_ADDONS_OFX_SOURCES))) \
+	$(eval PARSED_ADDONS_LIBS_SOURCE_PATHS = $(call esp-addsuffix,/libs, $1)) \
 	$(eval PARSED_ADDONS_LIBS_SOURCES = $(shell $(FIND) $(PARSED_ADDONS_LIBS_SOURCE_PATHS) -type f \( -name "*.cpp" -or -name "*.c" -or -name "*.cc" -or -name "*.cxx" \) 2> /dev/null | grep -v "/\.[^\.]" | sed 's/ /\\ /g')) \
-	$(eval PARSED_ADDONS_FILTERED_LIBS_SOURCE_PATHS = $(filter-out $(ADDONS_SOURCES_FILTER),$(PARSED_ADDONS_LIBS_SOURCES))) \
+	$(eval PARSED_ADDONS_FILTERED_LIBS_SOURCE_PATHS = $(call esp-filter-out,$(ADDONS_SOURCES_FILTER),$(PARSED_ADDONS_LIBS_SOURCES))) \
 	$(eval PARSED_ADDONS_SOURCE_FILES = $(PARSED_ADDONS_FILTERED_SOURCE_PATHS)) \
 	$(eval PARSED_ADDONS_SOURCE_FILES += $(PARSED_ADDONS_FILTERED_LIBS_SOURCE_PATHS))
 endef
 
 # parses addons libraries, in PARSED_ADDON_LIBS receives full PATHS to addons and libs_exclude
 define parse_addons_libraries
-	$(eval PARSED_ADDONS_LIBS_PLATFORM_LIB_PATHS = $(filter-out $(ADDON_LIBS_EXCLUDE),$(addsuffix /libs/*/lib/$(ABI_LIB_SUBPATH), $1))) \
+	$(eval PARSED_ADDONS_LIBS_PLATFORM_LIB_PATHS = $(call esp-filter-out,$(ADDON_LIBS_EXCLUDE),$(call esp-addsuffix,/libs/*/lib/$(ABI_LIB_SUBPATH), $1))) \
 	$(eval PARSED_ALL_PLATFORM_LIBS = $(shell $(FIND) $(PARSED_ADDONS_LIBS_PLATFORM_LIB_PATHS) -type d 2> /dev/null | grep -v "/\.[^\.]" | sed 's/ /\\ /g')) \
 	$(if $(PARSED_ALL_PLATFORM_LIBS), \
 		$(eval PARSED_ADDONS_LIBS_PLATFORM_LIBS_STATICS = $(shell $(FIND) $(PARSED_ALL_PLATFORM_LIBS) -name *.a 2> /dev/null | grep -v "/\.[^\.]" | sed 's/ /\\ /g') ) \
@@ -70,12 +70,12 @@ endef
 # 6: if PROCESS_NEXT eval the line to put the variable in the makefile space
 define parse_addon
 	$(if $(wildcard $(PROJECT_ROOT)/$1), \
-		$(eval addon=$(realpath $(addprefix $(PROJECT_ROOT)/, $1))) \
+		$(eval addon=$(call esp-realpath,$(call esp-addprefix,$(PROJECT_ROOT)/, $1))) \
 		$(eval addon_obj_path=$(PROJECT_ROOT)) \
 		$(eval ADDON_PATHS+= $(dir $(addon))) \
 		$(eval obj_prefix=$(OF_PROJECT_OBJ_OUTPUT_PATH)addons/) \
 	, \
-		$(eval addon=$(realpath $(addprefix $(OF_ADDONS_PATH)/, $1))) \
+		$(eval addon=$(call esp-realpath,$(call esp-addprefix,$(OF_ADDONS_PATH)/, $1))) \
 		$(eval addon_obj_path=$(OF_ADDONS_PATH)) \
 		$(eval obj_prefix=$(OF_PROJECT_OBJ_OUTPUT_PATH)) \
 	) \
@@ -111,15 +111,9 @@ define parse_addon
 		) \
 	) \
 	$(if $(strip $(ADDON_INCLUDES)), \
-		$(eval ADDON_INCLUDES_FILTERED = $(filter-out $(addprefix $(addon)/,$(ADDON_INCLUDES_EXCLUDE)),$(ADDON_INCLUDES))) \
-		$(foreach addon_include, $(strip $(ADDON_INCLUDES_FILTERED)), \
-			$(if $(wildcard $(addon)/$(addon_include)), \
-				$(eval TMP_PROJECT_ADDONS_INCLUDES += $(addon)/$(addon_include)) \
-			) \
-			$(if $(wildcard $(addon_include)), \
-				$(eval TMP_PROJECT_ADDONS_INCLUDES += $(addon_include)) \
-			) \
-		) \
+		$(eval ADDON_INCLUDES_FILTERED = $(call esp-filter-out,$(call esp-addprefix,$(addon)/,$(ADDON_INCLUDES_EXCLUDE)),$(ADDON_INCLUDES))) \
+		$(eval TMP_PROJECT_ADDONS_INCLUDES += $(call esp-exist,$(call esp-addprefix,$(addon)/,$(ADDON_INCLUDES_FILTERED)))) \
+		$(eval TMP_PROJECT_ADDONS_INCLUDES += $(call esp-exist,$(ADDON_INCLUDES_FILTERED))) \
 	) \
 	$(eval TMP_PROJECT_ADDONS_CFLAGS += $(ADDON_CFLAGS)) \
 	$(eval TMP_PROJECT_ADDONS_CFLAGS += $(ADDON_CPPFLAGS)) \
@@ -218,7 +212,7 @@ $(foreach addon_to_parse, $(PROJECT_ADDONS), \
 #endef
 
 
-uniq = $(if $1,$(firstword $1) $(call uniq,$(filter-out $(firstword $1),$1)))
+uniq = $(if $1,$(call esp-firstword,$1) $(call uniq,$(call esp-filter-out $(call esp-firstword,$1),$1)))
 
 
 PROJECT_ADDONS_CFLAGS = $(call uniq,$(TMP_PROJECT_ADDONS_CFLAGS))
