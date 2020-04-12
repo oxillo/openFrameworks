@@ -95,7 +95,7 @@ define parse_addon
 	$(call parse_addons_sources, $(addon)) \
 	$(eval ADDON_SOURCES=$(PARSED_ADDONS_SOURCE_FILES)) \
 	$(eval PROCESS_NEXT=0) \
-	$(if $(wildcard $(addon)/addon_config.mk), \
+	$(if $(call esp-exist,$(addon)/addon_config.mk), \
 		$(foreach var_line, $(shell cat $(addon)/addon_config.mk | tr '\n ' '\t?'), \
 			$(eval unscaped_var_line=$(strip $(subst ?, ,$(var_line)))) \
 			$(if $(filter $(PROCESS_NEXT),1), $(eval $(unscaped_var_line))) \
