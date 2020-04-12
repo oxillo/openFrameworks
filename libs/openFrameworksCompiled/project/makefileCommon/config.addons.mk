@@ -212,9 +212,7 @@ $(foreach addon_to_parse, $(PROJECT_ADDONS), \
 #endef
 
 
-uniq = $(if $1,$(call esp-firstword,$1) $(call uniq,$(call esp-filter-out $(call esp-firstword,$1),$1)))
-
-
+uniq = $(if $1,$(call esp-firstword,$1) $(call uniq,$(call esp-filter-out,$(call esp-firstword,$1),$1)))
 PROJECT_ADDONS_CFLAGS = $(call uniq,$(TMP_PROJECT_ADDONS_CFLAGS))
 PROJECT_ADDONS_INCLUDES = $(call uniq,$(TMP_PROJECT_ADDONS_INCLUDES))
 PROJECT_ADDONS_LIBS = $(call uniq,$(TMP_PROJECT_ADDONS_LIBS))
