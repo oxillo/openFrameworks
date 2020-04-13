@@ -24,12 +24,13 @@ then
 	exit 1
 fi
 
-cd ${SCRIPTPATH}/../../libs/openFrameworksCompiled/project
+pushd "${SCRIPTPATH}/../../libs/openFrameworksCompiled/project" > /dev/null
 
 if [ -v CI ]; then
 	echo "Building in CI mode"
 	make  Debug
 	exit_code=$?
+	popd > /dev/null
 	exit $exit_code
 fi
  
@@ -38,6 +39,7 @@ exit_code=$?
 if [ $exit_code != 0 ]; then
   echo "there has been a problem compiling Debug OF library"
   echo "please report this problem in the forums"
+  popd > /dev/null
   exit $exit_code
 fi
 
@@ -47,6 +49,8 @@ if [ "$BUILD" == "install" ]; then
     if [ $exit_code != 0 ]; then
       echo "there has been a problem compiling Release OF library"
       echo "please report this problem in the forums"
+	  popd > /dev/null
       exit $exit_code
     fi
 fi
+popd > /dev/null
