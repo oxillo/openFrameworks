@@ -79,10 +79,10 @@ OF_CORE_THIRDPARTY_SHARED_LIBS := $(call esp-filter-out,$(CORE_EXCLUSIONS),$(ALL
 ################################################################################
 
 ifeq ($(PLATFORM_OS),Linux)
-	OF_CORE_LIBRARY_LDFLAGS = $(addprefix -L,$(dir $(OF_CORE_THIRDPARTY_SHARED_LIBS)))
+	OF_CORE_LIBRARY_LDFLAGS = $(call esp-addprefix,-L,$(dir $(OF_CORE_THIRDPARTY_SHARED_LIBS)))
 	OF_CORE_LIBRARY_LDFLAGS += $(addprefix -l,$(patsubst lib%,%,$(basename $(notdir $(OF_CORE_THIRDPARTY_SHARED_LIBS)))))
 endif
-OF_CORE_LIBRARY_LDFLAGS += $(addprefix -L,$(PLATFORM_LIBRARY_SEARCH_PATHS))
+OF_CORE_LIBRARY_LDFLAGS += $(call esp-addprefix,-L,$(PLATFORM_LIBRARY_SEARCH_PATHS))
 
 
 ################################################################################
