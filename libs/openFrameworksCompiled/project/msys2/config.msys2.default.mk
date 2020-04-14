@@ -94,7 +94,10 @@ PLATFORM_REQUIRED_ADDONS =
 # Note: Be sure to leave a leading space when using a += operator to add items to the list
 ##########################################################################################
 
-PLATFORM_CFLAGS += -std=gnu++14 -DUNICODE -D_UNICODE
+#PLATFORM_CC_STD = -std=c11
+PLATFORM_CXX_STD = -std=gnu++14
+
+PLATFORM_CFLAGS += -DUNICODE -D_UNICODE
 #PLATFORM_CFLAGS += -IC:/msys64/mingw32/include/gstreamer-1.0 -DOF_VIDEO_PLAYER_GSTREAMER
 
 # Link against libstdc++ to silence tr1/memory errors on latest versions of osx
