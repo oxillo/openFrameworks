@@ -63,8 +63,11 @@ PLATFORM_REQUIRED_ADDONS = ofxEmscripten
 #   Note: Leave a leading space when adding list items with the += operator
 ################################################################################
 
+#PLATFORM_CC_STD = -std=c11
+PLATFORM_CXX_STD = -std=c++14
+
 # Code Generation Option Flags (http://gcc.gnu.org/onlinedocs/gcc/Code-Gen-Options.html)
-PLATFORM_CFLAGS = -Wall -std=c++14 -Wno-warn-absolute-paths
+PLATFORM_CFLAGS = -Wall -Wno-warn-absolute-paths
 
 
 ################################################################################
