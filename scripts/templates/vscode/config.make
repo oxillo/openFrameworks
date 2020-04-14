@@ -140,3 +140,12 @@
 ################################################################################
 # PROJECT_CXX = 
 # PROJECT_CC = 
+
+################################################################################
+# PROJECT COMPILERS STD
+#   Compiler standards C and C++ can be set for CC and CXX 
+#		(default) PROJECT_CC_STD = (blank)
+#		(default) PROJECT_CXX_STD = (blank)
+################################################################################
+# PROJECT_CC_STD = -std=c11
+# PROJECT_CXX_STD = -std=c++14
