@@ -26,8 +26,6 @@
 ##########################################################################################
 
 MINGW_PREFIX ?= /mingw32
-PLATFORM_CFLAGS += -std=gnu++14 -DUNICODE -D_UNICODE
-#PLATFORM_CFLAGS += -IC:/msys64/mingw32/include/gstreamer-1.0 -DOF_VIDEO_PLAYER_GSTREAMER
 ifdef USE_CCACHE
 	CC = ccache $(MINGW_PREFIX)/bin/gcc
 	CXX = ccache $(MINGW_PREFIX)/bin/g++
@@ -95,6 +93,9 @@ PLATFORM_REQUIRED_ADDONS =
 #
 # Note: Be sure to leave a leading space when using a += operator to add items to the list
 ##########################################################################################
+
+PLATFORM_CFLAGS += -std=gnu++14 -DUNICODE -D_UNICODE
+#PLATFORM_CFLAGS += -IC:/msys64/mingw32/include/gstreamer-1.0 -DOF_VIDEO_PLAYER_GSTREAMER
 
 # Link against libstdc++ to silence tr1/memory errors on latest versions of osx
 #PLATFORM_CFLAGS = -stdlib=libstdc++
