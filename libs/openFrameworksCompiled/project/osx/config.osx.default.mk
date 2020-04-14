@@ -77,6 +77,9 @@ ifndef MAC_OS_STD_LIB
 	MAC_OS_STD_LIB = libc++
 endif
 
+#PLATFORM_CC_STD += -std=c11
+PLATFORM_CXX_STD = -std=c++11
+
 # Link against libstdc++ to silence tr1/memory errors on latest versions of osx
 PLATFORM_CFLAGS = -stdlib=$(MAC_OS_STD_LIB)
 
@@ -139,7 +142,6 @@ endif
 PLATFORM_CFLAGS += -mmacosx-version-min=$(MAC_OS_MIN_VERSION)
 
 PLATFORM_CXXFLAGS += -x objective-c++
-PLATFORM_CXXFLAGS += -std=c++11
 
 ifeq ($(USE_GST),1)
 	PLATFORM_CFLAGS += -I/Library/Frameworks/Gstreamer.framework/Headers
