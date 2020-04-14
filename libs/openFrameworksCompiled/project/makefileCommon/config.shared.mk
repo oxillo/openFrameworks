@@ -343,7 +343,46 @@ CC_STD = $(call selectFirstDefined, $(PROJECT_CC_STD), $(PLATFORM_CC_STD), $(DEF
 
 # gather any platform CFLAGS
 OF_CORE_BASE_CFLAGS=$(CC_STD) $(PLATFORM_CFLAGS)
-OF_CORE_BASE_CXXFLAGS=$(PLATFORM_CXXFLAGS)
+
+################################################################################
+# OF PLATFORM CXXFLAGS
+################################################################################
+
+# CXX_STD : C++ standard setting
+ifeq (clang,$(findstring clang,$(notdir $(CXX))))
+	# clang setting
+	DEFAULT_CXX_STD=-std=c++11
+else ifeq (g++,$(findstring g++,$(notdir $(OF_CXX))))
+	# gcc settings depends on the version
+	# < 4.7.x  c++0x
+	# >= 4.7.x c++11
+	# >= 4.9.x c++14
+	GCC_MAJOR_EQ_4 := $(shell expr `$(CXX) -dumpversion | cut -f1 -d.` \= 4)
+	GCC_MAJOR_GT_4 := $(shell expr `$(CXX) -dumpversion | cut -f1 -d.` \> 4)
+	GCC_MINOR_LTEQ_7 := $(shell expr `$(CXX) -dumpversion | cut -f2 -d.` \<= 7)
+	GCC_MINOR_GTEQ_9 := $(shell expr `$(CXX) -dumpversion | cut -f2 -d.` \>= 9)
+
+	ifeq ("$(GCC_MAJOR_GT_4)","1")
+		DEFAULT_CXX_STD=-std=c++14
+	else ifeq ("$(GCC_MAJOR_EQ_4)","1")
+		ifeq ("$(GCC_MINOR_GTEQ_9)","1")
+			DEFAULT_CXX_STD=-std=c++14
+		else ifeq ("$(GCC_MINOR_LTEQ_7)","1")
+			DEFAULT_CXX_STD=-std=c++0x
+		else
+			DEFAULT_CXX_STD=-std=c++11
+		endif
+	else
+		DEFAULT_CXX_STD=-std=c++0x
+	endif
+else
+	#other compiler
+	DEFAULT_CXX_STD=-std=c++11
+endif
+CXX_STD = $(call selectFirstDefined, $(PROJECT_CXX_STD), $(PLATFORM_CXX_STD), $(DEFAULT_CXX_STD))
+
+# gather any platform CXXFLAGS
+OF_CORE_BASE_CXXFLAGS=$(CXX_STD) $(PLATFORM_CXXFLAGS)
 
 
 ################################################################################
