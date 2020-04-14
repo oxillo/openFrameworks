@@ -6,6 +6,16 @@
 # makefile
 
 
+# ######################  UTILITY FUNCTIONS  ###################################
+# define functions used across all makefiles
+################################################################################
+
+# selectFirstDefined : use the first defined argument (up to 3)
+# used to select PROJECT, PLATFORM or DEFAULT value when defined
+# syntax : VAR = $(call selectFirstDefined, $(PROJECT_VAR), $(PLATFORM_VAR), $(DEFAULT_VAR))
+selectFirstDefined = $(strip $(if $(strip $(1)),$(1),$(if $(strip $(2)),$(2),$(3))))
+
+
 # #####################  PLATFORM DETECTION ###################################
 # determine the platform's architecture, os and form the platform-specific libarary subpath
 #   If they haven't already been defined, this file will generate the following
