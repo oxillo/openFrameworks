@@ -338,7 +338,7 @@ OF_CORE_DEFINES_CFLAGS=$(addprefix -D,$(PLATFORM_DEFINES))
 ################################################################################
 
 # CC_STD : C standard setting
-DEFAULT_CC_STD = -std=c11
+DEFAULT_CC_STD = 
 CC_STD = $(call selectFirstDefined, $(PROJECT_CC_STD), $(PLATFORM_CC_STD), $(DEFAULT_CC_STD))
 
 # gather any platform CFLAGS
