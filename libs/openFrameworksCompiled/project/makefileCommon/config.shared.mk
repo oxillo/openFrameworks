@@ -342,7 +342,7 @@ DEFAULT_CC_STD = -std=c11
 CC_STD = $(call selectFirstDefined, $(PROJECT_CC_STD), $(PLATFORM_CC_STD), $(DEFAULT_CC_STD))
 
 # gather any platform CFLAGS
-OF_CORE_BASE_CFLAGS=$(CC_STD) $(PLATFORM_CFLAGS)
+OF_CORE_BASE_CFLAGS=$(PLATFORM_CFLAGS)
 
 ################################################################################
 # OF PLATFORM CXXFLAGS
@@ -382,7 +382,7 @@ endif
 CXX_STD = $(call selectFirstDefined, $(PROJECT_CXX_STD), $(PLATFORM_CXX_STD), $(DEFAULT_CXX_STD))
 
 # gather any platform CXXFLAGS
-OF_CORE_BASE_CXXFLAGS=$(CXX_STD) $(PLATFORM_CXXFLAGS)
+OF_CORE_BASE_CXXFLAGS=$(PLATFORM_CXXFLAGS)
 
 
 ################################################################################
