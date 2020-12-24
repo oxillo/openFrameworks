@@ -53,6 +53,10 @@ jobs:
             unzip
             rsync
             wget
+      - name: Installing dependencies
+          shell: msys2 {0}
+            run: |
+              ./scripts/ci/vs/install.sh
       - name: Add MSBuild to PATH
         uses: microsoft/setup-msbuild@v1.0.2
       - name: Building openFrameworks
@@ -66,5 +70,5 @@ jobs:
       - name: Building examples
         working-directory: ${{env.GITHUB_WORKSPACE}}
         run: |-
-          msbuild examples/templates/emptyExample/emptyExample.vcxproj  /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
-          msbuild examples/templates/allAddonsExample/allAddonsExample.vcxproj  /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+          msbuild examples/templates/emptyExample/emptyExample.vcxproj  /verbosity:minimal
+          msbuild examples/templates/allAddonsExample/allAddonsExample.vcxproj  /verbosity:minimal
