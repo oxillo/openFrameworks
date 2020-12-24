@@ -70,5 +70,5 @@ jobs:
       - name: Building examples
         working-directory: ${{env.GITHUB_WORKSPACE}}
         run: |-
-          msbuild examples/templates/emptyExample/emptyExample.vcxproj  /verbosity:minimal
-          msbuild examples/templates/allAddonsExample/allAddonsExample.vcxproj  /verbosity:minimal
+          msbuild examples/templates/emptyExample/emptyExample.vcxproj
+          msbuild examples/templates/allAddonsExample/allAddonsExample.vcxproj
