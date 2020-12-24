@@ -54,9 +54,9 @@ jobs:
             rsync
             wget
       - name: Installing dependencies
-          shell: msys2 {0}
-          run: |
-            ./scripts/ci/vs/install.sh
+        shell: msys2 {0}
+        run: |
+          ./scripts/ci/vs/install.sh
       - name: Add MSBuild to PATH
         uses: microsoft/setup-msbuild@v1.0.2
       - name: Building openFrameworks
