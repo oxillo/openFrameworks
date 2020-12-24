@@ -10,28 +10,27 @@ jobs:
     defaults:
       run:
         shell: msys2 {0}
-    build:
-      env: 
-        MSYSTEM: ${{ matrix.mingw }}
-      steps:
-        - uses: actions/checkout@v2
-        - uses: msys2/setup-msys2@v2
-          with:
-            update: true
-            install: >-
-              git
-              unzip
-              rsync
-              wget
-        - name: Install dependencies
-          run: |
-            echo 'Installing dependencies!'
-            ./scripts/ci/msys2/install.sh
-        - name: Build
-          run: |
-            echo 'Building Of'
-            ./scripts/ci/msys2/build.sh
-        - name: Run Tests
-          run: |
-            echo 'Running Test'
-            ./scripts/ci/msys2/run_tests.sh
+    env: 
+      MSYSTEM: ${{ matrix.mingw }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: msys2/setup-msys2@v2
+        with:
+          update: true
+          install: >-
+            git
+            unzip
+            rsync
+            wget
+      - name: Install dependencies
+        run: |
+          echo 'Installing dependencies!'
+          ./scripts/ci/msys2/install.sh
+      - name: Build
+        run: |
+          echo 'Building Of'
+          ./scripts/ci/msys2/build.sh
+      - name: Run Tests
+        run: |
+          echo 'Running Test'
+          ./scripts/ci/msys2/run_tests.sh
