@@ -38,7 +38,8 @@ jobs:
   vs2017:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Cloning repository
+        uses: actions/checkout@v2
       - uses: msys2/setup-msys2@v2
         with:
           update: true
@@ -49,7 +50,8 @@ jobs:
             wget
       - name: Add MSBuild to PATH
         uses: microsoft/setup-msbuild@v1.0.2
-      
+        with:
+          vs-version: '[15.0,16.0)'
       - name: Build
         working-directory: ${{env.GITHUB_WORKSPACE}}
         # Add additional options to the MSBuild command line here (like platform or verbosity level).
