@@ -4,12 +4,12 @@ on: [push, pull_request]
 jobs:
   msys2:
     runs-on: windows-latest
-      strategy:
-        matrix:
-          mingw: [MINGW64,MINGW32]
-      defaults:
-        run:
-          shell: msys2 {0}
+    strategy:
+      matrix:
+        mingw: [MINGW64,MINGW32]
+    defaults:
+      run:
+        shell: msys2 {0}
     build:
       env: 
         MSYSTEM: ${{ matrix.mingw }}
