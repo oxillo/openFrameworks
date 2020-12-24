@@ -3,17 +3,17 @@ on: [push, pull_request]
 
 jobs:
   msys2:
-    build:
-      runs-on: windows-latest
+    runs-on: windows-latest
       strategy:
         matrix:
-          system: [64,32]
+          mingw: [MINGW64,MINGW32]
       defaults:
         run:
           shell: msys2 {0}
+    build:
+      env: 
+        MSYSTEM: ${{ matrix.mingw }}
       steps:
-        env: 
-            MSYSTEM: MINGW${{ matrix.system }}
         - uses: actions/checkout@v2
         - uses: msys2/setup-msys2@v2
           with:
