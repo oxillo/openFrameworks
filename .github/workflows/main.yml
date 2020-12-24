@@ -38,6 +38,15 @@ jobs:
   vs2017:
     runs-on: windows-latest
     steps:
+      - uses: actions/checkout@v2
+      - uses: msys2/setup-msys2@v2
+        with:
+          update: true
+          install: >-
+            git
+            unzip
+            rsync
+            wget
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
     
