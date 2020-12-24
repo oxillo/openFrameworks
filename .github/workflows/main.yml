@@ -65,7 +65,6 @@ jobs:
           msbuild libs/openFrameworksCompiled/project/vs/openframeworksLib.vcxproj
       - name: Building examples
         working-directory: ${{env.GITHUB_WORKSPACE}}
-        run:
+        run: |-
           msbuild examples/templates/emptyExample/emptyExample.vcxproj  /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
-        run:
           msbuild examples/templates/allAddonsExample/allAddonsExample.vcxproj  /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
