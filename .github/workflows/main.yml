@@ -1,0 +1,33 @@
+name: MSYS2 GHA
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: msys2/setup-msys2@v2
+        with:
+          msystem: MINGW64
+          update: true
+          install: >-
+            git
+            unzip
+            rsync
+            wget
+            libopenssl
+      - name: Install dependencies
+        run: |
+          echo 'Installing dependencies!'
+          ./scripts/ci/msys2/install.sh
+      - name: Build
+        run: |
+          echo 'Building Of'
+          ./scripts/ci/msys2/build.sh
+      - name: Run Tests
+        run: |
+          echo 'Running Test'
+          ./scripts/ci/msys2/run_tests.sh
