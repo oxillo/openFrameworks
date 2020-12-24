@@ -34,14 +34,12 @@ jobs:
         run: |
           echo 'Running Test'
           ./scripts/ci/msys2/run_tests.sh
+
   vs2017:
     runs-on: windows-latest
     steps:
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
-      with:
-        vs-version: '[15,16]'
-
     
     - name: Build
       working-directory: ${{env.GITHUB_WORKSPACE}}
