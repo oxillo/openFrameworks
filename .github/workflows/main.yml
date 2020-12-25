@@ -73,3 +73,15 @@ jobs:
         run: |-
           msbuild examples/templates/emptyExample/emptyExample.vcxproj /p:configuration=release /p:platform=${{ matrix.configuration.platform }}
           msbuild examples/templates/allAddonsExample/allAddonsExample.vcxproj /p:configuration=release /p:platform=${{ matrix.configuration.platform }}
+  
+  linux64:
+    runs-on: ubuntu-latest
+    env:
+      TARGET: linux64
+    steps:
+    - uses: actions/checkout@v2
+    - name: install dependencies
+      run: |-
+        scripts/ci/$TARGET/install.sh
+        scripts/linux/download_libs.sh -a 64gcc4
+        scripts/ci/$TARGET/run_tests.sh
