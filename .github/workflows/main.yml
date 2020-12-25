@@ -39,9 +39,9 @@ jobs:
     runs-on: windows-2016
     strategy:
       matrix:
-        configuration: [{platform:x64,bits:64},{platform:Win32,bits:32}]
+        configuration: [64,32]
     env: 
-      BITS: ${{ matrix.configuration.bits }}
+      BITS: ${{ matrix.configuration }}
     steps:
       - name: Cloning repository
         uses: actions/checkout@v2
