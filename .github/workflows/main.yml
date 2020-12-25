@@ -87,7 +87,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: install dependencies
-      run: |-
+      run: 
         scripts/ci/$TARGET/install.sh
-        scripts/linux/download_libs.sh -a 64gcc4
+    - name: Check version
+      run: 
+        gcc --version
+    - name: Check version
+      run: |-
+        scripts/linux/download_libs.sh -a 64gcc6
         scripts/ci/$TARGET/run_tests.sh
