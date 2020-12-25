@@ -88,11 +88,25 @@ jobs:
     - uses: actions/checkout@v2
     - name: install dependencies
       run: 
-        scripts/ci/$TARGET/install.sh
-    - name: Check version
+        ./scripts/ci/$TARGET/install.sh
+    - name: Download libs
       run: 
-        gcc --version
-    - name: Check version
-      run: |-
-        scripts/linux/download_libs.sh -a 64gcc6
-        scripts/ci/$TARGET/run_tests.sh
+        ./scripts/linux/download_libs.sh -a 64gcc6
+    - name: Run tests
+      run:
+        ./scripts/ci/$TARGET/run_tests.sh
+
+  osx:
+    runs-on: macos-10.15
+    steps:
+    - uses: actions/checkout@v2
+    - name: install dependencies
+      run: 
+        ./scripts/ci/osx/install.sh
+    - name: Download libs
+      run:
+        ./scripts/osx/download_libs.sh
+    - name: Run tests
+      run:
+        ./scripts/osx/run_tests.sh
+
