@@ -121,6 +121,9 @@ jobs:
       run:
         ./scripts/osx/download_libs.sh
     - name: Run tests
-      run:
+      run: 
+        xcode-select -print-path
+    - name: Run tests
+      run: 
         ./scripts/ci/osx/run_tests.sh
 
