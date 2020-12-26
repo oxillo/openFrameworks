@@ -123,10 +123,10 @@ jobs:
         ./scripts/osx/download_libs.sh
     - name: Run tests
       run: |-
-        
         xcode-select -print-path
-        xcode_select("/Applications/Xcode-11.7.app")
         ls $MAC_OS_SDK_ROOT
+        xcode_select --switch /Applications/Xcode-11.7.app/Contents/Developer
+        
     - name: Run tests
       run: 
         ./scripts/ci/osx/run_tests.sh
