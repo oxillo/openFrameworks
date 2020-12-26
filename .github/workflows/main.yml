@@ -125,7 +125,7 @@ jobs:
       run: |-
         xcode-select -print-path
         ls $MAC_OS_SDK_ROOT
-        
+        sudo xcode-select -s /Applications/Xcode_11.7.app
     - name: Run tests
       run: 
         ./scripts/ci/osx/run_tests.sh
