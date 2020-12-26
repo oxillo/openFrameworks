@@ -104,7 +104,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Install dependencies
       run: |
-        ./scripts/linux/archlinux/install_dependencies.sh
+        ./scripts/linux/archlinux/install_dependencies.sh --noconfirm
   
   osx:
     runs-on: macos-10.15
@@ -118,5 +118,5 @@ jobs:
         ./scripts/osx/download_libs.sh
     - name: Run tests
       run:
-        ./scripts/osx/run_tests.sh
+        ./scripts/ci/osx/run_tests.sh
 
