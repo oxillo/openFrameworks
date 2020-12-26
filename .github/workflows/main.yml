@@ -103,7 +103,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install dependencies
-        run: |
+        run: |-
           echo 'Installing dependencies!'
           ./scripts/linux/archlinux/install_dependencies.sh
   
