@@ -96,13 +96,18 @@ jobs:
       run:
         ./scripts/ci/$TARGET/run_tests.sh
 
+  arch-linux:
+    runs-on: ubuntu-latest
+    container:
+      image: archlinux
+  
   osx:
     runs-on: macos-10.15
     steps:
     - uses: actions/checkout@v2
-    - name: install dependencies
-      run: 
-        ./scripts/ci/osx/install.sh
+    #- name: install dependencies
+    #  run: 
+    #    ./scripts/ci/osx/install.sh
     - name: Download libs
       run:
         ./scripts/osx/download_libs.sh
