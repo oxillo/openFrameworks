@@ -104,8 +104,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: Install dependencies
       run: |-
-        sudo pacman -Syu --noconfirm
-        sudo pacman -Sy --noconfirm --needed make pkgconf gcc openal glew freeglut freeimage gstreamer gst-plugins-base gst-plugins-good gst-plugins-bad gst-libav opencv libxcursor assimp boost glfw-x11 uriparser curl pugixml rtaudio poco
+        pacman -Syu --noconfirm
+        pacman -Sy --noconfirm --needed make pkgconf gcc openal glew freeglut freeimage gstreamer gst-plugins-base gst-plugins-good gst-plugins-bad gst-libav opencv libxcursor assimp boost glfw-x11 uriparser curl pugixml rtaudio poco
   
   osx:
     runs-on: macos-10.15
