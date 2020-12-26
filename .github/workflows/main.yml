@@ -103,8 +103,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install dependencies
-      run: |
-        ./scripts/linux/archlinux/install_dependencies.sh --noconfirm
+      run: |-
+        pacman -Syu
+        pacman -Sy --noconfirm --needed make pkgconf gcc openal glew freeglut freeimage gstreamer gst-plugins-base gst-plugins-good gst-plugins-bad gst-libav opencv libxcursor assimp boost glfw-x11 uriparser curl pugixml rtaudio poco
   
   osx:
     runs-on: macos-10.15
