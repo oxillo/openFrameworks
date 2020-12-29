@@ -123,7 +123,7 @@ jobs:
         sudo mount --bind /dev scripts/ci/linuxarmv6l/raspbian/dev/
         sudo mount --bind /sys scripts/ci/linuxarmv6l/raspbian/sys/
         sudo mount --bind /proc scripts/ci/linuxarmv6l/raspbian/proc/
-        mount --bind /dev/pts scripts/ci/linuxarmv6l/raspbian/dev/pts/
+        sudo mount --bind /dev/pts scripts/ci/linuxarmv6l/raspbian/dev/pts/
         # ajout pr acces internet
         sudo mount --bind /run scripts/ci/linuxarmv6l/raspbian/run/
 
