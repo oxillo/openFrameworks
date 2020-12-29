@@ -112,6 +112,7 @@ jobs:
         popd
     - name: Download Raspberry Pi sysroot
       run: |-
+        apt install qemu qemu-user-static binfmt-support 
         mkdir -p scripts/ci/linuxarmv6l/raspbian
         pushd scripts/ci/linuxarmv6l/raspbian
         wget https://downloads.raspberrypi.org/raspios_lite_armhf/root.tar.xz
@@ -119,12 +120,12 @@ jobs:
         ls
         sudo tar -xf root.tar -C ./
         popd
-        mount --bind /dev scripts/ci/linuxarmv6l/raspbian/dev/
-        mount --bind /sys scripts/ci/linuxarmv6l/raspbian/sys/
-        mount --bind /proc scripts/ci/linuxarmv6l/raspbian/proc/
+        sudo mount --bind /dev scripts/ci/linuxarmv6l/raspbian/dev/
+        sudo mount --bind /sys scripts/ci/linuxarmv6l/raspbian/sys/
+        sudo mount --bind /proc scripts/ci/linuxarmv6l/raspbian/proc/
         mount --bind /dev/pts scripts/ci/linuxarmv6l/raspbian/dev/pts/
         # ajout pr acces internet
-        mount --bind /run scripts/ci/linuxarmv6l/raspbian/run/
+        sudo mount --bind /run scripts/ci/linuxarmv6l/raspbian/run/
 
         # ld.so.preload fix
         sed -i 's/^/#CHROOT /g' scripts/ci/linuxarmv6l/raspbian/etc/ld.so.preload
