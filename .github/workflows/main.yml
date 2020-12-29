@@ -114,10 +114,10 @@ jobs:
       run: |-
         mkdir -p /opt/pi/sysroot
         pushd /opt/pi/sysroot
-        wget https://downloads.raspberrypi.org/raspios_lite_armhf/root.tar.xz 
-        xz -t root.tar.xz
+        wget https://downloads.raspberrypi.org/raspios_lite_armhf/root.tar.xz
         xz -d root.tar.xz
-        tar xv root.tar
+        ls
+        tar -xf root.tar
         popd
     - name: Download libs
       run: 
