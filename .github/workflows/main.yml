@@ -96,21 +96,33 @@ jobs:
       run:
         ./scripts/ci/$TARGET/run_tests.sh
 
-  linuxarm:
+  raspberry:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        target: [armv6l,armv7l]
     env:
-      TARGET: linux${{matrix.target}}
+      TARGET: linuxarmv6l
+      TOOLCHAIN_ROOT: /opt/pi
+      RPI_ROOT: /opt/pi/systool
     steps:
     - uses: actions/checkout@v2
+    - name: Install Raspberry toolchain
+      run: |-
+        mkdir /opt/pi
+        pushd /opt/pi
+        git clone https://github.com/raspberrypi/tools
+        popd
+    - name: Download Raspberry Pi sysroot
+      run: |-
+        mkdir -p /opt/pi/sysroot
+        pushd /opt/pi/sysroot
+        wget https://downloads.raspberrypi.org/raspios_lite_armhf/root.tar.xz 
+        tar xz root.tar.xz
+        popd
     - name: Download libs
       run: 
-        ./scripts/linux/download_libs.sh -a ${{matrix.target}}
+        ./scripts/linux/download_libs.sh -a armv6l
     - name: Build
       run:
-        ./scripts/ci/$TARGET/build.sh
+        ./scripts/ci/linuxarmv6l/build.sh
 
 
   arch-linux:
