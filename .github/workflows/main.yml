@@ -139,7 +139,7 @@ jobs:
 
 
         # chroot to raspbian
-        sudo chroot scripts/ci/linuxarmv6l/raspbian/raspbian qemu-arm-static /bin/bash
+        sudo chroot scripts/ci/linuxarmv6l/raspbian qemu-arm-static /bin/bash
 
         # ajout dns pr acces internet
         echo 'nameserver 1.1.1.1' | sudo tee -a /etc/resolv.conf
