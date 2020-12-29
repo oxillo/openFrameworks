@@ -117,7 +117,7 @@ jobs:
         wget https://downloads.raspberrypi.org/raspios_lite_armhf/root.tar.xz
         xz -d root.tar.xz
         ls
-        sudo tar -xf root.tar -C scripts/ci/linuxarmv6l/raspbian/
+        sudo tar -xf root.tar -C ./
         popd
     - name: Download libs
       run: 
