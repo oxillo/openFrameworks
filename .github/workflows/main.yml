@@ -144,6 +144,7 @@ jobs:
         # ajout dns pr acces internet
         echo 'nameserver 1.1.1.1' | sudo tee -a /etc/resolv.conf
         sudo apt-get update
+        sudo apt-get install -y cairo
         exit
         
     - name: Download libs
