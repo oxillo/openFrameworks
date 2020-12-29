@@ -100,20 +100,20 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TARGET: linuxarmv6l
-      TOOLCHAIN_ROOT: script/ci/linuxarmv6l/raspbian/rpi_toolchain
-      RPI_ROOT: script/ci/linuxarmv6l/raspbian
+      TOOLCHAIN_ROOT: scripts/ci/linuxarmv6l/raspbian/rpi_toolchain
+      RPI_ROOT: scripts/ci/linuxarmv6l/raspbian
     steps:
     - uses: actions/checkout@v2
     - name: Install Raspberry toolchain
       run: |-
-        mkdir script/ci/linuxarmv6l/raspbian/rpi_toolchain
-        pushd script/ci/linuxarmv6l/raspbian/rpi_toolchain
+        mkdir -p scripts/ci/linuxarmv6l/raspbian/rpi_toolchain
+        pushd scripts/ci/linuxarmv6l/raspbian/rpi_toolchain
         git clone https://github.com/raspberrypi/tools
         popd
     - name: Download Raspberry Pi sysroot
       run: |-
-        mkdir -p script/ci/linuxarmv6l/raspbian
-        pushd script/ci/linuxarmv6l/raspbian
+        mkdir -p scripts/ci/linuxarmv6l/raspbian
+        pushd scripts/ci/linuxarmv6l/raspbian
         wget https://downloads.raspberrypi.org/raspios_lite_armhf/root.tar.xz
         xz -d root.tar.xz
         ls
