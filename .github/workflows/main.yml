@@ -125,7 +125,7 @@ jobs:
         sudo mount --bind /proc scripts/ci/linuxarmv6l/raspbian/proc/
         sudo mount --bind /dev/pts scripts/ci/linuxarmv6l/raspbian/dev/pts/
         # ajout pr acces internet
-        sudo mount --bind /run scripts/ci/linuxarmv6l/raspbian/run/
+        #sudo mount --bind /run scripts/ci/linuxarmv6l/raspbian/run/
 
         # ld.so.preload fix
         sed -i 's/^/#CHROOT /g' scripts/ci/linuxarmv6l/raspbian/etc/ld.so.preload
