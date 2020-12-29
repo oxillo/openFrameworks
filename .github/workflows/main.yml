@@ -152,7 +152,7 @@ jobs:
         ./scripts/linux/download_libs.sh -a armv6l
     - name: Build
       run: |-
-        pkg-config --exists cairo
+        # pkg-config --exists cairo
         env | grep CONFIG
         ./scripts/ci/linuxarmv6l/build.sh
 
