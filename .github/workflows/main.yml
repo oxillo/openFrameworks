@@ -128,10 +128,10 @@ jobs:
         #sudo mount --bind /run scripts/ci/linuxarmv6l/raspbian/run/
 
         # ld.so.preload fix
-        #sed -i 's/^/#CHROOT /g' scripts/ci/linuxarmv6l/raspbian/etc/ld.so.preload
+        sudo sed -i 's/^/#CHROOT /g' scripts/ci/linuxarmv6l/raspbian/etc/ld.so.preload
 
         # copy qemu binary
-        cp /usr/bin/qemu-arm-static scripts/ci/linuxarmv6l/raspbian/usr/bin/
+        sudo cp /usr/bin/qemu-arm-static scripts/ci/linuxarmv6l/raspbian/usr/bin/
 
         echo "You will be transferred to the bash shell now."
         echo "Issue 'exit' when you are done."
