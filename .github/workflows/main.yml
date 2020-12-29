@@ -119,6 +119,32 @@ jobs:
         ls
         sudo tar -xf root.tar -C ./
         popd
+        mount --bind /dev scripts/ci/linuxarmv6l/raspbian/dev/
+        mount --bind /sys scripts/ci/linuxarmv6l/raspbian/sys/
+        mount --bind /proc scripts/ci/linuxarmv6l/raspbian/proc/
+        mount --bind /dev/pts scripts/ci/linuxarmv6l/raspbian/dev/pts/
+        # ajout pr acces internet
+        mount --bind /run scripts/ci/linuxarmv6l/raspbian/run/
+
+        # ld.so.preload fix
+        sed -i 's/^/#CHROOT /g' scripts/ci/linuxarmv6l/raspbian/etc/ld.so.preload
+
+        # copy qemu binary
+        cp /usr/bin/qemu-arm-static scripts/ci/linuxarmv6l/raspbian/usr/bin/
+
+        echo "You will be transferred to the bash shell now."
+        echo "Issue 'exit' when you are done."
+        echo "Issue 'su pi' if you need to work as the user pi."
+
+
+        # chroot to raspbian
+        chroot scripts/ci/linuxarmv6l/raspbian/raspbian /bin/bash
+
+        # ajout dns pr acces internet
+        echo 'nameserver 1.1.1.1' | sudo tee -a /etc/resolv.conf
+        apt-get update
+        exit
+        
     - name: Download libs
       run: 
         ./scripts/linux/download_libs.sh -a armv6l
