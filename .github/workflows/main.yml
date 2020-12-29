@@ -112,7 +112,7 @@ jobs:
         popd
     - name: Download Raspberry Pi sysroot
       run: |-
-        apt install qemu qemu-user-static binfmt-support 
+        apt-get install -y qemu qemu-user-static binfmt-support 
         mkdir -p scripts/ci/linuxarmv6l/raspbian
         pushd scripts/ci/linuxarmv6l/raspbian
         wget https://downloads.raspberrypi.org/raspios_lite_armhf/root.tar.xz
