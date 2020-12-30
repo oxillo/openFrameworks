@@ -191,6 +191,7 @@ jobs:
         echo ${HEADER_SEARCH_PATHS}
     - name: Run tests
       run: |-
+        export SDKROOT=$(xcrun --sdk macosx --show-sdk-path)
         export CXX="$(which ccache) $(xcodebuild -find clang++)"
         export CC="$(which ccache) $(xcodebuild -find clang)"
         echo "**** Building emptyExample ****"
