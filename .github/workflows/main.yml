@@ -185,6 +185,7 @@ jobs:
     - name: Run tests
       run: |-
         xcode-select -print-path
+        echo $MAC_OS_SDK_ROOT
         ls $MAC_OS_SDK_ROOT
         sudo xcode-select -s /Applications/Xcode_11.7.app
         echo ${HEADER_SEARCH_PATHS}
@@ -196,7 +197,7 @@ jobs:
         cp scripts/templates/osx/Makefile examples/templates/emptyExample/
         cp scripts/templates/osx/config.make examples/templates/emptyExample/
         cd examples/templates/emptyExample/
-        make -j2 Debug
+        make -j2 MAKEFILE_DEBUG=True Debug
 
         # ./scripts/ci/osx/run_tests.sh
 
