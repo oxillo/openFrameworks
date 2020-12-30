@@ -189,6 +189,14 @@ jobs:
         sudo xcode-select -s /Applications/Xcode_11.7.app
         echo ${HEADER_SEARCH_PATHS}
     - name: Run tests
-      run: 
-        ./scripts/ci/osx/run_tests.sh
+      run: |-
+        export CXX="$(which ccache) $(xcodebuild -find clang++)"
+        export CC="$(which ccache) $(xcodebuild -find clang)"
+        echo "**** Building emptyExample ****"
+        cp scripts/templates/osx/Makefile examples/templates/emptyExample/
+        cp scripts/templates/osx/config.make examples/templates/emptyExample/
+        cd examples/templates/emptyExample/
+        make -j2 Debug
+
+        # ./scripts/ci/osx/run_tests.sh
 
