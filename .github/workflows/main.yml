@@ -194,6 +194,7 @@ jobs:
         export CXX="$(which ccache) $(xcodebuild -find clang++)"
         export CC="$(which ccache) $(xcodebuild -find clang)"
         echo "**** Building emptyExample ****"
+        touch libs/openFrameworks/TargetConditionals.h
         cp scripts/templates/osx/Makefile examples/templates/emptyExample/
         cp scripts/templates/osx/config.make examples/templates/emptyExample/
         cd examples/templates/emptyExample/
