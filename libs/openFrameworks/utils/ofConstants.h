@@ -84,8 +84,39 @@ enum ofTargetPlatform{
 	#define TARGET_WIN32
 #elif defined( __APPLE_CC__)
     #define __ASSERT_MACROS_DEFINE_VERSIONS_WITHOUT_UNDERSCORES 0
-    #include <TargetConditionals.h>
-	#if (TARGET_OS_IPHONE || TARGET_OS_IOS || TARGET_OS_SIMULATOR || TARGET_OS_IPHONE_SIMULATOR) && !TARGET_OS_TV && !TARGET_OS_WATCH
+    /*+--------------------------------------+
+      |             TARGET_OS_MAC            |
+      | +---+  +---------------------------+ |
+      | |   |  |      TARGET_OS_IPHONE     | |
+      | |OSX|  | +-----+ +----+ +-------+  | |
+      | |   |  | | IOS | | TV | | WATCH |  | |
+      | |   |  | +-----+ +----+ +-------+  | |
+      | +---+  +---------------------------+ |
+      +--------------------------------------+
+      Devices:      TARGET_OS_EMBEDDED
+      Simulators:   TARGET_OS_SIMULATOR)*/
+	#if ( TARGET_OS_MAC )
+		#if (TARGET_OS_OSX)
+			#define TARGET_OSX
+		#elif (TARGET_OS_IPHONE)
+			#define TARGET_OF_IOS
+			#define TARGET_OPENGLES
+			#include <unistd.h>
+			#if (TARGET_OS_IOS)
+				#define TARGET_OF_IPHONE
+			#elif (TARGET_OS_TV)
+				#define TARGET_OF_TVOS
+			#elif (TARGET_OS_WATCH)
+				#define TARGET_OF_WATCHOS
+			#else
+				#error Unknow Apple platform
+			#endif
+		#else
+			#error Unknow Apple platform
+		#endif
+	#endif
+    //#include <TargetConditionals.h>
+	/*#if (TARGET_OS_IPHONE || TARGET_OS_IOS || TARGET_OS_SIMULATOR || TARGET_OS_IPHONE_SIMULATOR) && !TARGET_OS_TV && !TARGET_OS_WATCH
         #define TARGET_OF_IPHONE
         #define TARGET_OF_IOS
         #define TARGET_OPENGLES
@@ -102,7 +133,7 @@ enum ofTargetPlatform{
         #include <unistd.h>
 	#else
 		#define TARGET_OSX
-	#endif
+	#endif*/
 #elif defined (__ANDROID__)
 	#define TARGET_ANDROID
 	#define TARGET_OPENGLES
