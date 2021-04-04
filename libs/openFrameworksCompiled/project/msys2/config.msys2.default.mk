@@ -26,8 +26,6 @@
 ##########################################################################################
 
 MINGW_PREFIX ?= /mingw32
-PLATFORM_CFLAGS += -std=gnu++14 -DUNICODE -D_UNICODE
-#PLATFORM_CFLAGS += -IC:/msys64/mingw32/include/gstreamer-1.0 -DOF_VIDEO_PLAYER_GSTREAMER
 ifdef USE_CCACHE
 	CC = ccache $(MINGW_PREFIX)/bin/gcc
 	CXX = ccache $(MINGW_PREFIX)/bin/g++
@@ -62,7 +60,10 @@ PLATFORM_RUN_COMMAND = cd bin;./$(BIN_NAME)
 # Note: Be sure to leave a leading space when using a += operator to add items to the list
 ##########################################################################################
 
-#PLATFORM_DEFINES = OF_USING_STD_FS
+
+PLATFORM_DEFINES += UNICODE
+PLATFORM_DEFINES += _UNICODE
+PLATFORM_DEFINES += OF_USING_STD_FS
 ifeq ($(OF_USE_POCO),1)
 	PLATFORM_DEFINES += POCO_STATIC
 endif
@@ -74,6 +75,7 @@ ifeq ($(shell pkg-config libmpg123 --exists; echo $$?),0)
 	PLATFORM_DEFINES += OF_USING_MPG123
 endif
 
+#PLATFORM_DEFINES += OF_VIDEO_PLAYER_GSTREAMER
 
 ##########################################################################################
 # PLATFORM REQUIRED ADDON
@@ -113,6 +115,8 @@ PLATFORM_CFLAGS += -fexceptions
 #	PLATFORM_CFLAGS += -march=native
 #	PLATFORM_CFLAGS += -mtune=native
 #endif
+
+PLATFORM_CXXFLAGS += -std=c++17
 
 
 ################################################################################
