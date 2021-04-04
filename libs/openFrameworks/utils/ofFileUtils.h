@@ -3,6 +3,14 @@
 #include "ofConstants.h"
 #include <fstream>
 
+
+// Set to 1 to use std filesystem instead of boost's
+#ifndef OF_USING_STD_FS
+#define OF_USING_STD_FS 0
+#endif
+
+
+
 #if OF_USING_STD_FS
 #	if __cplusplus < 201703L
 #		include <experimental/filesystem>

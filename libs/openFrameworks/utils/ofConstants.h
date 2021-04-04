@@ -15,10 +15,6 @@
 // This enables glm's old behavior of initializing with non garbage values
 #define GLM_FORCE_CTOR_INIT
 
-// Set to 1 to use std filesystem instead of boost's
-#ifndef OF_USING_STD_FS
-#define OF_USING_STD_FS 0
-#endif
 
 //-------------------------------
 
@@ -438,46 +434,4 @@ std::unique_ptr<T> make_unique(Args&&... args) {
 
 } // namespace std
 
-#endif
-
-//------------------------------------------------ forward declaration for std::filesystem::path
-// Remove from here once everything is using std::filesystem::path
-#if OF_USING_STD_FS
-#	if __cplusplus < 201703L
-
-		namespace std {
-			namespace experimental{
-				namespace filesystem {
-					namespace v1 {
-						namespace __cxx11 {
-							class path;
-						}
-					}
-
-					using v1::__cxx11::path;
-				}
-			}
-			namespace filesystem = experimental::filesystem;
-		}
-#	else
-
-	namespace std {
-		namespace filesystem {
-			class path;
-		}
-	}
-#	endif
-#else
-#	if !_MSC_VER
-#		define BOOST_NO_CXX11_SCOPED_ENUMS
-#		define BOOST_NO_SCOPED_ENUMS
-#	endif
-	namespace boost {
-		namespace filesystem {
-			class path;
-		}
-	}
-	namespace std {
-		namespace filesystem = boost::filesystem;
-	}
 #endif
