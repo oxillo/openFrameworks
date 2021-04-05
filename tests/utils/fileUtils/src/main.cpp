@@ -8,9 +8,29 @@ std::filesystem::path initial_cwd;
 
 class ofApp: public ofxUnitTestsApp{
 	void run(){
+		bool pass = true;
+		pass=pass && ofxTestEq(ofFilePath::getPathForDirectory("."),std::filesystem::path("./"),"getting path for current directory '.'","other tests will fail too");
+		pass=pass && ofxTestEq(ofFilePath::getPathForDirectory("./"),std::filesystem::path("./"),"getting path for current directory './'","other tests will fail too");
+		pass=pass && ofxTestEq(ofFilePath::getPathForDirectory(""),std::filesystem::path("./"),"getting path for current directory ''","other tests will fail too");
+		pass=pass && ofxTestEq(ofFilePath::getPathForDirectory(".."),std::filesystem::path("../"),"getting path for parent directory '..'","other tests will fail too");
+		pass=pass && ofxTestEq(ofFilePath::getPathForDirectory("../"),std::filesystem::path("../"),"getting path for parent directory '../'","other tests will fail too");
+		pass=pass && ofxTestEq(ofFilePath::getPathForDirectory("data"),std::filesystem::path("data/"),"getting path for directory 'data'","other tests will fail too");
+		pass=pass && ofxTestEq(ofFilePath::getPathForDirectory("data/"),std::filesystem::path("data/"),"getting path for directory 'data/'","other tests will fail too");
+		pass=pass && ofxTestEq(ofFilePath::getPathForDirectory("./data"),std::filesystem::path("data/"),"getting path for directory './data'","other tests will fail too");
+		pass=pass && ofxTestEq(ofFilePath::getPathForDirectory("data\\"),std::filesystem::path("data/"),"getting path for directory 'data\\'","other tests will fail too");
+		
+		// Stop testing as getting wrong path from ofFilePath::getPathForDirectory() can have destructive consequences ! 
+		if( !pass ){
+			ofLogFatalError()<<"Aborting due to ofFilePath::getPathForDirectory tests failing";
+			return;
+		}
+		
 		ofDirectory dir(".");
         dir.create(true);
         dir.exists();
+		if( dir.getAbsolutePath().find(initial_cwd.string())!=0 ){
+			ofLogFatalError()<<"Something seems wrong with ofDirectory.Aborting...";
+		}
 		for(auto f: dir){
 			f.setWriteable(true);
 			if(f.isDirectory()){
@@ -42,9 +62,9 @@ class ofApp: public ofxUnitTestsApp{
 				ofFile fw("noread",ofFile::WriteOnly);
 				fw << "testing";
 			}
-			boost::system::error_code error;
+			/*boost::system::error_code error;
 			boost::filesystem::permissions(ofToDataPath("noread"), boost::filesystem::no_perms, error);
-			ofxTest(!error, "error setting no read permissions, " + error.message());
+			ofxTest(!error, "error setting no read permissions, " + error.message());*/
 			if(!ofxTest(!ofFile("noread").canRead(),"!ofFile::canRead")){
 				ofFile fr("noread");
 				std::string str;
@@ -170,9 +190,12 @@ class ofApp: public ofxUnitTestsApp{
 			ofxTestEq(ofFilePath::removeExt("c:\\users\\user\\file.txt"),"c:\\users\\user\\file","ofFilePath::removeExt absolute path");
 			ofxTestEq(ofFilePath::addLeadingSlash("test"),"\\test","ofFilePath::addLeadingSlash");
 			ofxTestEq(ofFilePath::addLeadingSlash("\\test"),"\\test","ofFilePath::addLeadingSlash");
+			ofxTestEq(ofFilePath::addLeadingSlash("/test"),"\\test","ofFilePath::addLeadingSlash");
 			ofxTestEq(ofFilePath::addTrailingSlash("test"),"test\\","ofFilePath::addTrailingSlash");
 			ofxTestEq(ofFilePath::addTrailingSlash("test\\"),"test\\","ofFilePath::addTrailingSlash");
+			ofxTestEq(ofFilePath::addTrailingSlash("test/"),"test\\","ofFilePath::addTrailingSlash");
 			ofxTestEq(ofFilePath::removeTrailingSlash("test\\"),"test","ofFilePath::removeTrailingSlash");
+			ofxTestEq(ofFilePath::removeTrailingSlash("test/"),"test","ofFilePath::removeTrailingSlash");
 			ofxTestEq(ofFilePath::getPathForDirectory("dir\\other"),"dir\\other\\","ofFilePath::getPathForDirectory");
 			ofxTestEq(ofFilePath::getPathForDirectory("dir\\other\\"),"dir\\other\\","ofFilePath::getPathForDirectory with trailing \\");
 			ofxTest(ofFilePath::isAbsolute("c:\\test"),"ofFilePath::isAbsolute");
@@ -219,24 +242,24 @@ class ofApp: public ofxUnitTestsApp{
         ofLogNotice() << "";
         ofLogNotice() << "tests #4462";
 		if(ofGetTargetPlatform()==OF_TARGET_WINVS || ofGetTargetPlatform()==OF_TARGET_MINGW){
-			ofxTestEq(ofToDataPath("movies\\",true).back(), '\\', "absolute ofToDataPath with \\ should end in \\");
-			ofxTestEq(ofToDataPath("movies",true).back(), 's', "absolute ofToDataPath without \\ should not end in \\");
+			ofxTestEq(ofToDataPath("movies\\",true).string().back(), '\\', "absolute ofToDataPath with \\ should end in \\");
+			ofxTestEq(ofToDataPath("movies",true).string().back(), 's', "absolute ofToDataPath without \\ should not end in \\");
 			ofDirectory("movies").create();
-			ofxTestEq(ofToDataPath("movies\\",true).back(), '\\', "absolute ofToDataPath with \\ should end in \\");
-			ofxTestEq(ofToDataPath("movies",true).back(), 's', "absolute ofToDataPath without \\ should not end in \\");
+			ofxTestEq(ofToDataPath("movies\\",true).string().back(), '\\', "absolute ofToDataPath with \\ should end in \\");
+			ofxTestEq(ofToDataPath("movies",true).string().back(), 's', "absolute ofToDataPath without \\ should not end in \\");
 		}else{
-			ofxTestEq(ofToDataPath("movies/",true).back(), '/', "absolute ofToDataPath with / should end in /");
-			ofxTestEq(ofToDataPath("movies",true).back(), 's', "absolute ofToDataPath without / should not end in /");
+			ofxTestEq(ofToDataPath("movies/",true).string().back(), '/', "absolute ofToDataPath with / should end in /");
+			ofxTestEq(ofToDataPath("movies",true).string().back(), 's', "absolute ofToDataPath without / should not end in /");
 			ofDirectory("movies").create();
-			ofxTestEq(ofToDataPath("movies/",true).back(), '/', "absolute ofToDataPath with / should end in /");
-			ofxTestEq(ofToDataPath("movies",true).back(), 's', "absolute ofToDataPath without / should not end in /");
+			ofxTestEq(ofToDataPath("movies/",true).string().back(), '/', "absolute ofToDataPath with / should end in /");
+			ofxTestEq(ofToDataPath("movies",true).string().back(), 's', "absolute ofToDataPath without / should not end in /");
 		}
 
 
         //========================================================================
         ofLogNotice() << "";
         ofLogNotice() << "tests #4598";
-		ofxTestEq(ofToDataPath("").back(), std::filesystem::path::preferred_separator, "ofToDataPath with empty string shouldn't crash");
+		ofxTestEq(ofToDataPath("").string().back(), std::filesystem::path::preferred_separator, "ofToDataPath with empty string shouldn't crash");
 
         //========================================================================
         ofLogNotice() << "";
@@ -269,14 +292,14 @@ class ofApp: public ofxUnitTestsApp{
         dir.remove(true);
 		if(ofGetTargetPlatform()==OF_TARGET_WINVS || ofGetTargetPlatform()==OF_TARGET_MINGW){
 			ofDirectory currentVideoDirectory(ofToDataPath("..\\..\\..\\video", true));
-			auto path = currentVideoDirectory.path();
-			std::string pathEnd("data\\..\\..\\..\\video\\");
-			ofxTestEq(path.substr(path.size()-pathEnd.size()), pathEnd, "#4564");
+			auto pathEnd = initial_cwd;
+			pathEnd /= "data\\..\\..\\..\\video\\";
+			ofxTestEq( currentVideoDirectory.path(), pathEnd.lexically_normal().string(), "#4564");
 		}else{
 			ofDirectory currentVideoDirectory(ofToDataPath("../../../video", true));
-			auto path = currentVideoDirectory.path();
-			std::string pathEnd("data/../../../video/");
-			ofxTestEq(path.substr(path.size()-pathEnd.size()), pathEnd, "#4564");
+			auto pathEnd = initial_cwd;
+			pathEnd /= "data/../../../video/";
+			ofxTestEq( currentVideoDirectory.path(), pathEnd.lexically_normal().string(), "#4564");
 		}
 	}
 };
