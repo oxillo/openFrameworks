@@ -1121,7 +1121,7 @@ ofDirectShowPlayer & ofDirectShowPlayer::operator=(ofDirectShowPlayer&& other) {
 }
 
 bool ofDirectShowPlayer::load(std::string path){
-    path = ofToDataPath(path); 
+    path = ofToDataPath(path).string(); 
 
     close();
     player.reset(new DirectShowVideo());

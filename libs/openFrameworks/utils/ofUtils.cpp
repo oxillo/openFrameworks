@@ -78,7 +78,6 @@ namespace{
         return string("sdcard/");
     #else
         try{
-			ofLogWarning()<<"exeDir =" << ofFilePath::getCurrentExeDir();
             return std::filesystem::canonical(ofFilePath::join(ofFilePath::getCurrentExeDir(),  "data/")).make_preferred().string();
         }catch(...){
             return ofFilePath::join(ofFilePath::getCurrentExeDir(),  "data/");
@@ -95,7 +94,6 @@ namespace{
     //--------------------------------------------------
     std::filesystem::path & dataPathRoot(){
             static auto * dataPathRoot = new std::filesystem::path(defaultDataPath());
-			ofLogWarning()<<__func__<< " " << dataPathRoot->string();
             return *dataPathRoot;
     }
 }
@@ -521,16 +519,15 @@ void ofSetDataPathRoot(const std::filesystem::path& newRoot){
 }
 
 //--------------------------------------------------
-string ofToDataPath(const std::filesystem::path & path, bool makeAbsolute){
-	ofLogWarning()<< __func__ << path.string();
+std::filesystem::path ofToDataPath(const std::filesystem::path & path, bool makeAbsolute){
 
     // input path is absolute, return it as it is
     if (path.is_absolute())
-        return path.string();
+        return path;
     
     // datapath is not enabled, return (relative) path unchanged
     if (!enableDataPath)
-        return path.string();
+        return path;
 
 	// if our Current Working Directory has changed (e.g. file open dialog)
 #ifdef TARGET_WIN32
@@ -550,20 +547,15 @@ string ofToDataPath(const std::filesystem::path & path, bool makeAbsolute){
 	auto relativeDirDataPath = dirDataPath.lexically_relative( cwp );
 	std::filesystem::path outPath( path );
 
-	ofLogWarning()<< __LINE__ << " outPath " << outPath;
-	ofLogWarning()<< __LINE__ << " relativeDirDataPath " <<relativeDirDataPath;
 
     if( path.string().find(relativeDirDataPath.string())!=0 ){ // path doesn't start with datapath, include it
         outPath = relativeDirDataPath / path;
     }
-	ofLogWarning()<< __LINE__ << " outPath " << outPath;
 
     if( makeAbsolute ){
-		ofLogWarning()<< __LINE__ << " outPath " << (cwp / outPath).lexically_normal().string();
-        return (cwp / outPath).string();
+        return (cwp / outPath).lexically_normal();
 	}
-	ofLogWarning()<< __LINE__ << " outPath " << outPath;
-	return outPath.lexically_normal().string();
+	return outPath.lexically_normal();
 }
 
 
