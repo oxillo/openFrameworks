@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ofConstants.h"
+#include "ofFileUtils.h"
 #include "ofTexture.h"
 #include "ofPixels.h"
 #include "ofGLBaseTypes.h"

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofConstants.h"
+#include "ofFileUtils.h"
 
 #ifdef OF_SOUND_PLAYER_FMOD
 
