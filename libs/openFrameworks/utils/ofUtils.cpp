@@ -78,6 +78,7 @@ namespace{
         return string("sdcard/");
     #else
         try{
+			ofLogWarning()<<"exeDir =" << ofFilePath::getCurrentExeDir();
             return std::filesystem::canonical(ofFilePath::join(ofFilePath::getCurrentExeDir(),  "data/")).make_preferred().string();
         }catch(...){
             return ofFilePath::join(ofFilePath::getCurrentExeDir(),  "data/");
@@ -94,6 +95,7 @@ namespace{
     //--------------------------------------------------
     std::filesystem::path & dataPathRoot(){
             static auto * dataPathRoot = new std::filesystem::path(defaultDataPath());
+			ofLogWarning()<<__func__<< " " << dataPathRoot->string();
             return *dataPathRoot;
     }
 }
@@ -520,13 +522,15 @@ void ofSetDataPathRoot(const std::filesystem::path& newRoot){
 
 //--------------------------------------------------
 string ofToDataPath(const std::filesystem::path & path, bool makeAbsolute){
-    if (makeAbsolute && path.is_absolute())
+	ofLogWarning()<< __func__ << path.string();
+
+    // input path is absolute, return it as it is
+    if (path.is_absolute())
         return path.string();
     
-	if (!enableDataPath)
+    // datapath is not enabled, return (relative) path unchanged
+    if (!enableDataPath)
         return path.string();
-
-    bool hasTrailingSlash = !path.empty() && path.generic_string().back()=='/';
 
 	// if our Current Working Directory has changed (e.g. file open dialog)
 #ifdef TARGET_WIN32
@@ -539,66 +543,27 @@ string ofToDataPath(const std::filesystem::path & path, bool makeAbsolute){
 	}
 #endif
 
-	// this could be performed here, or wherever we might think we accidentally change the cwd, e.g. after file dialogs on windows
-	const auto  & dataPath = dataPathRoot();
-	std::filesystem::path inputPath(path);
-	std::filesystem::path outputPath;
+    // datapath is enabled and input path is relative, compute path relative to datapath, 
+    // make it absolute if needed and and return it
+	std::filesystem::path cwp( std::filesystem::current_path() );
+	std::filesystem::path dirDataPath( dataPathRoot() );
+	auto relativeDirDataPath = dirDataPath.lexically_relative( cwp );
+	std::filesystem::path outPath( path );
 
-	// if path is already absolute, just return it
-	if (inputPath.is_absolute()) {
-		try {
-            auto outpath = std::filesystem::canonical(inputPath).make_preferred();
-            if(std::filesystem::is_directory(outpath) && hasTrailingSlash){
-                return ofFilePath::addTrailingSlash(outpath.string());
-            }else{
-                return outpath.string();
-            }
-		}
-		catch (...) {
-            return inputPath.string();
-		}
+	ofLogWarning()<< __LINE__ << " outPath " << outPath;
+	ofLogWarning()<< __LINE__ << " relativeDirDataPath " <<relativeDirDataPath;
+
+    if( path.string().find(relativeDirDataPath.string())!=0 ){ // path doesn't start with datapath, include it
+        outPath = relativeDirDataPath / path;
+    }
+	ofLogWarning()<< __LINE__ << " outPath " << outPath;
+
+    if( makeAbsolute ){
+		ofLogWarning()<< __LINE__ << " outPath " << (cwp / outPath).lexically_normal().string();
+        return (cwp / outPath).string();
 	}
-
-	// here we check whether path already refers to the data folder by looking for common elements
-	// if the path begins with the full contents of dataPathRoot then the data path has already been added
-	// we compare inputPath.toString() rather that the input var path to ensure common formatting against dataPath.toString()
-    auto dirDataPath = dataPath.string();
-	// also, we strip the trailing slash from dataPath since `path` may be input as a file formatted path even if it is a folder (i.e. missing trailing slash)
-    dirDataPath = ofFilePath::addTrailingSlash(dirDataPath);
-
-    auto relativeDirDataPath = ofFilePath::makeRelative(std::filesystem::current_path().string(),dataPath.string());
-    relativeDirDataPath  = ofFilePath::addTrailingSlash(relativeDirDataPath);
-
-    if (inputPath.string().find(dirDataPath) != 0 && inputPath.string().find(relativeDirDataPath)!=0) {
-		// inputPath doesn't contain data path already, so we build the output path as the inputPath relative to the dataPath
-	    if(makeAbsolute){
-            outputPath = dirDataPath / inputPath;
-	    }else{
-            outputPath = relativeDirDataPath / inputPath;
-	    }
-	} else {
-		// inputPath already contains data path, so no need to change
-		outputPath = inputPath;
-	}
-
-    // finally, if we do want an absolute path and we don't already have one
-	if(makeAbsolute){
-	    // then we return the absolute form of the path
-	    try {
-            auto outpath = std::filesystem::canonical(std::filesystem::absolute(outputPath)).make_preferred();
-            if(std::filesystem::is_directory(outpath) && hasTrailingSlash){
-                return ofFilePath::addTrailingSlash(outpath.string());
-            }else{
-                return outpath.string();
-            }
-	    }
-	    catch (std::exception &) {
-            return std::filesystem::absolute(outputPath).string();
-	    }
-	}else{
-		// or output the relative path
-        return outputPath.string();
-	}
+	ofLogWarning()<< __LINE__ << " outPath " << outPath;
+	return outPath.lexically_normal().string();
 }
 
 
