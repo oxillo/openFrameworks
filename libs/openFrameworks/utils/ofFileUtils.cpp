@@ -1067,14 +1067,14 @@ ofDirectory::ofDirectory(const std::filesystem::path & path){
 
 //------------------------------------------------------------------------------------------------------------
 void ofDirectory::open(const std::filesystem::path & path){
-	originalDirectory = ofFilePath::getPathForDirectory(path.string());
+	originalDirectory = ofFilePath::getPathForDirectory(path);
 	files.clear();
-	myDir = std::filesystem::path(ofToDataPath(originalDirectory));
+	myDir = ofToDataPath(originalDirectory);
 }
 
 //------------------------------------------------------------------------------------------------------------
 void ofDirectory::openFromCWD(const std::filesystem::path & path){
-	originalDirectory = ofFilePath::getPathForDirectory(path.string());
+	originalDirectory = ofFilePath::getPathForDirectory(path);
 	files.clear();
 	myDir = std::filesystem::path(originalDirectory);
 }
@@ -1558,26 +1558,16 @@ vector<ofFile>::const_reverse_iterator ofDirectory::rend() const{
 
 //------------------------------------------------------------------------------------------------------------
 string ofFilePath::addLeadingSlash(const std::filesystem::path& _path){
-    auto path = _path.string();
-	auto sep = std::filesystem::path("/").make_preferred();
-	if(!path.empty()){
-		if(ofToString(path[0]) != sep.string()){
-			path = (sep / path).string();
-		}
-	}
-	return path;
+	if( _path.empty() ) return "";
+	auto path = (std::filesystem::path("/") / _path).lexically_normal();
+	return path.string();
 }
 
 //------------------------------------------------------------------------------------------------------------
 string ofFilePath::addTrailingSlash(const std::filesystem::path& _path){
-    auto path = std::filesystem::path(_path).make_preferred().string();
-	auto sep = std::filesystem::path("/").make_preferred();
-	if(!path.empty()){
-		if(ofToString(path.back()) != sep.string()){
-			path = (path / sep).string();
-		}
-	}
-	return path;
+	if( _path.empty() ) return (std::filesystem::path(".")/"").string();
+	auto path = _path.lexically_normal();
+	return (path / "").string(); // Won't change anything if there is already a trailing slash
 }
 
 
@@ -1588,18 +1578,20 @@ string ofFilePath::getFileExt(const std::filesystem::path& filename){
 
 //------------------------------------------------------------------------------------------------------------
 string ofFilePath::removeExt(const std::filesystem::path& filename){
-	return ofFilePath::join(getEnclosingDirectory(filename,false), ofFile(filename,ofFile::Reference).getBaseName());
+	auto fn = filename.lexically_normal().replace_extension("");
+	return fn.string();
 }
 
 
 //------------------------------------------------------------------------------------------------------------
-string ofFilePath::getPathForDirectory(const std::filesystem::path& path){
+string ofFilePath::getPathForDirectory(const std::filesystem::path& _path){
 	// if a trailing slash is missing from a path, this will clean it up
 	// if it's a windows-style "\" path it will add a "\"
 	// if it's a unix-style "/" path it will add a "/"
-	auto sep = std::filesystem::path("/").make_preferred();
-    if(!path.empty() && ofToString(path.string().back())!=sep.string()){
-        return (path / sep).string();
+	if( _path.empty() ) return (std::filesystem::path(".")/"").string();
+	auto path = _path.lexically_normal();
+    if(!path.empty() && ofToString(path.generic_string().back())!="/"){
+		return (path / "").string();
 	}else{
         return path.string();
 	}
@@ -1617,13 +1609,11 @@ string ofFilePath::removeTrailingSlash(const std::filesystem::path& _path){
 
 //------------------------------------------------------------------------------------------------------------
 string ofFilePath::getFileName(const std::filesystem::path& _filePath, bool bRelativeToData){
-    std::string filePath = _filePath.string();
-
-	if(bRelativeToData){
-        filePath = ofToDataPath(_filePath);
+	auto filePath =  _filePath;
+	if( bRelativeToData ){
+		filePath = ofToDataPath(filePath);
 	}
-
-	return std::filesystem::path(filePath).filename().string();
+	return filePath.filename().string();
 }
 
 //------------------------------------------------------------------------------------------------------------
@@ -1633,11 +1623,11 @@ string ofFilePath::getBaseName(const std::filesystem::path& filePath){
 
 //------------------------------------------------------------------------------------------------------------
 string ofFilePath::getEnclosingDirectory(const std::filesystem::path& _filePath, bool bRelativeToData){
-    std::string filePath = _filePath.string();
+    auto filePath =  _filePath;
 	if(bRelativeToData){
 		filePath = ofToDataPath(filePath);
 	}
-	return addTrailingSlash(std::filesystem::path(filePath).parent_path().string());
+	return getPathForDirectory(filePath.parent_path());
 }
 
 //------------------------------------------------------------------------------------------------------------
@@ -1648,7 +1638,7 @@ bool ofFilePath::createEnclosingDirectory(const std::filesystem::path& filePath,
 //------------------------------------------------------------------------------------------------------------
 string ofFilePath::getAbsolutePath(const std::filesystem::path& path, bool bRelativeToData){
 	if(bRelativeToData){
-		return ofToDataPath(path, true);
+		return ofToDataPath(path, true).string();
 	}else{
 		try{
 			return std::filesystem::canonical(std::filesystem::absolute(path)).string();
@@ -1694,12 +1684,12 @@ string ofFilePath::getCurrentExePath(){
 		}
 		return path;
 	#elif defined(TARGET_WIN32)
-		vector<char> executablePath(MAX_PATH);
-		DWORD result = ::GetModuleFileNameA(nullptr, &executablePath[0], static_cast<DWORD>(executablePath.size()));
+		char executablePath[MAX_PATH];
+		DWORD result = ::GetModuleFileNameA(nullptr, executablePath, MAX_PATH);
 		if(result == 0) {
 			ofLogError("ofFilePath") << "getCurrentExePath(): couldn't get path, GetModuleFileNameA failed";
 		}else{
-			return string(executablePath.begin(), executablePath.begin() + result);
+			return std::string(executablePath, result);
 		}
 	#endif
 	return "";
@@ -1707,6 +1697,9 @@ string ofFilePath::getCurrentExePath(){
 
 //------------------------------------------------------------------------------------------------------------
 string ofFilePath::getCurrentExeDir(){
+	std::filesystem::path exe = getCurrentExePath();
+	auto exe_dir = exe.parent_path();
+	return exe_dir.string();
 	return getEnclosingDirectory(getCurrentExePath(), false);
 }
 
