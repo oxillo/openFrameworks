@@ -71,7 +71,7 @@ endif
 # Define the sound player to use : OpenAL is the default.
 # Uncomment next line to use FMOD sound player
 #PLATFORM_DEFINES += OF_SOUND_PLAYER_FMOD
-ifeq ($(shell pkg-config libmpg123 --exists; echo $$?),0)
+ifeq ($(shell pkgconf libmpg123 --exists; echo $$?),0)
 	PLATFORM_DEFINES += OF_USING_MPG123
 endif
 
