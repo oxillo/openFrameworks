@@ -237,6 +237,11 @@ endif
 
 PLATFORM_PKG_CONFIG ?= pkg-config
 
+ifdef MAKEFILE_DEBUG
+    $(info =================== tools paths =============================)
+    $(info PLATFORM_PKG_CONFIG=$(PLATFORM_PKG_CONFIG))
+endif
+
 
 ################################ FLAGS #########################################
 # define the location of the core path
