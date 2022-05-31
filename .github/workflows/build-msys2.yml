@@ -14,7 +14,15 @@ jobs:
     runs-on: windows-latest
     strategy:
       matrix:
-        mingw: [MINGW64, MINGW32]
+        flavor:
+          - mingw32 # Obsolete : kept for backward compatibility
+          - mingw64
+          - ucrt64
+          #- clang32
+          - clang64
+          #- clangarm64
+
+    name: ${{ matrix.flavor }}
     defaults:
       run:
         shell: msys2 {0}
@@ -23,20 +31,20 @@ jobs:
     - uses: msys2/setup-msys2@v2
       with:
         update: true
+        release : true
+        msystem: ${{ matrix.flavor }}
         install: >-
           git
           unzip
           rsync
           wget
     - name: Install dependencies
-      run: ./scripts/ci/msys2/install.sh
-      env:
-        MSYSTEM: ${{ matrix.mingw }}
+      run: echo ${MSYSTEM} && ./scripts/ci/msys2/install.sh
     - name: Build
       run: ./scripts/ci/msys2/build.sh
       env:
-        MSYSTEM: ${{ matrix.mingw }}
+        MSYSTEM: ${{ matrix.flavor }}
     - name: Run tests
       run: ./scripts/ci/msys2/run_tests.sh
       env:
-        MSYSTEM: ${{ matrix.mingw }}
+        MSYSTEM: ${{ matrix.flavor }}
