@@ -9,7 +9,7 @@ make ${USE_CCACHE} MAKEFILE_DEBUG=true -j4 Debug
 
 echo "**** Building emptyExample ****"
 cd $ROOT/scripts/templates/msys2
-env |grep MINGW
+env | grep MINGW
 make ${USE_CCACHE} -j4 Debug
 
 echo "**** Building allAddonsExample ****"
