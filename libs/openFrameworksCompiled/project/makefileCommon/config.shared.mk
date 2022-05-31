@@ -240,7 +240,7 @@ PLATFORM_PKG_CONFIG ?= pkg-config
 ifdef MAKEFILE_DEBUG
     $(info =================== tools paths =============================)
     $(info MINGW_PREFIX=$(MINGW_PREFIX))
-	$(info MINGW_PREFIX=$(MINGW_PREFIX))
+    $(info PLATFORM_PKG_CONFIG=$(PLATFORM_PKG_CONFIG))
 endif
 
 
