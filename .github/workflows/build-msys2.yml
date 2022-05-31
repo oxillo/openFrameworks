@@ -39,7 +39,7 @@ jobs:
           rsync
           wget
     - name: Install dependencies
-      run: echo ${MSYSTEM} && ./scripts/ci/msys2/install.sh
+      run: ./scripts/ci/msys2/install.sh
     - name: Build
       run: ./scripts/ci/msys2/build.sh
       env:
