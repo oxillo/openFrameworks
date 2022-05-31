@@ -5,7 +5,7 @@ source $ROOT/scripts/ci/ccache.sh
 
 echo "**** Building OF core ****"
 cd $ROOT/libs/openFrameworksCompiled/project
-make ${USE_CCACHE} -j4 Debug
+make ${USE_CCACHE} MAKEFILE_DEBUG=true -j4 Debug
 
 echo "**** Building emptyExample ****"
 cd $ROOT/scripts/templates/msys2
