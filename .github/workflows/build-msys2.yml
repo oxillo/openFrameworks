@@ -42,8 +42,6 @@ jobs:
       run: ./scripts/ci/msys2/install.sh
     - name: Build
       run: ./scripts/ci/msys2/build.sh
-      env:
-        MSYSTEM: ${{ matrix.flavor }}
     - name: Run tests
       run: ./scripts/ci/msys2/run_tests.sh
       env:
