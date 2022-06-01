@@ -2,7 +2,9 @@
 set -ev
 ROOT="$PWD"
 source $ROOT/scripts/ci/ccache.sh
-
+echo ****MINGW_PREFIX : ${MINGW_PREFIX} and MSYSTEM : ${MSYSTEM}
+env
+echo ****
 echo "**** Building OF core ****"
 cd $ROOT/libs/openFrameworksCompiled/project
 make ${USE_CCACHE} MAKEFILE_DEBUG=true -j4 Debug
