@@ -15,7 +15,7 @@
 #include <algorithm>
 #include <numeric>
 
-#include "ofGraphics.h"
+#include "graphics/ofGraphics.h"
 
 using std::max;
 using std::vector;

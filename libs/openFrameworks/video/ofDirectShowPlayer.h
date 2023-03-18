@@ -4,7 +4,7 @@
 
 #pragma once 
 #include "utils/ofConstants.h"
-#include "ofVideoBaseTypes.h"
+#include "video/ofVideoBaseTypes.h"
 
 template<typename T>
 class ofPixels_;

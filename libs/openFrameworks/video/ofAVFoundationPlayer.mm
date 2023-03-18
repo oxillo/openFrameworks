@@ -11,7 +11,7 @@
 #include "gl/ofGLUtils.h"
 
 #ifdef TARGET_OSX
-	#include "ofTexture.h"
+	#include "gl/ofTexture.h"
 #endif
 
 //--------------------------------------------------------------

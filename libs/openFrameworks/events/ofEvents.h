@@ -1,7 +1,7 @@
 #pragma once
 
 #include "utils/ofConstants.h"
-#include "ofEventUtils.h"
+#include "events/ofEventUtils.h"
 #include "utils/ofTimer.h"
 #include "utils/ofFpsCounter.h"
 #include <set>

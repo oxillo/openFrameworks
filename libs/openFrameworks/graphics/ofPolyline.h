@@ -561,7 +561,7 @@ private:
 	void calcData(int index, T &tangent, float &angle, T &rotation, T &normal) const;
 };
 
-#include "ofPolyline.inl"
+#include "graphics/ofPolyline.inl"
 
 using ofPolyline = ofPolyline_<ofDefaultVertexType>;
 

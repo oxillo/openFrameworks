@@ -16,7 +16,7 @@
 using std::shared_ptr;
 
 #if !defined( TARGET_OF_IOS ) & !defined(TARGET_ANDROID) & !defined(TARGET_EMSCRIPTEN) & !defined(TARGET_RASPBERRY_PI_LEGACY)
-	#include "ofAppGLFWWindow.h"
+	#include "app/ofAppGLFWWindow.h"
 	//special case so we preserve supplied settngs
 	//TODO: remove me when we remove the ofAppGLFWWindow setters.
 	//--------------------------------------
@@ -31,7 +31,7 @@ using std::shared_ptr;
 #endif
 
 #ifdef TARGET_LINUX
-#include "ofGstUtils.h"
+#include "video/ofGstUtils.h"
 #endif
 
 // adding this for vc2010 compile: error C3861: 'closeQuicktime': identifier not found

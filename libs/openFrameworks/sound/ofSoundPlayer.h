@@ -28,17 +28,17 @@ float * ofSoundGetSpectrum(int nBands);
 
 
 #ifdef OF_SOUND_PLAYER_QUICKTIME
-#include "ofQuicktimeSoundPlayer.h"
+#include "sound/ofQuicktimeSoundPlayer.h"
 #define OF_SOUND_PLAYER_TYPE ofQuicktimeSoundPlayer
 #endif
 
 #ifdef OF_SOUND_PLAYER_FMOD
-#include "ofFmodSoundPlayer.h"
+#include "sound/ofFmodSoundPlayer.h"
 #define OF_SOUND_PLAYER_TYPE ofFmodSoundPlayer
 #endif
 
 #ifdef OF_SOUND_PLAYER_OPENAL
-#include "ofOpenALSoundPlayer.h"
+#include "sound/ofOpenALSoundPlayer.h"
 #define OF_SOUND_PLAYER_TYPE ofOpenALSoundPlayer
 #endif
 
