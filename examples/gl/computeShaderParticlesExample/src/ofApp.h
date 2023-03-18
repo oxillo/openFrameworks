@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofBufferObject.h"
+#include "gl/ofBufferObject.h"
 #include "ofxGui.h"
 
 class ofApp : public ofBaseApp{

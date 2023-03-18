@@ -1,5 +1,5 @@
 #include "ofApp.h"
-#include "ofGLProgrammableRenderer.h"
+#include "gl/ofGLProgrammableRenderer.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){

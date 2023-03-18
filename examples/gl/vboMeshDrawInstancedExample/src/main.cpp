@@ -8,7 +8,7 @@
 // tig: using the programmable GL renderer is more fun, since we can use GLSL 150 =)
 // define USE_PROGRAMMABLE_GL in ofApp.h to run this example in OpenGL 3.2 if your
 // system provides it...
-#include "ofGLProgrammableRenderer.h"
+#include "gl/ofGLProgrammableRenderer.h"
 #endif
 
 //========================================================================

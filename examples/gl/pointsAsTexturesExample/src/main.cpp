@@ -1,7 +1,7 @@
 #include "ofMain.h"
 #include "ofApp.h"
 #if defined TARGET_OPENGLES && not defined TARGET_EMSCRIPTEN
-	#include "ofGLProgrammableRenderer.h"
+	#include "gl/ofGLProgrammableRenderer.h"
 #endif
 //========================================================================
 int main( ){

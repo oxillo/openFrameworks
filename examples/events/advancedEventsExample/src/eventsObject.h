@@ -9,7 +9,7 @@
 #define OFXEVENTSADDON_H_
 
 #include "ofMain.h"
-#include "ofEvents.h"
+#include "events/ofEvents.h"
 
 class eventsObject{
 public:

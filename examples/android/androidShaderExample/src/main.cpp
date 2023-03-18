@@ -1,6 +1,6 @@
 #include "ofMain.h"
-#include "ofApp.h"
-#include "ofGLProgrammableRenderer.h"
+#include "app/ofApp.h"
+#include "gl/ofGLProgrammableRenderer.h"
 
 int main(){
 	ofGLESWindowSettings settings;

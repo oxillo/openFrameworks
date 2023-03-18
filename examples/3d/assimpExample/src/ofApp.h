@@ -3,7 +3,7 @@
 
 #include "ofMain.h"
 #include "ofxAssimpModelLoader.h"
-#include "ofVboMesh.h"
+#include "gl/ofVboMesh.h"
 
 class ofApp : public ofBaseApp{
 

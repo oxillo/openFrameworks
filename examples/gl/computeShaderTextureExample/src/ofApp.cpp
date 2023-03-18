@@ -1,5 +1,5 @@
 #include "ofApp.h"
-#include "ofConstants.h"
+#include "utils/ofConstants.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){

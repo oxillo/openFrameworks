@@ -1,6 +1,6 @@
 #include "ofApp.h"
-#include "ofLog.h"
-#include "ofEvents.h"
+#include "utils/ofLog.h"
+#include "events/ofEvents.h"
 
 static float g_rotation(3);
 static ofColor color(255,255,255);

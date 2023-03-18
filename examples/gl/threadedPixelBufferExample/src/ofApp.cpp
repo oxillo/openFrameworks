@@ -1,5 +1,5 @@
 #include "ofApp.h"
-#include "ofConstants.h"
+#include "utils/ofConstants.h"
 
 // this example will probably only work in real time in release mode
 

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofEvents.h"
+#include "events/ofEvents.h"
 #include "Circle.h"
 
 #define TOTAL_GRAY_CIRCLES 10

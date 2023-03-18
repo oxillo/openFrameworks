@@ -6,7 +6,7 @@
  */
 
 #include "ImgAnalysisThread.h"
-#include "ofConstants.h"
+#include "utils/ofConstants.h"
 
 ImgAnalysisThread::ImgAnalysisThread()
 :newFrame(true){

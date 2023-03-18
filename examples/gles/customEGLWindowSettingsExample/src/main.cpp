@@ -1,6 +1,6 @@
 #include "ofMain.h"
 #include "ofApp.h"
-#include "ofAppEGLWindow.h"
+#include "gl/ofAppEGLWindow.h"
 
 //========================================================================
 int main( ){
