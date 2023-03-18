@@ -48,6 +48,7 @@ for pkg in ${mingwPackages}; do
 	packages="$packages  $MINGW_PACKAGE_PREFIX-$pkg"
 done
 
+echo packages = ${packages}
 # Install packages
 if [[ "${confirm}" == "yes" ]]; then
 	for pkg in ${packages}; do
