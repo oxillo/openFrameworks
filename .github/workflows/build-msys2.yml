@@ -53,9 +53,6 @@ jobs:
     
     - name: Install dependencies
       run: ./scripts/ci/msys2/install.sh
-      env:
-        MSYSTEM: ${{ matrix.cfg.flavor }}
-        MINGW_PACKAGE_PREFIX: ${{ matrix.cfg.pkg-prefix }}
     - name: Build
       run: ./scripts/ci/msys2/build.sh
       env:
