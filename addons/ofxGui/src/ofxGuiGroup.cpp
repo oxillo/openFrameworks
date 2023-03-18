@@ -1,7 +1,7 @@
 #include "ofxGuiGroup.h"
 #include "ofxPanel.h"
 #include "ofxSliderGroup.h"
-#include "ofGraphics.h"
+#include "graphics/ofGraphics.h"
 #include "ofxLabel.h"
 #include "ofxInputField.h"
 
