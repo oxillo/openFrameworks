@@ -1,5 +1,5 @@
 #ifndef OF_MESH_H
-#include "ofMesh.h"
+#include "3d/ofMesh.h"
 #endif
 
 #include "app/ofAppRunner.h"

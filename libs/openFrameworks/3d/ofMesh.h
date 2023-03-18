@@ -718,7 +718,7 @@ private:
 	T texCoords[3];
 };
 
-#include "ofMesh.inl"
+#include "3d/ofMesh.inl"
 
 using ofMesh = ofMesh_<ofDefaultVertexType, ofDefaultNormalType, ofDefaultColorType, ofDefaultTexCoordType>;
 using ofMeshFace = ofMeshFace_<ofDefaultVertexType, ofDefaultNormalType, ofDefaultColorType, ofDefaultTexCoordType>;
