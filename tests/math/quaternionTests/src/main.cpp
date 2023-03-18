@@ -1,6 +1,6 @@
 #include "ofMain.h"
 #include "ofxUnitTests.h"
-#include "ofAppNoWindow.h"
+#include "app/ofAppNoWindow.h"
 
 bool aprox_eq(const ofVec3f & v1, const ofVec3f & v2){
     bool eq = abs(v1.x - v2.x) < 0.0001 &&

@@ -1,5 +1,5 @@
-#include "ofFileUtils.h"
-#include "ofUtils.h"
+#include "utils/ofFileUtils.h"
+#include "utils/ofUtils.h"
 #include "ofxUnitTests.h"
 
 using namespace std;
@@ -305,7 +305,7 @@ class ofApp: public ofxUnitTestsApp{
 
 
 #include "ofAppNoWindow.h"
-#include "ofAppRunner.h"
+#include "app/ofAppRunner.h"
 //========================================================================
 int main( ){
     initial_cwd = of::filesystem::current_path();

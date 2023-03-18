@@ -1,6 +1,6 @@
 #include "ofMain.h"
 #include "ofxUnitTests.h"
-#include "ofAppNoWindow.h"
+#include "app/ofAppNoWindow.h"
 
 
 bool aprox_eq(const glm::vec3 & v1, const glm::vec3 & v2){
