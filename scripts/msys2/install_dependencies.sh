@@ -48,6 +48,7 @@ for pkg in ${mingwPackages}; do
 	packages="$packages  $MINGW_PACKAGE_PREFIX-$pkg"
 done
 
+echo MSYSTEM=$MSYSTEM PREFIX=$MINGW_PACKAGE_PREFIX
 echo msyspackages = ${msyspackages}
 echo packages = ${packages}
 # Install packages
