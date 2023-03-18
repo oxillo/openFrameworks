@@ -50,16 +50,13 @@ jobs:
         key: ${{ runner.os }}-${{matrix.cfg.flavor}}-${{ env.cache-name }}-${{ hashFiles('**/*.cpp') }}
         restore-keys: |
           ${{ runner.os }}-${{matrix.cfg.flavor}}-${{ env.cache-name }}-
-    
+    - name: set-env
+      uses: allenevans/set-env@v2.0.0
+      with: 
+        MINGW_PACKAGE_PREFIX: ${{ matrix.cfg.pkg-prefix }}
     - name: Install dependencies
       run: ./scripts/ci/msys2/install.sh
     - name: Build
       run: ./scripts/ci/msys2/build.sh
-      env:
-        MSYSTEM: ${{ matrix.cfg.flavor }}
-        MINGW_PACKAGE_PREFIX: ${{ matrix.cfg.pkg-prefix }}
     - name: Run tests
       run: ./scripts/ci/msys2/run_tests.sh
-      env:
-        MSYSTEM: ${{ matrix.cfg.flavor }}
-        MINGW_PACKAGE_PREFIX: ${{ matrix.cfg.pkg-prefix }}
