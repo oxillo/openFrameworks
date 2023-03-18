@@ -20,7 +20,7 @@ jobs:
     strategy:
       matrix:
         cfg:
-        - {flavor: mingw64, pkg-prefix: mingw-w64-x86_64}
+        - { flavor: mingw64, pkg-prefix: mingw-w64-x86_64 }
         #- ucrt64
         #- clang64
         #- clangarm64
