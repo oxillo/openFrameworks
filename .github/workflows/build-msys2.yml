@@ -21,8 +21,8 @@ jobs:
       matrix:
         flavor:
           - mingw64
-          - ucrt64
-          - clang64
+          #- ucrt64
+          #- clang64
           #- clangarm64
     defaults:
       run:
