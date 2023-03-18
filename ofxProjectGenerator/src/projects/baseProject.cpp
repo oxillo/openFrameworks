@@ -7,10 +7,10 @@
 //
 
 #include "baseProject.h"
-#include "ofFileUtils.h"
-#include "ofLog.h"
+#include "utils/ofFileUtils.h"
+#include "utils/ofLog.h"
 #include "Utils.h"
-#include "ofConstants.h"
+#include "utils/ofConstants.h"
 #include <list>
 using namespace std;
 

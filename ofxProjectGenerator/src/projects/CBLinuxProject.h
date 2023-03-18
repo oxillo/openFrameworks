@@ -8,7 +8,7 @@
 #ifndef CBLINUXPROJECT_H_
 #define CBLINUXPROJECT_H_
 
-#include "ofConstants.h"
+#include "utils/ofConstants.h"
 #include "ofAddon.h"
 #include "CBWinProject.h"
 #include "LibraryBinary.h"

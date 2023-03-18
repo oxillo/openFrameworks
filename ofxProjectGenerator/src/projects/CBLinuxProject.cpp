@@ -6,8 +6,8 @@
  */
 
 #include "CBLinuxProject.h"
-#include "ofFileUtils.h"
-#include "ofLog.h"
+#include "utils/ofFileUtils.h"
+#include "utils/ofLog.h"
 #include "Utils.h"
 
 std::string CBLinuxProject::LOG_NAME = "CBLinuxProject";

@@ -3,8 +3,8 @@
 #pragma once
 
 #include "ofAddon.h"
-#include "ofConstants.h"
-#include "ofFileUtils.h"
+#include "utils/ofConstants.h"
+#include "utils/ofFileUtils.h"
 #include "pugixml.hpp"
 
 class baseProject {

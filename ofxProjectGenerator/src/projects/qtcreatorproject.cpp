@@ -1,6 +1,6 @@
 #include "qtcreatorproject.h"
-#include "ofLog.h"
-#include "ofFileUtils.h"
+#include "utils/ofLog.h"
+#include "utils/ofFileUtils.h"
 #include "Utils.h"
 #include <regex>
 

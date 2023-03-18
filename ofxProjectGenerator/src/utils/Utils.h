@@ -10,11 +10,11 @@
 
 #include "pugixml.hpp"
 
-#include "ofConstants.h"
-#include "ofFileUtils.h"
-#include "ofLog.h"
-#include "ofUtils.h"
-#include "ofSystemUtils.h"
+#include "utils/ofConstants.h"
+#include "utils/ofFileUtils.h"
+#include "utils/ofLog.h"
+#include "utils/ofUtils.h"
+#include "utils/ofSystemUtils.h"
 #include "LibraryBinary.h"
 #include "baseProject.h"
 

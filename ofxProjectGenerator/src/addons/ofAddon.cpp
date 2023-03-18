@@ -5,8 +5,8 @@
  *      Author: arturo
  */
 
-#include "ofUtils.h"
-#include "ofFileUtils.h"
+#include "utils/ofUtils.h"
+#include "utils/ofFileUtils.h"
 #include "ofAddon.h"
 #include "Utils.h"
 //#include "Poco/RegularExpression.h"

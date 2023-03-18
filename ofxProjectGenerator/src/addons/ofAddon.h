@@ -9,7 +9,7 @@
 #define OFADDON_H_
 
 #include <map>
-#include "ofConstants.h"
+#include "utils/ofConstants.h"
 #include "LibraryBinary.h"
 
 // About Metadata

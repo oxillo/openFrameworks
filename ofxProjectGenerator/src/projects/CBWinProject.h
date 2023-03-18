@@ -8,7 +8,7 @@
 #ifndef CBWINPROJECT_H_
 #define CBWINPROJECT_H_
 
-#include "ofConstants.h"
+#include "utils/ofConstants.h"
 #include "ofAddon.h"
 #include "baseProject.h"
 
