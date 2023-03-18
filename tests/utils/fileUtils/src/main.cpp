@@ -304,7 +304,7 @@ class ofApp: public ofxUnitTestsApp{
 };
 
 
-#include "ofAppNoWindow.h"
+#include "app/ofAppNoWindow.h"
 #include "app/ofAppRunner.h"
 //========================================================================
 int main( ){
