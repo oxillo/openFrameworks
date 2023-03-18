@@ -7,11 +7,11 @@
 
 #pragma once
 
-#include "ofVideoBaseTypes.h"
-#include "ofPixels.h"
-#include "ofEvents.h"
-#include "ofTypes.h"
-#include "ofTexture.h"
+#include "video/ofVideoBaseTypes.h"
+#include "graphics/ofPixels.h"
+#include "events/ofEvents.h"
+#include "types/ofTypes.h"
+#include "gl/ofTexture.h"
 #include <jni.h>
 
 class ofxAndroidVideoGrabber: public ofBaseVideoGrabber{

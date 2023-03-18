@@ -3,8 +3,8 @@
 
 #include "ofxOscSender.h"
 #include "ofxOscReceiver.h"
-#include "ofParameter.h"
-#include "ofParameterGroup.h"
+#include "types/ofParameter.h"
+#include "types/ofParameterGroup.h"
 
 /// \class ofxOscParamaterSync
 /// \brief a high-level sync object for ofParamaters over OSC

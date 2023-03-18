@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofxBaseGui.h"
-#include "ofParameter.h"
+#include "graphics/ofParameter.h"
 #include "ofxInputField.h"
 #include "ofxGuiUtils.h"
 

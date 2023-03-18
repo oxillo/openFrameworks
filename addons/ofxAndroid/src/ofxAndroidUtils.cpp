@@ -14,7 +14,7 @@ int atexit (void (*func)(void)){
 	return 0;
 }
 #endif
-#include "ofLog.h"
+#include "utils/ofLog.h"
 
 using namespace std;
 

@@ -3,8 +3,8 @@
 #pragma once
 
 #include "ofxOscMessage.h"
-#include "ofParameter.h"
-#include "ofThreadChannel.h"
+#include "types/ofParameter.h"
+#include "utils/ofThreadChannel.h"
 
 #include "OscTypes.h"
 #include "OscPacketListener.h"

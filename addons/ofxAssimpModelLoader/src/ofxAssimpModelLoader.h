@@ -17,9 +17,9 @@
 #include "ofxAssimpMeshHelper.h"
 #include "ofxAssimpAnimation.h"
 #include "ofxAssimpTexture.h"
-#include "ofMesh.h"
-#include "ofMath.h"
-#include "ofConstants.h"
+#include "3d/ofMesh.h"
+#include "math/ofMath.h"
+#include "utils/ofConstants.h"
 #include <assimp/Importer.hpp>
 
 struct aiScene;

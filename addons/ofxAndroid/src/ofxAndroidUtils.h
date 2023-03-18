@@ -8,8 +8,8 @@
 #pragma once
 
 #include <jni.h>
-#include "ofConstants.h"
-#include "ofEvent.h"
+#include "utils/ofConstants.h"
+#include "events/ofEvent.h"
 
 
 

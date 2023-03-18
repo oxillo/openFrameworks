@@ -7,9 +7,9 @@
 
 #pragma once
 
-#include "ofBaseApp.h"
-#include "ofEvents.h"
-#include "ofConstants.h"
+#include "app/ofBaseApp.h"
+#include "events/ofEvents.h"
+#include "utils/ofConstants.h"
 #include "ofxAndroidUtils.h"
 
 class ofxAndroidApp: public ofBaseApp{

@@ -1,9 +1,9 @@
 #pragma once
 
 //#include "ofMain.h"
-#include "ofPath.h"
-#include "ofTypes.h"
-#include "ofXml.h"
+#include "graphics/ofPath.h"
+#include "types/ofTypes.h"
+#include "utils/ofXml.h"
 
 
 /// \file

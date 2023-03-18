@@ -1,6 +1,7 @@
 #include "ofxiOSVideoGrabber.h"
 #include "AVFoundationVideoGrabber.h"
-#include "ofLog.h"
+#include "utils/
+ofLog.h"
 
 #include <TargetConditionals.h>
 

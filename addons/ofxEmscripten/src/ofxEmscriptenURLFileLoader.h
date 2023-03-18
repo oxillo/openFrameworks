@@ -5,7 +5,7 @@
  *      Author: arturo
  */
 #pragma once
-#include "ofURLFileLoader.h"
+#include "utils/ofURLFileLoader.h"
 
 class ofxEmscriptenURLFileLoader: public ofBaseURLFileLoader {
 public:

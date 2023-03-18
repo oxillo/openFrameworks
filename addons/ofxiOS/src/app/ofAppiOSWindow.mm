@@ -30,8 +30,8 @@
  * ***********************************************************************/ 
 #include <TargetConditionals.h>
 #include "ofAppiOSWindow.h"
-#include "ofGLRenderer.h"
-#include "ofGLProgrammableRenderer.h"
+#include "gl/ofGLRenderer.h"
+#include "gl/ofGLProgrammableRenderer.h"
 #if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
     #include "ofxiOSAppDelegate.h"
     #include "ofxiOSViewController.h"

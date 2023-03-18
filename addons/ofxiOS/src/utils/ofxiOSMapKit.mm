@@ -35,8 +35,8 @@
 
 #include "ofxiOSMapKitDelegate.h"
 #include "ofxiOSExtras.h"
-#include "ofAppRunner.h"
-#include "ofLog.h"
+#include "app/ofAppRunner.h"
+#include "utils/ofLog.h"
 #include "glm/common.hpp"
 
 ofxiOSMapKit::ofxiOSMapKit() {

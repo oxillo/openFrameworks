@@ -44,8 +44,8 @@
 #include "ofxiOSEAGLView.h"
 #include "ofxiOSGLKView.h"
 #include "ofAppiOSWindow.h"
-#include "ofAppRunner.h"
-#include "ofImage.h"
+#include "app/ofAppRunner.h"
+#include "graphics/ofImage.h"
 #include <sys/sysctl.h>
 
 using std::string;

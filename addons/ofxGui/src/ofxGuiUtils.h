@@ -1,8 +1,8 @@
 #pragma once
 
-#include "ofColor.h"
-#include "ofRectangle.h"
-#include "ofVboMesh.h"
+#include "types/ofColor.h"
+#include "types/ofRectangle.h"
+#include "gl/ofVboMesh.h"
 
 /*
  * Internal helper to generate and cache rectangle meshes for ofxGui.

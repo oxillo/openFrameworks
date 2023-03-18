@@ -5,13 +5,13 @@
  *      Author: arturo
  */
 
-#include "ofBaseApp.h"
+#include "app/ofBaseApp.h"
 #include "ofxAndroidSoundStream.h"
-#include "ofSoundStream.h"
-#include "ofUtils.h"
+#include "sound/ofSoundStream.h"
+#include "utils/ofUtils.h"
 #include "ofxAndroidUtils.h"
-#include "ofAppRunner.h"
-#include "ofLog.h"
+#include "app/ofAppRunner.h"
+#include "utils/ofLog.h"
 #include <deque>
 #include <set>
 #include <jni.h>

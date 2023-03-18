@@ -1,9 +1,9 @@
 #include "ofxAssimpModelLoader.h"
 #include "ofxAssimpUtils.h"
-#include "ofLight.h"
-#include "ofImage.h"
-#include "ofGraphics.h"
-#include "ofConstants.h"
+#include "gl/ofLight.h"
+#include "graphics/ofImage.h"
+#include "graphics/ofGraphics.h"
+#include "utils/ofConstants.h"
 
 #include <assimp/cimport.h>
 #include <assimp/scene.h>

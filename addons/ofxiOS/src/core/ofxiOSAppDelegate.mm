@@ -40,9 +40,9 @@
 #include "ofxiOSAlerts.h"
 #include "ofxiOSEAGLView.h"
 #include "ofAppiOSWindow.h"
-#include "ofAppRunner.h"
-#include "ofUtils.h"
-#include "ofLog.h"
+#include "app/ofAppRunner.h"
+#include "utils/ofUtils.h"
+#include "utils/ofLog.h"
 
 @implementation ofxiOSAppDelegate
 
