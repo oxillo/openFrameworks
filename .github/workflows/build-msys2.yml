@@ -19,11 +19,11 @@ jobs:
     runs-on: windows-latest
     strategy:
       matrix:
-        flavor:
-          - mingw64
-          #- ucrt64
-          #- clang64
-          #- clangarm64
+        cfg:
+        - {flavor: mingw64, pkg-prefix: mingw-w64-x86_64}
+        #- ucrt64
+        #- clang64
+        #- clangarm64
     defaults:
       run:
         shell: msys2 {0}
@@ -32,7 +32,7 @@ jobs:
     - uses: msys2/setup-msys2@v2
       with:
         update: true
-        msystem: ${{ matrix.flavor }}
+        msystem: ${{ matrix.cfg.flavor }}
         install: >-
           git
           unzip
@@ -47,19 +47,22 @@ jobs:
         cache-name: cache-keep-compile
       with:
         path: libs/openFrameworksCompiled/lib/msys2/**/
-        key: ${{ runner.os }}-${{matrix.flavor}}-${{ env.cache-name }}-${{ hashFiles('**/*.cpp') }}
+        key: ${{ runner.os }}-${{matrix.cfg.flavor}}-${{ env.cache-name }}-${{ hashFiles('**/*.cpp') }}
         restore-keys: |
-          ${{ runner.os }}-${{matrix.flavor}}-${{ env.cache-name }}-
+          ${{ runner.os }}-${{matrix.cfg.flavor}}-${{ env.cache-name }}-
     
     - name: Install dependencies
       run: ./scripts/ci/msys2/install.sh
       env:
-        MSYSTEM: ${{ matrix.flavor }}
+        MSYSTEM: ${{ matrix.cfg.flavor }}
+        MINGW_PACKAGE_PREFIX: ${{ matrix.cfg.pkg-prefix }}
     - name: Build
       run: ./scripts/ci/msys2/build.sh
       env:
-        MSYSTEM: ${{ matrix.flavor }}
+        MSYSTEM: ${{ matrix.cfg.flavor }}
+        MINGW_PACKAGE_PREFIX: ${{ matrix.cfg.pkg-prefix }}
     - name: Run tests
       run: ./scripts/ci/msys2/run_tests.sh
       env:
-        MSYSTEM: ${{ matrix.flavor }}
+        MSYSTEM: ${{ matrix.cfg.flavor }}
+        MINGW_PACKAGE_PREFIX: ${{ matrix.cfg.pkg-prefix }}
