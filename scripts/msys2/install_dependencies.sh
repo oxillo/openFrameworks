@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -ev #verbose; exit immediatly
 
 script_dir="$( dirname "$(readlink -f "$0")" )"
 
