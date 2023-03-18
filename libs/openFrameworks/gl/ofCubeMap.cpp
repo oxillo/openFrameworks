@@ -4,22 +4,22 @@
 //  Created by Nick Hardeman on 10/16/22.
 //
 
-#include "ofShader.h"
-#include "ofCubeMap.h"
-#include "ofImage.h"
-#include "ofConstants.h"
-#include "of3dUtils.h"
-#include "ofGLBaseTypes.h"
-#include "ofGLUtils.h"
+#include "gl/ofShader.h"
+#include "gl/ofCubeMap.h"
+#include "graphics/ofImage.h"
+#include "utils/ofConstants.h"
+#include "3d/of3dUtils.h"
+#include "gl/ofGLBaseTypes.h"
+#include "gl/ofGLUtils.h"
 
 #include "glm/gtx/transform.hpp"
 #include "glm/gtc/quaternion.hpp"
 
-#include "ofGLProgrammableRenderer.h"
-#include "ofCubeMapShaders.h"
+#include "gl/ofGLProgrammableRenderer.h"
+#include "gl/ofCubeMapShaders.h"
 
 #ifdef TARGET_ANDROID
-#include "ofAppAndroidWindow.h"
+#include "app/ofAppAndroidWindow.h"
 #endif
 
 #include <map>

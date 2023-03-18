@@ -1,4 +1,4 @@
-#include "ofMatrix3x3.h"
+#include "math/ofMatrix3x3.h"
 #include <iomanip>
 
 ofMatrix3x3::ofMatrix3x3( float _a, float _b, float _c,

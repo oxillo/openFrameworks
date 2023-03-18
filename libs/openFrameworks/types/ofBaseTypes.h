@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ofGLBaseTypes.h"
-#include "ofGraphicsBaseTypes.h"
-#include "ofSoundBaseTypes.h"
-#include "ofVideoBaseTypes.h"
+#include "gl/ofGLBaseTypes.h"
+#include "graphics/ofGraphicsBaseTypes.h"
+#include "sound/ofSoundBaseTypes.h"
+#include "video/ofVideoBaseTypes.h"

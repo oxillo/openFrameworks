@@ -4,7 +4,7 @@
 //	Merged with code by Sam Kronick, James George and Elie Zananiri.
 //
 
-#import "ofAVFoundationVideoPlayer.h"
+#import "video/ofAVFoundationVideoPlayer.h"
 
 #define IS_OS_6_OR_LATER    ([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0)
 

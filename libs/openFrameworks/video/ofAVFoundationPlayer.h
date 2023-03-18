@@ -6,10 +6,10 @@
 
 #pragma once
 
-#include "ofVideoBaseTypes.h"
-#include "ofPixels.h"
-#include "ofTexture.h"
-#include "ofThread.h"
+#include "video/ofVideoBaseTypes.h"
+#include "graphics/ofPixels.h"
+#include "gl/ofTexture.h"
+#include "utils/ofThread.h"
 
 #ifdef __OBJC__
 #import "ofAVFoundationVideoPlayer.h"

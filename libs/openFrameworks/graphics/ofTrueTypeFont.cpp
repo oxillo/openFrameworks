@@ -1,4 +1,4 @@
-#include "ofTrueTypeFont.h"
+#include "graphics/ofTrueTypeFont.h"
 //--------------------------
 
 #include <ft2build.h>

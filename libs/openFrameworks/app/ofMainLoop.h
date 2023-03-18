@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ofEvents.h"
+#include "events/ofEvents.h"
 #include <map>
 
 class ofBaseApp;

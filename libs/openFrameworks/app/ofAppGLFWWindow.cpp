@@ -1,14 +1,14 @@
-#include "ofAppGLFWWindow.h"
+#include "app/ofAppGLFWWindow.h"
 
-#include "ofGLRenderer.h"
-#include "ofGLProgrammableRenderer.h"
+#include "gl/ofGLRenderer.h"
+#include "gl/ofGLProgrammableRenderer.h"
 
 #define GLFW_INCLUDE_NONE
 #include "GLFW/glfw3.h"
 
 #ifdef TARGET_LINUX
-    #include "ofIcon.h"
-    #include "ofImage.h"
+    #include "app/ofIcon.h"
+    #include "graphics/ofImage.h"
     #define GLFW_EXPOSE_NATIVE_X11
     #ifndef TARGET_OPENGLES
         #define GLFW_EXPOSE_NATIVE_GLX

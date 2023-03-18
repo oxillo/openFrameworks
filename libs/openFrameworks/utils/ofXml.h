@@ -1,8 +1,8 @@
 #pragma once
 
-#include "ofConstants.h"
+#include "utils/ofConstants.h"
 #include "pugixml.hpp"
-#include "ofParameter.h"
+#include "types/ofParameter.h"
 
 template<typename It>
 class ofXmlIterator;

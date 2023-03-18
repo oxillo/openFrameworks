@@ -3,8 +3,8 @@
 class ofVec3f;
 class ofVec4f;
 
-#include "ofConstants.h"
-#include "ofMathConstants.h"
+#include "utils/ofConstants.h"
+#include "math/ofMathConstants.h"
 #include "glm/vec2.hpp"
 #include "glm/fwd.hpp"
 #include <cmath>
@@ -186,7 +186,7 @@ public:
 	/// \brief Set x and y components of this vector with just one function call.
 	/// 
 	/// ~~~~{.cpp}
-	/// ofVec2f v1;//#include "ofConstants.h"
+	/// ofVec2f v1;//#include "utils/ofConstants.h"
 	//#include "glm/fwd.hpp"
 	/// v1.set(40, 20);
 	/// ~~~~

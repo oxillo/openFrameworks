@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "of3dPrimitives.h"
+#include "3d/of3dPrimitives.h"
 
 
 /// \section Planes

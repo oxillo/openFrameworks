@@ -12,9 +12,9 @@
 
 #pragma once
 
-#include "ofNode.h"
-#include "ofColor.h"
-#include "ofShadow.h"
+#include "3d/ofNode.h"
+#include "types/ofColor.h"
+#include "gl/ofShadow.h"
 
 class ofBaseGLRenderer;
 

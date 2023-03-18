@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "ofConstants.h"
+#include "utils/ofConstants.h"
 //#include "glm/glm.hpp"
 
 //#include "glm/detail/setup.hpp"
@@ -35,13 +35,13 @@
 #include <glm/gtc/type_ptr.hpp>
 
 #include <iomanip>
-#include "ofMathConstants.h"
-#include "ofVec2f.h"
-#include "ofVec3f.h"
-#include "ofVec4f.h"
-#include "ofMatrix3x3.h"
-#include "ofMatrix4x4.h"
-#include "ofQuaternion.h"
+#include "math/ofMathConstants.h"
+#include "math/ofVec2f.h"
+#include "math/ofVec3f.h"
+#include "math/ofVec4f.h"
+#include "math/ofMatrix3x3.h"
+#include "math/ofMatrix4x4.h"
+#include "math/ofQuaternion.h"
 
 //--------------------------------------------------------------
 inline const ofVec2f & toOf(const glm::vec2 & v){

@@ -1,4 +1,4 @@
-#include "ofFpsCounter.h"
+#include "utils/ofFpsCounter.h"
 
 ofFpsCounter::ofFpsCounter()
 :nFrameCount(0)

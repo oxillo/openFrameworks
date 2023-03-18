@@ -1,7 +1,7 @@
-#include "ofEasyCam.h"
-#include "ofMath.h"
-#include "ofUtils.h"
-#include "ofGraphicsBaseTypes.h"
+#include "3d/ofEasyCam.h"
+#include "math/ofMath.h"
+#include "utils/ofUtils.h"
+#include "graphics/ofGraphicsBaseTypes.h"
 #include <limits>
 #include "glm/gtx/vector_angle.hpp"
 

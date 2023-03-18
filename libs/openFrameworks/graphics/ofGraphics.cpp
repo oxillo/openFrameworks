@@ -1,6 +1,6 @@
-#include "ofGraphics.h"
-#include "ofRendererCollection.h"
-#include "ofGLRenderer.h"
+#include "graphics/ofGraphics.h"
+#include "graphics/ofRendererCollection.h"
+#include "gl/ofGLRenderer.h"
 
 
 #ifndef TARGET_WIN32

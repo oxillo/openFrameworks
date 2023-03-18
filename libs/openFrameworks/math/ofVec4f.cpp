@@ -1,6 +1,6 @@
-#include "ofVec2f.h"
-#include "ofVec3f.h"
-#include "ofVec4f.h"
+#include "math/ofVec2f.h"
+#include "math/ofVec3f.h"
+#include "math/ofVec4f.h"
 #include "glm/vec3.hpp"
 #include "glm/vec4.hpp"
 

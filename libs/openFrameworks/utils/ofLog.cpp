@@ -1,5 +1,5 @@
-#include "ofLog.h"
-#include <ofUtils.h>
+#include "utils/ofLog.h"
+#include "utils/ofUtils.h"
 #include <map>
 #ifdef TARGET_ANDROID
 	#include "ofxAndroidLogChannel.h"

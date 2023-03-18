@@ -1,5 +1,5 @@
-#include "ofPixels.h"
-#include "ofGraphicsConstants.h"
+#include "graphics/ofPixels.h"
+#include "graphics/ofGraphicsConstants.h"
 #include "glm/common.hpp"
 #include <cstring>
 

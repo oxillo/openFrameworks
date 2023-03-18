@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ofNode.h"
+#include "3d/ofNode.h"
 
 class ofRectangle;
 

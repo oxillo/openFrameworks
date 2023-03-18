@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ofMathConstants.h"
+#include "math/ofMathConstants.h"
 
 template<typename T>
 class ofColor_;

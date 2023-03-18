@@ -1,6 +1,6 @@
 
-#include "ofNode.h"
-#include "of3dGraphics.h"
+#include "3d/ofNode.h"
+#include "graphics/of3dGraphics.h"
 
 //----------------------------------------
 ofNode::ofNode()

@@ -2,7 +2,7 @@
 
 
 #include <vector>
-#include "ofGraphicsBaseTypes.h"
+#include "graphics/ofGraphicsBaseTypes.h"
 
 class ofTexture;
 class ofShader;

@@ -2,12 +2,12 @@
 #include "ofMesh.h"
 #endif
 
-#include "ofAppRunner.h"
-#include "ofGraphicsBaseTypes.h"
-#include "ofVectorMath.h"
-#include "ofMath.h"
-#include "ofMathConstants.h"
-#include "ofLog.h"
+#include "app/ofAppRunner.h"
+#include "graphics/ofGraphicsBaseTypes.h"
+#include "math/ofVectorMath.h"
+#include "math/ofMath.h"
+#include "math/ofMathConstants.h"
+#include "utils/ofLog.h"
 #include <map>
 
 //--------------------------------------------------------------

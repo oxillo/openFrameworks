@@ -1,6 +1,6 @@
-#include "ofGraphicsCairo.h"
-#include "ofRendererCollection.h"
-#include "ofCairoRenderer.h"
+#include "graphics/ofGraphicsCairo.h"
+#include "graphics/ofRendererCollection.h"
+#include "graphics/ofCairoRenderer.h"
 
 static std::shared_ptr<ofCairoRenderer> cairoScreenshot;
 static std::shared_ptr<ofBaseRenderer> storedRenderer;

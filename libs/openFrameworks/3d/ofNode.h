@@ -1,8 +1,8 @@
 
 #pragma once
 
-#include "ofConstants.h"
-#include "ofParameter.h"
+#include "utils/ofConstants.h"
+#include "types/ofParameter.h"
 #include <array>
 #include "glm/mat4x4.hpp"
 

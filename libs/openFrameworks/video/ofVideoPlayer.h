@@ -1,11 +1,11 @@
 #pragma once
 
-#include "ofConstants.h"
-#include "ofTexture.h"
-#include "ofVideoBaseTypes.h"
+#include "utils/ofConstants.h"
+#include "gl/ofTexture.h"
+#include "video/ofVideoBaseTypes.h"
 
 #ifdef OF_VIDEO_PLAYER_GSTREAMER
-	#include "ofGstVideoPlayer.h"
+	#include "video/ofGstVideoPlayer.h"
 	#define OF_VID_PLAYER_TYPE ofGstVideoPlayer
 #endif
 
@@ -25,7 +25,7 @@
 #endif
 
 #ifdef OF_VIDEO_PLAYER_DIRECTSHOW
-    #include "ofDirectShowPlayer.h"
+    #include "video/ofDirectShowPlayer.h"
     #define OF_VID_PLAYER_TYPE ofDirectShowPlayer
 #endif
 

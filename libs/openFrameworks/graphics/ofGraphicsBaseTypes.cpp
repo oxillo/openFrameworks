@@ -1,7 +1,7 @@
-#include "ofGraphicsBaseTypes.h"
+#include "graphics/ofGraphicsBaseTypes.h"
 #include "glm/vec2.hpp"
 #include "glm/trigonometric.hpp"
-#include "ofRectangle.h"
+#include "types/ofRectangle.h"
 
 void ofBaseDraws::draw(const glm::vec2 & point) const {
 	draw(point.x, point.y);

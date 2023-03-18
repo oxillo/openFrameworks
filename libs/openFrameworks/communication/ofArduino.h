@@ -26,9 +26,9 @@
 
 #include <list>
 #include <map>
-#include "ofConstants.h"
-#include "ofEvents.h"
-#include "ofSerial.h"
+#include "utils/ofConstants.h"
+#include "events/ofEvents.h"
+#include "communication/ofSerial.h"
 
  /* Version numbers for the protocol.  The protocol is still changing, so these
  * version numbers are important.  This number can be queried so that host

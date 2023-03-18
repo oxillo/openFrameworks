@@ -1,7 +1,7 @@
 #pragma once
 
-#include "ofTexture.h"
-#include "ofGLBaseTypes.h"
+#include "gl/ofTexture.h"
+#include "gl/ofGLBaseTypes.h"
 
 /// ofFbo mode(s) when binding
 enum ofFboMode : short {

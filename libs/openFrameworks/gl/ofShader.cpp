@@ -1,21 +1,21 @@
-#include "ofShader.h"
-#include "ofUtils.h"
-#include "ofFileUtils.h"
-#include "ofGraphics.h"
-#include "ofGLProgrammableRenderer.h"
-#include "ofTexture.h"
-#include "ofMatrix4x4.h"
-#include "ofMatrix3x3.h"
-#include "ofParameterGroup.h"
-#include "ofParameter.h"
-#include "ofBufferObject.h"
+#include "gl/ofShader.h"
+#include "utils/ofUtils.h"
+#include "utils/ofFileUtils.h"
+#include "graphics/ofGraphics.h"
+#include "gl/ofGLProgrammableRenderer.h"
+#include "gl/ofTexture.h"
+#include "math/ofMatrix4x4.h"
+#include "math/ofMatrix3x3.h"
+#include "types/ofParameterGroup.h"
+#include "types/ofParameter.h"
+#include "gl/ofBufferObject.h"
 #include <regex>
 #ifdef TARGET_ANDROID
 #include "ofxAndroidUtils.h"
 #endif
-#include "ofShadow.h"
-#include "ofLight.h"
-#include "ofCubeMap.h"
+#include "gl/ofShadow.h"
+#include "gl/ofLight.h"
+#include "gl/ofCubeMap.h"
 
 using std::map;
 using std::vector;

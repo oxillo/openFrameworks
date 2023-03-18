@@ -1,9 +1,9 @@
 #pragma once
 
-#include "ofShader.h"
-#include "ofColor.h"
+#include "gl/ofShader.h"
+#include "types/ofColor.h"
 // FIXME: deprecated only and ctor
-#include "ofConstants.h"
+#include "utils/ofConstants.h"
 #include "glm/fwd.hpp"
 #include "glm/vec2.hpp"
 

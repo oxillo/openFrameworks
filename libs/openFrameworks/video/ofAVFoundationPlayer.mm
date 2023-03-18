@@ -5,10 +5,10 @@
 //
 
 //--------------------------------------------------------------
-#import "ofAVFoundationPlayer.h"
-#import "ofAVFoundationVideoPlayer.h"
-#include "ofRectangle.h"
-#include "ofGLUtils.h"
+#import "video/ofAVFoundationPlayer.h"
+#import "video/ofAVFoundationVideoPlayer.h"
+#include "types/ofRectangle.h"
+#include "gl/ofGLUtils.h"
 
 #ifdef TARGET_OSX
 	#include "ofTexture.h"

@@ -6,7 +6,7 @@
 //
 
 #pragma once
-#include "ofConstants.h"
+#include "utils/ofConstants.h"
 #include "ofGLUtils.h"
 
 class ofCubeMapShaders {

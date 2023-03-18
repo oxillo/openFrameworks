@@ -5,18 +5,18 @@
 //  Created by Nick Hardeman on 10/3/22.
 //
 
-#include "ofShadow.h"
-#include "ofConstants.h"
-#include "of3dUtils.h"
-#include "ofGLBaseTypes.h"
-#include "ofGLUtils.h"
+#include "gl/ofShadow.h"
+#include "utils/ofConstants.h"
+#include "3d/of3dUtils.h"
+#include "gl/ofGLBaseTypes.h"
+#include "gl/ofGLUtils.h"
 
-#include "ofLight.h"
+#include "gl/ofLight.h"
 
 #include "glm/gtx/transform.hpp"
 #include "glm/gtc/quaternion.hpp"
 
-#include "ofGLProgrammableRenderer.h"
+#include "gl/ofGLProgrammableRenderer.h"
 
 using std::weak_ptr;
 using std::vector;

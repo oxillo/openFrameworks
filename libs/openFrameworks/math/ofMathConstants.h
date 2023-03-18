@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ofConstants.h"
+#include "utils/ofConstants.h"
 #include "glm/fwd.hpp"
 
 #if OF_USE_LEGACY_VECTOR_MATH

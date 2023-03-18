@@ -1,10 +1,10 @@
 #pragma once
 
-#include "ofConstants.h"
-#include "ofRectangle.h"
-#include "ofPixels.h"
-#include "ofTexture.h"
-#include "ofGraphics.h"
+#include "utils/ofConstants.h"
+#include "types/ofRectangle.h"
+#include "graphics/ofPixels.h"
+#include "gl/ofTexture.h"
+#include "graphics/ofGraphics.h"
 
 
 /*

@@ -8,7 +8,7 @@
 #ifndef OFSOUNDBUFFER_H_
 #define OFSOUNDBUFFER_H_
 
-#include "ofConstants.h"
+#include "utils/ofConstants.h"
 
 
 /*! 

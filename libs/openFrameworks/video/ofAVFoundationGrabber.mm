@@ -2,10 +2,10 @@
  *  ofAVFoundationGrabber.mm
  */
 
-#include "ofAVFoundationGrabber.h"
-#include "ofVectorMath.h"
-#include "ofRectangle.h"
-#include "ofGLUtils.h"
+#include "video/ofAVFoundationGrabber.h"
+#include "math/ofVectorMath.h"
+#include "types/ofRectangle.h"
+#include "gl/ofGLUtils.h"
 
 #ifdef OF_VIDEO_CAPTURE_AVF
 

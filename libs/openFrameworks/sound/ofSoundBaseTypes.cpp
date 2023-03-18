@@ -1,6 +1,6 @@
-#include "ofSoundBaseTypes.h"
-#include "ofSoundBuffer.h"
-#include "ofLog.h"
+#include "sound/ofSoundBaseTypes.h"
+#include "sound/ofSoundBuffer.h"
+#include "utils/ofLog.h"
 
 
 std::string toString(ofSoundDevice::Api api){

@@ -1,8 +1,8 @@
-#include "ofImage.h"
-#include "ofAppRunner.h"
+#include "graphics/ofImage.h"
+#include "app/ofAppRunner.h"
 #include "FreeImage.h"
 
-#include "ofURLFileLoader.h"
+#include "utils/ofURLFileLoader.h"
 #include "uriparser/Uri.h"
 
 #if defined(TARGET_ANDROID)

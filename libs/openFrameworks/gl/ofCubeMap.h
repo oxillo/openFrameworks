@@ -5,8 +5,8 @@
 //
 
 #pragma once
-#include "ofFbo.h"
-#include "ofMesh.h"
+#include "gl/ofFbo.h"
+#include "3d/ofMesh.h"
 class ofShader;
 
 class ofGLProgrammableRenderer;

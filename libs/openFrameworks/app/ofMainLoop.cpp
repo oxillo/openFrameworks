@@ -5,11 +5,11 @@
  *      Author: arturo
  */
 
-#include "ofMainLoop.h"
-#include "ofWindowSettings.h"
-#include "ofAppBaseWindow.h"
-#include "ofBaseApp.h"
-#include "ofConstants.h"
+#include "app/ofMainLoop.h"
+#include "app/ofWindowSettings.h"
+#include "app/ofAppBaseWindow.h"
+#include "app/ofBaseApp.h"
+#include "utils/ofConstants.h"
 
 //========================================================================
 // default windowing

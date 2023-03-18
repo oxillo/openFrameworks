@@ -1,10 +1,10 @@
-#include "ofTexture.h"
-#include "ofGraphics.h"
-#include "ofPixels.h"
-#include "ofGLUtils.h"
-#include "ofGLBaseTypes.h"
-#include "ofBufferObject.h"
-#include "ofMesh.h"
+#include "gl/ofTexture.h"
+#include "graphics/ofGraphics.h"
+#include "graphics/ofPixels.h"
+#include "gl/ofGLUtils.h"
+#include "gl/ofGLBaseTypes.h"
+#include "gl/ofBufferObject.h"
+#include "3d/ofMesh.h"
 #include <map>
 
 #ifdef TARGET_ANDROID
