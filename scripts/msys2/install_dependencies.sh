@@ -48,9 +48,11 @@ for pkg in ${mingwPackages}; do
 	packages="$packages  $MINGW_PACKAGE_PREFIX-$pkg"
 done
 
-echo MSYSTEM=$MSYSTEM PREFIX=$MINGW_PACKAGE_PREFIX
-echo msyspackages = ${msyspackages}
-echo packages = ${packages}
+echo **********************MSYSTEM***************************
+env | grep MSYSTEM
+echo ***********************MINGW****************************
+env | grep MINGW
+echo ********************************************************
 # Install packages
 if [[ "${confirm}" == "yes" ]]; then
 	for pkg in ${packages}; do
