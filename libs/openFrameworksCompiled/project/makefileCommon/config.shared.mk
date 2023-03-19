@@ -159,6 +159,8 @@ endif
 
 ################################################################################
 # create path definitions
+OF_CORE_ROOT = ../../..
+
 ifndef OF_ADDONS_PATH
 	OF_ADDONS_PATH=$(OF_ROOT)/addons
 endif
@@ -169,7 +171,7 @@ ifndef OF_APPS_PATH
 	OF_APPS_PATH=$(OF_ROOT)/apps
 endif
 ifndef OF_LIBS_PATH
-	OF_LIBS_PATH=$(OF_ROOT)/libs
+	OF_LIBS_PATH=$(OF_CORE_ROOT)/libs
 endif
 
 ################################################################################
