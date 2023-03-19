@@ -45,7 +45,7 @@ mingwPackages="assimp boost cairo curl freeglut FreeImage \
 # Build the full list of packages adding prefix to MINGW packages
 packages=${msyspackages}
 for pkg in ${mingwPackages}; do
-	packages="$packages  $MINGW_PACKAGE_PREFIX-$pkg"
+	packages="$packages  ${MINGW_PACKAGE_PREFIX}-$pkg"
 done
 
 echo **********************MSYSTEM***************************
