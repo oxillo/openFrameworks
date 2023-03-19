@@ -22,7 +22,7 @@ jobs:
         include:
         - { sys: mingw64, env: x86_64 }
         #- { sys: mingw32, env: i686 }
-        - { sys: ucrt64,  env: ucrt-x86_64 }
+        #- { sys: ucrt64,  env: ucrt-x86_64 }
         #- { sys: clang64, env: clang-x86_64 }
         #- clangarm64
     defaults:
@@ -40,7 +40,32 @@ jobs:
           rsync
           wget
         pacboy: >-
+            assimp:p
+            boost:p
+            cairo:p
             ccache:p
+            curl:p
+            freeglut:p
+            FreeImage:p
+            glew:p
+            glfw:p
+            glm:p
+            harfbuzz:p
+            libsndfile:p
+            libusb:p
+            libxml2:p
+            mpg123:p
+            nlohmann-json:p
+            ntldd:p
+            openal:p
+            opencv:p
+            poco:p
+            pugixml:p
+            rtaudio:p
+            toolchain:p
+            uriparser:p
+            utf8cpp:p
+            zlib:p
     - name: Cache compile
       id: cache-compile
       uses: actions/cache@v3
