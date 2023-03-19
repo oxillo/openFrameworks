@@ -45,6 +45,7 @@ jobs:
             cairo:p
             ccache:p
             curl:p
+            fd:p
             freeglut:p
             FreeImage:p
             glew:p
@@ -76,15 +77,8 @@ jobs:
         key: ${{ runner.os }}-${{ matrix.sys }}-${{ env.cache-name }}-${{ hashFiles('**/*.cpp') }}
         restore-keys: |
           ${{ runner.os }}-${{ matrix.sys }}-${{ env.cache-name }}-
-    #- name: set-env
-    #  uses: allenevans/set-env@v2.0.0
-    #  with: 
-    #    MINGW_PREFIX: /${{ matrix.sys }}
-    #    MINGW_PACKAGE_PREFIX: mingw-w64-${{ matrix.env }}
     - name: Install dependencies
       run: ./scripts/msys2/download_libs.sh
-    - name: AR version
-      run: /mingw64/bin/ar V
     - name: Build
       run: ./scripts/ci/msys2/build.sh
     - name: Run tests

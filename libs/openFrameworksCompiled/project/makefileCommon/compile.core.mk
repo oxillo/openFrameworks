@@ -167,14 +167,14 @@ endif
 #  OF_CORE_SOURCE_FILES $(patsubst $(OF_ROOT)/%.cpp,%.d,$(OF_CORE_SOURCE_FILES))
 # 2. Add the OF_CORE_OBJ_OUTPUT_PATH as a prefix
 #  $(addprefix $(OF_CORE_OBJ_OUTPUT_PATH), ...)
-OF_CORE_DEPENDENCY_FILES = $(addprefix $(OF_CORE_OBJ_OUTPUT_PATH),$(patsubst $(OF_CORE_ROOT)/%.cpp,%.d,$(patsubst $(OF_CORE_ROOT)/%.mm,%.d,$(patsubst $(OF_CORE_ROOT)/%.m,%.d,$(OF_CORE_SOURCE_FILES)))))
+OF_CORE_DEPENDENCY_FILES := $(addprefix $(OF_CORE_OBJ_OUTPUT_PATH),$(patsubst $(OF_CORE_ROOT)/%.cpp,%.d,$(patsubst $(OF_CORE_ROOT)/%.mm,%.d,$(patsubst $(OF_CORE_ROOT)/%.m,%.d,$(OF_CORE_SOURCE_FILES)))))
 
 # create a named list of object files
 # 1. create a list of object files based on the current list of
 #   OF_CORE_SOURCE_FILES $(patsubst $(OF_ROOT)/%.cpp,%.o,$(OF_CORE_SOURCE_FILES)
 # 2. Add the OF_CORE_OBJ_OUTPUT_PATH as a prefix
 #	$(addprefix $(OF_CORE_OBJ_OUTPUT_PATH), ...)
-OF_CORE_OBJ_FILES = $(addprefix $(OF_CORE_OBJ_OUTPUT_PATH),$(patsubst $(OF_CORE_ROOT)/%.cpp,%.o,$(patsubst $(OF_CORE_ROOT)/%.mm,%.o,$(patsubst $(OF_CORE_ROOT)/%.m,%.o,$(OF_CORE_SOURCE_FILES)))))
+OF_CORE_OBJ_FILES := $(addprefix $(OF_CORE_OBJ_OUTPUT_PATH),$(patsubst $(OF_CORE_ROOT)/%.cpp,%.o,$(patsubst $(OF_CORE_ROOT)/%.mm,%.o,$(patsubst $(OF_CORE_ROOT)/%.m,%.o,$(OF_CORE_SOURCE_FILES)))))
 
 
 ################################################################################
@@ -236,9 +236,6 @@ $(OF_CORE_OBJ_OUTPUT_PATH).compiler_flags: force
 #This rule does the compilation
 $(OF_CORE_OBJ_OUTPUT_PATH)%.o: $(OF_CORE_ROOT)/%.cpp $(OF_CORE_OBJ_OUTPUT_PATH).compiler_flags
 	@echo "Compiling" $<
-	@echo OFCOREROOT=$(OF_CORE_ROOT)
-	@echo OFROOT=$(OF_ROOT)
-	@echo OF=${CURDIR}
 	@mkdir -p $(@D)
 	$(CXX) $(OPTIMIZATION_CFLAGS) $(CFLAGS) $(CXXFLAGS) -MMD -MP -MF $(OF_CORE_OBJ_OUTPUT_PATH)$*.d -MT$(OF_CORE_OBJ_OUTPUT_PATH)$*.o -o $@ -c $<
 

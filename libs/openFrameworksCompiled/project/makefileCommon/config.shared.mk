@@ -34,11 +34,7 @@ ifdef MAKEFILE_DEBUG
     $(info HOST_OS=${HOST_OS})
 endif
 
-ifneq (,$(findstring MSYS_NT,$(HOST_OS)))
-	FIND=/usr/bin/find
-else
-	FIND=find
-endif
+FIND ?= find
 
 #check for Raspbian as armv7l needs to use armv6l architecture
 ifeq ($(wildcard $(RPI_ROOT)/etc/*-release), /etc/os-release)
@@ -220,7 +216,7 @@ $(error This package doesn't support your platform, $(OF_LIBS_OF_COMPILED_PROJEC
 endif
 
 # generate a list of valid core platform variants from the files in the platform makefiles directory
-AVAILABLE_PLATFORM_VARIANTS=$(shell $(FIND) $(OF_PLATFORM_MAKEFILES)/config.*.mk -maxdepth 1 -type f | sed -E 's/.*\.([^\.]*)\.mk/\1/' )
+AVAILABLE_PLATFORM_VARIANTS:=$(shell $(FIND) $(OF_PLATFORM_MAKEFILES)/config.*.mk -maxdepth 1 -type f | sed -E 's/.*\.([^\.]*)\.mk/\1/' )
 AVAILABLE_PLATFORM_VARIANTS+=default
 
 # check to see if we have a file for the desired variant.  if not, quit and list the variants.
@@ -267,7 +263,7 @@ CORE_EXCLUSIONS = $(strip $(PLATFORM_CORE_EXCLUSIONS))
 ALL_OF_CORE_SOURCE_PATHS=$(shell $(FIND) $(OF_LIBS_OPENFRAMEWORKS_PATH) -maxdepth 1 -mindepth 1 -type d | grep -v "/\.[^\.]" )
 
 # create a list of core source PATHS, filtering out any  items that have a match in the CORE_EXCLUSIONS list
-OF_CORE_SOURCE_PATHS=$(filter-out $(CORE_EXCLUSIONS),$(ALL_OF_CORE_SOURCE_PATHS))
+OF_CORE_SOURCE_PATHS:=$(filter-out $(CORE_EXCLUSIONS),$(ALL_OF_CORE_SOURCE_PATHS))
 
 # create our core include paths from the source directory paths,
 # these have already been filtered and processed according to rules.
@@ -279,7 +275,7 @@ OF_CORE_HEADER_PATHS = $(OF_LIBS_OPENFRAMEWORKS_PATH) $(OF_CORE_SOURCE_PATHS)
 ALL_OF_CORE_THIRDPARTY_HEADER_PATHS = $(shell $(FIND) $(OF_LIBS_PATH)/*/include -type d | grep -v "/\.[^\.]")
 
 # filter out all excluded files / folders that were defined above
-OF_CORE_THIRDPARTY_HEADER_PATHS = $(filter-out $(CORE_EXCLUSIONS),$(ALL_OF_CORE_THIRDPARTY_HEADER_PATHS))
+OF_CORE_THIRDPARTY_HEADER_PATHS := $(filter-out $(CORE_EXCLUSIONS),$(ALL_OF_CORE_THIRDPARTY_HEADER_PATHS))
 
 # generate the list of core includes
 # 1. Add the header search paths defined by the platform config files.
@@ -295,13 +291,13 @@ ifdef MAKEFILE_DEBUG
     $(info checking pkg-config libraries: $(CORE_PKG_CONFIG_LIBRARIES))
     $(info with PKG_CONFIG_LIBDIR=$(PKG_CONFIG_LIBDIR))
 endif
-FAILED_PKG=$(shell export PKG_CONFIG_LIBDIR=$(PKG_CONFIG_LIBDIR); for pkg in $(CORE_PKG_CONFIG_LIBRARIES); do $(PLATFORM_PKG_CONFIG) $$pkg --cflags > /dev/null; if [ $$? -ne 0 ]; then echo $$pkg; return; fi; done; echo 0)
+FAILED_PKG:=$(shell export PKG_CONFIG_LIBDIR=$(PKG_CONFIG_LIBDIR); for pkg in $(CORE_PKG_CONFIG_LIBRARIES); do $(PLATFORM_PKG_CONFIG) $$pkg --cflags > /dev/null; if [ $$? -ne 0 ]; then echo $$pkg; return; fi; done; echo 0)
 else
 ifdef MAKEFILE_DEBUG
     $(info checking pkg-config libraries: $(CORE_PKG_CONFIG_LIBRARIES))
     $(info with PKG_CONFIG_LIBDIR=$(PKG_CONFIG_LIBDIR))
 endif
-FAILED_PKG=$(shell for pkg in $(CORE_PKG_CONFIG_LIBRARIES); do $(PLATFORM_PKG_CONFIG) $$pkg --cflags > /dev/null; if [ $$? -ne 0 ]; then echo $$pkg; return; fi; done; echo 0)
+FAILED_PKG:=$(shell for pkg in $(CORE_PKG_CONFIG_LIBRARIES); do $(PLATFORM_PKG_CONFIG) $$pkg --cflags > /dev/null; if [ $$? -ne 0 ]; then echo $$pkg; return; fi; done; echo 0)
 endif
 	ifneq ($(FAILED_PKG),0)
 $(error couldn't find $(FAILED_PKG) pkg-config package or it's dependencies, did you run the latest install_dependencies.sh?)
@@ -323,7 +319,7 @@ OF_CORE_INCLUDES_CFLAGS += $(addprefix -I,$(OF_CORE_HEADER_PATHS))
 # OF CORE DEFINES
 ################################################################################
 
-OF_CORE_DEFINES_CFLAGS=$(addprefix -D,$(PLATFORM_DEFINES))
+OF_CORE_DEFINES_CFLAGS:=$(addprefix -D,$(PLATFORM_DEFINES))
 
 ################################################################################
 # OF PLATFORM CFLAGS
@@ -341,8 +337,8 @@ OF_CORE_BASE_CXXFLAGS=$(PLATFORM_CXXFLAGS)
 # search the directories in the source folders for all .cpp files
 # filter out all excluded files / folders that were defined above
 # grep -v "/\.[^\.]" will exclude all .hidden folders and files
-OF_CORE_SOURCE_FILES=$(filter-out $(CORE_EXCLUSIONS),$(shell $(FIND) $(OF_CORE_SOURCE_PATHS) -name "*.cpp" -or -name "*.mm" -or -name "*.m" | grep -v "/\.[^\.]"))
-OF_CORE_HEADER_FILES=$(filter-out $(CORE_EXCLUSIONS),$(shell $(FIND) $(OF_CORE_SOURCE_PATHS) -name "*.h" | grep -v "/\.[^\.]"))
+OF_CORE_SOURCE_FILES:=$(filter-out $(CORE_EXCLUSIONS),$(shell $(FIND) $(OF_CORE_SOURCE_PATHS) -name "*.cpp" -or -name "*.mm" -or -name "*.m" | grep -v "/\.[^\.]"))
+OF_CORE_HEADER_FILES:=$(filter-out $(CORE_EXCLUSIONS),$(shell $(FIND) $(OF_CORE_SOURCE_PATHS) -name "*.h" | grep -v "/\.[^\.]"))
 
 
 
