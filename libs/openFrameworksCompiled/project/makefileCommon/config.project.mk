@@ -29,14 +29,14 @@ ALL_OF_CORE_LIBS_PATHS = $(shell $(FIND) $(ALL_OF_CORE_LIBS_PLATFORM_LIB_PATHS) 
 
 # create a list of all core lib directories that have libsorder.make
 # grep -v "/\.[^\.]" will exclude all .hidden folders and files
-ALL_OF_CORE_LIBSORDER_MAKE_FILES = $(shell $(FIND) $(ALL_OF_CORE_LIBS_PLATFORM_LIB_PATHS) -name libsorder.make -not -path "*/openFrameworksCompiled/*" 2> /dev/null | grep -v "/\.[^\.]" )
+ALL_OF_CORE_LIBSORDER_MAKE_FILES := $(shell $(FIND) $(ALL_OF_CORE_LIBS_PLATFORM_LIB_PATHS) -name libsorder.make -not -path "*/openFrameworksCompiled/*" 2> /dev/null | grep -v "/\.[^\.]" )
 
 # create a list of all of the core libs that require ordering
 OF_CORE_LIBS_THAT_NEED_ORDER = $(subst /lib/$(ABI_LIB_SUBPATH)/libsorder.make,,$(ALL_OF_CORE_LIBSORDER_MAKE_FILES))
 
 # create a list of all of the platform libs that DO NOT require ordering
 # by removing those that do from the list of all platform libraries
-OF_CORE_LIBS_THAT_DONT_NEED_ORDER = $(filter-out $(OF_CORE_LIBS_THAT_NEED_ORDER),$(subst /lib/$(ABI_LIB_SUBPATH),,$(ALL_OF_CORE_LIBS_PATHS)))
+OF_CORE_LIBS_THAT_DONT_NEED_ORDER := $(filter-out $(OF_CORE_LIBS_THAT_NEED_ORDER),$(subst /lib/$(ABI_LIB_SUBPATH),,$(ALL_OF_CORE_LIBS_PATHS)))
 
 # create a list of all static libs in the core lib dir, using only
 # the static libs that don't need order
@@ -297,7 +297,7 @@ endif
 
 # find all sources inside the project's source directory (recursively)
 # grep -v "/\.[^\.]" will exclude all .hidden folders and files
-OF_PROJECT_SOURCE_FILES = $(shell $(FIND) $(OF_PROJECT_SOURCE_PATHS) -maxdepth 1 -name "*.mm" -or -name "*.m" -or -name "*.cpp" -or -name "*.c" -or -name "*.cc" -or -name "*.cxx" -or -name "*.S" | grep -v "/\.[^\.]")
+OF_PROJECT_SOURCE_FILES := $(shell $(FIND) $(OF_PROJECT_SOURCE_PATHS) -maxdepth 1 -name "*.mm" -or -name "*.m" -or -name "*.cpp" -or -name "*.c" -or -name "*.cc" -or -name "*.cxx" -or -name "*.S" | grep -v "/\.[^\.]")
 
 ################################################################################
 # PROJECT HEADER INCLUDES (-I ...)
