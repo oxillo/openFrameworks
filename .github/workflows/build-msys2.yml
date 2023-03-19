@@ -81,9 +81,8 @@ jobs:
     #  with: 
     #    MINGW_PREFIX: /${{ matrix.sys }}
     #    MINGW_PACKAGE_PREFIX: mingw-w64-${{ matrix.env }}
-        
     - name: Install dependencies
-      run: ./scripts/ci/msys2/install.sh
+      run: ./scripts/msys2/download_libs.sh
     - name: Build
       run: ./scripts/ci/msys2/build.sh
     - name: Run tests

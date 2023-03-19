@@ -340,5 +340,5 @@ afterplatform: $(TARGET_NAME)
 	@echo ""
 	@echo "     - or -"
 	@echo ""
-	@echo "     make $(RUN_TARGET)"
+	@echo "     $(MAKE) $(RUN_TARGET)"
 	@echo

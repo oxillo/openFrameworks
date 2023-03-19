@@ -266,6 +266,7 @@ else
 $(TARGET) : $(OF_CORE_OBJ_FILES) $(OF_CORE_OBJ_OUTPUT_PATH).compiler_flags
 	@echo "Creating library " $(TARGET)
 	@mkdir -p $(@D)
+	@echo $(AR) ${ARFLAGS} "$@" $(OF_CORE_OBJ_FILES)
 	$(AR) ${ARFLAGS} "$@" $(OF_CORE_OBJ_FILES)
 endif
 -include $(OF_CORE_DEPENDENCY_FILES)
