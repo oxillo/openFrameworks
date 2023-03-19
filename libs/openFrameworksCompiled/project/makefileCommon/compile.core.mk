@@ -265,11 +265,11 @@ $(TARGET) : $(OF_CORE_OBJ_FILES) $(OF_CORE_OBJ_OUTPUT_PATH).compiler_flags
 else
 $(TARGET) : $(OF_CORE_OBJ_FILES) $(OF_CORE_OBJ_OUTPUT_PATH).compiler_flags
 	@echo "Creating library " $(TARGET)
-	@mkdir -p $(@D)
+	@mkdir -p "$(@D)"
 	@echo PLATFORM_AR=$(PLATFORM_AR)
 	@echo PROJECT_AR=$(PROJECT_AR)
 	@echo AR=$(AR)
-	@echo PWD=$(PWD)
+	@echo create=$(@D)
 	$(AR) V
 	@echo $(AR) ${ARFLAGS} "$@" $(OF_CORE_OBJ_FILES)
 	$(AR) ${ARFLAGS} "$@" $(OF_CORE_OBJ_FILES)
