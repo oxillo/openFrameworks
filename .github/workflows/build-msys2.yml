@@ -41,6 +41,7 @@ jobs:
           wget
         pacboy: >-
             assimp:p
+            binutils:p
             boost:p
             cairo:p
             ccache:p
@@ -66,6 +67,8 @@ jobs:
             uriparser:p
             utf8cpp:p
             zlib:p
+
+             mingw-w64-x86_64-binutils  2) mingw-w64-x86_64-crt-git  3) mingw-w64-x86_64-gcc  4) mingw-w64-x86_64-gcc-ada  5) mingw-w64-x86_64-gcc-fortran  6) mingw-w64-x86_64-gcc-libgfortran  7) mingw-w64-x86_64-gcc-libs  8) mingw-w64-x86_64-gcc-objc  9) mingw-w64-x86_64-gdb  10) mingw-w64-x86_64-gdb-multiarch  11) mingw-w64-x86_64-headers-git  12) mingw-w64-x86_64-libgccjit  13) mingw-w64-x86_64-libmangle-git  14) mingw-w64-x86_64-libwinpthread-git  15) mingw-w64-x86_64-make  16) mingw-w64-x86_64-pkgconf  17) mingw-w64-x86_64-tools-git  18) mingw-w64-x86_64-winpthreads-git  19) mingw-w64-x86_64-winstorecompat-git
     - name: Cache compile
       id: cache-compile
       uses: actions/cache@v3
@@ -83,6 +86,8 @@ jobs:
     #    MINGW_PACKAGE_PREFIX: mingw-w64-${{ matrix.env }}
     - name: Install dependencies
       run: ./scripts/msys2/download_libs.sh
+    - name: AR version
+      run: /mingw64/bin/ar V
     - name: Build
       run: ./scripts/ci/msys2/build.sh
     - name: Run tests
