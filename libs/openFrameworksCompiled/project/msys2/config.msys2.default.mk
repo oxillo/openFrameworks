@@ -25,7 +25,7 @@
 #   core source code.
 ##########################################################################################
 
-MINGW_PREFIX ?= /mingw32
+MINGW_PREFIX ?= /mingw64
 PLATFORM_CFLAGS += -std=gnu++17 -DUNICODE -D_UNICODE
 #PLATFORM_CFLAGS += -IC:/msys64/mingw32/include/gstreamer-1.0 -DOF_VIDEO_PLAYER_GSTREAMER
 ifdef USE_CCACHE
@@ -39,7 +39,7 @@ FIND ?= /usr/bin/find
 PLATFORM_AR = $(MINGW_PREFIX)/bin/ar
 PLATFORM_LD = $(MINGW_PREFIX)/bin/ld
 PLATFORM_RESOURCE_COMPILER = $(MINGW_PREFIX)/bin/windres
-PLATFORM_PKG_CONFIG = /usr/bin/pkgconf
+PLATFORM_PKG_CONFIG = $(MINGW_PREFIX)/bin/pkgconf
 
 
 PLATFORM_PROJECT_DEBUG_BIN_NAME=$(APPNAME)_debug.exe
