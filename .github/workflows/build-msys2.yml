@@ -22,6 +22,7 @@ jobs:
         msystem :
         - mingw64
         - ucrt64
+    name: Build OF for MSYS2 - ${{ matrix.msystem }}
     defaults:
       run:
         shell: msys2 {0}
