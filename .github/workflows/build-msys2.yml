@@ -31,12 +31,41 @@ jobs:
     - uses: msys2/setup-msys2@v2
       with:
         update: true
+        release: false
         msystem: ${{ matrix.msystem }}
         install: >-
           git
           unzip
           rsync
           wget
+        pacboy: >-
+          assimp:p
+          boost:p
+          cairo:p
+          ccache:p
+          curl:p
+          fd:p
+          freeglut:p
+          FreeImage:p
+          glew:p
+          glfw:p
+          glm:p
+          harfbuzz:p
+          libsndfile:p
+          libusb:p
+          libxml2:p
+          mpg123:p
+          nlohmann-json:p
+          ntldd:p
+          openal:p
+          opencv:p
+          poco:p
+          pugixml:p
+          rtaudio:p
+          toolchain:p
+          uriparser:p
+          utf8cpp:p
+          zlib:p
     - name: Install dependencies
       run: ./scripts/ci/msys2/install.sh
     - name: Build
