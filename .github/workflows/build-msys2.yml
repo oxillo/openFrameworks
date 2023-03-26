@@ -56,6 +56,7 @@ jobs:
           ntldd:p
           openal:p
           opencv:p
+          pkgconf:p
           poco:p
           pugixml:p
           rtaudio:p
