@@ -33,11 +33,6 @@ jobs:
         update: true
         release: false
         msystem: ${{ matrix.msystem }}
-        install: >-
-          git
-          unzip
-          rsync
-          wget
         pacboy: >-
           assimp:p
           boost:p
@@ -47,6 +42,8 @@ jobs:
           fd:p
           freeglut:p
           FreeImage:p
+          gcc:p
+          gdb:p
           glew:p
           glfw:p
           glm:p
@@ -62,7 +59,7 @@ jobs:
           poco:p
           pugixml:p
           rtaudio:p
-          toolchain:p
+          tools:p
           uriparser:p
           utf8cpp:p
           zlib:p
