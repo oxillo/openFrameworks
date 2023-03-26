@@ -20,6 +20,7 @@
 
 SHELL ?= /bin/sh
 OF_ROOT ?=  $(realpath ../../..)
+OF_CORE_ROOT := ../../..
 PLATFORM_VARIANT ?= default
 
 # ifeq ($(CC),$(EMSCRIPTEN)/emcc)
@@ -167,31 +168,31 @@ ifndef OF_APPS_PATH
 	OF_APPS_PATH=$(OF_ROOT)/apps
 endif
 ifndef OF_LIBS_PATH
-	OF_LIBS_PATH=$(OF_ROOT)/libs
+	OF_LIBS_PATH:=$(OF_CORE_ROOT)/libs
 endif
 
 ################################################################################
 ifndef OF_LIBS_OPENFRAMEWORKS_PATH
-	OF_LIBS_OPENFRAMEWORKS_PATH=$(OF_LIBS_PATH)/openFrameworks
+	OF_LIBS_OPENFRAMEWORKS_PATH:=$(OF_LIBS_PATH)/openFrameworks
 endif
 ifndef OF_LIBS_OF_COMPILED_PATH
-	OF_LIBS_OF_COMPILED_PATH=$(OF_LIBS_OPENFRAMEWORKS_PATH)Compiled
+	OF_LIBS_OF_COMPILED_PATH:=$(OF_LIBS_OPENFRAMEWORKS_PATH)Compiled
 endif
 ifndef OF_LIBS_OF_COMPILED_PROJECT_PATH
-	OF_LIBS_OF_COMPILED_PROJECT_PATH=$(OF_LIBS_OF_COMPILED_PATH)/project
+	OF_LIBS_OF_COMPILED_PROJECT_PATH:=$(OF_LIBS_OF_COMPILED_PATH)/project
 endif
 ifndef OF_SHARED_MAKEFILES_PATH
-	OF_SHARED_MAKEFILES_PATH=$(OF_LIBS_OF_COMPILED_PROJECT_PATH)/makefileCommon
+	OF_SHARED_MAKEFILES_PATH:=$(OF_LIBS_OF_COMPILED_PROJECT_PATH)/makefileCommon
 endif
 
 ifdef OF_LIBS_OF_COMPILED_PROJECT_PATH
-	OF_PLATFORM_MAKEFILES=$(OF_LIBS_OF_COMPILED_PROJECT_PATH)/$(PLATFORM_LIB_SUBPATH)
+	OF_PLATFORM_MAKEFILES:=$(OF_LIBS_OF_COMPILED_PROJECT_PATH)/$(PLATFORM_LIB_SUBPATH)
 else
 	$(error OF_LIBS_OF_COMPILED_PATH is not defined)
 endif
 
 ifndef OF_CORE_LIB_PATH
-	OF_CORE_LIB_PATH=$(OF_LIBS_OF_COMPILED_PATH)/lib/$(PLATFORM_LIB_SUBPATH)
+	OF_CORE_LIB_PATH:=$(OF_LIBS_OF_COMPILED_PATH)/lib/$(PLATFORM_LIB_SUBPATH)
 endif
 
 ################################################################################
@@ -260,7 +261,7 @@ CORE_EXCLUSIONS = $(strip $(PLATFORM_CORE_EXCLUSIONS))
 
 # find all of the source directories
 # grep -v "/\.[^\.]" will exclude all .hidden folders and files
-ALL_OF_CORE_SOURCE_PATHS=$(shell $(FIND) $(OF_LIBS_OPENFRAMEWORKS_PATH) -maxdepth 1 -mindepth 1 -type d | grep -v "/\.[^\.]" )
+ALL_OF_CORE_SOURCE_PATHS:=$(shell $(FIND) $(OF_LIBS_OPENFRAMEWORKS_PATH) -maxdepth 1 -mindepth 1 -type d | grep -v "/\.[^\.]" )
 
 # create a list of core source PATHS, filtering out any  items that have a match in the CORE_EXCLUSIONS list
 OF_CORE_SOURCE_PATHS=$(filter-out $(CORE_EXCLUSIONS),$(ALL_OF_CORE_SOURCE_PATHS))
