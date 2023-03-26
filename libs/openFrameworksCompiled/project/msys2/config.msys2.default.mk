@@ -25,11 +25,9 @@
 #   core source code.
 ##########################################################################################
 
-MINGW_PREFIX ?= /mingw32
+MINGW_PREFIX ?= /mingw64
 #ABI:= $(shell echo $(MSYSTEM) | tr '[:upper:]' '[:lower:]')
 
-PLATFORM_CFLAGS += -std=gnu++17 -DUNICODE -D_UNICODE
-#PLATFORM_CFLAGS += -IC:/msys64/mingw32/include/gstreamer-1.0 -DOF_VIDEO_PLAYER_GSTREAMER
 ifdef USE_CCACHE
 	CC = ccache $(MINGW_PREFIX)/bin/gcc
 	CXX = ccache $(MINGW_PREFIX)/bin/g++
@@ -41,7 +39,7 @@ FIND ?= /usr/bin/find
 PLATFORM_AR = $(MINGW_PREFIX)/bin/ar
 PLATFORM_LD = $(MINGW_PREFIX)/bin/ld
 PLATFORM_RESOURCE_COMPILER = $(MINGW_PREFIX)/bin/windres
-PLATFORM_PKG_CONFIG = /usr/bin/pkgconf
+PLATFORM_PKG_CONFIG = $(MINGW_PREFIX)/bin/pkgconf
 
 ABI_PATH = ${ABI}
 PLATFORM_PROJECT_DEBUG_BIN_NAME=$(APPNAME)_debug.exe
@@ -104,8 +102,9 @@ PLATFORM_REQUIRED_ADDONS =
 # Note: Be sure to leave a leading space when using a += operator to add items to the list
 ##########################################################################################
 
-# Link against libstdc++ to silence tr1/memory errors on latest versions of osx
-#PLATFORM_CFLAGS = -stdlib=libstdc++
+PLATFORM_CFLAGS += -DUNICODE -D_UNICODE
+PLATFORM_CXXFLAGS += -std=gnu++17
+#PLATFORM_CFLAGS += -IC:/msys64/mingw32/include/gstreamer-1.0 -DOF_VIDEO_PLAYER_GSTREAMER
 
 # Warning Flags (http://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html)
 PLATFORM_CFLAGS += -Wall
