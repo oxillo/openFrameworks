@@ -168,7 +168,7 @@ ifndef OF_APPS_PATH
 	OF_APPS_PATH=$(OF_ROOT)/apps
 endif
 ifndef OF_LIBS_PATH
-	OF_LIBS_PATH:=$(OF_CORE_ROOT)/libs
+	OF_LIBS_PATH:=$(OF_ROOT)/libs
 endif
 
 ################################################################################
