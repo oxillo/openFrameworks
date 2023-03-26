@@ -93,16 +93,10 @@ ifndef PLATFORM_LIB_SUBPATH
 		else ifeq ($(PLATFORM_ARCH),i686)
 			PLATFORM_LIB_SUBPATH=linux
 		else
-			$(error This makefile does not support your architecture $(PLATFORM_ARCH))
+            $(error This makefile does not support your architecture $(PLATFORM_ARCH))
 		endif
 		SHARED_LIB_EXTENSION=so
-	else ifneq (,$(findstring MINGW32_NT,$(PLATFORM_OS)))
-		PLATFORM_LIB_SUBPATH=msys2
-		SHARED_LIB_EXTENSION=dll
-	else ifneq (,$(findstring MSYS_NT,$(PLATFORM_OS)))
-		PLATFORM_LIB_SUBPATH=msys2
-		SHARED_LIB_EXTENSION=dll
-	else ifneq (,$(findstring MINGW64_NT,$(PLATFORM_OS)))
+	else ifeq (MINGW64_NT,$(findstring MINGW64_NT,$(PLATFORM_OS)))
 		PLATFORM_LIB_SUBPATH=msys2
 		SHARED_LIB_EXTENSION=dll
 	else ifeq ($(PLATFORM_OS),Android)
@@ -114,8 +108,12 @@ ifndef PLATFORM_LIB_SUBPATH
 	else ifeq ($(PLATFORM_OS),emscripten)
 		PLATFORM_LIB_SUBPATH=emscripten
 		SHARED_LIB_EXTENSION=so
+	else ifeq (MSYS_NT,$(findstring MSYS_NT,$(PLATFORM_OS)))
+        $(error This makefile does not support MSYS flavor of MSYS2)
+	else ifeq (MINGW32_NT,$(findstring MINGW32_NT,$(PLATFORM_OS)))
+        $(error This makefile does not support 32bits flavors of MSYS2)
 	else
-		$(error This makefile does not support your operating system)
+        $(error This makefile does not support your operating system)
 	endif
 endif
 
@@ -274,7 +272,7 @@ OF_CORE_HEADER_PATHS = $(OF_LIBS_OPENFRAMEWORKS_PATH) $(OF_CORE_SOURCE_PATHS)
 
 # add folders or single files to exclude fromt he compiled lib
 # grep -v "/\.[^\.]" will exclude all .hidden folders and files
-ALL_OF_CORE_THIRDPARTY_HEADER_PATHS = $(shell $(FIND) $(OF_LIBS_PATH)/*/include -type d | grep -v "/\.[^\.]")
+ALL_OF_CORE_THIRDPARTY_HEADER_PATHS := $(shell $(FIND) $(OF_LIBS_PATH)/*/include -type d | grep -v "/\.[^\.]")
 
 # filter out all excluded files / folders that were defined above
 OF_CORE_THIRDPARTY_HEADER_PATHS = $(filter-out $(CORE_EXCLUSIONS),$(ALL_OF_CORE_THIRDPARTY_HEADER_PATHS))
