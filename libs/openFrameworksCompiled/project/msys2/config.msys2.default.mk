@@ -26,6 +26,8 @@
 ##########################################################################################
 
 MINGW_PREFIX ?= /mingw32
+#ABI:= $(shell echo $(MSYSTEM) | tr '[:upper:]' '[:lower:]')
+
 PLATFORM_CFLAGS += -std=gnu++17 -DUNICODE -D_UNICODE
 #PLATFORM_CFLAGS += -IC:/msys64/mingw32/include/gstreamer-1.0 -DOF_VIDEO_PLAYER_GSTREAMER
 ifdef USE_CCACHE
@@ -41,12 +43,14 @@ PLATFORM_LD = $(MINGW_PREFIX)/bin/ld
 PLATFORM_RESOURCE_COMPILER = $(MINGW_PREFIX)/bin/windres
 PLATFORM_PKG_CONFIG = /usr/bin/pkgconf
 
-
+ABI_PATH = ${ABI}
 PLATFORM_PROJECT_DEBUG_BIN_NAME=$(APPNAME)_debug.exe
 PLATFORM_PROJECT_RELEASE_BIN_NAME=$(APPNAME).exe
-PLATFORM_PROJECT_RELEASE_TARGET = bin/$(PLATFORM_PROJECT_RELEASE_BIN_NAME)
-PLATFORM_PROJECT_DEBUG_TARGET = bin/$(PLATFORM_PROJECT_DEBUG_BIN_NAME)
-PLATFORM_RUN_COMMAND = cd bin;./$(BIN_NAME)
+PLATFORM_CORELIB_RELEASE_TARGET = $(OF_CORE_LIB_PATH)/$(ABI)/libopenFrameworks.a
+PLATFORM_CORELIB_DEBUG_TARGET = $(OF_CORE_LIB_PATH)/$(ABI)/libopenFrameworksDebug.a
+PLATFORM_PROJECT_RELEASE_TARGET = bin/$(ABI)/$(PLATFORM_PROJECT_RELEASE_BIN_NAME)
+PLATFORM_PROJECT_DEBUG_TARGET = bin/$(ABI)/$(PLATFORM_PROJECT_DEBUG_BIN_NAME)
+PLATFORM_RUN_COMMAND = cd bin/$(ABI);./$(BIN_NAME)
 
 ##########################################################################################
 # PLATFORM DEFINES
