@@ -33,6 +33,7 @@ jobs:
         msystem: ${{matrix.msystem}}
         install: >-
           git
+          make
           unzip
           rsync
           wget
