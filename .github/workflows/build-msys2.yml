@@ -36,8 +36,35 @@ jobs:
           unzip
           rsync
           wget
+        pacboy: >-
+          assimp:p
+          boost:p
+          cairo:p
+          curl:p
+          freeglut:p
+          FreeImage:p
+          gcc:p
+          glew:p
+          glfw:p
+          glm:p
+          harfbuzz:p
+          libsndfile:p
+          libusb:p
+          libxml2:p
+          mpg123:p
+          nlohmann-json:p
+          ntldd:p
+          openal:p
+          opencv:p
+          pkgconf:p
+          poco:p
+          pugixml:p
+          rtaudio:p
+          uriparser:p
+          utf8cpp:p
+          zlib:p
     - name: Install dependencies
-      run: ./scripts/ci/msys2/install.sh
+      run: ./scripts/msys2/download_libs.sh --silent
     - name: Build
       run: ./scripts/ci/msys2/build.sh
     - name: Run tests
