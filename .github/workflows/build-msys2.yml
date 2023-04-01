@@ -32,11 +32,8 @@ jobs:
         update: true
         msystem: ${{matrix.msystem}}
         install: >-
-          git
           make
           unzip
-          rsync
-          wget
         pacboy: >-
           assimp:p
           boost:p
