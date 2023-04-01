@@ -33,6 +33,7 @@ jobs:
         msystem: ${{matrix.msystem}}
         install: >-
           make
+          rsync
           unzip
         pacboy: >-
           assimp:p
