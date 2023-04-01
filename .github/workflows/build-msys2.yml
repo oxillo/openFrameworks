@@ -62,6 +62,21 @@ jobs:
           uriparser:p
           utf8cpp:p
           zlib:p
+    - name: Cache compile
+      id: cache-compile
+      uses: actions/cache@v3
+      env:
+        cache-name: cache-keep-compile
+      with:
+        path: |
+          libs/openFrameworksCompiled/lib/msys2/*.a
+          libs/openFrameworksCompiled/lib/msys2/**/
+          addons/obj/msys2/**/
+          examples/templates/allAddonsExample/obj/**/
+          examples/templates/emptyExample/obj/**/
+        key: ${{ runner.os }}-${{matrix.msystem}}-${{ env.cache-name }}-${{ hashFiles('**/*.cpp') }}
+        restore-keys: |
+          ${{ runner.os }}-${{matrix.msystem}}-${{ env.cache-name }}-
     - name: Install dependencies
       run: ./scripts/msys2/download_libs.sh --silent
     - name: Build
