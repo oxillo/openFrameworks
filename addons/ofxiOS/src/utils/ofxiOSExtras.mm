@@ -31,8 +31,8 @@
 
 
 #include "ofxiOSExtras.h"
-#include "ofLog.h"
-#include "ofPixels.h"
+#include "utils/ofLog.h"
+#include "graphics/ofPixels.h"
 #include <TargetConditionals.h>
 #if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
 
@@ -46,8 +46,8 @@
 #include "ofxiOSEAGLView.h"
 #include "ofxiOSGLKView.h"
 #include "ofAppiOSWindow.h"
-#include "ofAppRunner.h"
-#include "ofImage.h"
+#include "app/ofAppRunner.h"
+#include "graphics/ofImage.h"
 #include <sys/sysctl.h>
 
 using std::string;

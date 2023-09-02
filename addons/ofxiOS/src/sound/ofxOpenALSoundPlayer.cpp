@@ -23,9 +23,9 @@
  ************************************************************************/ 
 
 #import "ofxOpenALSoundPlayer.h"
-#include "ofUtils.h"
-#include "ofFileUtils.h"
-#include "ofMath.h"
+#include "utils/ofUtils.h"
+#include "utils/ofFileUtils.h"
+#include "math/ofMath.h"
 
 using std::vector;
 using std::cerr;

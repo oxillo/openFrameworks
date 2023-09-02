@@ -4,7 +4,7 @@
 #include "ofxCvColorImage.h"
 #include "ofxCvFloatImage.h"
 #include "ofxCvBlob.h"
-#include "ofConstants.h"
+#include "utils/ofConstants.h"
 
 
 

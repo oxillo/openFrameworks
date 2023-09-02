@@ -7,8 +7,8 @@
 
 #include "ofxAndroidVideoPlayer.h"
 #include "ofxAndroidUtils.h"
-#include "ofLog.h"
-#include "ofMatrix4x4.h"
+#include "utils/ofLog.h"
+#include "math/ofMatrix4x4.h"
 
 using namespace std;
 

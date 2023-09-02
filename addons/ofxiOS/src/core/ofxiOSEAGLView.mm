@@ -8,8 +8,8 @@
 #include "ofxiOSEAGLView.h"
 #include "ofxiOSApp.h"
 #include "ofAppiOSWindow.h"
-#include "ofGLRenderer.h"
-#include "ofGLProgrammableRenderer.h"
+#include "gl/ofGLRenderer.h"
+#include "gl/ofGLProgrammableRenderer.h"
 #include <TargetConditionals.h>
 #import <GameController/GameController.h>
 

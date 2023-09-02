@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofxGuiGroup.h"
-#include "ofImage.h"
+#include "graphics/ofImage.h"
 
 #ifndef TARGET_EMSCRIPTEN
 constexpr const char* ofxPanelDefaultFilename = "settings.xml";

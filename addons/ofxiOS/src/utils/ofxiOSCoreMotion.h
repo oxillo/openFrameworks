@@ -8,7 +8,7 @@
 #pragma once
 
 #import <CoreMotion/CoreMotion.h>
-#include "ofVectorMath.h"
+#include "math/ofVectorMath.h"
 
 
 class ofxiOSCoreMotion {

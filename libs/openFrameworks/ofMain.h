@@ -113,6 +113,6 @@
 #include "3d/ofNode.h"
 
 //--------------------------
-//using namespace std;
+using namespace std;
 
 #endif

@@ -1,8 +1,8 @@
 // copyright (c) openFrameworks team 2010-2017
 // copyright (c) Damian Stewart 2007-2009
 #include "ofxOscMessage.h"
-#include "ofLog.h"
-#include "ofUtils.h"
+#include "utils/ofLog.h"
+#include "utils/ofUtils.h"
 
 //--------------------------------------------------------------
 ofxOscMessage::ofxOscMessage() : remoteHost(""), remotePort(0) {}

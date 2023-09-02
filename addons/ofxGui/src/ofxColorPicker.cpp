@@ -7,7 +7,7 @@
 //
 
 #include "ofxColorPicker.h"
-#include "ofGraphics.h"
+#include "graphics/ofGraphics.h"
 
 
 namespace {

@@ -1,5 +1,5 @@
 #include "ofxThreadedImageLoader.h"
-#include "ofLog.h"
+#include "utils/ofLog.h"
 #include <sstream>
 
 ofxThreadedImageLoader::ofxThreadedImageLoader(){

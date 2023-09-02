@@ -7,9 +7,9 @@
 #include "ofxButton.h"
 #include "ofxLabel.h"
 #include "ofxInputField.h"
-#include "ofTrueTypeFont.h"
+#include "graphics/ofTrueTypeFont.h"
 #include "ofxColorPicker.h"
-#include "ofEvents.h"
+#include "events/ofEvents.h"
 
 void ofxGuiSetFont(const std::string & fontPath,int fontsize, bool _bAntiAliased=true, bool _bFullCharacterSet=true, int dpi=0);
 void ofxGuiSetFont(const ofTrueTypeFontSettings & fontSettings);

@@ -7,10 +7,10 @@
 
 #pragma once
 
-#include "ofVideoBaseTypes.h"
-#include "ofPixels.h"
-#include "ofEvents.h"
-#include "ofTexture.h"
+#include "video/ofVideoBaseTypes.h"
+#include "graphics/ofPixels.h"
+#include "events/ofEvents.h"
+#include "gl/ofTexture.h"
 #include <jni.h>
 
 class ofxAndroidVideoPlayer: public ofBaseVideoPlayer{

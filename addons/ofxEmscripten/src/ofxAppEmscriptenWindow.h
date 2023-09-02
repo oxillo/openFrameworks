@@ -8,9 +8,9 @@
 #ifndef OFAPPEMSCRIPTENWINDOW_H_
 #define OFAPPEMSCRIPTENWINDOW_H_
 
-#include "ofConstants.h"
-#include "ofAppBaseWindow.h"
-#include "ofEvents.h"
+#include "utils/ofConstants.h"
+#include "app/ofAppBaseWindow.h"
+#include "events/ofEvents.h"
 #include "EGL/egl.h"
 #include <emscripten/emscripten.h>
 #include <emscripten/html5.h>

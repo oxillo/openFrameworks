@@ -1,11 +1,11 @@
 #pragma once
 
-#include "ofThread.h"
-#include "ofImage.h"
-#include "ofPixels.h"
-#include "ofURLFileLoader.h"
-#include "ofTypes.h"
-#include "ofThreadChannel.h"
+#include "utils/ofThread.h"
+#include "graphics/ofImage.h"
+#include "graphics/ofPixels.h"
+#include "utils/ofURLFileLoader.h"
+#include "types/ofTypes.h"
+#include "utils/ofThreadChannel.h"
 
 class ofxThreadedImageLoader : public ofThread {
 public:

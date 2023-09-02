@@ -8,11 +8,11 @@
 #include "ofxAndroidVideoGrabber.h"
 #include "ofxAndroidUtils.h"
 #include <map>
-#include "ofAppRunner.h"
-#include "ofUtils.h"
-#include "ofVideoGrabber.h"
-#include "ofGLUtils.h"
-#include "ofMatrix4x4.h"
+#include "app/ofAppRunner.h"
+#include "utils/ofUtils.h"
+#include "video/ofVideoGrabber.h"
+#include "gl/ofGLUtils.h"
+#include "math/ofMatrix4x4.h"
 
 using namespace std;
 

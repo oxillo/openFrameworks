@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofxToggle.h"
-#include "ofParameter.h"
+#include "types/ofParameter.h"
 
 class ofxButton : public ofxToggle{
 	friend class ofPanel;

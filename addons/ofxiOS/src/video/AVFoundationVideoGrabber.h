@@ -11,8 +11,8 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import <CoreVideo/CoreVideo.h>
 #import <CoreMedia/CoreMedia.h>
-#include "ofTexture.h"
-#include "ofVideoBaseTypes.h"
+#include "gl/ofTexture.h"
+#include "video/ofVideoBaseTypes.h"
 
 class AVFoundationVideoGrabber;
 

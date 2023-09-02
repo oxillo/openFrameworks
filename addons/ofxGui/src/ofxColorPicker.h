@@ -8,8 +8,8 @@
 
 #pragma once
 
-#include "ofColor.h"
-#include "ofEvents.h"
+#include "types/ofColor.h"
+#include "events/ofEvents.h"
 #include "ofxBaseGui.h"
 #include "ofxSlider.h"
 

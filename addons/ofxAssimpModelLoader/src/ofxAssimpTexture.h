@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include "ofTexture.h"
+#include "gl/ofTexture.h"
 #include <assimp/material.h>
 
 class ofxAssimpTexture {

@@ -9,7 +9,7 @@
 #pragma once
 
 #import <UIKit/UIKit.h>
-#include "ofConstants.h"
+#include "utils/ofConstants.h"
 
 @interface ofxiOSKeyboardDelegate : NSObject <UITextFieldDelegate>
 {
