@@ -6,7 +6,7 @@
 
 #include "ofxiOSSoundStream.h"
 #include "ofxiOSSoundStreamDelegate.h"
-#include "soound/ofSoundStream.h"
+#include "sound/ofSoundStream.h"
 #include "app/ofBaseApp.h"
 #include "utils/ofLog.h"
 #include <functional>
