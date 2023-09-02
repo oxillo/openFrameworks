@@ -11,7 +11,7 @@
 #include "events/ofEventUtils.h"
 
 // declares some shared Media Foundation code
-#include "video/ofMediaFoundationSoundPlayer.h"
+#include "sound/ofMediaFoundationSoundPlayer.h"
 
 using namespace Microsoft::WRL;
 
