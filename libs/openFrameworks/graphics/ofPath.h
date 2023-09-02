@@ -1,9 +1,9 @@
 #pragma once
 
-#include "ofPolyline.h"
-#include "ofVboMesh.h"
-#include "ofTessellator.h"
-#include "ofConstants.h"
+#include "graphics/ofPolyline.h"
+#include "gl/ofVboMesh.h"
+#include "graphics/ofTessellator.h"
+#include "utils/ofConstants.h"
 
 template<typename T>
 class ofColor_;

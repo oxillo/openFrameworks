@@ -6,13 +6,13 @@
 
 #pragma once
 
-#include "ofVideoBaseTypes.h"
-#include "ofTexture.h"
-#include "ofThread.h"
-#include "ofPixels.h"
+#include "video/ofVideoBaseTypes.h"
+#include "gl/ofTexture.h"
+#include "utils/ofThread.h"
+#include "graphics/ofPixels.h"
 
 #ifdef __OBJC__
-#import "ofAVFoundationVideoPlayer.h"
+#import "video/ofAVFoundationVideoPlayer.h"
 #endif
 
 #if defined TARGET_OF_IOS || defined TARGET_OSX

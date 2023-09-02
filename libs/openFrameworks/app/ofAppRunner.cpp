@@ -1,13 +1,13 @@
-#include "ofAppRunner.h"
+#include "app/ofAppRunner.h"
 
-#include "ofBaseApp.h"
-#include "ofAppBaseWindow.h"
+#include "app/ofBaseApp.h"
+#include "app/ofAppBaseWindow.h"
 
 // IDEA BRANCH - remove this comment
-#include "ofLog.h"
-#include "ofMath.h"
-#include "ofGraphicsBaseTypes.h"
-#include "ofRectangle.h"
+#include "utils/ofLog.h"
+#include "math/ofMath.h"
+#include "graphics/ofGraphicsBaseTypes.h"
+#include "types/ofRectangle.h"
 
 // MASTER - TODO: Remove commented out code
 // #ifndef TARGET_NO_SOUND
@@ -18,13 +18,13 @@
 // #include "ofTrueTypeFont.h"
 
 
-#include "ofMainLoop.h"
+#include "app/ofMainLoop.h"
 
 using std::shared_ptr;
 
 #if !defined(TARGET_NODISPLAY)
 	#if !defined( TARGET_OF_IOS ) & !defined(TARGET_ANDROID) & !defined(TARGET_EMSCRIPTEN) & !defined(TARGET_RASPBERRY_PI_LEGACY)
-	#include "ofAppGLFWWindow.h"
+	#include "app/ofAppGLFWWindow.h"
 	//special case so we preserve supplied settngs
 	//TODO: remove me when we remove the ofAppGLFWWindow setters.
 	//--------------------------------------
@@ -40,12 +40,12 @@ using std::shared_ptr;
 #endif
 
 #ifdef TARGET_LINUX
-#include "ofGstUtils.h"
+#include "video/ofGstUtils.h"
 #endif
 
 // adding this for vc2010 compile: error C3861: 'closeQuicktime': identifier not found
 #if defined(OF_VIDEO_CAPTURE_QUICKTIME) || defined(OF_VIDEO_PLAYER_QUICKTIME)
-	#include "ofQtUtils.h"
+	#include "video/ofQtUtils.h"
 #endif
 
 #if defined (TARGET_WIN32)

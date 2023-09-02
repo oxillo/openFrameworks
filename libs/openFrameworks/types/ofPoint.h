@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ofVec3f.h"
+#include "math/ofVec3f.h"
 
 /// \file 
 /// ofPoint is a typedef (alias) of ofVec3f

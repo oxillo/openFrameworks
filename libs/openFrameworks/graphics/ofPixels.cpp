@@ -1,6 +1,6 @@
-#include "ofGraphicsConstants.h"
-#include "ofPixels.h"
-#include "ofColor.h"
+#include "graphics/ofGraphicsConstants.h"
+#include "graphics/ofPixels.h"
+#include "types/ofColor.h"
 
 #define GLM_FORCE_CTOR_INIT
 #include "glm/common.hpp"

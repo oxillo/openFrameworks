@@ -1,9 +1,9 @@
-#include "ofVideoGrabber.h"
-#include "ofVideoBaseTypes.h"
-#include "ofGLUtils.h"
-#include "ofAppRunner.h"
-#include "ofConstants.h"
-#include "ofPixels.h"
+#include "video/ofVideoGrabber.h"
+#include "video/ofVideoBaseTypes.h"
+#include "gl/ofGLUtils.h"
+#include "app/ofAppRunner.h"
+#include "utils/ofConstants.h"
+#include "graphics/ofPixels.h"
 
 #ifdef OF_VIDEO_CAPTURE_IOS
 	#include "ofxiOSVideoGrabber.h"
@@ -26,12 +26,12 @@
 #endif
 
 #ifdef OF_VIDEO_CAPTURE_DIRECTSHOW
-	#include "ofDirectShowGrabber.h"
+	#include "video/ofDirectShowGrabber.h"
 	#define OF_VID_GRABBER_TYPE ofDirectShowGrabber
 #endif
 
 #ifdef OF_VIDEO_CAPTURE_GSTREAMER
-	#include "ofGstVideoGrabber.h"
+	#include "video/ofGstVideoGrabber.h"
 	#define OF_VID_GRABBER_TYPE ofGstVideoGrabber
 #endif
 

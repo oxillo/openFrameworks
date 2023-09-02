@@ -1,9 +1,9 @@
-#include "ofMaterial.h"
-#include "ofLight.h"
-#include "ofShadow.h"
-#include "ofCubeMap.h"
-#include "ofImage.h"
-#include "ofGLProgrammableRenderer.h"
+#include "gl/ofMaterial.h"
+#include "gl/ofLight.h"
+#include "gl/ofShadow.h"
+#include "gl/ofCubeMap.h"
+#include "graphics/ofImage.h"
+#include "gl/ofGLProgrammableRenderer.h"
 
 #include <typeinfo>
 

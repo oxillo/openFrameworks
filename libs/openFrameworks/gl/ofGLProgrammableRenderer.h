@@ -1,12 +1,12 @@
 #pragma once
 
-#include "ofGLBaseTypes.h"
-#include "ofPolyline.h"
-#include "ofShader.h"
-#include "ofMatrixStack.h"
-#include "of3dGraphics.h"
-#include "ofBitmapFont.h"
-#include "ofPath.h"
+#include "gl/ofGLBaseTypes.h"
+#include "graphics/ofPolyline.h"
+#include "gl/ofShader.h"
+#include "utils/ofMatrixStack.h"
+#include "graphics/of3dGraphics.h"
+#include "graphics/ofBitmapFont.h"
+#include "graphics/ofPath.h"
 //#include "ofMaterialBaseTypes.h"
 
 class ofShapeTessellation;

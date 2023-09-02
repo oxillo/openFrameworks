@@ -2,7 +2,7 @@
 
 
 
-#include "ofMatrix4x4.h"
+#include "math/ofMatrix4x4.h"
 
 #include <limits>
 #include <stdlib.h>

@@ -2,9 +2,9 @@
 
 //TODO: Add edge flags?
 
-#include "ofGraphicsConstants.h"
-#include "ofBufferObject.h"
-#include "ofConstants.h"
+#include "graphics/ofGraphicsConstants.h"
+#include "gl/ofBufferObject.h"
+#include "utils/ofConstants.h"
 #include <unordered_map>
 
 template<typename T>

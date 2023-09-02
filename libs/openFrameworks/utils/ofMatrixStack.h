@@ -8,9 +8,9 @@
 #ifndef OFMATRIXSTACK_H_
 #define OFMATRIXSTACK_H_
 
-#include "ofRectangle.h"
-#include "ofGraphicsConstants.h"
-#include "ofConstants.h"
+#include "types/ofRectangle.h"
+#include "graphics/ofGraphicsConstants.h"
+#include "utils/ofConstants.h"
 #include "glm/mat4x4.hpp"
 #include <stack>
 

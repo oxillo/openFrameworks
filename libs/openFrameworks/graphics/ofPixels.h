@@ -1,9 +1,9 @@
 #pragma once
 
-#include "ofUtils.h"
-#include "ofLog.h"
-#include "ofMath.h"
-#include "ofConstants.h"
+#include "utils/ofUtils.h"
+#include "utils/ofLog.h"
+#include "math/ofMath.h"
+#include "utils/ofConstants.h"
 
 template<typename T>
 class ofColor_;

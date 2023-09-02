@@ -5,9 +5,9 @@
  *      Author: arturo
  */
 
-#include "ofSoundBuffer.h"
-#include "ofSoundUtils.h"
-#include "ofLog.h"
+#include "sound/ofSoundBuffer.h"
+#include "sound/ofSoundUtils.h"
+#include "utils/ofLog.h"
 #define GLM_FORCE_CTOR_INIT
 #include "glm/trigonometric.hpp"
 #include <limits>

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "ofWindowSettings.h"
-#include "ofConstants.h"
-#include "ofMainLoop.h"
+#include "app/ofWindowSettings.h"
+#include "utils/ofConstants.h"
+#include "app/ofMainLoop.h"
 
 class ofRectangle;
 class ofAppBaseWindow;

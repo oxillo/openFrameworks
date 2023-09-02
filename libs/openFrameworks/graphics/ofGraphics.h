@@ -1,8 +1,8 @@
 #pragma once
 
-#include "ofGraphicsBaseTypes.h"
-#include "ofRectangle.h"
-#include "ofConstants.h"
+#include "graphics/ofGraphicsBaseTypes.h"
+#include "types/ofRectangle.h"
+#include "utils/ofConstants.h"
 #include "glm/fwd.hpp"
 
 class ofVec3f;

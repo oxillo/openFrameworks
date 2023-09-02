@@ -1,11 +1,11 @@
 #pragma once
 
-#include "ofEvents.h"
-#include "ofPoint.h"
-#include "ofRectangle.h"
-#include "ofLog.h"
-#include "ofConstants.h"
-#include "ofColor.h"
+#include "events/ofEvents.h"
+#include "types/ofPoint.h"
+#include "types/ofRectangle.h"
+#include "utils/ofLog.h"
+#include "utils/ofConstants.h"
+#include "types/ofColor.h"
 
 #include <map>
 

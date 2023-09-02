@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ofConstants.h"
+#include "utils/ofConstants.h"
 #include "glm/vec4.hpp"
 #include "glm/fwd.hpp"
 #include <cmath>

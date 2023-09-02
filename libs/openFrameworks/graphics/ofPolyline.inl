@@ -1,14 +1,14 @@
 #ifndef OF_POLYLINE_H
-#include "ofPolyline.h"
+#include "graphics/ofPolyline.h"
 #endif
 
-#include "ofRectangle.h"
-#include "ofGraphicsBaseTypes.h"
-#include "ofVectorMath.h"
-#include "ofAppRunner.h"
-#include "ofMath.h"
-#include "ofLog.h"
-#include "ofConstants.h"
+#include "types/ofRectangle.h"
+#include "graphics/ofGraphicsBaseTypes.h"
+#include "math/ofVectorMath.h"
+#include "app/ofAppRunner.h"
+#include "math/ofMath.h"
+#include "utils/ofLog.h"
+#include "utils/ofConstants.h"
 
 //----------------------------------------------------------
 template<class T>

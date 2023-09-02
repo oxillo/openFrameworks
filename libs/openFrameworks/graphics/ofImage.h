@@ -1,10 +1,10 @@
 #pragma once
 
-#include "ofTexture.h"
-#include "ofGLBaseTypes.h"
-#include "ofGraphicsConstants.h"
-#include "ofGLUtils.h"
-#include "ofConstants.h"
+#include "gl/ofTexture.h"
+#include "gl/ofGLBaseTypes.h"
+#include "graphics/ofGraphicsConstants.h"
+#include "gl/ofGLUtils.h"
+#include "utils/ofConstants.h"
 
 template<typename T>
 class ofPixels_;

@@ -9,8 +9,8 @@
 
 #pragma once
 
-#include "ofNode.h"
-#include "ofShadow.h"
+#include "3d/ofNode.h"
+#include "gl/ofShadow.h"
 
 template<typename T>
 class ofColor_;

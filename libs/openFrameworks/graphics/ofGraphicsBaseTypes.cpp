@@ -1,5 +1,5 @@
-#include "ofGraphicsBaseTypes.h"
-#include "ofRectangle.h"
+#include "graphics/ofGraphicsBaseTypes.h"
+#include "types/ofRectangle.h"
 
 #define GLM_FORCE_CTOR_INIT
 #include "glm/vec2.hpp"

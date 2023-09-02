@@ -1,6 +1,6 @@
 
-#include "ofBitmapFont.h"
-#include "ofMesh.h"
+#include "graphics/ofBitmapFont.h"
+#include "3d/ofMesh.h"
 
 #ifdef TARGET_ANDROID
 #include "ofxAndroidUtils.h"
@@ -325,7 +325,7 @@ static const unsigned char* bmpChar_8x13_Map[] = {	bmpChar_8x13_000,bmpChar_8x13
 
 
 
-#include "ofTexture.h"
+#include "gl/ofTexture.h"
 static const float widthTex = 8.0f/256.0f;
 static const float heightTex = 14.0f/256.0f;
 ofPixels ofBitmapFont::pixels;

@@ -1,12 +1,12 @@
-#include "ofOpenALSoundPlayer.h"
+#include "sound/ofOpenALSoundPlayer.h"
 
 #ifdef OF_SOUND_PLAYER_OPENAL
 
 #define GLM_FORCE_CTOR_INIT
 #include <glm/gtc/constants.hpp>
 #include "glm/common.hpp"
-#include "ofLog.h"
-#include "ofEvents.h"
+#include "utils/ofLog.h"
+#include "events/ofEvents.h"
 
 #if defined (TARGET_OF_IOS) || defined (TARGET_OSX)
 #include <OpenAL/al.h>

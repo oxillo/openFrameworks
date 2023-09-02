@@ -1,7 +1,7 @@
-#include "ofAppGlutWindow.h"
-#include "ofBaseApp.h"
-#include "ofPixels.h"
-#include "ofGLRenderer.h"
+#include "app/ofAppGlutWindow.h"
+#include "app/ofBaseApp.h"
+#include "graphics/ofPixels.h"
+#include "gl/ofGLRenderer.h"
 
 #ifdef TARGET_WIN32
 	#if (_MSC_VER)
@@ -20,8 +20,8 @@
 #endif
 #ifdef TARGET_LINUX
 	#include <GL/glut.h>
-	#include "ofIcon.h"
-	#include "ofImage.h"
+	#include "app/ofIcon.h"
+	#include "graphics/ofImage.h"
 	#include <X11/Xatom.h>
 	#include <GL/freeglut_ext.h>
 	#include <GL/glx.h>

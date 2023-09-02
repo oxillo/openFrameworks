@@ -3,7 +3,7 @@
 #ifndef OF_MESH_H
 #define OF_MESH_H
 
-#include "ofGLUtils.h"
+#include "gl/ofGLUtils.h"
 
 template<class V, class N, class C, class T>
 class ofMeshFace_;

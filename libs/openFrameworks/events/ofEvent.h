@@ -16,7 +16,7 @@
 #include <array>
 
 // FIXME: constants deprecated only
-#include "ofConstants.h"
+#include "utils/ofConstants.h"
 
 
 /*! \cond PRIVATE */

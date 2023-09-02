@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ofGraphicsBaseTypes.h"
+#include "graphics/ofGraphicsBaseTypes.h"
 #include <vector>
 
 class ofTexture;

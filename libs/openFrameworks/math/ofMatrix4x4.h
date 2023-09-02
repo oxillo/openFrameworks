@@ -10,10 +10,10 @@
 
 #pragma once
 
-#include "ofVec4f.h"
-#include "ofQuaternion.h"
-#include "ofMathConstants.h"
-#include "ofConstants.h"
+#include "math/ofVec4f.h"
+#include "math/ofQuaternion.h"
+#include "math/ofMathConstants.h"
+#include "utils/ofConstants.h"
 #include "glm/mat4x4.hpp"
 #include <cmath>
 

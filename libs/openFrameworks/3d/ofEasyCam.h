@@ -1,8 +1,8 @@
 #pragma once
 
-#include "ofCamera.h"
-#include "ofEvents.h"
-#include "ofRectangle.h"
+#include "3d/ofCamera.h"
+#include "events/ofEvents.h"
+#include "types/ofRectangle.h"
 
 #define GLM_FORCE_CTOR_INIT
 #include "glm/gtc/quaternion.hpp"

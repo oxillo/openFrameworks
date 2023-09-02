@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ofAppBaseWindow.h"
+#include "app/ofAppBaseWindow.h"
 
 class ofBaseApp;
 class ofBaseRenderer;

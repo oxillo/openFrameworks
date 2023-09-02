@@ -1,13 +1,13 @@
-#include "ofGLUtils.h"
-#include "ofGLProgrammableRenderer.h"
-#include "ofGraphics.h"
-#include "ofShader.h"
-#include "ofGraphicsBaseTypes.h"
-#include "ofRendererCollection.h"
-#include "ofGLRenderer.h"
-#include "ofPixels.h"
-#include "ofLog.h"
-#include "ofGraphicsConstants.h"
+#include "gl/ofGLUtils.h"
+#include "gl/ofGLProgrammableRenderer.h"
+#include "graphics/ofGraphics.h"
+#include "gl/ofShader.h"
+#include "graphics/ofGraphicsBaseTypes.h"
+#include "graphics/ofRendererCollection.h"
+#include "gl/ofGLRenderer.h"
+#include "graphics/ofPixels.h"
+#include "utils/ofLog.h"
+#include "graphics/ofGraphicsConstants.h"
 #include <set>
 
 using std::shared_ptr;

@@ -24,9 +24,9 @@
  */
 #pragma once
 
-#include "ofEvents.h"
-#include "ofSerial.h"
-#include "ofConstants.h"
+#include "events/ofEvents.h"
+#include "communication/ofSerial.h"
+#include "utils/ofConstants.h"
 #include <list>
 #include <map>
 

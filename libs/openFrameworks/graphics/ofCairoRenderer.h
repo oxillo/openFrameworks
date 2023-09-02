@@ -1,11 +1,11 @@
 #pragma once
 
 #include "cairo.h"
-#include "ofGraphicsBaseTypes.h"
-#include "ofPath.h"
-#include "of3dGraphics.h"
+#include "graphics/ofGraphicsBaseTypes.h"
+#include "graphics/ofPath.h"
+#include "graphics/of3dGraphics.h"
 
-#include "ofPixels.h"
+#include "graphics/ofPixels.h"
 #include <deque>
 #include <stack>
 

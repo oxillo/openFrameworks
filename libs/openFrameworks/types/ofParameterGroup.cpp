@@ -1,5 +1,5 @@
-#include "ofUtils.h"
-#include "ofParameter.h"
+#include "utils/ofUtils.h"
+#include "types/ofParameter.h"
 
 using std::string;
 using std::endl;

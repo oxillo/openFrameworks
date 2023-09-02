@@ -1,9 +1,9 @@
 
-#include "ofSystemUtils.h"
-#include "ofFileUtils.h"
-#include "ofLog.h"
-#include "ofUtils.h"
-#include "ofConstants.h"
+#include "utils/ofSystemUtils.h"
+#include "utils/ofFileUtils.h"
+#include "utils/ofLog.h"
+#include "utils/ofUtils.h"
+#include "utils/ofConstants.h"
 
 #include <condition_variable>
 #include <mutex>
@@ -16,7 +16,7 @@
 	// http://www.yakyak.org/viewtopic.php?p=1475838&sid=1e9dcb5c9fd652a6695ac00c5e957822#p1475838
 
 	#include <Cocoa/Cocoa.h>
-	#include "ofAppRunner.h"
+	#include "app/ofAppRunner.h"
 #endif
 
 #ifdef TARGET_WIN32

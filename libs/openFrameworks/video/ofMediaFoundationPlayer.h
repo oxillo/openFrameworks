@@ -4,11 +4,11 @@
 #include <d3d11_1.h>
 #include <wrl.h>
 #include <wincodec.h>
-#include "ofConstants.h"
-#include "ofVideoBaseTypes.h"
-#include "ofPixels.h"
-#include "ofFbo.h"
-#include "ofEvent.h"
+#include "utils/ofConstants.h"
+#include "video/ofVideoBaseTypes.h"
+#include "graphics/ofPixels.h"
+#include "gl/ofFbo.h"
+#include "events/ofEvent.h"
 
 #include <mutex>
 #include <queue>

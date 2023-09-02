@@ -1,7 +1,7 @@
 #pragma once
 
-#include "ofTexture.h"
-#include "ofVideoBaseTypes.h"
+#include "gl/ofTexture.h"
+#include "video/ofVideoBaseTypes.h"
 
 template<typename T>
 class ofPixels_;

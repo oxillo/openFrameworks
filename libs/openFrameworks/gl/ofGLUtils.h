@@ -7,8 +7,8 @@
 
 #pragma once
 
-#include "ofGraphicsConstants.h"
-#include "ofConstants.h"
+#include "graphics/ofGraphicsConstants.h"
+#include "utils/ofConstants.h"
 
 class ofShader;
 class ofGLProgrammableRenderer;

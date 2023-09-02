@@ -1,8 +1,8 @@
 #pragma once
 
-#include "ofTexture.h"
-#include "ofVideoBaseTypes.h"
-#include "ofConstants.h"
+#include "gl/ofTexture.h"
+#include "video/ofVideoBaseTypes.h"
+#include "utils/ofConstants.h"
 
 
 //---------------------------------------------

@@ -4,16 +4,16 @@
 //  Created by Nick Hardeman on 10/16/22.
 //
 
-#include "ofShader.h"
-#include "ofCubeMap.h"
-#include "ofImage.h"
-#include "of3dUtils.h"
-#include "ofGLBaseTypes.h"
-#include "ofGLUtils.h"
-#include "ofGLProgrammableRenderer.h"
-#include "ofCubeMapShaders.h"
-#include "ofFbo.h"
-#include "ofConstants.h"
+#include "gl/ofShader.h"
+#include "gl/ofCubeMap.h"
+#include "graphics/ofImage.h"
+#include "3d/of3dUtils.h"
+#include "gl/ofGLBaseTypes.h"
+#include "gl/ofGLUtils.h"
+#include "gl/ofGLProgrammableRenderer.h"
+#include "gl/ofCubeMapShaders.h"
+#include "gl/ofFbo.h"
+#include "utils/ofConstants.h"
 
 #define GLM_FORCE_CTOR_INIT
 #include "glm/gtx/transform.hpp"

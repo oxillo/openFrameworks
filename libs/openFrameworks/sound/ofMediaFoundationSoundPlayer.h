@@ -1,7 +1,7 @@
 #pragma once
 
-#include "ofSoundBaseTypes.h"
-#include "ofEvents.h"
+#include "sound/ofSoundBaseTypes.h"
+#include "events/ofEvents.h"
 
 #include <mfidl.h>
 #include <mfapi.h>

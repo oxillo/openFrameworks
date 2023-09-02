@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ofConstants.h"
+#include "utils/ofConstants.h"
 
 #if !defined(TARGET_MINGW) 
 	#include "utf8.h"
@@ -15,8 +15,8 @@
 #include <type_traits>
 #include <random>
 
-#include "ofRandomEngine.h"
-#include "ofRandomDistributions.h"
+#include "utils/ofRandomEngine.h"
+#include "utils/ofRandomDistributions.h"
 
 /// \section Elapsed Time
 /// \brief Reset the elapsed time counter.
@@ -229,7 +229,7 @@ int ofGetWeekday();
 
 template<typename ... Args>
 void ofShuffle(Args&&... args) {
-    of::random::shuffle(std::forward<Args>(args)...);
+    of::random::shuffle(std::forward<Args>(args)...); // DevSkim: ignore DS148264
 }
 
 /// \section Vectors
@@ -239,7 +239,7 @@ void ofShuffle(Args&&... args) {
 
 template<class T>
 void ofRandomize(std::vector<T>& values) {
-    of::random::shuffle(values);
+    of::random::shuffle(values); // DevSkim: ignore DS148264
 }
 
 /// \brief Conditionally remove values from a vector.

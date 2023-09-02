@@ -1,6 +1,6 @@
-#include "ofVec2f.h"
-#include "ofVec3f.h"
-#include "ofVec4f.h"
+#include "math/ofVec2f.h"
+#include "math/ofVec3f.h"
+#include "math/ofVec4f.h"
 
 #define GLM_FORCE_CTOR_INIT
 #include "glm/vec3.hpp"

@@ -1,6 +1,6 @@
-#include "ofFileUtils.h"
-#include "ofLog.h"
-#include "ofUtils.h"
+#include "utils/ofFileUtils.h"
+#include "utils/ofLog.h"
+#include "utils/ofUtils.h"
 
 #ifndef TARGET_WIN32
 	#include <pwd.h>

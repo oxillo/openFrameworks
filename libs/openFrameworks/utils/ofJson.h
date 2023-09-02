@@ -5,7 +5,7 @@
 #else
 	#include "nlohmann/json.hpp" // MSYS2 : use of system-installed include
 #endif
-#include "ofParameter.h"
+#include "types/ofParameter.h"
 
 // for convenience
 using ofJson = nlohmann::json;

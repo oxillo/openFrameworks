@@ -8,8 +8,8 @@
 #ifndef OFSOUNDUTILS_H_
 #define OFSOUNDUTILS_H_
 
-#include "ofMath.h"
-#include "ofSoundBuffer.h"
+#include "math/ofMath.h"
+#include "sound/ofSoundBuffer.h"
 #include <glm/gtc/constants.hpp>
 #include "glm/common.hpp"
 

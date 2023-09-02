@@ -1,8 +1,8 @@
 #pragma once
 
-#include "ofAppBaseWindow.h"
-#include "ofRectangle.h"
-#include "ofConstants.h"
+#include "app/ofAppBaseWindow.h"
+#include "types/ofRectangle.h"
+#include "utils/ofConstants.h"
 
 #if defined(TARGET_LINUX) && !defined(TARGET_RASPBERRY_PI_LEGACY)
 typedef struct _XIM * XIM;

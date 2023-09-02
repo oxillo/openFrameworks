@@ -1,7 +1,7 @@
-#include "ofVideoPlayer.h"
-#include "ofAppRunner.h"
-#include "ofGLUtils.h"
-#include "ofPixels.h"
+#include "video/ofVideoPlayer.h"
+#include "app/ofAppRunner.h"
+#include "gl/ofGLUtils.h"
+#include "graphics/ofPixels.h"
 #include <algorithm>
 
 using std::shared_ptr;
@@ -10,7 +10,7 @@ using std::string;
 
 
 #ifdef OF_VIDEO_PLAYER_GSTREAMER
-	#include "ofGstVideoPlayer.h"
+	#include "vieo/ofGstVideoPlayer.h"
 	#define OF_VID_PLAYER_TYPE ofGstVideoPlayer
 #endif
 
@@ -25,17 +25,17 @@ using std::string;
 #endif
 
 #ifdef OF_VIDEO_PLAYER_AVFOUNDATION
-	#include "ofAVFoundationPlayer.h"
+	#include "video/ofAVFoundationPlayer.h"
 	#define OF_VID_PLAYER_TYPE ofAVFoundationPlayer
 #endif
 
 #ifdef OF_VIDEO_PLAYER_DIRECTSHOW
-	#include "ofDirectShowPlayer.h"
+	#include "video/ofDirectShowPlayer.h"
 	#define OF_VID_PLAYER_TYPE ofDirectShowPlayer
 #endif
 
 #if defined(OF_VIDEO_PLAYER_MEDIA_FOUNDATION)
-	#include "ofMediaFoundationPlayer.h"
+	#include "video/ofMediaFoundationPlayer.h"
 	#define OF_VID_PLAYER_TYPE ofMediaFoundationPlayer
 #endif
 

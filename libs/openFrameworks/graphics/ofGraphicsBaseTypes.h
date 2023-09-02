@@ -1,9 +1,9 @@
 #pragma once
 
-#include "ofGraphicsConstants.h"
-#include "ofConstants.h"
+#include "graphics/ofGraphicsConstants.h"
+#include "utils/ofConstants.h"
 #include "glm/fwd.hpp"
-#include "ofColor.h"
+#include "types/ofColor.h"
 
 class ofRectangle;
 class ofPath;

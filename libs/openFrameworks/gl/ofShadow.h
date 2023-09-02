@@ -7,8 +7,8 @@
 
 #pragma once
 
-#include "ofShader.h"
-#include "ofNode.h"
+#include "gl/ofShader.h"
+#include "3d/ofNode.h"
 
 enum ofShadowType {
 	OF_SHADOW_TYPE_HARD=0,

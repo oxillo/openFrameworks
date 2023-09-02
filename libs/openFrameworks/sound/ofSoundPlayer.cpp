@@ -1,5 +1,5 @@
-#include "ofSoundPlayer.h"
-#include "ofLog.h"
+#include "sound/ofSoundPlayer.h"
+#include "utils/ofLog.h"
 #define GLM_FORCE_CTOR_INIT
 #include "glm/common.hpp"
 
@@ -15,17 +15,17 @@
 #endif
 
 #ifdef OF_SOUND_PLAYER_FMOD
-#include "ofFmodSoundPlayer.h"
+#include "sound/ofFmodSoundPlayer.h"
 #define OF_SOUND_PLAYER_TYPE ofFmodSoundPlayer
 #endif
 
 #ifdef OF_SOUND_PLAYER_MEDIA_FOUNDATION
-#include "ofMediaFoundationSoundPlayer.h"
+#include "sound/ofMediaFoundationSoundPlayer.h"
 #define OF_SOUND_PLAYER_TYPE ofMediaFoundationSoundPlayer
 #endif
 
 #ifdef OF_SOUND_PLAYER_OPENAL
-#include "ofOpenALSoundPlayer.h"
+#include "sound/ofOpenALSoundPlayer.h"
 #define OF_SOUND_PLAYER_TYPE ofOpenALSoundPlayer
 #endif
 

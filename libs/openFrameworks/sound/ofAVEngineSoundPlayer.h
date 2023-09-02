@@ -7,12 +7,12 @@
 
 #pragma once
 
-#include "ofConstants.h"
+#include "utils/ofConstants.h"
 
 #ifdef OF_SOUND_PLAYER_AV_ENGINE
 
-#include "ofSoundBaseTypes.h"
-#include "ofEvents.h"
+#include "sound/ofSoundBaseTypes.h"
+#include "events/ofEvents.h"
 
 #ifdef __OBJC__
     #import <Foundation/Foundation.h>

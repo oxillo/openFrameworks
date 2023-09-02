@@ -1,17 +1,17 @@
 
-#include "ofPixels.h"
-#include "ofMediaFoundationPlayer.h"
-#include "ofLog.h"
+#include "graphics/ofPixels.h"
+#include "video/ofMediaFoundationPlayer.h"
+#include "utils/ofLog.h"
 #include <string.h>
 #include <mfapi.h>
 #include <mferror.h>
-#include "ofTexture.h"
-#include "ofGLUtils.h"
-#include "ofGraphics.h"
-#include "ofEventUtils.h"
+#include "gl/ofTexture.h"
+#include "gl/ofGLUtils.h"
+#include "graphics/ofGraphics.h"
+#include "events/ofEventUtils.h"
 
 // declares some shared Media Foundation code
-#include "ofMediaFoundationSoundPlayer.h"
+#include "video/ofMediaFoundationSoundPlayer.h"
 
 using namespace Microsoft::WRL;
 

@@ -1,6 +1,6 @@
-#include "ofMath.h"
-#include "ofNoise.h"
-#include "ofPolyline.h"
+#include "math/ofMath.h"
+#include "utils/ofNoise.h"
+#include "graphics/ofPolyline.h"
 #include <float.h>
 
 #ifndef TARGET_WIN32

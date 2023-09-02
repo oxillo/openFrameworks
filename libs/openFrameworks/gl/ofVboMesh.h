@@ -1,7 +1,7 @@
 #pragma once
 
-#include "ofMesh.h"
-#include "ofVbo.h"
+#include "3d/ofMesh.h"
+#include "gl/ofVbo.h"
 
 class ofVboMesh: public ofMesh{
 public:

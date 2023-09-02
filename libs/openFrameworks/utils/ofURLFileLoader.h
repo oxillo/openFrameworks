@@ -1,9 +1,9 @@
 #pragma once
 
-#include "ofEvents.h"
+#include "events/ofEvents.h"
 // ofBuffer only
-#include "ofFileUtils.h"
-#include "ofConstants.h"
+#include "utils/ofFileUtils.h"
+#include "utils/ofConstants.h"
 #include <map>
 
 class ofHttpResponse;

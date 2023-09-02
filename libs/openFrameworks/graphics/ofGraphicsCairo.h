@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ofRectangle.h"
+#include "types/ofRectangle.h"
 
 /// \}
 /// \name Screen Saving

@@ -1,11 +1,11 @@
 #pragma once
 
-#include "ofAppBaseWindow.h"
-#include "ofThread.h"
-#include "ofImage.h"
-#include "ofEvents.h"
-#include "ofRectangle.h"
-#include "ofConstants.h"
+#include "app/ofAppBaseWindow.h"
+#include "utils/ofThread.h"
+#include "graphics/ofImage.h"
+#include "events/ofEvents.h"
+#include "types/ofRectangle.h"
+#include "utils/ofConstants.h"
 #include <queue>
 #include <map>
 #include <X11/Xlib.h>

@@ -5,13 +5,13 @@
 //  Created by Nick Hardeman on 10/3/22.
 //
 
-#include "ofShadow.h"
-#include "of3dUtils.h"
-#include "ofGLBaseTypes.h"
-#include "ofGLUtils.h"
-#include "ofLight.h"
-#include "ofGLProgrammableRenderer.h"
-#include "ofConstants.h"
+#include "gl/ofShadow.h"
+#include "3d/of3dUtils.h"
+#include "gl/ofGLBaseTypes.h"
+#include "gl/ofGLUtils.h"
+#include "gl/ofLight.h"
+#include "gl/ofGLProgrammableRenderer.h"
+#include "utils/ofConstants.h"
 
 #define GLM_FORCE_CTOR_INIT
 #include "glm/gtx/transform.hpp"

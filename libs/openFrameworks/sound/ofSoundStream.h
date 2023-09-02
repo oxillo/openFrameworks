@@ -1,8 +1,8 @@
 #pragma once
 
-#include "ofBaseApp.h"
-#include "ofSoundBaseTypes.h"
-#include "ofConstants.h"
+#include "app/ofBaseApp.h"
+#include "sound/ofSoundBaseTypes.h"
+#include "utils/ofConstants.h"
 #include <climits>
 #include <functional>
 

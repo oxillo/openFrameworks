@@ -1,9 +1,9 @@
 
 #pragma once
 
-#include "ofParameter.h"
+#include "types/ofParameter.h"
 #include <glm/gtc/quaternion.hpp>
-#include "ofConstants.h"
+#include "utils/ofConstants.h"
 #include "glm/mat4x4.hpp"
 #include <array>
 

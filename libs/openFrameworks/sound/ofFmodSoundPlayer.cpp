@@ -1,9 +1,9 @@
-#include "ofFmodSoundPlayer.h"
+#include "sound/ofFmodSoundPlayer.h"
 #ifdef OF_SOUND_PLAYER_FMOD
 
-#include "ofUtils.h"
-#include "ofMath.h"
-#include "ofLog.h"
+#include "utils/ofUtils.h"
+#include "math/ofMath.h"
+#include "utils/ofLog.h"
 
 
 static bool bFmodInitialized_ = false;

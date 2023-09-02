@@ -1,14 +1,14 @@
 #pragma once
 
-#include "ofVec2f.h"
-#include "ofVec3f.h"
-#include "ofVec4f.h"
-#include "ofMatrix3x3.h"
-#include "ofMatrix4x4.h"
-#include "ofQuaternion.h"
+#include "math/ofVec2f.h"
+#include "math/ofVec3f.h"
+#include "math/ofVec4f.h"
+#include "math/ofMatrix3x3.h"
+#include "math/ofMatrix4x4.h"
+#include "math/ofQuaternion.h"
 
-#include "ofMathConstants.h"
-#include "ofConstants.h"
+#include "math/ofMathConstants.h"
+#include "utils/ofConstants.h"
 //#include "glm/glm.hpp"
 
 //#include "glm/detail/setup.hpp"

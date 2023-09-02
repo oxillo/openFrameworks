@@ -8,12 +8,12 @@
  */
 
 
-#include "ofLight.h"
-#include "of3dUtils.h"
-#include "ofGLBaseTypes.h"
-#include "ofGLUtils.h"
-#include "ofConstants.h"
-#include "ofColor.h"
+#include "gl/ofLight.h"
+#include "3d/of3dUtils.h"
+#include "gl/ofGLBaseTypes.h"
+#include "gl/ofGLUtils.h"
+#include "utils/ofConstants.h"
+#include "types/ofColor.h"
 #include <glm/gtc/quaternion.hpp>
 #include <map>
 

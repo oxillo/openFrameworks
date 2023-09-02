@@ -1,6 +1,6 @@
 
-#include "ofMediaFoundationSoundPlayer.h"
-#include "ofLog.h"
+#include "sound/ofMediaFoundationSoundPlayer.h"
+#include "utils/ofLog.h"
 
 #include <condition_variable>
 #include <propvarutil.h>

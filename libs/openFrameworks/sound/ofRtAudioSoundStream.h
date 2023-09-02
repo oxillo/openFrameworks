@@ -1,8 +1,8 @@
 #pragma once
 
-#include "ofSoundBaseTypes.h"
-#include "ofSoundBuffer.h"
-#include "ofConstants.h"
+#include "sound/ofSoundBaseTypes.h"
+#include "sound/ofSoundBuffer.h"
+#include "utils/ofConstants.h"
 
 typedef unsigned int RtAudioStreamStatus;
 class RtAudio;

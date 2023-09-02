@@ -1,11 +1,11 @@
 #pragma once
 
-#include "ofRectangle.h"
-#include "ofPath.h"
-#include "ofTexture.h"
-#include "ofMesh.h"
-#include "ofPixels.h"
-#include "ofConstants.h"
+#include "types/ofRectangle.h"
+#include "graphics/ofPath.h"
+#include "gl/ofTexture.h"
+#include "3d/ofMesh.h"
+#include "graphics/ofPixels.h"
+#include "utils/ofConstants.h"
 #include <unordered_map>
 
 /// \file

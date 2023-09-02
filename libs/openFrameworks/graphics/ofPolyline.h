@@ -3,7 +3,7 @@
 #ifndef OF_POLYLINE_H
 #define OF_POLYLINE_H
 
-#include "ofConstants.h"
+#include "utils/ofConstants.h"
 #include "glm/fwd.hpp"
 #include <deque>
 
