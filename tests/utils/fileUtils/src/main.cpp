@@ -304,8 +304,8 @@ class ofApp: public ofxUnitTestsApp{
 };
 
 
-#include "ofAppNoWindow.h"
-#include "ofAppRunner.h"
+#include "app/ofAppNoWindow.h"
+#include "app/ofAppRunner.h"
 //========================================================================
 int main( ){
     initial_cwd = of::filesystem::current_path();
