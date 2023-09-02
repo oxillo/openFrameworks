@@ -10,7 +10,7 @@ using std::string;
 
 
 #ifdef OF_VIDEO_PLAYER_GSTREAMER
-	#include "vieo/ofGstVideoPlayer.h"
+	#include "video/ofGstVideoPlayer.h"
 	#define OF_VID_PLAYER_TYPE ofGstVideoPlayer
 #endif
 
